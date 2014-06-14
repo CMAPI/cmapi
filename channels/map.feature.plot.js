@@ -1,4 +1,4 @@
-cmapi.channel.["map.feature.plot"] = {
+cmapi.channel["map.feature.plot"] = {
     schema: {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "title": "map.feature.plot",
