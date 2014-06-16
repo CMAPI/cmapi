@@ -28,39 +28,57 @@ cmapi.overview = {
 		},
 		{
 			"title" : "Structure of this Document",
-			"paragraphs" : "This document is organized into the following four major sections: Introduction, Core Specification, User Manipulation Core, and Optional Extensions.  The Introduction provides basic background information and an overview of the channels and messages, as well as provides general requirements that apply across the board for Common Map Widget API conformance.  The Core Specification is the minimum required channels and messages that a widget MUST implement in order to be considered Common Map Widget API conformant.  The User Manipulation Core defines those channels and messages that a widget MAY implement if it is to support an end-user map oriented workflow.  However, IF a widget chooses to implement the User Manipulation Core it MUST implement the whole section in order to be Common Map Widget API – User Manipulation Core conformant.  The Optional Extensions define those messages and channels that a widget MAY implement if it wishes to support the identified functionality (i.e., widget intents or clustering).  Each particular extension stands on its own, so that a widget may choose which particular extensions it wants to implement on an extension by extension basis.  "
+			"paragraphs" : [
+			"This document is organized into the following four major sections: Introduction, Core Specification, User Manipulation Core, and Optional Extensions.  The Introduction provides basic background information and an overview of the channels and messages, as well as provides general requirements that apply across the board for Common Map Widget API conformance.  The Core Specification is the minimum required channels and messages that a widget MUST implement in order to be considered Common Map Widget API conformant.  The User Manipulation Core defines those channels and messages that a widget MAY implement if it is to support an end-user map oriented workflow.  However, IF a widget chooses to implement the User Manipulation Core it MUST implement the whole section in order to be Common Map Widget API – User Manipulation Core conformant.  The Optional Extensions define those messages and channels that a widget MAY implement if it wishes to support the identified functionality (i.e., widget intents or clustering).  Each particular extension stands on its own, so that a widget may choose which particular extensions it wants to implement on an extension by extension basis.  "
+			]
 		},
 		{
 			"title" : "General Requirements",
-			"paragraphs" : "The key words MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT, RECOMMENDED, MAY, and OPTIONAL in this document, when in all capital letters, are to be interpreted as described in RFC 2119 (http://tools.ietf.org/html/rfc2119)."
+			"paragraphs" : [
+				"The key words MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT, RECOMMENDED, MAY, and OPTIONAL in this document, when in all capital letters, are to be interpreted as described in RFC 2119 (http://tools.ietf.org/html/rfc2119)."
+			]
 		},
 		{
 			"title" : "Overlays",
-			"paragraphs" : "By default, all data added by an individual widget is placed into a single overlay unique to that widget, which means one overlay per widget. However, the API supports specifying into which overlay data are inserted, so a widget can insert data in multiple overlays, and multiple widgets can insert data into the same overlay. To prevent unintended merging of data due to multiple widgets unintentionally using the same overlay ID, it is suggested that if a widget needs to use multiple overlays, and no sharing of those overlays with other widgets is intended, developers include the widget ID as part of the overlay ID.  If a widget needs to share overlays with other widgets, developers SHOULD follow the guidelines in the OWF documentation regarding preference namespaces for shared overlays to avoid unintended collisions."
+			"paragraphs" : [
+				"By default, all data added by an individual widget is placed into a single overlay unique to that widget, which means one overlay per widget. However, the API supports specifying into which overlay data are inserted, so a widget can insert data in multiple overlays, and multiple widgets can insert data into the same overlay. To prevent unintended merging of data due to multiple widgets unintentionally using the same overlay ID, it is suggested that if a widget needs to use multiple overlays, and no sharing of those overlays with other widgets is intended, developers include the widget ID as part of the overlay ID.  If a widget needs to share overlays with other widgets, developers SHOULD follow the guidelines in the OWF documentation regarding preference namespaces for shared overlays to avoid unintended collisions."
+			]
 		},
 		{
 			"title" : "Features and Feature IDs",
-			"paragraphs" : "Features in the context of this document refer to the discrete pieces of data passed to the API. A feature may be a single marker, polygon, or a complex feature (for example, a KML or GeoJSON Document containing many sub-features). The feature ID used by the API (featureId) refers to the feature ID given when plotting the entire feature. Sub-features also have IDs but their IDs are only used in the map.feature.selected message, which contains the ID of the lowest level feature selected (if available).  Since feature IDs are required to be unique within an overlay, it is recommended to use an approach similar to the OWF channels:  use a hierarchical naming pattern with the levels of the hierarchy separated by a dot (.). To form a unique feature ID, begin with the ID of the widget creating the feature ID. Then, the widget can generate a unique number to complete the feature ID. For example, if generating a feature ID from a widget with the name of “army.bccs.targeter”, the feature ID’s would begin with army.bccs.targeter. "
+			"paragraphs" : [
+				"Features in the context of this document refer to the discrete pieces of data passed to the API. A feature may be a single marker, polygon, or a complex feature (for example, a KML or GeoJSON Document containing many sub-features). The feature ID used by the API (featureId) refers to the feature ID given when plotting the entire feature. Sub-features also have IDs but their IDs are only used in the map.feature.selected message, which contains the ID of the lowest level feature selected (if available).  Since feature IDs are required to be unique within an overlay, it is recommended to use an approach similar to the OWF channels:  use a hierarchical naming pattern with the levels of the hierarchy separated by a dot (.). To form a unique feature ID, begin with the ID of the widget creating the feature ID. Then, the widget can generate a unique number to complete the feature ID. For example, if generating a feature ID from a widget with the name of “army.bccs.targeter”, the feature ID’s would begin with army.bccs.targeter. "
+			]
 		},
 		{
 			"title" : "Payloads",
-			"paragraphs" : "All Payloads can be either a single object or an array of like objects."
+			"paragraphs" : [
+				"All Payloads can be either a single object or an array of like objects."
+			]
 		},
 		{
 			"title" : "Latitude and Longitude",
-			"paragraphs" : "All latitudes and longitudes are in decimal degrees. "
+			"paragraphs" : [
+				"All latitudes and longitudes are in decimal degrees. "
+			]
 		},
 		{
 			"title" : "Errors",
-			"paragraphs" : "Any message sent that is missing a required attribute SHOULD result in the map widget publishing an error message on the error channel. An error is also published if the map widget is unable to find an object based on the given identifier. In general, any time the map is unable to complete a requested operation, an error will be published (if possible)."
+			"paragraphs" : [
+				"Any message sent that is missing a required attribute SHOULD result in the map widget publishing an error message on the error channel. An error is also published if the map widget is unable to find an object based on the given identifier. In general, any time the map is unable to complete a requested operation, an error will be published (if possible)."
+			]
 		},
 		{
 			"title" : "Case Sensitivity",
-			"paragraphs" : "All keywords (i.e., those specifically identified in this API) in a message payload are case sensitive unless otherwise noted"
+			"paragraphs" : [
+				"All keywords (i.e., those specifically identified in this API) in a message payload are case sensitive unless otherwise noted"
+			]
 		},
 		{
 			"title" : "Coordinate Reference System",
-			"paragraphs" : "All latitudes and longitudes MUST be in the WGS-84 Geocentric coordinate reference system (CRS) as defined in the Open Geospatial Consortium (OGC) KML Specification Section 6.2, Coordinate Reference System and Annex B, KML Coordinate Reference System Definition.  The specification can be found at http://www.opengeospatial.org/standards/kml."
+			"paragraphs" : [
+				"All latitudes and longitudes MUST be in the WGS-84 Geocentric coordinate reference system (CRS) as defined in the Open Geospatial Consortium (OGC) KML Specification Section 6.2, Coordinate Reference System and Annex B, KML Coordinate Reference System Definition.  The specification can be found at http://www.opengeospatial.org/standards/kml."
+			]
 		}
 	]
 }
