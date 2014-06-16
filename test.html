@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generated-by" content="Markdown PRO, http://markdownpro.com"/>
+
+<title></title>
+</head>
+<body>
+<h2 id="toc_0">Plot Feature</h2>
+
+<h5 id="toc_1">Purpose:</h5>
+
+<p>Plots feature data on the map.</p>
+
+<h5 id="toc_2">Channel:</h5>
+
+<p>map.feature.plot</p>
+
+<h5 id="toc_3">Payload:</h5>
+
+<pre><code class="javascript">{overlayId: (optional|string), featureId: (required|string), name: (optional|string), format: (optional), feature: (required), zoom: (optional), readOnly: (optional)}
+</code></pre>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Required</th>
+<th>type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>overlayId</td>
+<td>false</td>
+<td>string</td>
+<td>senderId</td>
+<td>The ID of the overlay this feature should be loaded into. If an overlay with this ID already exists, the new feature is merged into existing overlay; otherwise, a new overlay is created. If no overlayId is included, default overlay with ID equal to sending widget’s ID is used. If an overlay exists, it will retain its status (whether visible or hidden). If an overlay is created, it will be made visible.</td>
+</tr>
+<tr>
+<td>featureId</td>
+<td>required</td>
+<td>string</td>
+<td>NA</td>
+<td>Unique identifier for the given feature data. Note that feature IDs MUST be unique within a given overlay. Reusing a feature ID will be considered a reload, with the original feature data being removed and replaced by the new feature data.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>optional</td>
+<td>string</td>
+<td>undefined</td>
+<td>Name for the given feature data. Note that feature names do not have to be unique and are intended for display purposes only.</td>
+</tr>
+<tr>
+<td>format</td>
+<td>optional</td>
+<td>string</td>
+<td>Data format of the given feature. All map implementations MUST support “kml” and “geojson”.  If no format is specified, the format defaults to “kml.” A list of formats supported by a particular map implementation may be obtained by querying the map using the map.status channel (see map.status).</td>
+<td></td>
+</tr>
+<tr>
+<td>feature</td>
+<td>required</td>
+<td>string</td>
+<td>Feature data to be loaded into the map.   See Appendix A for additional information on required KML support, Appendix B for information on required GeoJSON, and Appendix C for information on Area of Interest (AOI) support.</td>
+<td></td>
+</tr>
+<tr>
+<td>zoom</td>
+<td>true</td>
+<td>string</td>
+<td>true if map should zoom to newly loaded feature data, false if not. Default is false.</td>
+<td></td>
+</tr>
+<tr>
+<td>readOnly</td>
+<td>true</td>
+<td>string</td>
+<td>Valid values are “true” or “false”. If “true”, then the end user MUST NOT be able to edit the feature from the map’s user interface, if “false” the end user MAY edit the feature from the map’s user interface. Default value is “true”.   If an edit takes place, the map SHOULD dispatch a map.feature.plot with the updated feature to ensure other widgets are aware that a change took place.</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h5 id="toc_4">Notes</h5>
+
+<p>1:  <em>If using the channel shouter to send a feature, embedded quotes in KML MUST be escaped with a backward slash (that is, use \&quot; instead of &quot;).</em></p>
+
+<p>2:  <em>If sending GeoJSON follow the guidance in Appendix B for style information.</em></p>
+
+<p>3:  <em>When plotting an Area of Interest, the format MUST be “geojson” AND the aoi object defined in Appendix B MUST be included as part of the GeoJSON parameters object.</em></p>
+
+<h4 id="toc_5">Related Files</h4>
+
+<h5 id="toc_6">Schema</h5>
+
+<p><a href="https://raw.githubusercontent.com/CMWAPI/specification/master/channels/map.feature.plot.spec/map.feature.plot.spec.json" title="JSON schema file for map.feature.plot">map.feature.plot schema</a></p>
+
+<h5 id="toc_7">Examples</h5>
+
+<ol>
+<li><p><a href="https://raw.githubusercontent.com/CMWAPI/specification/master/channels/map.feature.plot.spec/map.feature.plot.spec.json" title="JSON schema file for map.feature.plot">Valid KML Feature</a></p></li>
+<li><p><a href="https://raw.githubusercontent.com/CMWAPI/specification/master/channels/map.feature.plot.spec/map.feature.plot.spec.json" title="JSON schema file for map.feature.plot">Valid GeoJSON Feature</a></p></li>
+<li><p><a href="https://raw.githubusercontent.com/CMWAPI/specification/master/channels/map.feature.plot.spec/map.feature.plot.spec.json" title="JSON schema file for map.feature.plot">Invalid GeoJSON Feature</a></p></li>
+</ol>
+
+</body>
+</html>
