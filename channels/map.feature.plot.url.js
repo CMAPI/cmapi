@@ -40,7 +40,8 @@ cmapi.channel["map.feature.plot.url"] = {
                 "required": false,
                 "type": "boolean"
             }
-        }
+        },
+        "required": ["featureId", "url"]
     },
     notes:[]
 }
