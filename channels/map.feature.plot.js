@@ -23,7 +23,10 @@ cmapi.channel["map.feature.plot"] = {
                 },
                 "feature": {
                     "description": "Feature data to be loaded into the map.",
-                    "type": "object"
+                    "type": [
+                        "object",
+                        "string"
+                    ]
                },
                 "zoom": {
                     "description": "true if map should zoom to newly loaded feature data, false if not. Default is false.",
