@@ -1,6 +1,7 @@
 cmapi.channel["map.feature.plot"].examples = [
     {
-    "title": "Plot a single KML",
+    "title": "Plot KML",
+    "description" : "",
     "valid": true,
     "payload": {
         "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1", 
@@ -11,7 +12,7 @@ cmapi.channel["map.feature.plot"].examples = [
         }
     },
     {
-    "title": "Plot a single KML",
+    "title": "Plot KML",
     "valid": false,
     "payload": {
         "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1", 
