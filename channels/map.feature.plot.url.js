@@ -1,8 +1,10 @@
 cmapi.channel["map.feature.plot.url"] = {
     schema: {
-        
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "title": "map.feature.plot",
         "description": "Have the map plot feature data from a Uniform Resource Locator (URL).",
-        "payload": {
+        "type": "object",
+        "properties": {
             "overlayId": {
                 "description": "The ID of the overlay this feature should be loaded into. If an overlay with this ID already exists, new feature is merged into existing overlay; otherwise, a new overlay will be created. If no overlayId is included, default overlay with ID equal to sending widget's ID is used. If overlay exists, it will retain its status (whether visible or hidden). If overlay is created, it will be made visible.",
                 "required": false,
