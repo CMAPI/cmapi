@@ -20,7 +20,75 @@ cmapi.channel["map.feature.plot"].examples = [
         "name": "World Trade Center", 
         "zoom": true
         }
-    }
+    },
+    "title": "Plot GeoJSON",
+    "valid": true,
+    "payload":   {
+        "overlayId": "2d882141-0d9e-59d4-20bb-58e6d0460699.1", 
+        "featureId": "example.geojson.1", 
+        "format": "geojson", 
+        "feature": {
+            "type" : "FeatureCollection", 
+            "features" : [
+                {"type": "Feature", 
+                "geometry": {
+                    "type": "Polygon", 
+                    "coordinates": [[100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0]]
+                }, 
+                "properties": {
+                    "style": {
+                        "lineStyle": {
+                            "color": {
+                                "r":255, 
+                                "g":0, 
+                                "b":255, 
+                                "a":0.5
+                            }
+                        }, 
+                        "polyStyle": {
+                            "color": {
+                                "r":0, 
+                                "g":255, 
+                                "b":0, 
+                                "a":0.25}
+                            }, 
+                            "name": "test polygon", 
+                            "id": "tp13456", 
+                            "description": 
+                            "polygon pop-up text"
+                        }
+                    },
+                    {
+                    "type": "Feature", 
+                    "geometry": {
+                        "type": "Line", 
+                        "coordinates": [[80.0, 3.0], [81.0, 3.0], [81.0, 5.0], [82.0, 2.0]]
+                    }, 
+                    "properties": {
+                        "style": {
+                            "lineStyle": {
+                                "color": {
+                                    "r":0, 
+                                    "g":255, 
+                                    "b":255, 
+                                    "a":0.5
+                                }
+                            } 
+                        }
+                    }, 
+                    "name": "crossingLine", 
+                    "id" : 0x45632, 
+                    "description": "this is a line you don’t want to cross"
+                    }
+                }
+            ]
+        }, 
+        "name": "Sample GeoJSON Feature Collection", 
+        "zoom": true, 
+        "readOnly": "false"
+        }
+
+    }    
 ]
 
 
