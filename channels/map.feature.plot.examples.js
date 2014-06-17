@@ -21,6 +21,7 @@ cmapi.channel["map.feature.plot"].examples = [
         "zoom": true
         }
     },
+    {
     "title": "Plot GeoJSON",
     "valid": true,
     "payload":   {
@@ -30,7 +31,8 @@ cmapi.channel["map.feature.plot"].examples = [
         "feature": {
             "type" : "FeatureCollection", 
             "features" : [
-                {"type": "Feature", 
+                {
+                "type": "Feature", 
                 "geometry": {
                     "type": "Polygon", 
                     "coordinates": [[100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0]]
@@ -54,32 +56,31 @@ cmapi.channel["map.feature.plot"].examples = [
                             }, 
                             "name": "test polygon", 
                             "id": "tp13456", 
-                            "description": 
-                            "polygon pop-up text"
+                            "description": "polygon pop-up text"
                         }
-                    },
-                    {
-                    "type": "Feature", 
-                    "geometry": {
-                        "type": "Line", 
-                        "coordinates": [[80.0, 3.0], [81.0, 3.0], [81.0, 5.0], [82.0, 2.0]]
-                    }, 
-                    "properties": {
-                        "style": {
-                            "lineStyle": {
-                                "color": {
-                                    "r":0, 
-                                    "g":255, 
-                                    "b":255, 
-                                    "a":0.5
-                                }
-                            } 
-                        }
-                    }, 
-                    "name": "crossingLine", 
-                    "id" : 0x45632, 
-                    "description": "this is a line you don’t want to cross"
                     }
+                },
+                {
+                "type": "Feature", 
+                "geometry": {
+                    "type": "Line", 
+                    "coordinates": [[80.0, 3.0], [81.0, 3.0], [81.0, 5.0], [82.0, 2.0]]
+                }, 
+                "properties": {
+                    "style": {
+                        "lineStyle": {
+                            "color": {
+                                "r":0, 
+                                "g":255, 
+                                "b":255, 
+                                "a":0.5
+                            }
+                        } 
+                    }
+                }, 
+                "name": "crossingLine", 
+                "id" : "0x45632", 
+                "description": "this is a line you don’t want to cross"
                 }
             ]
         }, 
@@ -87,7 +88,6 @@ cmapi.channel["map.feature.plot"].examples = [
         "zoom": true, 
         "readOnly": "false"
         }
-
     }    
 ]
 

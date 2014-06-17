@@ -1,4 +1,4 @@
-cmapi.channel["map.feature.plot"].examples = [
+cmapi.channel["map.feature.plot.url"].examples = [
     {
     "title": "Plot KML From URL",
     "description" : "",
