@@ -1,7 +1,7 @@
 cmapi.channel["map.overlay.create"] = {
     schema: {
-    "map.overlay.create": {
-        "type": "Overlay",
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "title": "map.overlay.create",
         "description": "Create an overlay into which data can be aggregated.",
         "properties": {
             "name": {
