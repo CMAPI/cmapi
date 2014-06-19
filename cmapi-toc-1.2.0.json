@@ -1,0 +1,52 @@
+[
+	{"key": "cmapi.overview", "title": "Introduction"},
+	{"key": "", "title": "API CORE", "folder": true, "expanded" : true, "children": [
+		{"key": "", "title": "Overlay Channels", "children": [
+			{"key": "map.overlay.create", "title": "Create Overlay"},
+			{"key": "map.overlay.remove", "title": "Remove Overlay"},
+			{"key": "map.overlay.hide", "title": "Hide Overlay"},
+			{"key": "map.overlay.show", "title": "Show Overlay"},
+			{"key": "map.overlay.update", "title": "Update Overlay"}
+		]},
+		{"key": "", "title": "Feature Channels", "children": [
+			{"key": "map.feature.plot", "title": "Plot Feature"},
+			{"key": "map.feature.plot.url", "title": "Plot URL"},
+			{"key": "map.feature.unplot", "title": "Remove Feature Data"},
+			{"key": "map.feature.hide", "title": "Hide Feature"},
+			{"key": "map.feature.show", "title": "Show Feature"},
+			{"key": "map.feature.selected", "title": "Feature Selection"},
+			{"key": "map.feature.selected", "title": "Feature De-Selection"},
+			{"key": "map.feature.update", "title": "Update Feature Data"}
+		]},
+		{"key": "", "title": "Map View Channels",  "children": [
+			{"key": "map.view.zoom", "title": "Zoom"},
+			{"key": "map.view.center.overlay", "title": "Center on Overlay"},
+			{"key": "map.view.center.feature", "title": "Center on Feature"},
+			{"key": "map.view.center.location", "title": "Center on Location"},
+			{"key": "map.view.center.bounds", "title": "Center on Bounds"},
+			{"key": "map.view.clicked", "title": "Map View Clicked"}
+		]},
+		{"key": "", "title": "Map Status Channels", "children": [
+			{"key": "map.status.request", "title": "Request Map Status"},
+		
+			{"key": "map.status.view", "title": "Map View Status"},
+			{"key": "map.status.format", "title": "Map Format Status"},
+			{"key": "map.status.about", "title": "Map About Status"},
+			{"key": "map.status.selected", "title": "Map Selected Status"},
+			{"key": "map.view.clicked", "title": "Map View Clicked"}
+		]},
+		{"key": "map.error", "title": "Map Errors"},
+		{"key": "drag.drop", "title": "Drag and Drop"}
+	]},
+	
+	{"key": "", "title": "API Extensions", "folder": true, "expanded" : true, "children": [
+		{"key": "", "title": "Clustering"},
+		{"key": "", "title": "Widget Intents"}
+	]},
+	{"key": "", "title": "Appendecies", "expanded" : true, "folder": true, "children": [
+		{"key": "", "title": "A. KML Support"},
+		{"key": "", "title": "B. GeoJSON Support" },
+		{"key": "", "title": "C. Area of Interest Support"}
+	]}
+
+]
