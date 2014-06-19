@@ -20,7 +20,6 @@ cmapi.channel["map.overlay.create"] = {
                 "required": false
             }
         }
-    }
-},
-notes : []
+    },
+    notes : []
 }
