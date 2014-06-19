@@ -89,6 +89,7 @@ cmapi.overview = {
 				"map.view channels – Messages associated with manipulating the map view.",
 				"map.status channels – Messages associated with obtaining the current map state.",
 				"map.error channels – Error messages."
+				]
 
 		}
 	]
