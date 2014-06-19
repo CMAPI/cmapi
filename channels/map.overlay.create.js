@@ -1,4 +1,4 @@
-cmapi.channel["map.feature.plot"] = {
+cmapi.channel["map.overlay.create"] = {
     schema: {
     "map.overlay.create": {
         "type": "Overlay",
