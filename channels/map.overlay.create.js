@@ -17,7 +17,7 @@ cmapi.channel["map.overlay.create"] = {
                 "type": "string"
             }
         },
-        "required" : [""]
+        "required" : []
     },
     notes : []
 }

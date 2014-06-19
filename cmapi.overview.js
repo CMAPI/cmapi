@@ -79,6 +79,17 @@ cmapi.overview = {
 			"paragraphs" : [
 				"All latitudes and longitudes MUST be in the WGS-84 Geocentric coordinate reference system (CRS) as defined in the Open Geospatial Consortium (OGC) KML Specification Section 6.2, Coordinate Reference System and Annex B, KML Coordinate Reference System Definition.  The specification can be found at http://www.opengeospatial.org/standards/kml."
 			]
+		},
+		{
+			"title" : "Core API",
+			"paragraphs" : [
+				"The channels associated with the Common Map Widget API core specification are grouped according to the following:",
+				"map.overlay channels – Messages associated with creating and manipulating overlays.",
+				"map.feature channels – Messages associated with loading feature data onto the map.",
+				"map.view channels – Messages associated with manipulating the map view.",
+				"map.status channels – Messages associated with obtaining the current map state.",
+				"map.error channels – Error messages."
+
 		}
 	]
 }
