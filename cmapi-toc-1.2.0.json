@@ -32,8 +32,7 @@
 			{"key": "map.status.view", "title": "Map View Status"},
 			{"key": "map.status.format", "title": "Map Format Status"},
 			{"key": "map.status.about", "title": "Map About Status"},
-			{"key": "map.status.selected", "title": "Map Selected Status"},
-			{"key": "map.view.clicked", "title": "Map View Clicked"}
+			{"key": "map.status.selected", "title": "Map Selected Status"}
 		]},
 		{"key": "map.error", "title": "Map Errors"},
 		{"key": "drag.drop", "title": "Drag and Drop"}
