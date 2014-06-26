@@ -1,58 +1,76 @@
-var cmapi = cmapi || {};
+/*global window, cmapi */
+var cmapi = window.cmapi || {};
 cmapi.channel = cmapi.channel || {};
 
 
 
-cmapi.channel.renderer = (function () {
+cmapi.channel.renderer = (function() {
   var publicInterface,
-    baseUrl = "channels/";
+    baseUrl = "channels/",
+    currentSchema,
+    currentChannel;
 
-function loadChannelDef(channel) {
+  function loadChannelDef(channel) {
     var url = baseUrl + channel + ".js";
-      loadScript({url: url, channel: channel, callback: channelLoaded});
+    loadScript({
+      url: url,
+      channel: channel,
+      callback: channelLoaded
+    });
   }
 
   function loadScript(args) {
-        var script = document.createElement("script");
+    var script = document.createElement("script");
 
-        script.type = "text/javascript";
+    script.type = "text/javascript";
 
-        if (script.readyState) { //IE
-            script.onreadystatechange = function () {
-                if (script.readyState === "loaded" ||
-                    script.readyState === "complete") {
-                    script.onreadystatechange = null;
-                    args.callback(args);
-                }
-            };
-        } else { //Others
-            script.onload = function () {
-                args.callback(args);
-            };
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState === "loaded" ||
+          script.readyState === "complete") {
+          script.onreadystatechange = null;
+          args.callback(args);
         }
-
-        script.src = args.url;
-        document.getElementsByTagName("head")[0].appendChild(script);
+      };
+    } else { //Others
+      script.onload = function() {
+        args.callback(args);
+      };
     }
 
-    function channelLoaded (args) {
-      $('#main').html(render(args.url, cmapi.channel[args.channel]));
-      var url = baseUrl + args.channel + ".examples.js";
-      loadScript({url: url, channel: args.channel, callback: exampleLoaded});
+    script.src = args.url;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  }
 
-    }
+  function channelLoaded(args) {
+    var channelDef = cmapi.channel[args.channel];
+    currentChannel = args.channel;
+    currentSchema = channelDef.schema;
+    $('#main').html(render(args.url, cmapi.channel[args.channel]));
+    var url = baseUrl + args.channel + ".examples.js";
+    loadScript({
+      url: url,
+      channel: args.channel,
+      callback: exampleLoaded
+    });
 
-    function exampleLoaded (args) {
-      $('#main').html($('#main').html()+appendExamples( args.url, cmapi.channel[args.channel].examples, cmapi.channel[args.channel]));
-    }
+  }
 
-    function overviewLoaded (args) {
-     $('#main').html(renderOverview(cmapi.overview));
-    }
+  function exampleLoaded(args) {
+    $('#main').html($('#main').html() + appendExamples(args.url, cmapi.channel[args.channel].examples, cmapi.channel[args.channel]));
+  }
+
+  function overviewLoaded() {
+    $('#main').html(renderOverview(cmapi.overview));
+  }
 
   function loadOverview() {
     var url = "cmapi.overview.js";
-    loadScript({url: url, channel: "", callback: overviewLoaded})
+    loadScript({
+      url: url,
+      channel: "",
+      callback: overviewLoaded
+    })
   }
 
   function checkRequired(prop, schema) {
@@ -68,7 +86,8 @@ function loadChannelDef(channel) {
   }
 
   function getValidationErrorString(valError) {
-    var message = "The example has failed to validate:  ";
+    var message = "The example has failed to validate:  ",
+      i;
     for (i = 0; i < valError.errors.length; i = 1 + i) {
       message += "\n " + valError.errors[i].message + "\n Data path: " + valError.errors[i].dataPath;
     }
@@ -78,156 +97,83 @@ function loadChannelDef(channel) {
     return message;
   }
 
-  function getExampleString(example) {
-    var response = [],
-      i = 0,
-      prop,
-      propVal;
-      if($.isArray(example)) {
-        response.push("[");
-      } else {
-        response.push("{");
-      }
-
-    for (prop in example) {
-      if (i != 0) {
-        response.push(",");
-      }
-      propVal = example[prop];
-      response.push('"' + prop + '": ');
-      if(typeof propVal === "object"){
-        response.push(getExampleString(propVal));
-
-      }else{
-      response.push('"' + propVal + '"');
-      }
-      i++;
-
-    }
-    if($.isArray(example)) {
-        response.push("]");
-      } else {
-        response.push("}");
-      }
-    return response.join("");
-  }
-/*
-  function getExampleString(example) {
-    var response = [],
-      i = 0,
-      prop,
-      propVal,
-      isArray = $.isArray(example);
-
-      if(isArray) {
-        response.push("[");
-      } else {
-        response.push("{");
-      }
-
-    for (prop in example) {
-      if (i != 0) {
-        response.push(",");
-      }
-      propVal = example[prop];
-      response.push('"' + prop + '": ');
-      if(typeof propVal === "object"){
-        response.push(getExampleString(propVal));
-
-      }else if(typeof propVal === "number") {
-        response.push(propVal);
-      } else {
-        response.push('"' + propVal + '"');
-      }
-      i++;
-
-    }
-    if(isArray) {
-        response.push("]");
-      } else {
-        response.push("}");
-      }
-    return response.join("");
-  }
-  */
-
-
-/*
-  function getExampleHtml(example, indent) {
-    var response = [],
-      i = 0,
-      prop,
-      propVal,
+  function getObjectString(obj) {
+    var raw = JSON.stringify(obj),
+      objChars = raw.split(""),
       tab = "&nbsp;&nbsp;",
-      indentStr = "";
+      indetation = "",
+      indent = 0,
+      len = objChars.length,
+      i,
+      txt,
+      k,
+      bypass = false;
 
-      if(indent === undefined){
-        indent = 0;
+    for (i = 0; i < len; i++) {
+      txt = objChars[i];
+      if (bypass === false) {
+        switch (txt) {
+          case '"':
+            bypass = true;
+            break;
+          case "{":
+            indent++;
+            indentation = "";
+            for (k = 0; k < indent; k++) {
+              indentation += tab;
+            }
+            objChars[i] = "{\n" + indentation;
 
+            break;
+          case "[":
+            indent++;
+            indentation = "";
+            for (k = 0; k < indent; k++) {
+              indentation += tab;
+            }
+            objChars[i] = "[\n" + indentation;
+
+            break;
+          case ",":
+            objChars[i] = ",\n" + indentation;
+            break;
+          case "}":
+            indent--;
+            indentation = "";
+            for (k = 0; k < indent; k++) {
+              indentation += tab;
+            }
+            if (objChars[i + 1] === ",") {
+              objChars[i] = "\n" + indentation + "}";
+              objChars[i + 1] = ",\n" + indentation;
+            } else {
+              objChars[i] = "\n" + indentation + "}" + indentation;
+            }
+            break;
+          case "]":
+            indent--;
+            indentation = "";
+            for (k = 0; k < indent; k++) {
+              indentation += tab;
+            }
+            if (objChars[i + 1] === ",") {
+              objChars[i] = "\n" + indentation + "]";
+              objChars[i + 1] = ",\n" + indentation;
+            } else {
+              objChars[i] = "\n" + indentation + "]" + indentation;
+            }
+            break;
+        }
       } else {
-        for() i=0;i<indent;i++){
-          indentStr += tab;
+        if (txt === '"') {
+          bypass = false;
         }
       }
-
-      response.push(indentStr+"{<br/>");
-
-    for (prop in example) {
-      if (i != 0) {
-        response.push(",<br/>");
-      }
-      propVal = example[prop];
-      response.push(indentStr +tab +'"' + prop + '": ');
-      if(typeof propVal === "object"){
-        response.push(getExampleHtml(propVal,indent+1);
-
-      }else{
-      response.push('"' + propVal + '"');
-      }
-      i++;
-
     }
-    response.push(indentStr +"}");
-    return response.join("");
+    return objChars.join("");
   }
 
-*/ function getSchemaString(schema){
-  var response = ["{<br/>"],
-    prop,
-    innerProp,
-    subProp,
-    stab = "&nbsp;&nbsp;",
-    iter = 0;
-  for(prop in schema){
-    if(prop === 'properties'){
-      response.push(stab+'"properties" : {</br>');
-      for(innerProp in schema.properties){
-        response.push(stab+stab+'"'+innerProp+'" : {<br/>');
-        iter = 0;
-        for(subProp in schema.properties[innerProp]){
-          response.push(stab+stab+stab+'"'+subProp+'" : "'+schema.properties[innerProp][subProp]+'"')
-          if(iter>0){
-            response.push(",");
-          }
-          iter++;
-          response.push("<br/>")
-        }
-        
-        response.push(stab+stab+"},</br>");
-        
-      }
-      response.push(stab+"},</br>");
-    } else if(prop === 'required'){
 
-        response.push(stab+'"'+prop+'" : ["'+schema[prop].join('","')+'"]<br/>');
-
-    }else {
-      response.push(stab+'"'+prop+'" : "'+schema[prop]+'",<br/>');
-    }
-  }
-  response.push("}");
-  return response.join("");
- }
 
   function validate(payload, schema) {
     var message,
@@ -246,121 +192,162 @@ function loadChannelDef(channel) {
   }
 
   function render(link, channelDef) {
+
     var output = [],
       i = 0,
       prop,
       propVal,
       optional,
       schema = channelDef.schema,
-      noteLen = channelDef.notes.length;
-      
+      noteLen = channelDef.notes.length,
+      type,
+      defaultVal;
 
-    output.push('<h2 id="toc_0">' + schema.title + '</h2>');
+    try {
+      output.push('<h2 id="toc_0">' + schema.title + '</h2>');
 
-    output.push('<h3 id="toc_1">Purpose:</h3>');
+      output.push('<h3 id="toc_1">Purpose:</h3>');
 
-    output.push('<p>' + schema.description + '</p>');
+      output.push('<p>' + schema.description + '</p>');
 
-    output.push('<h3 id="toc_2">Channel:</h3>');
+      output.push('<h3 id="toc_2">Channel:</h3>');
 
-    output.push('<p>' + schema.title + '</p>');
+      output.push('<p>' + schema.title + '</p>');
 
-    output.push('<h3 id="toc_3">Payload:</h3>');
+      output.push('<h3 id="toc_3">Payload:</h3>');
 
-    output.push('<pre><code class="javascript">');
-    output.push('{');
-    for (prop in schema["properties"]) {
+      output.push('<pre><code class="javascript">');
+      output.push('{');
+      for (prop in schema["properties"]) {
 
-      if (i > 0) {
-        output.push(", ");
+        if (i > 0) {
+          output.push(", ");
+        }
+        output.push('<br/>');
+        optional = checkRequired(prop, schema);
+        output.push(prop + ": (" + optional + " | " + schema["properties"][prop].type + ")");
+
+        i++;
       }
-      output.push('<br/>');
-      optional = checkRequired(prop, schema);
-      output.push(prop + ": (" + optional + " | " + schema["properties"][prop].type + ")");
+      i = 0;
+      output.push('<br/>}');
 
-      i++;
-    }
-    i = 0;
-    output.push('<br/>}');
+      output.push('</code></pre>');
+      output.push('<h3 id="toc_3">Properties:</h4>');
+      output.push('<table><thead><tr><th>Property</th><th>Required</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody>');
 
-    output.push('</code></pre>');
-output.push('<h3 id="toc_3">Properties:</h4>');
-    output.push('<table><thead><tr><th>Property</th><th>Required</th><th>type</th><th>Description</th></tr></thead><tbody>');
+      for (prop in schema.properties) {
 
-    for (prop in schema.properties) {
+        propVal = schema.properties[prop];
+        optional = checkRequired(prop, schema);
+        if (propVal.hasOwnProperty("type")) {
+          type = propVal.type;
+        } else if (propVal.hasOwnProperty("enum")) {
+          type = "enumeration <br/>" + JSON.stringify(propVal.enum);
+        }
+defaultVal = "";
+        if (propVal.hasOwnProperty("default")) {
+          defaultVal = propVal["default"];
+        } 
 
-      propVal = schema.properties[prop];
-      optional = checkRequired(prop, schema);
-      output.push('<tr>');
-      output.push('<td>' + prop + '</td>');
-      output.push('<td>' + optional + '</td>');
-      output.push('<td>' + propVal.type + '</td>');
-      output.push('<td>' + propVal.description + '</td>');
-      output.push('</tr>');
+        output.push('<tr>');
+        output.push('<td>' + prop + '</td>');
+        output.push('<td>' + optional + '</td>');
+        output.push('<td>' + type + '</td>');
+        output.push('<td>' + defaultVal + '</td>');
+        output.push('<td>' + propVal.description + '</td>');
+        output.push('</tr>');
 
-    }
-    output.push('</tbody></table>');
-    output.push('<h3 id="toc_3">Notes</h3>');
-    if(noteLen > 0){
-      for (i = 0; i < noteLen; i++) {
-
-        output.push('<p>' + (i + 1) + ':  <em>' + channelDef.notes[i] + '</em></p>');
       }
-    } else {
-      output.push('<p>There are no notes for this channel</p>');
+      output.push('</tbody></table>');
+      output.push('<h3 id="toc_3">Notes</h3>');
+      if (noteLen > 0) {
+        for (i = 0; i < noteLen; i++) {
+
+          output.push('<p>' + (i + 1) + ':  <em>' + channelDef.notes[i] + '</em></p>');
+        }
+      } else {
+        output.push('<p>There are no notes for this channel</p>');
+      }
+      output.push('<h3 id="toc_4">Schema</h3>');
+      output.push('<h4 id="toc_4">Link</h4>');
+      output.push('<p><a href="' + link + '" target="_blank">' + link + '</a></p>');
+      // output.push('<p>' + JSON.stringify(channelDef.schema) + '</p>');
+      output.push('<pre><code class="javascript">');
+      output.push(getObjectString(channelDef.schema));
+      output.push('</code></pre>');
+    } catch (err) {
+      output = ["An error occured when parsing the schema: " + err.message];
     }
-    output.push('<h3 id="toc_4">Schema</h3>');
-    output.push('<h4 id="toc_4">Link</h4>');
-    output.push('<p><a href="' + link + '" target="_blank">' + link + '</a></p>');
-   // output.push('<p>' + JSON.stringify(channelDef.schema) + '</p>');
-    output.push('<pre><code class="javascript">');
-    output.push(getSchemaString(channelDef.schema));
-    output.push('</code></pre>');
-
-    
-
     return output.join("");
   }
 
-  function appendExamples (exampleLink, examples, channelDef){
+  function appendExamples(exampleLink, examples, channelDef) {
     var output = [],
       exampleLen,
       exampleValidation,
       validationIntent,
       i;
+    try {
+      if (examples !== undefined && examples !== null) {
+        exampleLen = examples.length;
+        if (exampleLen > 0) {
+          output.push('<h3 id="toc_3">Examples</h3>');
+          output.push('<h4 id="toc_4">Link</h4>');
+          output.push('<p><a href="' + exampleLink + '" target="_blank">' + exampleLink + '</a></p>');
+          for (i = 0; i < exampleLen; i++) {
+            if (examples[i].valid === true) {
+              validationIntent = "Pass Validation";
+            } else {
+              validationIntent = "Fail Validation";
+            }
 
-    if (examples !== undefined && examples !== null) {
-      exampleLen = examples.length;
-      if (exampleLen > 0) {
-        output.push('<h3 id="toc_3">Examples</h3>');
-        output.push('<h4 id="toc_4">Link</h4>');
-        output.push('<p><a href="' + exampleLink + '" target="_blank">' + exampleLink + '</a></p>');
-        for (i = 0; i < exampleLen; i++) {
-          if(examples[i].valid === true){
-            validationIntent = "Pass Validation";
-          } else {
-            validationIntent = "Fail Validation";
-          }
+            output.push('<h4 id="toc_4">' + examples[i].title + ' - ' + validationIntent + '</h4>');
 
-          output.push('<h4 id="toc_4">' + examples[i].title + ' - '+validationIntent+'</h4>');
-          
-          exampleValidation = validate(examples[i].payload, channelDef.schema);
-          if (exampleValidation.valid === true) {
-            output.push('<p style="color: green">' + exampleValidation.message + '</p>');
-          } else {
-            output.push('<p style="color: red">' + exampleValidation.message + '</p>');
+            exampleValidation = validate(examples[i].payload, channelDef.schema);
+            if (exampleValidation.valid === true) {
+              output.push('<p style="color: green">' + exampleValidation.message + '</p>');
+            } else {
+              output.push('<p style="color: red">' + exampleValidation.message + '</p>');
+            }
+            if (exampleValidation.valid === examples[i].valid) {
+              output.push('<p style="color: green">This message validated as expected</p>');
+            } else {
+              output.push('<p style="color: red">This example DID NOT validate as expected.  This example was expected to validate as ' + examples[i].valid.toString() + '</p>');
+            }
+
+            output.push('</p><textarea rows="10" style="width: 100%" readonly >' + getObjectString(examples[i].payload) + '</textarea>');
+
           }
-          if (exampleValidation.valid === examples[i].valid) {
-            output.push('<p style="color: green">This message validated as expected</p>');
-          } else {
-            output.push('<p style="color: red">This example DID NOT validate as expected.  This example was expected to validate as ' + examples[i].valid.toString() + '</p>');
-          }
-          
-          output.push('</p><textarea rows="10" style="width: 100%">' + getExampleString(examples[i].payload) + '</textarea>');
         }
       }
+      output.push('<p id="#userPayloadValid" >Try it yourself...</p>');
+      output.push('<textarea id="userPayloadInput" rows="10" style="width: 100%" placeholder="Enter your own ' + currentChannel + ' message payload to validate here..." ></textarea>');
+      output.push('<button style="border: 1px solid grey; padding: 5px; margin-top: 5px; margin-right: 5px" onclick="cmapi.channel.renderer.validateInput()">Validate</button>');
+      output.push('<button style="border: 1px solid grey; padding: 5px; margin-top: 5px;" onclick="cmapi.channel.renderer.clearInput()">Clear</button>');
+    } catch (err) {
+      output = ["An error occured while parsing the example: " + err.message];
     }
     return output.join("");
+  }
+
+  function validateUserPayload() {
+    var exampleValidation,
+      message = "";
+    try {
+      var target = $("#userPayloadValid");
+      exampleValidation = validate(JSON.parse($("#userPayloadInput").val()), currentSchema);
+      message = exampleValidation.message;
+      if (exampleValidation.valid === true) {
+        target.css("color", "green");
+      } else {
+        target.css("color", "red");
+      }
+
+    } catch (err) {
+      message = "An error occured while attempting to validate your payload: " + err.message;
+    }
+    alert(message);
   }
 
   function renderOverview(overview) {
@@ -387,23 +374,23 @@ output.push('<h3 id="toc_3">Properties:</h4>');
     return output.join("");
   }
   publicInterface = {
-    loadContent: function (target) {
-        $('#main').html('<img src="img/loading.gif" />');
-        switch (target.toLowerCase()) {
+    loadContent: function(target) {
+      $('#main').html('<img src="img/loading.gif" />');
+      switch (target.toLowerCase()) {
         case "cmapi.overview":
           loadOverview();
           break;
         default:
           loadChannelDef(target);
           break;
-        }
       }
+    },
+    validateInput: function() {
+      validateUserPayload();
+    },
+    clearInput: function() {
+      $("#userPayloadInput").val("");
+    }
   };
   return publicInterface;
 }());
-
-
-
-
-
-

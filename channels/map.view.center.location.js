@@ -1,18 +1,35 @@
-cmapi.channel["map.view.center.overlay"] = {
-    schema: {
-        "$schema": "http://json-schema.org/draft-04/schema#",
-        "title": "map.view.center.overlay",
-        "description": "Center the map on a particular overlay. The map may also be zoomed to show the entire overlay (if possible) or to show a given range0",
+cmapi.channel["map.view.center.location"] = {
+  schema: {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "map.view.center.location",
+    "description": "Center the map on a particular location. The map may also be zoomed as close as possible to the location or to a given range",
+    "type": "object",
+    "properties": {
+      "location": {
+        "description": "Location to be centered in map.",
         "type": "object",
         "properties": {
-                  "overlayId": {
-                    "description": "The ID of the overlay to center on. If no overlayId is included, default overlay with ID equal to sending widget’s ID is assumed.",
-                    "type": "string"
-                }
+          "lat": {
+            "type": "number",
+            "description": "The latitude value of the point",
+            "minimum": "-90",
+            "maximum": "90"
+          },
+          "lon": {
+            "type": "number",
+            "description": "The longitude value of the point",
+            "minimum": "-180",
+            "maximum": "180"
+          }
         },
-        "required": ["overlayId"]
+        "required": ["lat", "lon"]
+      },
+      "zoom": {
+        "description": "If “auto,” map will adjust to zoom as close as possible to the given location in the user's viewable area. If a number, map will zoom to specified range in meters. If no zoom attribute is included, no zoom is performed.",
+        "type": ["boolean", "number"]
+      }
     },
-    notes: []
-}
-
-
+    "required": ["location"]
+  },
+  "notes": []
+};
