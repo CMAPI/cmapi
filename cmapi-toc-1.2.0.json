@@ -152,6 +152,21 @@
 			"key": "",
 			"title": "C. Area of Interest Support"
 		}]
+	},
+	{
+		"key": "cmapi.acronyms",
+		"type": "overview",
+		"title": "Acronyms"
+	},
+	{
+		"key": "cmapi.references",
+		"type": "overview",
+		"title": "References"
+	},
+	{
+		"key": "cmapi.acknowledgements",
+		"type": "overview",
+		"title": "Acknowledgements"
 	}
 
 ]
