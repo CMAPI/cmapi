@@ -6,7 +6,8 @@ cmapi.channel.renderer = (function () {
   var publicInterface,
     baseUrl = "channels/",
     currentSchema,
-    currentChannel;
+    currentChannel,
+    currentOverview;
 
   function loadScript(args) {
     var script = document.createElement("script");
@@ -176,16 +177,13 @@ cmapi.channel.renderer = (function () {
       output.push('<pre><code class="javascript">');
       output.push('{');
       for (prop in schema.properties) {
-        if (schema.hasOwnProperty(prop)) {
-          if (i > 0) {
-            output.push(", ");
-          }
-          output.push('<br/>');
-          optional = checkRequired(prop, schema);
-          output.push(prop + ": " + schema.properties[prop].type + " (" + optional + ")");
-
-          i++;
+        if (i > 0) {
+          output.push(", ");
         }
+        output.push('<br/>');
+        optional = checkRequired(prop, schema);
+        output.push(prop + ": " + schema.properties[prop].type + " (" + optional + ")");
+        i++;
       }
       i = 0;
       output.push('<br/>}');
@@ -352,7 +350,8 @@ cmapi.channel.renderer = (function () {
 
 
   function overviewLoaded() {
-    $('#main').html(renderOverview(cmapi.overview));
+    var overview = cmapi.overview[currentOverview];
+    $('#main').html(renderOverview(overview));
   }
 
   function loadChannelDef(channel) {
@@ -364,8 +363,9 @@ cmapi.channel.renderer = (function () {
     });
   }
 
-  function loadOverview() {
-    var url = "cmapi.overview.js";
+  function loadOverview(target) {
+    var url = "channels/"+target+".js";
+    currentOverview = target;
     loadScript({
       url: url,
       channel: "",
@@ -377,12 +377,15 @@ cmapi.channel.renderer = (function () {
   publicInterface = {
     loadContent: function (target) {
       $('#main').html('<img src="img/loading.gif" />');
-      switch (target.toLowerCase()) {
-      case "cmapi.overview":
-        loadOverview();
+      if (!target.data.hasOwnProperty("type")) {
+        target.data.type = "";
+      }
+      switch (target.data.type) {
+      case "overview":
+        loadOverview(target.key);
         break;
       default:
-        loadChannelDef(target);
+        loadChannelDef(target.key);
         break;
       }
     },

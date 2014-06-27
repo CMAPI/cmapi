@@ -14,19 +14,15 @@ $(function () {
       minExpandLevel: 1,
       activate: function (event, data) {
       	if(data.node.key !== ""){
-      	 cmapi.channel.renderer.loadContent(data.node.key);
+      	 cmapi.channel.renderer.loadContent(data.node);
       	}
       },
       dblclick: function (event, data) {
 
-        cmapi.channel.renderer.loadContent(data.node.key);
+        cmapi.channel.renderer.loadContent(data.node);
       }
-    })
-    .bind("fancytreeactivate", function (event, data) {
-      $.ui.fancytree.debug("fancytreeactivate: event=", event, ", data=", data);
-      return false;
     });
 
-  cmapi.channel.renderer.loadContent("cmapi.overview");
+  cmapi.channel.renderer.loadContent({data: {type: "overview"}, key:"cmapi.overview"});
 
 });
