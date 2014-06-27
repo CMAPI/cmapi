@@ -2,9 +2,9 @@ cmapi.overview["cmapi.acknowledgements"] = {
 	"sections": [{
 		"title": "CMAPI Editors",
 		"paragraphs": [
-			"Chris Bashioum - cbashioum@mitre.org",
+			"Chris Bashioum - ",
 			"Eric Briscoe - eric.j.briscoe@gmail.com",
-			"Scott Hammonds - scott.hammonds@lmco.com"
+			"Scott Hammonds - "
 		]
 	},
 	{
