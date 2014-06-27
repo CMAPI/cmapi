@@ -225,7 +225,7 @@ cmapi.channel.renderer = (function() {
         }
         output.push('<br/>');
         optional = checkRequired(prop, schema);
-        output.push(prop + ": (" + optional + " | " + schema["properties"][prop].type + ")");
+        output.push(prop + ": " + schema["properties"][prop].type +" ("+ optional +")");
 
         i++;
       }
