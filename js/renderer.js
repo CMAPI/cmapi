@@ -1,23 +1,12 @@
-/*global window, cmapi */
-var cmapi = window.cmapi || {};
+/*global window, cmapi, tv4, alert */
+var cmapi = cmapi || {};
 cmapi.channel = cmapi.channel || {};
 
-
-
-cmapi.channel.renderer = (function() {
+cmapi.channel.renderer = (function () {
   var publicInterface,
     baseUrl = "channels/",
     currentSchema,
     currentChannel;
-
-  function loadChannelDef(channel) {
-    var url = baseUrl + channel + ".js";
-    loadScript({
-      url: url,
-      channel: channel,
-      callback: channelLoaded
-    });
-  }
 
   function loadScript(args) {
     var script = document.createElement("script");
@@ -25,15 +14,14 @@ cmapi.channel.renderer = (function() {
     script.type = "text/javascript";
 
     if (script.readyState) { //IE
-      script.onreadystatechange = function() {
-        if (script.readyState === "loaded" ||
-          script.readyState === "complete") {
+      script.onreadystatechange = function () {
+        if (script.readyState === "loaded" || script.readyState === "complete") {
           script.onreadystatechange = null;
           args.callback(args);
         }
       };
     } else { //Others
-      script.onload = function() {
+      script.onload = function () {
         args.callback(args);
       };
     }
@@ -42,36 +30,7 @@ cmapi.channel.renderer = (function() {
     document.getElementsByTagName("head")[0].appendChild(script);
   }
 
-  function channelLoaded(args) {
-    var channelDef = cmapi.channel[args.channel];
-    currentChannel = args.channel;
-    currentSchema = channelDef.schema;
-    $('#main').html(render(args.url, cmapi.channel[args.channel]));
-    var url = baseUrl + args.channel + ".examples.js";
-    loadScript({
-      url: url,
-      channel: args.channel,
-      callback: exampleLoaded
-    });
 
-  }
-
-  function exampleLoaded(args) {
-    $('#main').html($('#main').html() + appendExamples(args.url, cmapi.channel[args.channel].examples, cmapi.channel[args.channel]));
-  }
-
-  function overviewLoaded() {
-    $('#main').html(renderOverview(cmapi.overview));
-  }
-
-  function loadOverview() {
-    var url = "cmapi.overview.js";
-    loadScript({
-      url: url,
-      channel: "",
-      callback: overviewLoaded
-    })
-  }
 
   function checkRequired(prop, schema) {
     var i, len, returnValue = "optional";
@@ -101,7 +60,7 @@ cmapi.channel.renderer = (function() {
     var raw = JSON.stringify(obj),
       objChars = raw.split(""),
       tab = "&nbsp;&nbsp;",
-      indetation = "",
+      indentation = "",
       indent = 0,
       len = objChars.length,
       i,
@@ -113,56 +72,56 @@ cmapi.channel.renderer = (function() {
       txt = objChars[i];
       if (bypass === false) {
         switch (txt) {
-          case '"':
-            bypass = true;
-            break;
-          case "{":
-            indent++;
-            indentation = "";
-            for (k = 0; k < indent; k++) {
-              indentation += tab;
-            }
-            objChars[i] = "{\n" + indentation;
+        case '"':
+          bypass = true;
+          break;
+        case "{":
+          indent++;
+          indentation = "";
+          for (k = 0; k < indent; k++) {
+            indentation += tab;
+          }
+          objChars[i] = "{\n" + indentation;
 
-            break;
-          case "[":
-            indent++;
-            indentation = "";
-            for (k = 0; k < indent; k++) {
-              indentation += tab;
-            }
-            objChars[i] = "[\n" + indentation;
+          break;
+        case "[":
+          indent++;
+          indentation = "";
+          for (k = 0; k < indent; k++) {
+            indentation += tab;
+          }
+          objChars[i] = "[\n" + indentation;
 
-            break;
-          case ",":
-            objChars[i] = ",\n" + indentation;
-            break;
-          case "}":
-            indent--;
-            indentation = "";
-            for (k = 0; k < indent; k++) {
-              indentation += tab;
-            }
-            if (objChars[i + 1] === ",") {
-              objChars[i] = "\n" + indentation + "}";
-              objChars[i + 1] = ",\n" + indentation;
-            } else {
-              objChars[i] = "\n" + indentation + "}" + indentation;
-            }
-            break;
-          case "]":
-            indent--;
-            indentation = "";
-            for (k = 0; k < indent; k++) {
-              indentation += tab;
-            }
-            if (objChars[i + 1] === ",") {
-              objChars[i] = "\n" + indentation + "]";
-              objChars[i + 1] = ",\n" + indentation;
-            } else {
-              objChars[i] = "\n" + indentation + "]" + indentation;
-            }
-            break;
+          break;
+        case ",":
+          objChars[i] = ",\n" + indentation;
+          break;
+        case "}":
+          indent--;
+          indentation = "";
+          for (k = 0; k < indent; k++) {
+            indentation += tab;
+          }
+          if (objChars[i + 1] === ",") {
+            objChars[i] = "\n" + indentation + "}";
+            objChars[i + 1] = ",\n" + indentation;
+          } else {
+            objChars[i] = "\n" + indentation + "}" + indentation;
+          }
+          break;
+        case "]":
+          indent--;
+          indentation = "";
+          for (k = 0; k < indent; k++) {
+            indentation += tab;
+          }
+          if (objChars[i + 1] === ",") {
+            objChars[i] = "\n" + indentation + "]";
+            objChars[i + 1] = ",\n" + indentation;
+          } else {
+            objChars[i] = "\n" + indentation + "]" + indentation;
+          }
+          break;
         }
       } else {
         if (txt === '"') {
@@ -176,9 +135,7 @@ cmapi.channel.renderer = (function() {
 
 
   function validate(payload, schema) {
-    var message,
-      i,
-      response = {
+    var response = {
         valid: true,
         message: "Valid CMAPI Payload"
       },
@@ -218,16 +175,17 @@ cmapi.channel.renderer = (function() {
 
       output.push('<pre><code class="javascript">');
       output.push('{');
-      for (prop in schema["properties"]) {
+      for (prop in schema.properties) {
+        if (schema.hasOwnProperty(prop)) {
+          if (i > 0) {
+            output.push(", ");
+          }
+          output.push('<br/>');
+          optional = checkRequired(prop, schema);
+          output.push(prop + ": " + schema.properties[prop].type + " (" + optional + ")");
 
-        if (i > 0) {
-          output.push(", ");
+          i++;
         }
-        output.push('<br/>');
-        optional = checkRequired(prop, schema);
-        output.push(prop + ": " + schema["properties"][prop].type +" ("+ optional +")");
-
-        i++;
       }
       i = 0;
       output.push('<br/>}');
@@ -237,7 +195,6 @@ cmapi.channel.renderer = (function() {
       output.push('<table><thead><tr><th>Property</th><th>Required</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody>');
 
       for (prop in schema.properties) {
-
         propVal = schema.properties[prop];
         optional = checkRequired(prop, schema);
         if (propVal.hasOwnProperty("type")) {
@@ -245,10 +202,10 @@ cmapi.channel.renderer = (function() {
         } else if (propVal.hasOwnProperty("enum")) {
           type = "enumeration <br/>" + JSON.stringify(propVal.enum);
         }
-defaultVal = "";
+        defaultVal = "";
         if (propVal.hasOwnProperty("default")) {
           defaultVal = propVal["default"];
-        } 
+        }
 
         output.push('<tr>');
         output.push('<td>' + prop + '</td>');
@@ -373,22 +330,66 @@ defaultVal = "";
     }
     return output.join("");
   }
+
+  function exampleLoaded(args) {
+    $('#main').html($('#main').html() + appendExamples(args.url, cmapi.channel[args.channel].examples, cmapi.channel[args.channel]));
+  }
+
+  function channelLoaded(args) {
+    var channelDef = cmapi.channel[args.channel];
+    currentChannel = args.channel;
+    currentSchema = channelDef.schema;
+    $('#main').html(render(args.url, cmapi.channel[args.channel]));
+    var url = baseUrl + args.channel + ".examples.js";
+    loadScript({
+      url: url,
+      channel: args.channel,
+      callback: exampleLoaded
+    });
+
+  }
+
+
+
+  function overviewLoaded() {
+    $('#main').html(renderOverview(cmapi.overview));
+  }
+
+  function loadChannelDef(channel) {
+    var url = baseUrl + channel + ".js";
+    loadScript({
+      url: url,
+      channel: channel,
+      callback: channelLoaded
+    });
+  }
+
+  function loadOverview() {
+    var url = "cmapi.overview.js";
+    loadScript({
+      url: url,
+      channel: "",
+      callback: overviewLoaded
+    });
+  }
+
+
   publicInterface = {
-    loadContent: function(target) {
+    loadContent: function (target) {
       $('#main').html('<img src="img/loading.gif" />');
       switch (target.toLowerCase()) {
-        case "cmapi.overview":
-          loadOverview();
-          break;
-        default:
-          loadChannelDef(target);
-          break;
+      case "cmapi.overview":
+        loadOverview();
+        break;
+      default:
+        loadChannelDef(target);
+        break;
       }
     },
-    validateInput: function() {
+    validateInput: function () {
       validateUserPayload();
     },
-    clearInput: function() {
+    clearInput: function () {
       $("#userPayloadInput").val("");
     }
   };
