@@ -4,21 +4,25 @@ cmapi.channel["map.feature.selected"] = {
         "title": "map.feature.selected",
          "description": "Select, or report that object was selected.",
          "properties": {
-             "overlayId": {
-                "description": "The ID of the overlay which contains the selected object. If no overlayId is included, default overlay with ID equal to sending widget’s ID is assumed.",
-                "type": "string"
-             },
-             "featureId": {
-                "description": "The ID of the feature that contains the selected object.",
-                "type": "string"
-             },
              "selectedId": {
                  "description": "The ID of the object to be selected (may be a sub-feature contained within the aggregate feature data with the given featureId).",
-                 "type": "string"
+                 "type": "string",
+				 "default": "none"
              },
              "selectedName": {
                  "description": "The name of the selected object.",
-                 "type": "string"
+                 "type": "string",
+				 "default": "none"
+             },
+             "featureId": {
+                "description": "The ID of the feature that contains the selected object.",
+                "type": "string",
+				"default": "none"
+             },
+			 "overlayId": {
+                "description": "The ID of the overlay which contains the selected object. If no overlayId is included, default overlay with ID equal to sending widget’s ID is assumed.",
+                "type": "string",
+				"default": "sending widget's ID"
              }
          },
          "required" : ["featureId"]

@@ -6,16 +6,19 @@ cmapi.channel["map.view.center.feature"] = {
         "type": "object",
         "properties": {
                   "overlayId": {
-                    "description": "The ID of the overlay to center on. If no overlayId is included, default overlay with ID equal to sending widget ID is assumed.",
-                    "type": "string"
+                    "description": "The ID of the overlay overlay where the feature to be centered on is found. If no overlayId is included, default overlay with ID equal to sending widget ID is assumed.",
+                    "type": "string",
+					"default": "sending widget's ID"
                 },
                   "featureId": {
                     "description": "The ID of the feature to center on",
-                    "type": "string"
+                    "type": "string",
+					"default": "none"
                 },
                   "zoom": {
                     "description": "If auto, map will adjust to best fit the feature in the user's viewable area. If a number, map will zoom to specified range in meters. If no zoom attribute is included, no zoom is performed.",
-                    "type": "boolean"
+                    "type": "string",
+					"default": "none"
                 }
         },
         "required": ["featureId"]

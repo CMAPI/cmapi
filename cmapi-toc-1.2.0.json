@@ -37,7 +37,7 @@
 				"title": "Plot URL"
 			}, {
 				"key": "map.feature.unplot",
-				"title": "Remove Feature Data"
+				"title": "Unplot Feature"
 			}, {
 				"key": "map.feature.hide",
 				"title": "Hide Feature"
@@ -46,10 +46,10 @@
 				"title": "Show Feature"
 			}, {
 				"key": "map.feature.selected",
-				"title": "Feature Selection"
+				"title": "Feature Selected"
 			}, {
-				"key": "map.feature.selected",
-				"title": "Feature De-Selection"
+				"key": "map.feature.deselected",
+				"title": "Feature De-Selected"
 			}, {
 				"key": "map.feature.update",
 				"title": "Update Feature Data"

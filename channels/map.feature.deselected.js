@@ -4,21 +4,25 @@ cmapi.channel["map.feature.deselected"] = {
         "title": "map.feature.deselected",
          "description": "De-Select, or report that object was de-selected.",
          "properties": {
-             "overlayId": {
-                "description": "The ID of the overlay which contains the selected object. If no overlayId is included, default overlay with ID equal to sending widget’s ID is assumed.",
-                "type": "string"
-             },
-             "featureId": {
-                "description": "The ID of the feature that contains the de-selected object.",
-                "type": "string"
-             },
              "deSelectedId": {
                  "description": "The ID of the object to be de-selected (may be a sub-feature contained within the aggregate feature data with the given featureId).",
-                 "type": "string"
+                 "type": "string",
+				 "default": "none"
              },
              "deSelectedName": {
                  "description": "The name of the de-selected object.",
-                 "type": "string"
+                 "type": "string",
+				 "default": "none"
+             },
+             "featureId": {
+                "description": "The ID of the feature that contains the de-selected object.",
+                "type": "string",
+				"default": "none"
+             },
+			 "overlayId": {
+                "description": "The ID of the overlay which contains the de-selected object. If no overlayId is included, default overlay with ID equal to sending widget’s ID is assumed.",
+                "type": "string",
+				"default": "sending widget's ID"
              }
          },
          "required" : ["featureId"]

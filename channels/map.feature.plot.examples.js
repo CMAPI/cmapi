@@ -125,7 +125,7 @@ cmapi.channel["map.feature.plot"].examples = [
             },
             "name": "Sample GeoJSON Feature Collection",
             "zoom": true,
-            "readOnly": "false"
+            "readOnly": false
         }
     },
     {

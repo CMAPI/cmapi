@@ -19,8 +19,7 @@ cmapi.channel["map.view.center.location"].examples = [
           "location": {
             "lat": 38.8708, 
             "lon": -77.0558
-          }, 
-            "zoom": false
+          } 
           }
     },
     {
