@@ -19,6 +19,7 @@ cmapi.channel["map.overlay.cluster.set"] = {
       "clusterStyle": {
         "description": "Styling information to be applied to cluster objects. All string based values (i.e., label, title, description, iconStyle.url) MUST support replacement as detailed in Appendix A.",
         "type": "object",
+		"default": "N/A",
         "properties": {
           "label": {
             "description": "The label to be placed on the clustered item. This SHOULD be rendered adjacent to an icon when using iconStyle or inside the point when using pointStyle. If no value is specified, then the map MUST NOT display a label.",
@@ -37,11 +38,10 @@ cmapi.channel["map.overlay.cluster.set"] = {
             "type": "string"
           },
           "pointStyle": {
-            "description": "Style for the clustered point",
             "type": "object",
             "properties": {
               "color": {
-                "description": "Style for the clustered point",
+                "description": "Object representing CSS3 RGBA.  No value sent results in default settings on the map.  See http://www.w3.org/wiki/CSS3/Color/RGBA for more info on RGBA. ",
                 "type": "object",
                 "properties": {
                   "r": {
@@ -95,7 +95,8 @@ cmapi.channel["map.overlay.cluster.set"] = {
       },
       "overlayId": {
         "description": "The ID of the overlay where the clustering rule is to be applied. If no overlayId is included, default overlay with ID equal to sending widget’s ID is assumed.",
-        "type": "string"
+        "type": "string",
+		"default": "sending widget's ID"
       }
     },
     "required": []
