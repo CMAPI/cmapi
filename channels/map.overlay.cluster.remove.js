@@ -1,7 +1,7 @@
 cmapi.channel["map.overlay.cluster.remove"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "map.overlay.cluster.removeß",
+    "title": "map.overlay.cluster.remove",
     "description": "Sets the clustering rule for a specified overlay.",
     "properties": {
       "overlayId": {
