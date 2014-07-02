@@ -7,18 +7,22 @@ cmapi.channel["map.error"] = {
     "properties": {
       "sender": {
         "type": "string",
+		"default": "N/A",
         "description": "Sender ID of message that caused error."
       },
       "type": {
         "type": "string",
+		"default": "N/A",
         "description": "Type of message that caused error."
       },
       "msg": {
         "type": "object",
+		"default": "N/A",
         "description": "The message that caused error."
       },
       "error": {
         "type": "string",
+		"default": "N/A",
         "description": "A description of the error."
       }
     },
