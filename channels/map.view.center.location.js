@@ -7,7 +7,7 @@ cmapi.channel["map.view.center.location"] = {
     "properties": {
       "location": {
         "description": "Location to be centered in map.",
-		"default": "none",
+		"default": "N/A",
         "type": "object",
         "properties": {
           "lat": {
@@ -28,7 +28,7 @@ cmapi.channel["map.view.center.location"] = {
       "zoom": {
         "description": "If “auto,” map will adjust to zoom as close as possible to the given location in the user's viewable area. If a number, map will zoom to specified range in meters. If no zoom attribute is included, no zoom is performed.",
         "type": ["string", "number"],
-		"default": "none"
+		"default": "N/A"
       }
     },
     "required": ["location"]

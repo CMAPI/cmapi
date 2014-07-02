@@ -11,7 +11,7 @@ cmapi.channel["map.status.format"] = {
         "uniqueItems": true,
         "default": ["kml"],
         "items": {
-          "multipleOf": ["kml", "geojson", "wms"]
+          "anyOf": ["kml", "geojson", "wms"]
         }
       }
     },

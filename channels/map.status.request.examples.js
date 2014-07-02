@@ -15,8 +15,20 @@ cmapi.channel["map.status.request"].examples = [{
   "description": "",
   "valid": false,
   "payload": {
-    "type": [
+    "typo": [
       "view",
+      "about",
+      "format",
+      "selected"
+    ]
+  }
+},  {
+  "title": "Send a status request with a wrong type",
+  "description": "",
+  "valid": false,
+  "payload": {
+    "types": [
+      "all",
       "about",
       "format",
       "selected"

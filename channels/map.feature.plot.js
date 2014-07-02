@@ -13,12 +13,12 @@ cmapi.channel["map.feature.plot"] = {
       "featureId": {
         "description": "Unique identifier for the given feature data. Note that feature IDs MUST be unique within a given overlay. Reusing a feature ID will be considered a reload, with the original feature data being removed and replaced by the new feature data.",
         "type": "string",
-		"default": "none"
+		"default": "N/A"
       },
       "name": {
         "description": "Name for the given feature data. Note that feature names do not have to be unique and are intended for display purposes only.",
         "type": "string",
-		"default": "none"
+		"default": "N/A"
       },
       "format": {
         "description": "Data format of the given feature. All map implementations MUST support “kml” and “geojson”.  If no format is specified, the format defaults to “kml.” A list of formats supported by a particular map implementation may be obtained by querying the map using the map.status channel (see map.status).",
@@ -31,7 +31,7 @@ cmapi.channel["map.feature.plot"] = {
           "object",
           "string"
         ],
-		"default": "none"
+		"default": "N/A"
       },
       "zoom": {
         "description": "true if map should zoom to newly loaded feature data, false if not. Default is false.",

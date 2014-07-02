@@ -13,12 +13,12 @@ cmapi.channel["map.view.center.feature"] = {
                   "featureId": {
                     "description": "The ID of the feature to center on",
                     "type": "string",
-					"default": "none"
+					"default": "N/A"
                 },
                   "zoom": {
                     "description": "If auto, map will adjust to best fit the feature in the user's viewable area. If a number, map will zoom to specified range in meters. If no zoom attribute is included, no zoom is performed.",
                     "type": "string",
-					"default": "none"
+					"default": "N/A"
                 }
         },
         "required": ["featureId"]

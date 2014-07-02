@@ -13,7 +13,7 @@ cmapi.channel["map.feature.hide"] = {
                 "featureId": {
                     "description": "The ID of the feature to be hidden.",
                     "type": "string",
-					"default": "none"
+					"default": "N/A"
                 }
         },
         "required": ["featureId"]

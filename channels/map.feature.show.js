@@ -13,7 +13,7 @@ cmapi.channel["map.feature.show"] = {
                 "featureId": {
                     "description": "The ID of the feature to be shown.",
                     "type": "string",
-					"default": "none"
+					"default": "N/A"
                 },
                 "zoom": {
                     "description": "true if map should zoom to the shown feature, false if not. Default is false.",

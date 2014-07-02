@@ -7,11 +7,13 @@ cmapi.channel["map.status.selected"] = {
     "properties": {
       "overlayId": {
         "type": "string",
+		"default": "N/A",
         "description": "The ID of the overlay which contains the selected objects.  If the list of selected objects spans multiple overlays, then the payload will be an array of messages – one message for each overlay that contains selected objects."
       },
       "selectedFeatures": {
         "description": "An array of features from the identified overlay that are currently selected.",
         "type": "array",
+		"default": "N/A",
         "items": {
           "type": "object",
           "properties": {

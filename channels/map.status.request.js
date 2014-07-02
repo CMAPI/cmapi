@@ -7,14 +7,15 @@ cmapi.channel["map.status.request"] = {
     "properties": {
       "types": {
         "description": "An array of status types being requested. Currently only status types of “about,” “format,”, “selected”, and “view” are supported (future versions are expected to support a larger family of statuses, perhaps including “overlay,” “feature,” or “selected”). If types attribute is not included, all status types will be generated.",
-        "type": "array",
+        "type": ["array", "enum"],
+		"default": "N/A",
         "uniqueItems": true,
         "items": {
-          "multipleOf": ["view", "about", "format", "selected"]
+          "anyOf": ["view", "about", "format", "selected"]
         }
       }
     },
-    "required": ["types"]
+    "required": []
   },
   "notes": []
 };

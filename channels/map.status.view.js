@@ -7,29 +7,13 @@ cmapi.channel["map.status.view"] = {
     "properties": {
       "requestor": {
         "type": "string",
+		"default": "N/A",
         "description": "Client that requested this status message be sent (if any). If no requester, message is being sent due to a map view change."
       },
-      "center": {
-        "type": "object",
-        "description": "The current center of the map",
-        "properties": {
-          "lat": {
-            "type": "number",
-            "description": "The latitude of the location that was clicked",
-            "minimum": "-90",
-            "maximum": "90"
-          },
-          "lon": {
-            "type": "number",
-            "description": "The longitude of the location that was clicked",
-            "minimum": "-180",
-            "maximum": "180"
-          }
-        }
-      },
-      "bounds": {
+       "bounds": {
         "description": "Bounding box of area visible on map.",
         "type": "object",
+		"default": "N/A",
         "properties": {
           "southWest": {
             "description": "Bottom right of the bounds",
@@ -69,11 +53,33 @@ cmapi.channel["map.status.view"] = {
             }
           },
           "required": ["lat", "lon"]
-        }
+        },
+		"required": ["southWest", "northEast"]
       },
+	  "center": {
+        "type": "object",
+		"default": "N/A",
+        "description": "The current center of the map",
+        "properties": {
+          "lat": {
+            "type": "number",
+            "description": "The latitude of the location that was clicked",
+            "minimum": "-90",
+            "maximum": "90"
+          },
+          "lon": {
+            "type": "number",
+            "description": "The longitude of the location that was clicked",
+            "minimum": "-180",
+            "maximum": "180"
+          }
+        },
+		"required": ["lat", "lon"]
+      },   
       "range": {
         "description": "The current distance, in meters, map is zoomed out",
-        "type": ["number"]
+        "type": ["number"],
+		"default": "N/A"
       }
     },
     "required": ["bounds", "center", "range"]

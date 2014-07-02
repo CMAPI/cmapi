@@ -15,13 +15,13 @@ cmapi.channel["map.feature.plot.url"] = {
                 "description": "Unique identifier for the given feature data. Note that feature ids must be unique within a given overlay. Reusing a feature id will be considered a reload with the original feature data being removed and replaced by the new feature data.",
                 "required": true,
                 "type": "string",
-				"default": "none"
+				"default": "N/A"
             },
             "name": {
                 "description": "Name for the given feature data. Note that feature names do not have to be unique and are intended for display purposes only.",
                 "required": false,
                 "type": "string",
-				"default": "none"
+				"default": "N/A"
             },
             "format": {
                 "description": "Data format of the given feature. If no format is specified, the format defaults to “kml.” A list of formats supported by a particular map implementation can be obtained by querying the map using the map.status channel (see map.status). Note that for this version of the Common Map Widget API, all map implementations MUST support KML, GeoJSON, and WMS (GetMap only).",
@@ -33,13 +33,13 @@ cmapi.channel["map.feature.plot.url"] = {
                 "description": "URL from which to retrieve the feature data to load onto the map",
                 "required": true,
                 "type": "string",
-				"default": "none"
+				"default": "N/A"
             },
             "params": {
                 "description": "A JSON object containing a list of parameters to be passed to the server along with the URL when loading WMS data. Params object is ignored unless “format” is set to “wms”.  Note that request, exceptions, SRS/CRS, width, height, and bbox params should not be passed in as they are determined by the map as needed and will be ignored if passed. Params as passed will be concatenated to the URL and are expected to follow the WMS specification.   All parameters passed in must not be URL encoded (the map widget implementation will URL encode all passed in params).",
                 "type": "object",
                 "required": [],
-				"default": "none"
+				"default": "N/A"
             },
             "zoom": {
                 "description": "true if map should zoom to newly loaded feature data, false if not. Default is false.  Ignored when loading WMS data.",
