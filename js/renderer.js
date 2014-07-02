@@ -49,11 +49,9 @@ cmapi.channel.renderer = (function () {
     var message = "The example has failed to validate:  ",
       i;
     for (i = 0; i < valError.errors.length; i = 1 + i) {
-      message += "\n " + valError.errors[i].message + "\n Data path: " + valError.errors[i].dataPath;
+      message += "\n " + valError.errors[i].message + " " + valError.errors[i].dataPath;
     }
-    for (i = 0; i < valError.missing.length; i = 1 + 1) {
-      message += "\n " + valError.missing[i].message + "\n Data path: " + valError.missing[i].dataPath;
-    }
+
     return message;
   }
 

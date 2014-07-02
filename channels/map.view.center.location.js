@@ -27,7 +27,7 @@ cmapi.channel["map.view.center.location"] = {
       },
       "zoom": {
         "description": "If “auto,” map will adjust to zoom as close as possible to the given location in the user's viewable area. If a number, map will zoom to specified range in meters. If no zoom attribute is included, no zoom is performed.",
-        "type": ["text", "number"],
+        "type": ["string", "number"],
 		"default": "none"
       }
     },
