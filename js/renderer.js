@@ -31,15 +31,15 @@ cmapi.channel.renderer = (function () {
     document.getElementsByTagName("head")[0].appendChild(script);
   }
 
-
-
   function checkRequired(prop, schema) {
     var i, len, returnValue = "optional";
-    len = schema.required.length;
-    for (i = 0; i < len; i++) {
-      if (prop === schema.required[i]) {
-        returnValue = 'required';
-        break;
+    if (schema.required) {
+      len = schema.required.length;
+      for (i = 0; i < len; i++) {
+        if (prop === schema.required[i]) {
+          returnValue = 'required';
+          break;
+        }
       }
     }
     return returnValue;
@@ -131,8 +131,6 @@ cmapi.channel.renderer = (function () {
     return objChars.join("");
   }
 
-
-
   function validate(payload, schema) {
     var response = {
         valid: true,
@@ -145,6 +143,90 @@ cmapi.channel.renderer = (function () {
       response.valid = false;
     }
     return response;
+  }
+
+  function getObjectTable(obj,output,parent) {
+    var prop, propVal, optional, type, defaultVal, len, i, subProp, j, options, opLen, opt, enums;
+    output.push('<table><thead><tr><th>Property</th><th>Required</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody>');
+
+    for (prop in obj) {
+      propVal = obj[prop];
+
+      optional = checkRequired(prop, parent);
+      if (propVal.hasOwnProperty("type")) {
+        type = propVal.type;
+      } else if (propVal.hasOwnProperty("enum")) {
+        enums = JSON.stringify(propVal.enum).split(",").join(", ");
+        type = "enumeration <br/>" + enums;
+      }
+      defaultVal = "";
+      if (propVal.hasOwnProperty("default")) {
+        defaultVal = propVal["default"];
+      }
+      if ($.isArray(propVal)) {
+        output.push('<tr>');
+        output.push('<td colSpan="5">' + prop + '</td>');
+        len = propVal.length;
+        for (i = 0; i < len; i++) {
+          output.push('<tr>');
+          output.push('<td colSpan="5">');
+          output.push(getObjectTable(propVal[i], output, obj));
+          output.push('</td>');
+          output.push('</tr>');
+        }
+        output.push('</td>');
+        output.push('</tr>');
+      } else {
+        output.push('<tr>');
+        output.push('<td>' + prop + '</td>');
+        output.push('<td>' + optional + '</td>');
+        output.push('<td>' + type + '</td>');
+        output.push('<td>' + defaultVal + '</td>');
+        output.push('<td>' + propVal.description + '</td>');
+        output.push('</tr>');
+        if (propVal.hasOwnProperty("properties")) {
+          subProp = propVal.properties;
+          
+
+         
+          output.push('<tr>');
+          output.push('<td colSpan="5">');
+          output.push(getObjectTable(subProp, output, propVal));
+          output.push('</td>');
+          output.push('</tr>');
+          
+          
+       /* } else if (type === "array" && propVal.hasOwnProperty("items")){
+          subProp = propVal.items;
+          output.push('<tr>');
+          output.push('<td colSpan="5">');
+          len = subProp.length;
+          for(i=0;i<len;i++){
+          output.push(getObjectTable(subProp[i], output));
+          }
+          output.push('</td>');
+          output.push('</tr>');
+       */   
+        } else if(propVal.hasOwnProperty("oneOf")){
+            options = propVal.oneOf;
+            opLen = options.length;
+            output.push('<tr>');
+                output.push('<td colSpan="5">');
+                output.push('One Of: <br/>');
+            for(j=0;j<opLen;j++){
+              opt = options[j].properties;
+               output.push(options[j].title+' <br/>');
+                output.push(getObjectTable(opt, output, options[j]));
+                
+            }
+            output.push('</td>');
+                output.push('</tr>');
+
+          }
+      }
+
+    }
+    output.push('</tbody></table>');
   }
 
   function render(link, channelDef) {
@@ -188,6 +270,8 @@ cmapi.channel.renderer = (function () {
 
       output.push('</code></pre>');
       output.push('<h3 id="toc_3">Properties:</h4>');
+      getObjectTable(schema.properties, output, schema);
+      /*
       output.push('<table><thead><tr><th>Property</th><th>Required</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody>');
 
       for (prop in schema.properties) {
@@ -213,6 +297,7 @@ cmapi.channel.renderer = (function () {
 
       }
       output.push('</tbody></table>');
+      */
       output.push('<h3 id="toc_3">Notes</h3>');
       if (noteLen > 0) {
         for (i = 0; i < noteLen; i++) {
@@ -345,8 +430,6 @@ cmapi.channel.renderer = (function () {
 
   }
 
-
-
   function overviewLoaded() {
     var overview = cmapi.overview[currentOverview];
     $('#main').html(renderOverview(overview));
@@ -362,7 +445,7 @@ cmapi.channel.renderer = (function () {
   }
 
   function loadOverview(target) {
-    var url = "channels/"+target+".js";
+    var url = "channels/" + target + ".js";
     currentOverview = target;
     loadScript({
       url: url,
@@ -370,7 +453,6 @@ cmapi.channel.renderer = (function () {
       callback: overviewLoaded
     });
   }
-
 
   publicInterface = {
     loadContent: function (target) {
