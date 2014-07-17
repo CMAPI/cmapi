@@ -135,7 +135,25 @@
 			}]
 		}, {
 			"key": "",
-			"title": "Widget Intents"
+			"title": "Widget Intents",
+			"type" : "overview",
+			"children": [{
+				"key": "cmapi.widget-intents.overview",
+				"type": "overview",
+				"title": "Background"
+			}, {
+				"key": "cmapi.widget-intents.pick.overview",
+				"title": "Picking a Common Map Widget",
+				"type": "overview"
+			}, {
+				"key": "cmapi.widget-intents.view.overview",
+				"title": "Viewing Data ",
+				"type": "overview"
+			}, {
+				"key": "cmapi.widget-intents.plot.overview",
+				"title": "Plotting Data ",
+				"type": "overview"
+			}]
 		}]
 	}, {
 		"key": "",
@@ -153,18 +171,15 @@
 			"key": "cmapi.appendix.c",
 			"title": "C. Area of Interest Support"
 		}]
-	},
-	{
+	}, {
 		"key": "cmapi.acronyms",
 		"type": "overview",
 		"title": "Acronyms"
-	},
-	{
+	}, {
 		"key": "cmapi.references",
 		"type": "overview",
 		"title": "References"
-	},
-	{
+	}, {
 		"key": "cmapi.acknowledgements",
 		"type": "overview",
 		"title": "Acknowledgements"

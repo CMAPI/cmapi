@@ -1,4 +1,5 @@
 cmapi.overview["cmapi.overview"] = {
+	"title": "CMAPI Overview",
 	"sections": [{
 		"title": "Background",
 		"paragraphs": [
@@ -79,4 +80,4 @@ cmapi.overview["cmapi.overview"] = {
 		]
 
 	}]
-}
+};

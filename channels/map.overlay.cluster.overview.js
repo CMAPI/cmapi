@@ -1,4 +1,5 @@
 cmapi.overview["map.overlay.cluster.overview"] = {
+	"title" : "Feature Clustering",
 	"sections": [{
 		"title": "Background",
 		"paragraphs": [
@@ -9,4 +10,4 @@ cmapi.overview["map.overlay.cluster.overview"] = {
 			"Note that clustering rules are applied at the overlay level.  If it is desired to separate items into different clustering rules, then the elements should be separated into different overlays and the appropriate clustering rule set for each specific overlay."
 		]
 	}]
-}
+};

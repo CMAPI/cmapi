@@ -145,7 +145,7 @@ cmapi.channel.renderer = (function () {
     return response;
   }
 
-  function getObjectTable(obj,output,parent) {
+  function getObjectTable(obj, output, parent) {
     var prop, propVal, optional, type, defaultVal, len, i, subProp, j, options, opLen, opt, enums;
     output.push('<table><thead><tr><th>Property</th><th>Required</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody>');
 
@@ -186,17 +186,14 @@ cmapi.channel.renderer = (function () {
         output.push('</tr>');
         if (propVal.hasOwnProperty("properties")) {
           subProp = propVal.properties;
-          
 
-         
           output.push('<tr>');
           output.push('<td colSpan="5">');
           output.push(getObjectTable(subProp, output, propVal));
           output.push('</td>');
           output.push('</tr>');
-          
-          
-       /* } else if (type === "array" && propVal.hasOwnProperty("items")){
+
+          /* } else if (type === "array" && propVal.hasOwnProperty("items")){
           subProp = propVal.items;
           output.push('<tr>');
           output.push('<td colSpan="5">');
@@ -206,23 +203,23 @@ cmapi.channel.renderer = (function () {
           }
           output.push('</td>');
           output.push('</tr>');
-       */   
-        } else if(propVal.hasOwnProperty("oneOf")){
-            options = propVal.oneOf;
-            opLen = options.length;
-            output.push('<tr>');
-                output.push('<td colSpan="5">');
-                output.push('One Of: <br/>');
-            for(j=0;j<opLen;j++){
-              opt = options[j].properties;
-               output.push(options[j].title+' <br/>');
-                output.push(getObjectTable(opt, output, options[j]));
-                
-            }
-            output.push('</td>');
-                output.push('</tr>');
+       */
+        } else if (propVal.hasOwnProperty("oneOf")) {
+          options = propVal.oneOf;
+          opLen = options.length;
+          output.push('<tr>');
+          output.push('<td colSpan="5">');
+          output.push('One Of: <br/>');
+          for (j = 0; j < opLen; j++) {
+            opt = options[j].properties;
+            output.push(options[j].title + ' <br/>');
+            output.push(getObjectTable(opt, output, options[j]));
 
           }
+          output.push('</td>');
+          output.push('</tr>');
+
+        }
       }
 
     }
@@ -397,7 +394,9 @@ cmapi.channel.renderer = (function () {
       sections,
       paragraphs,
       output = [];
-
+    if (overview.hasOwnProperty("title")) {
+      output.push('<h2 id="toc_0">' + overview.title + '</h2>');
+    }
     sections = overview.sections;
     len = sections.length;
     for (i = 0; i < len; i++) {
