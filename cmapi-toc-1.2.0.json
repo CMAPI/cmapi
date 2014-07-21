@@ -115,6 +115,20 @@
 		"children": [{
 			"key": "",
 			"type": "overview",
+			"title": "User Manipulation",
+			"children": [{
+				"key": "map.message.complete",
+				"title": "Message Complete"
+			}, {
+				"key": "map.message.progress",
+				"title": "Message Progress"
+			},{
+				"key": "map.message.cancel",
+				"title": "Message Cancel"
+			}]
+		},{
+			"key": "",
+			"type": "overview",
 			"title": "Clustering",
 			"children": [{
 				"key": "map.overlay.cluster.overview",
