@@ -1,5 +1,5 @@
-cmapi-1.2.0
+cmapi-1.3.0
 ===========
 
-Schemas, decriptions, and examples for the CMAPI 1.2.0 specification
+Schemas, decriptions, and examples for the CMAPI 1.3.0 specification
 
