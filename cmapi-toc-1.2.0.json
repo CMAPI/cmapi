@@ -113,27 +113,7 @@
 		"folder": true,
 		"expanded": true,
 		"children": [{
-			"key": "",
-			"type": "overview",
-			"title": "Clustering",
-			"children": [{
-				"key": "map.overlay.cluster.overview",
-				"type": "overview",
-				"title": "Background"
-			}, {
-				"key": "map.overlay.cluster.set",
-				"title": "Set Overlay Level Clustering Rule"
-			}, {
-				"key": "map.overlay.cluster.remove",
-				"title": "Remove Overlay Level Clustering Rule"
-			}, {
-				"key": "map.overlay.cluster.activate",
-				"title": "Activate Overlay Level Clustering Rule"
-			}, {
-				"key": "map.overlay.cluster.deactivate",
-				"title": "De-Activate Overlay Level Clustering Rule"
-			}]
-		}, {
+		
 			"key": "",
 			"title": "Widget Intents",
 			"type" : "overview",
@@ -153,6 +133,35 @@
 				"key": "cmapi.widget-intents.plot.overview",
 				"title": "Plotting Data ",
 				"type": "overview"
+			}]
+		}, {
+			"key": "",
+			"type": "overview",
+			"title": "Clustering",
+			"children": [{
+				"key": "map.overlay.cluster.overview",
+				"type": "overview",
+				"title": "Background"
+			}, {
+				"key": "map.overlay.cluster.set",
+				"title": "Set Overlay Level Clustering Rule"
+			}, {
+				"key": "map.overlay.cluster.remove",
+				"title": "Remove Overlay Level Clustering Rule"
+			}, {
+				"key": "map.overlay.cluster.activate",
+				"title": "Activate Overlay Level Clustering Rule"
+			}, {
+				"key": "map.overlay.cluster.deactivate",
+				"title": "De-Activate Overlay Level Clustering Rule"
+			}, {
+				"key": "map.overlay.cluster.references",
+				"type": "overview",
+				"title": "Clustering: References"
+			}, {
+				"key": "map.overlay.cluster.replaceableParameters",
+				"type": "overview",
+				"title": "Clustering: Replaceable Parameters"
 			}]
 		}]
 	}, {

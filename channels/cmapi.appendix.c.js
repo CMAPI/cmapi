@@ -13,21 +13,23 @@ cmapi.channel["cmapi.appendix.c"] = {
         "description": "If included in a GeoJSON feature, signifies the feature is an Area of Interest and is to be treated accordingly.  Note that only GeoJSON features can be used to convey Areas of Interest.",
         "type" : "object",
         "properties" : {
-          "type" : {
-            "enum" : ["bbox","polygon","line","point-radius"],
-            "description" : "<ul> <li>If type = “bbox”:<br/><ul><li>AOI is interpreted as a geospatial rectangle.  The bbox MUST NOT be allowed to be manipulated into a different geometric shape (e.g. a trapezoid).</li><li>geoJSON feature geometry type MUST be a polygon.</li><li>“buffer” SHALL be ignored.</li></ul></li><li>If type = “line”:<br/><ul><li>geoJSON feature geometry type MUST be a line.</li><li>“buffer” MUST be greater than 0.</li><li>“buffer” is interpreted as distance in meters perpendicular to both sides of the line.  Buffer does not extend past the start and end points of the actual line (i.e., no “end-caps” are supported). </li></ul></li><li>If type = “point-radius”:<br/><ul><li>geoJSON feature geometry type MUST be a point.</li><li>“buffer” MUST be greater than 0.</li><li>“buffer” is interpreted as the radius in meters from the point. </li></ul></li><li>If type = “polygon”:<br/><ul><li>geoJSON feature geometry type MUST be a polygon.</li><li>“buffer” MAY be included.</li><li>“buffer” is interpreted as the distance in meters outside of the polygon boundaries that the AOI is to extend. </li></ul> </ul>"
-          },
           "buffer" : {
             "type" : "number",
-            "description" : "Distance in meters from the points identified in the “feature” data.  MUST be included and greater than 0 if the feature is a point-radius or line, MAY be included for polygon, and SHALL be ignored for bbox. Specific interpretation of buffer based on type is spelled out in definition of “type” below. ",
+            "description" : "*CONDITIONAL <br>Distance in meters from the points identified in the “feature” data.  MUST be included and greater than 0 if the feature is a point-radius or line, MAY be included for polygon, and SHALL be ignored for bbox. Specific interpretation of buffer based on type is spelled out in definition of “type” below. ",
             "minimum" : 1
+          },
+		  "type" : {
+            "enum" : ["bbox","polygon","line","point-radius"],
+            "description" : "Defines how to interpret the passed in AOI geometry.  Valid values are “bbox”, “polygon”, “line”, and “point-radius”. <ul> <li>If type = “bbox”:<br/><ul><li>AOI is interpreted as a geospatial rectangle.  The bbox MUST NOT be allowed to be manipulated into a different geometric shape (e.g. a trapezoid).</li><li>geoJSON feature geometry type MUST be a polygon.</li><li>“buffer” SHALL be ignored.</li></ul></li><li>If type = “line”:<br/><ul><li>geoJSON feature geometry type MUST be a line.</li><li>“buffer” MUST be greater than 0.</li><li>“buffer” is interpreted as distance in meters perpendicular to both sides of the line.  Buffer does not extend past the start and end points of the actual line (i.e., no “end-caps” are supported). </li></ul></li><li>If type = “point-radius”:<br/><ul><li>geoJSON feature geometry type MUST be a point.</li><li>“buffer” MUST be greater than 0.</li><li>“buffer” is interpreted as the radius in meters from the point. </li></ul></li><li>If type = “polygon”:<br/><ul><li>geoJSON feature geometry type MUST be a polygon.</li><li>“buffer” MAY be included.</li><li>“buffer” is interpreted as the distance in meters outside of the polygon boundaries that the AOI is to extend. </li></ul> </ul>"
           }
-        }
+          
+        },
+		"required": ["type"]
       }
     }
   },
   notes: [
   "If sending an AOI, the GeoJSON object MUST be a single GeoJSON Feature object with either a Line, Point, or Polygon geometry type.  MulitLineStrings, MultiPolygons, and GeometryCollections are NOT supported for AOIs.",
-    "See <a href=\"http://www.w3.org/wiki/CSS3/Color/RGBA\" >http://www.w3.org/wiki/CSS3/Color/RGBA</a> for more info on RGBA."
+  "For example of AOI, see map.feature.plot Example 3."
   ]
 };

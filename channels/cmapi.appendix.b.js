@@ -6,94 +6,6 @@ cmapi.channel["cmapi.appendix.b"] = {
     "description": "The GeoJSON specification can be found at <a href=\"http://geojson.org/geojson-spec.html\" >http://geojson.org/geojson-spec.html</a>.  The Common Map Widget API specification extends the GeoJSON specification by adding the “style”, “name”, “id”, “description“, and “timePrimitive“ objects to the “Properties” object of the GeoJSON specification.  These extended objects ONLY apply to the GeoJSON Feature object.",
     "type": "object",
     "required": ["type"],
-    "properties": {
-      "crs": {
-        "$schema": "http://json-schema.org/draft-04/schema#",
-        "title": "crs",
-        "description": "a Coordinate Reference System object",
-        "oneOf": [{
-          "title": "Named CRS",
-          "additionalProperties": false,
-          "required": ["type", "properties"],
-          "properties": {
-            "type": {
-              "enum": [
-                "name"
-              ]
-            },
-            "properties": {
-              "additionalProperties": false,
-              "required": ["name"],
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }, {
-          "title": "Linked CRS",
-          "additionalProperties": false,
-          "required": ["type", "properties"],
-          "properties": {
-            "type": {
-              "enum": [
-                "link"
-              ]
-            },
-            "properties": {
-              "additionalProperties": false,
-              "required": ["href"],
-              "type": "object",
-              "properties": {
-                "href": {
-                  "type": "string",
-                  "format": "uri"
-                },
-                "type": {
-                  "type": "string",
-                  "description": "Suggested values: proj4, ogjwkt, esriwkt"
-                }
-              }
-            }
-          }
-        }]
-      },
-      "bbox": {
-        "description": "A bounding box as defined by GeoJSON",
-        "type": "array",
-        "items": {
-          "type": "number"
-        }
-      },
-
-      "type": {
-        "enum": ["LineString", "Polygon", "Point", "MultiPoint", "MultiLineString", "MultiPolygon", "GeometryCollection", "Feature", "FeatureCollection"]
-      },
-      "coordinates": {
-        "description": "A Valid GoeJSON coordinate structure dependant on type",
-        "type": "array",
-        "items": {
-          "type": ["number", "array"]
-        }
-      },
-      "geometries": {
-        "description": "An array of GeoJSON Objects representing any of the types",
-        "type": "array",
-        "items": {
-          "type": "array"
-        }
-      },
-      "features": {
-        "description": "An array of GeoJSON Feature Objects",
-        "type": "array",
-        "items": {
-          "type": "object"
-        }
-      },
-      "properties": {
-        "type": "object",
         "properties": {
           "style": {
             "type": "object",
@@ -101,35 +13,33 @@ cmapi.channel["cmapi.appendix.b"] = {
             "properties": {
               "lineStyle": {
                 "type": "object",
-                "description": {
-                  "type": "string",
-                  "description": ""
-                },
+                "description": "",
                 "properties": {
                   "color": {
-                    "description": "",
+                    "description": "Object representing CSS3 RGBA.  See Note 1 below for more info",
                     "type": "object",
+					"default": "No value sent results in default settings on the map.",
                     "properties": {
                       "r": {
-                        "description": "",
+                        "description": "Integer value between 0 and 255 for red.",
                         "type": "integer",
                         "minimum": 0,
                         "maximum": 255
                       },
                       "g": {
-                        "description": "",
+                        "description": "Integer value between 0 and 255 for green.",
                         "type": "integer",
                         "minimum": 0,
                         "maximum": 255
                       },
                       "b": {
-                        "description": "",
+                        "description": "Integer value between 0 and 255 for green.",
                         "type": "integer",
                         "minimum": 0,
                         "maximum": 255
                       },
                       "a": {
-                        "description": "",
+                        "description": "Number value between 0.0 (fully transparent) to 1.0 (fully opaque).",
                         "type": "number",
                         "minimum": 0,
                         "maximum": 1
@@ -142,36 +52,38 @@ cmapi.channel["cmapi.appendix.b"] = {
                       "a"
                     ]
                   }
-                }
+                },
+				"required": ["color"]
               },
               "polyStyle": {
                 "type": "object",
                 "description": "",
-                "properties": {
+				"properties": {
                   "color": {
-                    "description": "",
+                    "description": "Object representing CSS3 RGBA.  See Note 1 below for more info. ",
                     "type": "object",
+					"default": "No value sent results in default settings on the map.",
                     "properties": {
                       "r": {
-                        "description": "",
+                        "description": "Integer value between 0 and 255 for red.",
                         "type": "integer",
                         "minimum": 0,
                         "maximum": 255
                       },
                       "g": {
-                        "description": "",
+                        "description": "Integer value between 0 and 255 for green.",
                         "type": "integer",
                         "minimum": 0,
                         "maximum": 255
                       },
                       "b": {
-                        "description": "",
+                        "description": "Integer value between 0 and 255 for blue.",
                         "type": "integer",
                         "minimum": 0,
                         "maximum": 255
                       },
                       "a": {
-                        "description": "",
+                        "description": "Number value between 0.0 (fully transparent) to 1.0 (fully opaque).",
                         "type": "number",
                         "minimum": 0,
                         "maximum": 1
@@ -184,7 +96,8 @@ cmapi.channel["cmapi.appendix.b"] = {
                       "a"
                     ]
                   }
-                }
+                },
+				"required": ["color"]
               },
               "iconStyle": {
                 "type": "object",
@@ -192,48 +105,55 @@ cmapi.channel["cmapi.appendix.b"] = {
                 "properties": {
                   "url": {
                     "type": "uri",
-                    "description": ""
+                    "description": "URL to an image file that will be used for the icon for a point.",
+					"default": "If no URL is provided, result will be map’s default icon."
                   }
-                }
+                },
+				"required": ["url"]
               },
               "name": {
                 "type": "string",
-                "description": ""
+                "description": "name of the specific GeoJSON feature.  Generally used when the GeoJSON parent object is a featureCollection or feature objects."
               },
               "id": {
                 "type": "string",
-                "description": ""
+                "description": "a unique identifier for the feature object.  Though not required, it is RECOMMENDED. If the id of the GeoJSON Feature.properties.id is omitted, and part of a FeatureCollection, selection may not work for these features as they cannot be uniquely identified. "
+              },
+			  "description": {
+                "type": "string",
+                "description": "user supplied content that appears in a pop-up balloon associated with the feature.  Can be plain text, or HTML formatted."
               },
               "timePrimitive": {
                 "type": "object",
+				"description": "",
                 "properties": {
                   "timeSpan": {
                     "type": "object",
+					"description": "",
                     "properties": {
                       "begin": {
                         "type": "string",
                         "format": "date-time",
-                        "description": ""
+                        "description": "time stamp identifying the beginning of the time span (see timeStamp definition for format info). "
                       },
                       "end": {
                         "type": "string",
                         "format": "date-time",
-                        "description": ""
+                        "description": "time stamp identifying the end of the time span (see timeStamp definition for format info)."
                       }
-                    }
+                    },
+					"required": ["begin", "end"]
                   },
                   "timeStamp": {
                     "type": "string",
                     "format": "date-time",
-                    "description": ""
+                    "description": "time stamp value expressed as yyyy-mm-ddThh:mm:ss.ssszzzzzz, where T is the separator between the date and the time, and the time zone is either Z (for UTC) or zzzzzz, which represents ±hh:mm in relation to UTC. Additionally, the value can be expressed as a date only."
                   }
                 }
               }
             }
           }
-        }
       }
-    }
   },
   notes: [
     'See <a href=\"http://www.w3.org/wiki/CSS3/Color/RGBA" >http://www.w3.org/wiki/CSS3/Color/RGBA</a> for more info on RGBA.'

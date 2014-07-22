@@ -3,7 +3,7 @@ cmapi.overview["cmapi.widget-intents.plot.overview"] = {
 	"sections": [{
 		"title": "Purpose",
 		"paragraphs": [
-			"Plot KML or GeoJSON data, meaning visualize specifically on a geospatial display, not just any widget that is can accept KML or GeoJSON."
+			"Plot KML or GeoJSON data, meaning visualize specifically on a <i>geospatial</i> display, not just any widget that is can accept KML or GeoJSON."
 		]
 	}, {
 		"title": "Action",
@@ -18,7 +18,7 @@ cmapi.overview["cmapi.widget-intents.plot.overview"] = {
 	}, {
 		"title": "Metadata",
 		"paragraphs": [
-			"The following properties from the map.feature.plot payload: <ul><li>overlayId</li><li>featureId</li><li>name</li><li>zoom</li><li>readOnly</li></ul>"
+			"The following properties from the <b>map.feature.plot</b> payload: <ul><li>overlayId</li><li>featureId</li><li>name</li><li>zoom</li></ul>"
 		]
 	}, {
 		"title": "Notes",
@@ -34,7 +34,7 @@ cmapi.overview["cmapi.widget-intents.plot.overview"] = {
 	}, {
 		"title": "Example - Sending Widget",
 		"paragraphs": [
-			"<pre><code class=\"javascript\">OWF.Intents.startActivity(<br/>  { action: 'plot', dataType: 'application/vnd.google-earth.kml+xml' }, <br/>  { <br/>    data: '<?xml version=\"1.0\"?><kml>…</kml>',<br/>    common_map: {<br/>      overlayId: 'abc123',<br/>      featureId: 'def456',<br/>      name: 'My Geo Data',<br/>      zoom: true<br/>    }<br/>  }<br/>  function(dest) { … }<br/>);</code></pre>"
+			"<pre><code class=\"javascript\">OWF.Intents.startActivity(<br/>  { action: 'plot', dataType: 'application/vnd.google-earth.kml+xml' }, <br/>  { <br/>    data: '&lt?xml version=\"1.0\"?&gt&ltkml&gt…&lt/kml&gt',<br/>    common_map: {<br/>      overlayId: 'abc123',<br/>      featureId: 'def456',<br/>      name: 'My Geo Data',<br/>      zoom: true<br/>    }<br/>  }<br/>  function(dest) { … }<br/>);</code></pre>"
 		]
 	}]
 };

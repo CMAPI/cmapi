@@ -14,7 +14,7 @@ cmapi.overview["cmapi.widget-intents.pick.overview"] = {
 		"title": "DataType",
 		"paragraphs": [
 			"<ul><li>application/vnd.owf.common-map-1.0</li><li>application/vnd.owf.common-map-1.1</li><li>application/vnd.owf.common-map-1.2</li></ul>",
-			"When performing a “pick”, a widget should ask for the lowest possible version of the Common Map Widget API that is needed to accomplish its desired functionality in order to ensure the widest possible selection of widgets to pick from."
+			"When doing a “pick”, a widget should ask for the lowest possible version of the Common Map Widget API that is needed to accomplish its desired functionality in order to ensure the widest possible selection of widgets to pick from."
 		]
 	}, {
 		"title": "Metadata",
