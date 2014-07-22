@@ -33,11 +33,17 @@
 				"key": "map.feature.plot",
 				"title": "Plot Feature"
 			}, {
+				"key": "map.feature.plot.batch",
+				"title": "Plot a Batch of Features"
+			}, {
 				"key": "map.feature.plot.url",
 				"title": "Plot URL"
 			}, {
 				"key": "map.feature.unplot",
 				"title": "Unplot Feature"
+			}, {
+				"key": "map.feature.unplot.batch",
+				"title": "Unplot a Batch of Features"
 			}, {
 				"key": "map.feature.hide",
 				"title": "Hide Feature"
@@ -122,11 +128,11 @@
 			}, {
 				"key": "map.message.progress",
 				"title": "Message Progress"
-			},{
+			}, {
 				"key": "map.message.cancel",
 				"title": "Message Cancel"
 			}]
-		},{
+		}, {
 			"key": "",
 			"type": "overview",
 			"title": "Clustering",
@@ -150,7 +156,7 @@
 		}, {
 			"key": "",
 			"title": "Widget Intents",
-			"type" : "overview",
+			"type": "overview",
 			"children": [{
 				"key": "cmapi.widget-intents.overview",
 				"type": "overview",
