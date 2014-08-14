@@ -1,197 +1,217 @@
 [{
-		"key": "cmapi.overview",
-		"type": "overview",
-		"title": "Introduction"
-	}, {
-		"key": "",
-		"title": "API CORE",
-		"folder": true,
-		"expanded": true,
-		"children": [{
-			"key": "",
-			"title": "Overlay Channels",
-			"children": [{
-				"key": "map.overlay.create",
-				"title": "Create Overlay"
-			}, {
-				"key": "map.overlay.remove",
-				"title": "Remove Overlay"
-			}, {
-				"key": "map.overlay.hide",
-				"title": "Hide Overlay"
-			}, {
-				"key": "map.overlay.show",
-				"title": "Show Overlay"
-			}, {
-				"key": "map.overlay.update",
-				"title": "Update Overlay"
-			}]
-		}, {
-			"key": "",
-			"title": "Feature Channels",
-			"children": [{
-				"key": "map.feature.plot",
-				"title": "Plot Feature"
-			}, {
-				"key": "map.feature.plot.url",
-				"title": "Plot URL"
-			}, {
-				"key": "map.feature.unplot",
-				"title": "Unplot Feature"
-			}, {
-				"key": "map.feature.hide",
-				"title": "Hide Feature"
-			}, {
-				"key": "map.feature.show",
-				"title": "Show Feature"
-			}, {
-				"key": "map.feature.selected",
-				"title": "Feature Selected"
-			}, {
-				"key": "map.feature.deselected",
-				"title": "Feature De-Selected"
-			}, {
-				"key": "map.feature.update",
-				"title": "Update Feature Data"
-			}]
-		}, {
-			"key": "",
-			"title": "Map View Channels",
-			"children": [{
-				"key": "map.view.zoom",
-				"title": "Zoom"
-			}, {
-				"key": "map.view.center.overlay",
-				"title": "Center on Overlay"
-			}, {
-				"key": "map.view.center.feature",
-				"title": "Center on Feature"
-			}, {
-				"key": "map.view.center.location",
-				"title": "Center on Location"
-			}, {
-				"key": "map.view.center.bounds",
-				"title": "Center on Bounds"
-			}, {
-				"key": "map.view.clicked",
-				"title": "Map View Clicked"
-			}]
-		}, {
-			"key": "",
-			"title": "Map Status Channels",
-			"children": [{
-					"key": "map.status.request",
-					"title": "Request Map Status"
-				},
+        "key": "cmapi.overview",
+        "type": "overview",
+        "title": "Introduction"
+    }, {
+        "key": "",
+        "title": "API CORE",
+        "folder": true,
+        "expanded": true,
+        "children": [{
+            "key": "",
+            "title": "Overlay Channels",
+            "children": [{
+                "key": "map.overlay.create",
+                "title": "Create Overlay"
+            }, {
+                "key": "map.overlay.remove",
+                "title": "Remove Overlay"
+            }, {
+                "key": "map.overlay.hide",
+                "title": "Hide Overlay"
+            }, {
+                "key": "map.overlay.show",
+                "title": "Show Overlay"
+            }, {
+                "key": "map.overlay.update",
+                "title": "Update Overlay"
+            }]
+        }, {
+            "key": "",
+            "title": "Feature Channels",
+            "children": [{
+                "key": "map.feature.plot",
+                "title": "Plot Feature"
+            },{
+                "key": "map.feature.plot.batch",
+                "title": "Plot a batch of Features"
+            }, {
+                "key": "map.feature.plot.url",
+                "title": "Plot URL"
+            }, {
+                "key": "map.feature.unplot",
+                "title": "Unplot Feature"
+            },{
+                "key": "map.feature.unplot.batch",
+                "title": "Unplot a batch of Features"
+            }, {
+                "key": "map.feature.hide",
+                "title": "Hide Feature"
+            }, {
+                "key": "map.feature.show",
+                "title": "Show Feature"
+            }, {
+                "key": "map.feature.selected",
+                "title": "Feature Selected"
+            }, {
+                "key": "map.feature.deselected",
+                "title": "Feature De-Selected"
+            }, {
+                "key": "map.feature.update",
+                "title": "Update Feature Data"
+            }, {
+                "key": "map.feature.edit",
+                "title": "Edit Feature Data"
+            }, {
+                "key": "map.feature.draw",
+                "title": "Draw Feature Data",
+                "children": [{
+                    "key": "map.feature.draw.progress",
+                    "title": "Message Progress - details object"
+                },
+                {
+                    "key": "map.feature.draw.complete",
+                    "title": "Message Complete - details object"
+                }]
+            }]
+        }, {
+            "key": "",
+            "title": "Map View Channels",
+            "children": [{
+                "key": "map.view.zoom",
+                "title": "Zoom"
+            }, {
+                "key": "map.view.center.overlay",
+                "title": "Center on Overlay"
+            }, {
+                "key": "map.view.center.feature",
+                "title": "Center on Feature"
+            }, {
+                "key": "map.view.center.location",
+                "title": "Center on Location"
+            }, {
+                "key": "map.view.center.bounds",
+                "title": "Center on Bounds"
+            }, {
+                "key": "map.view.clicked",
+                "title": "Map View Clicked"
+            }]
+        }, {
+            "key": "",
+            "title": "Map Status Channels",
+            "children": [{
+                    "key": "map.status.request",
+                    "title": "Request Map Status"
+                },
 
-				{
-					"key": "map.status.view",
-					"title": "Map View Status"
-				}, {
-					"key": "map.status.format",
-					"title": "Map Format Status"
-				}, {
-					"key": "map.status.about",
-					"title": "Map About Status"
-				}, {
-					"key": "map.status.selected",
-					"title": "Map Selected Status"
-				}
-			]
-		}, {
-			"key": "map.error",
-			"title": "Map Errors"
-		}, {
-			"key": "map.drag-drop",
-			"title": "Drag and Drop"
-		}]
-	},
+                {
+                    "key": "map.status.view",
+                    "title": "Map View Status"
+                }, {
+                    "key": "map.status.format",
+                    "title": "Map Format Status"
+                }, {
+                    "key": "map.status.about",
+                    "title": "Map About Status"
+                }, {
+                    "key": "map.status.selected",
+                    "title": "Map Selected Status"
+                }
+            ]
+        }, {
+            "key": "map.error",
+            "title": "Map Errors"
+        }, {
+            "key": "map.drag-drop",
+            "title": "Drag and Drop"
+        }]
+    },
 
-	{
-		"key": "",
-		"title": "API Extensions",
-		"folder": true,
-		"expanded": true,
-		"children": [{
-		
-			"key": "",
-			"title": "Widget Intents",
-			"type" : "overview",
-			"children": [{
-				"key": "cmapi.widget-intents.overview",
-				"type": "overview",
-				"title": "Background"
-			}, {
-				"key": "cmapi.widget-intents.pick.overview",
-				"title": "Picking a Common Map Widget",
-				"type": "overview"
-			}, {
-				"key": "cmapi.widget-intents.view.overview",
-				"title": "Viewing Data ",
-				"type": "overview"
-			}, {
-				"key": "cmapi.widget-intents.plot.overview",
-				"title": "Plotting Data ",
-				"type": "overview"
-			}]
-		}, {
-			"key": "",
-			"type": "overview",
-			"title": "Clustering",
-			"children": [{
-				"key": "map.overlay.cluster.overview",
-				"type": "overview",
-				"title": "Background"
-			}, {
-				"key": "map.overlay.cluster.set",
-				"title": "Set Overlay Level Clustering Rule"
-			}, {
-				"key": "map.overlay.cluster.remove",
-				"title": "Remove Overlay Level Clustering Rule"
-			}, {
-				"key": "map.overlay.cluster.activate",
-				"title": "Activate Overlay Level Clustering Rule"
-			}, {
-				"key": "map.overlay.cluster.deactivate",
-				"title": "De-Activate Overlay Level Clustering Rule"
-			}, {
-				"key": "map.overlay.cluster.references",
-				"type": "overview",
-				"title": "Clustering: References"
-			}, {
-				"key": "map.overlay.cluster.replaceableParameters",
-				"type": "overview",
-				"title": "Clustering: Replaceable Parameters"
-			}]
-		}]
-	}, {
-		"key": "",
-		"title": "Appendices",
-		"expanded": true,
-		"folder": true,
-		"children": [{
-			"key": "cmapi.appendix.a",
-			"type": "overview",
-			"title": "A. KML Support"
-		}, {
-			"key": "cmapi.appendix.b",
-			"title": "B. GeoJSON Support"
-		}, {
-			"key": "cmapi.appendix.c",
-			"title": "C. Area of Interest Support"
-		}]
-	}, {
-		"key": "cmapi.acronyms",
-		"type": "overview",
-		"title": "Acronyms"
-	}, {
-		"key": "cmapi.references",
-		"type": "overview",
-		"title": "References"
-	}, {
-		"key": "cmapi.acknowledgements",
-		"type": "overview",
-		"title": "Acknowledgements"
-	}
+    {
+        "key": "",
+        "title": "API Extensions",
+        "folder": true,
+        "expanded": true,
+        "children": [{
+
+            "key": "",
+            "title": "Widget Intents",
+            "type": "overview",
+            "children": [{
+                "key": "cmapi.widget-intents.overview",
+                "type": "overview",
+                "title": "Background"
+            }, {
+                "key": "cmapi.widget-intents.pick.overview",
+                "title": "Picking a Common Map Widget",
+                "type": "overview"
+            }, {
+                "key": "cmapi.widget-intents.view.overview",
+                "title": "Viewing Data ",
+                "type": "overview"
+            }, {
+                "key": "cmapi.widget-intents.plot.overview",
+                "title": "Plotting Data ",
+                "type": "overview"
+            }]
+        }, {
+            "key": "",
+            "type": "overview",
+            "title": "Clustering",
+            "children": [{
+                "key": "map.overlay.cluster.overview",
+                "type": "overview",
+                "title": "Background"
+            }, {
+                "key": "map.overlay.cluster.set",
+                "title": "Set Overlay Level Clustering Rule"
+            }, {
+                "key": "map.overlay.cluster.remove",
+                "title": "Remove Overlay Level Clustering Rule"
+            }, {
+                "key": "map.overlay.cluster.activate",
+                "title": "Activate Overlay Level Clustering Rule"
+            }, {
+                "key": "map.overlay.cluster.deactivate",
+                "title": "De-Activate Overlay Level Clustering Rule"
+            }, {
+                "key": "map.overlay.cluster.references",
+                "type": "overview",
+                "title": "Clustering: References"
+            }, {
+                "key": "map.overlay.cluster.replaceableParameters",
+                "type": "overview",
+                "title": "Clustering: Replaceable Parameters"
+            }]
+        }]
+    }, {
+        "key": "",
+        "title": "Appendices",
+        "expanded": true,
+        "folder": true,
+        "children": [{
+            "key": "cmapi.appendix.a",
+            "type": "overview",
+            "title": "A. KML Support"
+        }, {
+            "key": "cmapi.appendix.b",
+            "title": "B. GeoJSON Support"
+        }, {
+            "key": "cmapi.appendix.c",
+            "title": "C. Area of Interest Support"
+        }]
+    }, {
+        "key": "cmapi.acronyms",
+        "type": "overview",
+        "title": "Acronyms"
+    }, {
+        "key": "cmapi.references",
+        "type": "overview",
+        "title": "References"
+    }, {
+        "key": "cmapi.acknowledgements",
+        "type": "overview",
+        "title": "Acknowledgements"
+    }
 
 ]
