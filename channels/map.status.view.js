@@ -7,13 +7,13 @@ cmapi.channel["map.status.view"] = {
     "properties": {
       "requestor": {
         "type": "string",
-		"default": "N/A",
+		"default": " ",
         "description": "Client that requested this status message be sent (if any). If no requester, message is being sent due to a map view change."
       },
        "bounds": {
         "description": "Bounding box of area visible on map.",
         "type": "object",
-		"default": "N/A",
+		"default": " ",
         "properties": {
           "southWest": {
             "description": "Bottom right of the bounds",
@@ -50,15 +50,15 @@ cmapi.channel["map.status.view"] = {
                 "minimum": "-180",
                 "maximum": "180"
               }
-            }
-          },
-          "required": ["lat", "lon"]
+            },
+			"required": ["lat", "lon"]
+          }
         },
 		"required": ["southWest", "northEast"]
       },
 	  "center": {
         "type": "object",
-		"default": "N/A",
+		"default": " ",
         "description": "The current center of the map",
         "properties": {
           "lat": {
@@ -79,7 +79,7 @@ cmapi.channel["map.status.view"] = {
       "range": {
         "description": "The current distance, in meters, map is zoomed out",
         "type": ["number"],
-		"default": "N/A"
+		"default": " "
       }
     },
     "required": ["bounds", "center", "range"]

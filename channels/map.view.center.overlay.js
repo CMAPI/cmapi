@@ -11,7 +11,7 @@ cmapi.channel["map.view.center.overlay"] = {
 					"default": "sending widget's ID"
                 },
 				"zoom": {
-                    "description": "If “auto,” zoom will adjust to best fit the overlay in the user’s viewable area.  If a number, map will zoom to specified range in meters.  If no zoom attribute is included, no zoom is performed.",
+                    "description": "Attribute that defines the zoom behaviour of the map. If “auto,” zoom will adjust to best fit the overlay in the user’s viewable area.  If a number, map will zoom to specified range in meters.  If no zoom attribute is included, no zoom is performed.",
                     "type": "string",
 					"default": "N/A"
                 }

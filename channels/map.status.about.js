@@ -7,23 +7,24 @@ cmapi.channel["map.status.about"] = {
     "properties": {
       "version": {
         "type": "string",
-		"default": "N/A",
-        "description": "The version numbers of the Common Map Widget API that this map widget supports."
+		"default": " ",
+        "description": "A comma delimited list of the version numbers of the Common Map Widget API that this map widget supports."
       },
       "type": {
+		"type": ["string", "enum"],
         "enum": ["2-D", "3-D", "other"],
-		"default": "N/A",
+		"default": " ",
         "description": "The type of map in the map widget.  Allowable values are “2-D,” “3-D,” or “other.”"
       },
       "widgetName": {
         "type": "string",
-		"default": "N/A",
+		"default": " ",
         "description": "The registered name of the map widget which is consistent across all version of OWF and cannot change during a user’s session. "
       },
       "instanceName": {
         "type": "string",
 		"default": "N/A",
-        "description": "The name of the widget on the users dashboard.  This name can be changed by the user and in code so this name may change during a user’s session.  "
+        "description": "The name of the widget on the users dashboard.  This name can be changed by the end user and by the widget developer in code so this name may change during a user’s session.  "
       },
       "universalName": {
         "type": "string",

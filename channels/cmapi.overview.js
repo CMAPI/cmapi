@@ -41,12 +41,12 @@ cmapi.overview["cmapi.overview"] = {
 	}, {
 		"title": "Features and Feature IDs",
 		"paragraphs": [
-			"Features in the context of this document refer to the discrete pieces of data passed to the API. A feature may be a single marker, polygon, or a complex feature (for example, a KML or GeoJSON Document containing many sub-features). The feature ID used by the API (featureId) refers to the feature ID given when plotting the entire feature. Sub-features also have IDs but their IDs are only used in the map.feature.selected message, which contains the ID of the lowest level feature selected (if available).  Since feature IDs are required to be unique within an overlay, it is recommended to use an approach similar to the OWF channels:  use a hierarchical naming pattern with the levels of the hierarchy separated by a dot (.). To form a unique feature ID, begin with the ID of the widget creating the feature ID. Then, the widget can generate a unique number to complete the feature ID. For example, if generating a feature ID from a widget with the name of “army.bccs.targeter”, the feature ID’s would begin with army.bccs.targeter. "
+			"Features in the context of this document refer to the discrete pieces of data passed to the API. A feature may be a single marker, polygon, or a complex feature (for example, a KML or GeoJSON Document containing many sub-features). The feature ID used by the API (featureId) refers to the feature ID given when plotting the entire feature. Sub-features also have IDs but their IDs are only used in the map.feature.selected message, which contains the ID of the lowest level feature selected (if available).  Since feature IDs are required to be unique within an overlay, it is recommended to use an approach similar to the OWF channels:  use a hierarchical naming pattern with the levels of the hierarchy separated by a dot (.). To form a unique feature ID, begin with the ID of the widget creating the feature ID. Then, the widget can generate a unique number to complete the feature ID. For example, if generating a feature ID from a widget with the name of “army.bccs.targeter”, the feature ID’s would begin with army.bccs.targeter. See Appendix D for more information on how to generate unique IDs."
 		]
 	}, {
 		"title": "Payloads",
 		"paragraphs": [
-			"All Payloads can be either a single object or an array of like objects."
+			"With the exception of the batch channels, all Payloads SHOULD a single message payload object.  If it is desired to send an array of message payload objects in one message event, the applicable batch channel SHOULD to be used.  For backwards compatibility, arrays on any channel MUST still be supported, however arrays on these channels should be considered deprecated.  In future versions of this specification, arrays will only be supported on the batch channels."
 		]
 	},
 	{

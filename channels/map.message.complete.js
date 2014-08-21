@@ -6,12 +6,17 @@ cmapi.channel["map.message.complete"] = {
         "type": "object",
         "properties": {
                   "messageId": {
-                    "description": "An id uniquely identifying this message from the caller.  Taken from the original request message.",
+                    "description": "A globally unique ID that identifies the particular message or message batch that was completed.",
                     "type": "string"
                 },
                 "status": {
                     "description": "A pre-defined string indicating whether the original batch request succeeded, failed, was a mix of successes and failures, or was cancelled.  Allowable values are “success”, “failure”, “mixed”, or “cancelled”.  Failure means the whole batch failed, mixed means that it is a mixture of successes and failures, success means that the whole batch request was successful, and cancelled means the map abandoned processing of the message and remains unchanged",
-                    "enum" : ["success","failure","mixed","cancelled"]
+                    "type": ["array", "enum"],
+					"uniqueItems": true,
+					"default": ["none"],
+					"items": {
+						"anyOf": ["success","failure","mixed","cancelled"]
+					}
                 },
                 "details" : {
                     "type" : "object",
@@ -19,9 +24,11 @@ cmapi.channel["map.message.complete"] = {
                 },
                 "failures" : {
                     "description": "an array of objects that define what, if any, original request message payloads have failed to be executed.  If all message payloads associated with the identified transaction were executed successfully, this MUST return an empty array",
-                    "type" : [
-                        {
-                            "type": "object",
+                    "type" : "array",
+					"properties": {
+						"failureObject": {
+                            "description": "an object that defines a specific failure",
+							"type": "object",
                             "properties": {
                                 "payload" : {
                                     "type" : "object",
@@ -33,7 +40,7 @@ cmapi.channel["map.message.complete"] = {
                                 }
                             }
                         }
-                    ]
+					}
                 }
         },
         "required" : ["failures", "messageId", "status"]

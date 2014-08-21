@@ -34,7 +34,7 @@
                 "title": "Plot Feature"
             },{
                 "key": "map.feature.plot.batch",
-                "title": "Plot a batch of Features"
+                "title": "Plot Feature Batch"
             }, {
                 "key": "map.feature.plot.url",
                 "title": "Plot URL"
@@ -43,7 +43,7 @@
                 "title": "Unplot Feature"
             },{
                 "key": "map.feature.unplot.batch",
-                "title": "Unplot a batch of Features"
+                "title": "Unplot Feature Batch"
             }, {
                 "key": "map.feature.hide",
                 "title": "Hide Feature"
@@ -54,25 +54,17 @@
                 "key": "map.feature.selected",
                 "title": "Feature Selected"
             }, {
+                "key": "map.feature.selected.batch",
+                "title": "Feature Selected Batch"
+            },{
                 "key": "map.feature.deselected",
                 "title": "Feature De-Selected"
             }, {
+                "key": "map.feature.deselected.batch",
+                "title": "Feature DeSelected Batch"
+            },{
                 "key": "map.feature.update",
                 "title": "Update Feature Data"
-            }, {
-                "key": "map.feature.edit",
-                "title": "Edit Feature Data"
-            }, {
-                "key": "map.feature.draw",
-                "title": "Draw Feature Data",
-                "children": [{
-                    "key": "map.feature.draw.progress",
-                    "title": "Message Progress - details object"
-                },
-                {
-                    "key": "map.feature.draw.complete",
-                    "title": "Message Complete - details object"
-                }]
             }]
         }, {
             "key": "",
@@ -132,7 +124,8 @@
         "title": "API Extensions",
         "folder": true,
         "expanded": true,
-        "children": [{
+        "children": [
+		{
 
             "key": "",
             "title": "Widget Intents",
@@ -182,6 +175,38 @@
                 "key": "map.overlay.cluster.replaceableParameters",
                 "type": "overview",
                 "title": "Clustering: Replaceable Parameters"
+            }]
+        },{
+            "key": "",
+            "type": "overview",
+            "title": "User Manipulation Core",
+            "children": [{
+                "key": "userManipulationCore.overview",
+                "type": "overview",
+                "title": "Background"
+            }, {
+                "key": "map.message.complete",
+                "title": "Report Message Processing Results"
+            }, {
+                "key": "map.message.progress",
+                "title": "Report Message Processing Progress"
+            }, {
+                "key": "map.message.cancel",
+                "title": "Report Message Cancellation"
+            }, {
+                "key": "map.feature.edit",
+                "title": "Edit Feature Data"
+            }, {
+                "key": "map.feature.draw",
+                "title": "Draw Feature Data",
+                "children": [{
+                    "key": "map.feature.draw.progress",
+                    "title": "Message Progress - details object"
+                },
+                {
+                    "key": "map.feature.draw.complete",
+                    "title": "Message Complete - details object"
+                }]
             }]
         }]
     }, {
