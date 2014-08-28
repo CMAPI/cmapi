@@ -19,26 +19,36 @@ cmapi.channel["map.overlay.create"] = {
         "type": "string",
         "default": "N/A"
       },
-      "messageId": {
-        "description": "A globally unique ID that identifies a particular message.  This ID SHALL be used for the lifetime of the message and is used to identify map.message.progress and map.message.complete messages that correlate to the original message with the same ID.  When sending a messageId a map that supports the user manipulation extension SHALL send map.message.progress and map.message.complete messages where appropriate.  See the map.message channels under the User Manipulation extension for more information.",
-        "type": "string",
-        "status": "new"
-      },
       "properties": {
         "description": "A free form object that can contain any additional properties the widget wants sent with this item.  Any unsupported properties on this channel should be stored in the properties object to avoid polluting the root payload of the message.  A set of optional standardized values within the properties object MAY be added in future versions.",
         "type": "object",
         "status": "new"
+      },
+      "messageId": {
+        "description": "A globally unique ID that identifies a particular message.  This ID SHALL be used for the lifetime of the message and is used to identify map.message.progress and map.message.complete messages that correlate to the original message with the same ID.  When sending a messageId a map that supports the user manipulation extension SHALL send map.message.progress and map.message.complete messages where appropriate.  See the map.message channels under the User Manipulation extension for more information.",
+        "type": "string",
+        "status": "new",
+        "extension": "User Manipulation - Message Complete"
+      },
+      "menuId": {
+        "description": "The id of a context menu that was registered in map.menu.create.  If populated, when the feature is right-clicked the context menu associated with this id will appear allowing the user to perform custom actions on the feature handled by the widget which registered the context menu.  If no menuId is assigned, the feature will not have a context menu associated when right-clicked.",
+        "type": "string",
+        "status": "new",
+        "extension": "User Manipulation - Context Menus"
       }
     },
     "required": []
   },
   "notes": [],
   "changeLog": [{
-  "version": "1.3.0",
-  "change": "Added optional messageId parameter to support user manipulation extension"
-}, {
-  "version": "1.3.0",
-  "change": "Added optional properties object"
-}]
+    "version": "1.3.0",
+    "change": "Added optional messageId parameter to support user manipulation extension"
+  }, {
+    "version": "1.3.0",
+    "change": "Added optional properties object"
+  }, {
+    "version": "1.3.0",
+    "change": "Added optional menuId parameter"
+  }]
 
 };
