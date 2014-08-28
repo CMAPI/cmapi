@@ -1,5 +1,5 @@
 cmapi.channel["map.feature.plot"] = {
-  schema: {
+  "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.plot",
     "description": "Plots feature data on the map.",
@@ -42,13 +42,38 @@ cmapi.channel["map.feature.plot"] = {
         "description": "Valid values are “true” or “false”. If “true”, then the end user MUST NOT be able to edit the feature from the map’s user interface, if “false” the end user MAY edit the feature from the map’s user interface. Default value is “true”.   If an edit takes place, the map SHOULD dispatch a map.feature.plot with the updated feature to ensure other widgets are aware that a change took place.",
         "type": "boolean",
         "default": true
+      },
+      "messageId": {
+        "description": "A globally unique ID that identifies a particular message.  This ID SHALL be used for the lifetime of the message and is used to identify map.message.progress and map.message.complete messages that correlate to the original message with the same ID.  When sending a messageId a map that supports the user manipulation extension SHALL send map.message.progress and map.message.complete messages where appropriate.  See the map.message channels under the User Manipulation extension for more information.",
+        "type": "string",
+        "status": "new"
+      },
+      "properties": {
+        "description": "A free form object that can contain any additional properties the widget wants sent with this item.  Any unsupported properties on this channel should be stored in the properties object to avoid polluting the root payload of the message.  A set of optional standardized values within the properties object MAY be added in future versions.",
+        "type": "object",
+        "status": "new"
+      },
+      "menuId": {
+        "description": "The id of a context menu that was registered in map.menu.create.  If populated, when the feature is right-clicked the context menu associated with this id will appear allowing the user to perform custom actions on the feature handled by the widget which registered the context menu.  If no menuId is assigned, the feature will not have a context menu associated when right-clicked.",
+        "type": "string",
+        "status": "new"
       }
     },
     "required": ["featureId", "feature"]
   },
-  notes: [
+  "notes": [
     'If using the channel shouter to send a feature, embedded quotes in KML MUST be escaped with a backward slash (that is, use \\" instead of ").',
     'If sending GeoJSON follow the guidance in Appendix B for style information.',
     'When plotting an Area of Interest, the format MUST be “geojson” AND the aoi object defined in Appendix B MUST be included as part of the GeoJSON parameters object.'
-  ]
+  ],
+  "changeLog": [{
+    "version": "1.3.0",
+    "change": "Added optional “messageId” parameter to support user manipulation extension"
+  }, {
+    "version": "1.3.0",
+    "change": "Added optional “properties” object"
+  }, {
+    "version": "1.3.0",
+    "change": "Added optional “menuId” parameter"
+  }]
 };
