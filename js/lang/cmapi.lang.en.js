@@ -6,6 +6,7 @@ cmapi.lang = {
 	REQUIRED : "required",
 	TABLE_HEADER_PROPERTY : "Property",
 	TABLE_HEADER_REQUIRED : "Required",
+	TABLE_HEADER_EXTENSION : "Extension",
 	TABLE_HEADER_TYPE : "Type",
 	TABLE_HEADER_DEFAULT : "Default",
 	TABLE_HEADER_DESCRIPTION : "Description"

@@ -166,10 +166,25 @@ cmapi.channel.renderer = (function () {
 
   // Creates an HTML table for the schema with embedded tables via recursion for properties with sub-properties
   function getObjectTable(obj, output, parent) {
-    var prop, propVal, optional, type, defaultVal, len, i, subProp, j, options, opLen, opt, enums;
+    var prop,
+      propVal,
+      optional,
+      type,
+      defaultVal,
+      len,
+      i,
+      subProp,
+      j,
+      options,
+      opLen,
+      opt,
+      enums,
+      extension = "";
+
     output.push('<table><thead><tr>');
     output.push('<th>' + cmapi.lang.TABLE_HEADER_PROPERTY + '</th>');
     output.push('<th>' + cmapi.lang.TABLE_HEADER_REQUIRED + '</th>');
+    output.push('<th>' + cmapi.lang.TABLE_HEADER_EXTENSION + '</th>');
     output.push('<th>' + cmapi.lang.TABLE_HEADER_TYPE + '</th>');
     output.push('<th>' + cmapi.lang.TABLE_HEADER_DEFAULT + '</th>');
     output.push('<th>' + cmapi.lang.TABLE_HEADER_DESCRIPTION + '</th>');
@@ -177,7 +192,10 @@ cmapi.channel.renderer = (function () {
     // DO NOT wrap in if hasOwnProperty as JSLint may suggest or no properties will get enumerated
     for (prop in obj) {
       propVal = obj[prop];
-
+      extension = "N/A";
+      if (propVal.hasOwnProperty("extension")) {
+        extension = propVal.extension;
+      }
       optional = checkRequired(prop, parent);
       defaultVal = "";
       if (propVal.hasOwnProperty("default")) {
@@ -191,17 +209,18 @@ cmapi.channel.renderer = (function () {
         if ($.isArray(type) && typeof type[0] === "object") {
           output.push(checkStatus(propVal));
           output.push('<td>' + prop + '</td>');
-          output.push('<td >' + optional + '</td>');
+          output.push('<td>' + optional + '</td>');
+          output.push('<td>' + extension + '</td>');
           output.push('<td>' + type + '</td>');
           output.push('<td>' + defaultVal + '</td>');
           output.push('<td>' + propVal.description + '</td>');
           output.push('</tr>');
           output.push('<tr>');
-          output.push('<td colSpan="5">');
+          output.push('<td colSpan="6">');
           len = propVal.type.length;
           for (i = 0; i < len; i++) {
             output.push('<tr>');
-            output.push('<td colSpan="5">');
+            output.push('<td colSpan="6">');
             output.push(getObjectTable(propVal.type[i].properties, output, obj));
             output.push('</td>');
             output.push('</tr>');
@@ -217,11 +236,11 @@ cmapi.channel.renderer = (function () {
 
       if ($.isArray(propVal)) {
         output.push('<tr>');
-        output.push('<td colSpan="5">' + prop + '</td>');
+        output.push('<td colSpan="6">' + prop + '</td>');
         len = propVal.length;
         for (i = 0; i < len; i++) {
           output.push('<tr>');
-          output.push('<td colSpan="5">');
+          output.push('<td colSpan="6">');
           output.push(getObjectTable(propVal[i], output, obj));
           output.push('</td>');
           output.push('</tr>');
@@ -232,6 +251,7 @@ cmapi.channel.renderer = (function () {
         output.push(checkStatus(propVal));
         output.push('<td>' + prop + '</td>');
         output.push('<td>' + optional + '</td>');
+        output.push('<td >' + extension + '</td>');
         output.push('<td>' + type + '</td>');
         output.push('<td>' + defaultVal + '</td>');
         output.push('<td>' + propVal.description + '</td>');
@@ -240,7 +260,7 @@ cmapi.channel.renderer = (function () {
           subProp = propVal.properties;
 
           output.push('<tr>');
-          output.push('<td colSpan="5">');
+          output.push('<td colSpan="6">');
           output.push(getObjectTable(subProp, output, propVal));
           output.push('</td>');
           output.push('</tr>');
@@ -249,7 +269,7 @@ cmapi.channel.renderer = (function () {
           options = propVal.oneOf;
           opLen = options.length;
           output.push('<tr>');
-          output.push('<td colSpan="5">');
+          output.push('<td colSpan="6">');
           output.push('One Of: <br/>');
           for (j = 0; j < opLen; j++) {
             opt = options[j].properties;
