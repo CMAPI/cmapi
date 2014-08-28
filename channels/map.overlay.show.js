@@ -12,7 +12,8 @@ cmapi.channel["map.overlay.show"] = {
       "messageId": {
         "description": "A globally unique ID that identifies a particular message.  This ID SHALL be used for the lifetime of the message and is used to identify map.message.progress and map.message.complete messages that correlate to the original message with the same ID.  When sending a messageId a map that supports the user manipulation extension SHALL send map.message.progress and map.message.complete messages where appropriate.  See the map.message channels under the User Manipulation extension for more information.",
         "type": "string",
-        "status": "new"
+        "status": "new",
+        "extension": "User Manipulation - Message Complete"
       },
     },
     "required": []
