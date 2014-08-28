@@ -169,7 +169,7 @@ body table tr {
 }
 
 body table tr:nth-child(2n) {
-  background-color: #f8f8f8;
+  /*background-color: #f8f8f8;*/
 }
 
 body table tr th {
@@ -313,4 +313,12 @@ body .highlight pre, pre {
 body pre code, pre tt {
   background-color: transparent;
   border: none;
+}
+
+.updatedContent {
+  background-color: #FBFB74;
+}
+
+.newContent {
+  background-color: #A5E471;
 }

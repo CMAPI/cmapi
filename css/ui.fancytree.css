@@ -478,8 +478,8 @@ span.fancytree-focused span.fancytree-title {
   font-style: italic;
 }
 .fancytree-active span.fancytree-title {
-  background-color: #3169C6 !important;
-  color: white !important;
+  background-color: #ACACAC !important;
+  color: black !important;
 }
 /*******************************************************************************
  * 'table' extension
@@ -491,7 +491,7 @@ table.fancytree-ext-table tbody tr.fancytree-focused {
   background-color: #99DEFD;
 }
 table.fancytree-ext-table tbody tr.fancytree-active {
-  background-color: royalblue;
+  background-color: #ACACAC;
 }
 table.fancytree-ext-table tbody tr.fancytree-selected {
   background-color: #99FDDE;
