@@ -32,12 +32,14 @@ cmapi.channel.renderer = (function () {
   }
 
   function checkRequired(prop, schema) {
-    var i, len, returnValue = "optional";
+    var i,
+      len,
+      returnValue = cmapi.lang.OPTIONAL;
     if (schema.required) {
       len = schema.required.length;
       for (i = 0; i < len; i++) {
         if (prop === schema.required[i]) {
-          returnValue = 'required';
+          returnValue = cmapi.lang.REQUIRED;
           break;
         }
       }
@@ -46,7 +48,7 @@ cmapi.channel.renderer = (function () {
   }
 
   function getValidationErrorString(valError) {
-    var message = "The example has failed to validate:  ",
+    var message = cmapi.lang.MESSAGE_VALIDATION_FAILURE,
       i;
     for (i = 0; i < valError.errors.length; i = 1 + i) {
       message += "\n " + valError.errors[i].message + " " + valError.errors[i].dataPath;
@@ -134,7 +136,7 @@ cmapi.channel.renderer = (function () {
   function validate(payload, schema) {
     var response = {
         valid: true,
-        message: "Valid CMAPI Payload"
+        message: cmapi.lang.MESSAGE_VALIDATION_SUCCESS
       },
       valid = tv4.validateMultiple(payload, schema);
 
@@ -145,7 +147,7 @@ cmapi.channel.renderer = (function () {
     return response;
   }
 
-  // checks is channel is updated or new, returns
+  // checks if channel is updated or new, returns tr with propper css class to highlight the row
   function checkStatus(property) {
     var trValue = "<tr>";
     if (property !== undefined && property !== null && property.hasOwnProperty("status")) {
@@ -162,10 +164,17 @@ cmapi.channel.renderer = (function () {
 
   }
 
+  // Creates an HTML table for the schema with embedded tables via recursion for properties with sub-properties
   function getObjectTable(obj, output, parent) {
     var prop, propVal, optional, type, defaultVal, len, i, subProp, j, options, opLen, opt, enums;
-    output.push('<table><thead><tr><th>Property</th><th>Required</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody>');
-
+    output.push('<table><thead><tr>');
+    output.push('<th>' + cmapi.lang.TABLE_HEADER_PROPERTY + '</th>');
+    output.push('<th>' + cmapi.lang.TABLE_HEADER_REQUIRED + '</th>');
+    output.push('<th>' + cmapi.lang.TABLE_HEADER_TYPE + '</th>');
+    output.push('<th>' + cmapi.lang.TABLE_HEADER_DEFAULT + '</th>');
+    output.push('<th>' + cmapi.lang.TABLE_HEADER_DESCRIPTION + '</th>');
+    output.push('</tr></thead><tbody>');
+    // DO NOT wrap in if hasOwnProperty as JSLint may suggest or no properties will get enumerated
     for (prop in obj) {
       propVal = obj[prop];
 
@@ -180,8 +189,6 @@ cmapi.channel.renderer = (function () {
           type = "Array";
         }
         if ($.isArray(type) && typeof type[0] === "object") {
-          //output.push('<tr>');
-          //output.push('<td colSpan="5">' + prop + '</td>');
           output.push(checkStatus(propVal));
           output.push('<td>' + prop + '</td>');
           output.push('<td >' + optional + '</td>');
@@ -260,7 +267,7 @@ cmapi.channel.renderer = (function () {
     output.push('</tbody></table>');
   }
 
-
+  //Creates the overall HTML template to render to page
   function render(link, channelDef) {
 
     var output = [],
@@ -290,6 +297,7 @@ cmapi.channel.renderer = (function () {
 
       output.push('<pre><code class="javascript">');
       output.push('{');
+      // DO NOT wrap in if hasOwnProperty as JSLint may suggest or no properties will get enumerated
       for (prop in schema.properties) {
         if (i > 0) {
           output.push(", ");
