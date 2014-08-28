@@ -28,10 +28,10 @@
       }]
     }, {
       "key": "",
-      "title": "Feature Channels",
+      "title": "Feature Channels - <span class='updatedContent'>UPDATED</span>",
       "children": [{
         "key": "map.feature.plot",
-        "title": "Plot Feature"
+        "title": "Plot Feature - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.feature.plot.batch",
         "title": "Plot Feature Batch - <span class='newContent'>NEW</span>"
@@ -64,7 +64,7 @@
         "title": "Feature DeSelected Batch - <span class='newContent'>NEW</span>"
       }, {
         "key": "map.feature.update",
-        "title": "Update Feature Data"
+        "title": "Update Feature Data - <span class='updatedContent'>UPDATED</span>"
       }]
     }, {
       "key": "",
@@ -92,26 +92,24 @@
       "key": "",
       "title": "Map Status Channels - <span class='updatedContent'>UPDATED</span>",
       "children": [{
-          "key": "map.status.request",
-          "title": "Request Map Status - <span class='updatedContent'>UPDATED</span>"
-        },
-        {
-          "key": "map.status.view",
-          "title": "Map View Status"
-        }, {
-          "key": "map.status.format",
-          "title": "Map Format Status"
-        }, {
-          "key": "map.status.about",
-          "title": "Map About Status"
-        }, {
-          "key": "map.status.selected",
-          "title": "Map Selected Status"
-        }, {
-          "key": "map.status.initialization",
-          "title": "Map Initialization Status - <span class='newContent'>NEW</span>"
-        }
-      ]
+        "key": "map.status.request",
+        "title": "Request Map Status - <span class='updatedContent'>UPDATED</span>"
+      }, {
+        "key": "map.status.view",
+        "title": "Map View Status"
+      }, {
+        "key": "map.status.format",
+        "title": "Map Format Status"
+      }, {
+        "key": "map.status.about",
+        "title": "Map About Status"
+      }, {
+        "key": "map.status.selected",
+        "title": "Map Selected Status"
+      }, {
+        "key": "map.status.initialization",
+        "title": "Map Initialization Status - <span class='newContent'>NEW</span>"
+      }]
     }, {
       "key": "map.error",
       "title": "Map Errors"
@@ -181,41 +179,65 @@
       "key": "",
       "type": "overview",
       "title": "User Manipulation - <span class='newContent'>NEW</span>",
-      "status": "new",
+
       "children": [{
         "key": "userManipulationCore.overview",
         "type": "overview",
         "title": "Background",
         "status": "new"
       }, {
-        "key": "map.message.complete",
-        "title": "Report Message Processing Results - <span class='newContent'>NEW</span>",
-        "status": "new"
-      }, {
-        "key": "map.message.progress",
-        "title": "Report Message Processing Progress - <span class='newContent'>NEW</span>",
-        "status": "new"
-      }, {
-        "key": "map.message.cancel",
-        "title": "Report Message Cancellation - <span class='newContent'>NEW</span>",
-        "status": "new"
-      }, {
-        "key": "map.feature.edit",
-        "title": "Edit Feature Data - <span class='newContent'>NEW</span>",
-        "status": "new"
-      }, {
-        "key": "map.feature.draw",
-        "title": "Draw Feature Data - <span class='newContent'>NEW</span>",
-        "status": "new",
+        "title": "Message Progress, Complete, and Cancel - <span class='newContent'>NEW</span>",
         "children": [{
-          "key": "map.feature.draw.progress",
-          "title": "Message Progress - details object - <span class='newContent'>NEW</span>",
+          "key": "map.message.complete",
+          "title": "Report Message Processing Results - <span class='newContent'>NEW</span>",
           "status": "new"
         }, {
-          "key": "map.feature.draw.complete",
-          "title": "Message Complete - details object - <span class='newContent'>NEW</span>",
+          "key": "map.message.progress",
+          "title": "Report Message Processing Progress - <span class='newContent'>NEW</span>",
           "status": "new"
+        }, {
+          "key": "map.message.cancel",
+          "title": "Report Message Cancellation - <span class='newContent'>NEW</span>"
         }]
+      }, {
+        "title": "Feature Drawing and Editing - <span class='newContent'>NEW</span>",
+
+        "children": [{
+          "key": "map.feature.edit",
+          "title": "Edit Feature Data - <span class='newContent'>NEW</span>",
+          "children": [{
+            "key": "map.feature.edit.progress",
+            "title": "Message Progress - details object - <span class='newContent'>NEW</span>"
+          }, {
+            "key": "map.feature.edit.complete",
+            "title": "Message Complete - details object - <span class='newContent'>NEW</span>"
+          }]
+        }, {
+          "key": "map.feature.draw",
+          "title": "Draw Feature Data - <span class='newContent'>NEW</span>",
+          "children": [{
+            "key": "map.feature.draw.progress",
+            "title": "Message Progress - details object - <span class='newContent'>NEW</span>"
+          }, {
+            "key": "map.feature.draw.complete",
+            "title": "Message Complete - details object - <span class='newContent'>NEW</span>"
+          }]
+        }]
+      }, {
+        "title": "Context Menus - <span class='newContent'>NEW</span>",
+        "children": [{
+          "key": "map.menu.create",
+          "title": "Create a context menu - <span class='newContent'>NEW</span>"
+        }, {
+          "key": "map.menu.clicked",
+          "title": "Menu Clicked Event - <span class='newContent'>NEW</span>"
+        }, {
+          "key": "map.menu.remove",
+          "title": "Remove Menu - <span class='newContent'>NEW</span>"
+        }]
+      }, {
+        "key": "map.get",
+        "title": "Query for Overlay / Feature data - <span class='newContent'>NEW</span>"
       }]
     }]
   }, {
