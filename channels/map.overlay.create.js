@@ -33,5 +33,12 @@ cmapi.channel["map.overlay.create"] = {
     "required": []
   },
   "notes": [],
-  "changeLog": [{"version": "1.3.0", "change" : "Added optional messageId parameter to support user manipulation extension"}]
-}
+  "changeLog": [{
+  "version": "1.3.0",
+  "change": "Added optional messageId parameter to support user manipulation extension"
+}, {
+  "version": "1.3.0",
+  "change": "Added optional properties object"
+}]
+
+};
