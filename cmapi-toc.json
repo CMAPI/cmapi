@@ -238,6 +238,10 @@
       }, {
         "key": "map.get",
         "title": "Query for Overlay / Feature data - <span class='newContent'>NEW</span>"
+      },
+      {
+        "key": "map.view.area.selected",
+        "title": "Dispatch an Area Selection - <span class='newContent'>NEW</span>"
       }]
     }]
   }, {
