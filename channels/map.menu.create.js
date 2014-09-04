@@ -14,35 +14,34 @@ cmapi.channel["map.menu.create"] = {
         "type": "string"
       },
       "menuType": {
-        "description": "A value indicating the type of the menu.  The options are:<ol><li>mapglobal -  Menu with items applicable to the map.  These items will show in a cumulative list of all map menus / menuItems when the map is right-clicked</li><li>overlayglobal - Menu with items applicable to all overlays</li><li>featureglobal - Menu with items applicable to all features</li><li>objectinstance - Menu only applicable to the feature(s) or overlay(s) that it is assigned to during a map.feature.plot or map.overlay.create</li>",
+        "description": "A value indicating the type of the menu.  The options are:<ol><li>mapglobal -  Menu with items applicable to the map.  These items will show in a cumulative list of all map menus / menuItems when the map is right-clicked</li><li>overlayglobal - Menu with items applicable to all overlays</li><li>featureglobal - Menu with items applicable to all features</li><li>submenu - Menu that is used as a sub menu to another menu.</li></ol>",
         "enum": ['mapglobal',
           'overlayglobal',
           'featureglobal',
-          'objectinstance'
+          'objectinstance',
+          'submenu'
         ]
       },
       "menuItems": {
-        "description": "A globally unique ID that identifies a particular message.  This ID SHALL be used for the lifetime of the message and is used to identify map.message.progress and map.message.complete messages that correlate to the original message with the same ID.  When sending a messageId a map that supports the user manipulation extension SHALL send map.message.progress and map.message.complete messages where appropriate.  See the map.message channels under the User Manipulation extension for more information.",
-        "type": "object",
-        "properties": {
-          "menuItemId": {
-            "type": "string",
-            "description": "Unique ID used to correlate a map.menu.clicked message with this particluar menu item.  This ID MUST only be unique within this menu"
-          },
-          "label": {
-            "type": "string",
-            "description": "The visible label assigned to an item in the context menu"
-          },
-          "iconUrl": {
-            "type": "string",
-            "description": "A URL to a specific icon that MAY be displayed next to the item in the context menu"
-
-          },
-          "active": {
-            "type": "boolean",
-            "description": "A Boolean value which determines whether a menu item is active or not, default is true",
-            "default": true
-          }
+        "description": "This is an array of menu items.",
+        "type": "array",
+        "items":{
+            "type":"object",
+            "properties": {
+                "menuItemId": {
+                  "type": "string",
+                  "description": "Unique ID used to correlate a map.menu.clicked message with this particluar menu item.  This ID MUST only be unique within this menu"
+                },
+                "label": {
+                  "type": "string",
+                  "description": "The visible label assigned to an item in the context menu"
+                },
+                "iconUrl": {
+                  "type": "string",
+                  "description": "A URL to a specific icon that MAY be displayed next to the item in the context menu"
+                }
+            },
+            "additionalItems": true
         },
         "required": ["menuItemId", "label"]
       },
