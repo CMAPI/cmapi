@@ -33,12 +33,12 @@ cmapi.channel["map.feature.draw"] = {
         "required": ["featureId", "messageId"]
     },
     notes: [
-        "If a map or a widget initiates a draw it SHALL issue a map.feature.draw message with a messageId.",
-        "The Map SHALL respond to a widget's map.feature.draw message with a map.message.progress messsage with the messageId provided by the map.feature.draw with all the pertient properties set to there initial value. This SHASLL indicate to client widgets that the draw operation has started.",
+        "A widget initiates a draw it SHALL issue a map.feature.draw message with a messageId.",
+        "As soon as the map is placed in draw mode, the Map SHALL issue a map.message.progress messsage with the messageId provided by the map.feature.draw request, This message SHALL contain all the pertient properties set to there initial value. This SHASLL indicate to client widgets that the draw operation has started.",
         "A map SHALL send a map.message.progress message each time user adds to or modifies points/vertices. The messageId provided in the map.message.progress message SHALL match the message id from the original map.feature.draw message.  As the user inputs points the items SHALL be rendered on the map.",
-        "While the map is in an edit state, it SHOULD ignore messages that manipulate the map view, such as map.view.set, to allow the user to focus on the drawing operation without the map view shifting on them.",
+        "While the map is in a draw state, it SHOULD ignore messages that manipulate the map view, such as map.view.set, to allow the user to focus on the drawing operation without the map view shifting on them.",
         "A map SHALL initiate a map.message.complete message upon completion of the draw.   The map SHALL continue to display the feature that was drawn.",
-        "A map SHALL issue a map.feature.plot upon the completion of the draw to notify all widgets listening that a new feature has been generated.  The intent is that widgets outside of the widget issuing the draw message  will not be aware of the new feature until it has completely drawn",
+        "A map SHALL issue a map.feature.plot upon the completion of the draw to notify all widgets listening that a new feature has been generated.  The intent is that widgets outside of the widget issuing the draw message will not be aware of the new feature until it has completely drawn",
         "A widget MAY issue a map.message.cancel message if the user wishes to cancel a draw.  The drawing SHALL be removed from the map and the map SHALL send the map.message.complete message indicating the draw has been canceled.",
         "The map user interface MAY allow the user to cancel the drawing in which case the drawing SHALL be removed from the map and the map SHALL send the map.message.complete message indicating the draw has been canceled."
     ]
