@@ -40,7 +40,7 @@ cmapi.channel["map.feature.edit.progress"] = {
                 },
                 "coordinates":{
                     "type": "array",
-                    "description": "This field is an array of coordinate object {lat: number, lon: number, [alt: number]}."
+                    "description": "This field is an array of all the objects coordiantes. Each coordinate object is as follows {lat: number, lon: number, [alt: number]}."
                 }
             }
         }
