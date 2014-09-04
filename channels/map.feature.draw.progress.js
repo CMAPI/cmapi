@@ -52,7 +52,7 @@ cmapi.channel["map.feature.draw.progress"] = {
     "required": ["featureId", "overlayId"]
   },
   "notes": [
-    "This is the format of the dtails object to be used in a map.message.progress event for feature drawing."
+    "This is the format of the details object to be used in a map.message.progress event for feature drawing."
   ],
   "changeLog": [{
     "version": "1.3.0",
