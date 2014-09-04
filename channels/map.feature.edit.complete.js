@@ -25,17 +25,12 @@ cmapi.channel["map.feature.edit.complete"] = {
         "type": "string",
         "description": "Type of feature data based on the map.feature.plot type"
       },
-      "updates": {
+      "coordinates": {
         "type": "array",
-        "description": "Array of vertice locations that have been changed, added, or removed"
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies a particular message.  This ID SHALL be used for the lifetime of the message and is used to identify map.message.progress and map.message.complete messages that correlate to the original message with the same ID.  When sending a messageId a map that supports the user manipulation extension SHALL send map.message.progress and map.message.complete messages where appropriate.  See the map.message channels under the User Manipulation extension for more information.",
-        "type": "string",
-        "status": "new"
+        "description": "Array of objects which represent vertice locations associated with the object edited. Each object in the array is of the form {lat: number, lon: number, [alt: number]}."
       }
     },
-    "required": ["featureId", "messageId"]
+    "required": ["featureId", "overlayId"]
   },
   "notes": [
     "This is the format of the dtails object to be used in a map.message.progress event for feature editing."
