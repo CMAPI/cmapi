@@ -2,7 +2,7 @@ cmapi.channel["map.feature.selected.batch"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.selected.batch",
-    "description": "“Select,” or report that a collection of feature objects were selected.",
+    "description": "Select, or report that a collection of feature objects were selected.",
     "type": "object",
     "properties": {
       "payloads": {
@@ -10,7 +10,7 @@ cmapi.channel["map.feature.selected.batch"] = {
         "type": "Array"
       },
       "overlayId": {
-        "description": "The default overlayId to be applied to all map.feature.selected objects in the payloads array that don’t include an overlayId. I.e., similar behavior to CSS.  See map.feature.selected for more details",
+        "description": "The default overlayId to be applied to all map.feature.selected objects in the payloads array that don't include an overlayId. I.e., similar behavior to CSS.  See map.feature.selected for more details",
         "type": "string",
         "default": ""
       },
