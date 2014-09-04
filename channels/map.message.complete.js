@@ -9,6 +9,10 @@ cmapi.channel["map.message.complete"] = {
                 "description": "A globally unique ID that identifies the particular message or message batch that was completed.",
                 "type": "string"
             },
+            "originatingChannel":{
+                "type": "string",
+                "description": "This property SHALL contain the channel name of the request being canceled. It is intended to provide guidance ar to the content of the details property."
+            },
             "status": {
                 "description": "A pre-defined string indicating whether the original batch request succeeded, failed, was a mix of successes and failures, or was cancelled.  Allowable values are â€œsuccessâ€?, â€œfailureâ€?, â€œmixedâ€?, or â€œcancelledâ€?.  Failure means the whole batch failed, mixed means that it is a mixture of successes and failures, success means that the whole batch request was successful, and cancelled means the map abandoned processing of the message and remains unchanged",
                 "type": "enum",
