@@ -4,11 +4,6 @@ cmapi.channel["map.menu.clicked"] = {
     "title": "map.menu.clicked",
     "description": "Called by the map after a context menu item is clicked to notify the widget which registered the context menu to take action.",
     "properties": {
-      "name": {
-        "description": "The name of the overlay. If not included, the ID is used as the name. Note that overlay names do not have to be unique and are intended for display purposes only.",
-        "type": "string",
-        "default": "N/A"
-      },
       "menuId": {
         "description": "The unique ID of the menu.  This ID can be used to associate a menu with a feature in a map.feature.plot message.",
         "type": "string"
