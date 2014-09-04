@@ -48,12 +48,12 @@ cmapi.channel["map.feature.update"] = {
   "notes": ["For updates to a feature's geometry or other properties no covered in the update channel, a map.feature.plot with the same overlayId and feature Id should be used to replace an existing feature."],
   "changeLog": [{
     "version": "1.3.0",
-    "change": "Added optional “messageId” parameter to support user manipulation extension"
+    "change": "Added optional messageId parameter to support user manipulation extension"
   }, {
     "version": "1.3.0",
-    "change": "Added optional “properties” object"
+    "change": "Added optional properties object"
   }, {
     "version": "1.3.0",
-    "change": "Added optional “menuId” parameter"
+    "change": "Added optional menuId parameter"
   }]
 };
