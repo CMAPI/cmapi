@@ -9,6 +9,10 @@ cmapi.channel["map.message.progress"] = {
                 "description": "A globally unique ID that identifies the particular message or message batch that progress is being reported on.",
                 "type": "string"
             },
+            "originatingChannel":{
+                "type": "string",
+                "description": "This property SHALL contain the channel name of the request being canceled. It is intended to provide guidance ar to the content of the details property."
+            },
             "details" : {
                 "type" : "object",
                 "description" : "An object whose details are specific to the original requesting channel/message.  Go to the specific channel definition for details of what this object should look like"
