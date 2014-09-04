@@ -11,7 +11,7 @@ cmapi.channel["map.message.progress"] = {
             },
             "originatingChannel":{
                 "type": "string",
-                "description": "This property SHALL contain the channel name of the request. It is intended to provide guidance ar to the content of the details property."
+                "description": "This property SHALL contain the channel name of the original request. It is intended to provide guidance as to the content of the details property."
             },
             "details" : {
                 "type" : "object",
