@@ -34,16 +34,41 @@ cmapi.channel["map.feature.draw.progress"] = {
             "description": "This object contains the details of the changes made during the draw operation.",
             "properties": {
                 "type":{
-                    "type": "enum",
                     "enum": ["add", "update", "remove"],
                     "description": "This field identifies the operation performed."
                 },
                 "indices":{
                     "type": "array",
+                    "items":{
+                        "type": "integer"
+                    },
+                    "additionalItems": true,
                     "description": "This field is an array of integer indexes identifying the coordinates affected. This array can be empty if the operation applies to property other than a coordinate."
                 },
                 "coordinates":{
                     "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "lat":{
+                                "type": "number",
+                                "maximum": 90.0,
+                                "minimum": -90.0,
+                                "description": "The latitude component of the coordinate."
+                            },
+                            "lon":{
+                                "type": "number",
+                                "maximum": 180.0,
+                                "minimum": -180.0,
+                                "description": "The longitude component of the coordinate."
+                            },
+                            "alt":{
+                                "type": "number",
+                                "description": "The optional altitude component of the coordinate."
+                            }
+                        }
+                    },
+                    "additionalItems": true,
                     "description": "This field is an array of all the objects coordiantes. Each coordinate object is as follows {lat: number, lon: number, [alt: number]}."
                 }
             }
