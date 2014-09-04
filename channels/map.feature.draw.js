@@ -34,7 +34,7 @@ cmapi.channel["map.feature.draw"] = {
     },
     notes: [
         "If a map or a widget initiates a draw it SHALL issue a map.feature.draw message with a messageId.",
-        "The Map SHALL respond to a widget's map.feature.draw message with a map.message.progress messsage with the messageId provided by the map.feature.draw with the type property of the progress message’s details object set to “start”.",
+        "The Map SHALL respond to a widget's map.feature.draw message with a map.message.progress messsage with the messageId provided by the map.feature.draw with all the pertient properties set to there initial value. This SHASLL indicate to client widgets that the draw operation has started.",
         "A map SHALL send a map.message.progress message each time user adds to or modifies points/vertices. The messageId provided in the map.message.progress message SHALL match the message id from the original map.feature.draw message.  As the user inputs points the items SHALL be rendered on the map.",
         "While the map is in an edit state, it SHOULD ignore messages that manipulate the map view, such as map.view.set, to allow the user to focus on the drawing operation without the map view shifting on them.",
         "A map SHALL initiate a map.message.complete message upon completion of the draw.   The map SHALL continue to display the feature that was drawn.",
