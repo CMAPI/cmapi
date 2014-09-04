@@ -6,7 +6,7 @@ cmapi.channel["map.feature.plot"] = {
     "type": "object",
     "properties": {
       "overlayId": {
-        "description": "The ID of the overlay this feature should be loaded into. If an overlay with this ID already exists, the new feature is merged into existing overlay; otherwise, a new overlay is created. If no overlayId is included, default overlay with ID equal to sending widget’s ID is used. If an overlay exists, it will retain its status (whether visible or hidden). If an overlay is created, it will be made visible.",
+        "description": "The ID of the overlay this feature should be loaded into. If an overlay with this ID already exists, the new feature is merged into existing overlay; otherwise, a new overlay is created. If no overlayId is included, default overlay with ID equal to sending widget's ID is used. If an overlay exists, it will retain its status (whether visible or hidden). If an overlay is created, it will be made visible.",
         "type": "string",
         "default": "sending widget's ID"
       },
@@ -21,7 +21,7 @@ cmapi.channel["map.feature.plot"] = {
         "default": "N/A"
       },
       "format": {
-        "description": "Data format of the given feature. All map implementations MUST support “kml” and “geojson”.  If no format is specified, the format defaults to “kml.” A list of formats supported by a particular map implementation may be obtained by querying the map using the map.status channel (see map.status).",
+        "description": "Data format of the given feature. All map implementations MUST support “kml�? and “geojson�?.  If no format is specified, the format defaults to “kml.�? A list of formats supported by a particular map implementation may be obtained by querying the map using the map.status channel (see map.status).",
         "type": "string",
         "default": "kml"
       },
@@ -39,7 +39,7 @@ cmapi.channel["map.feature.plot"] = {
         "default": false
       },
       "readOnly": {
-        "description": "Valid values are “true” or “false”. If “true”, then the end user MUST NOT be able to edit the feature from the map’s user interface, if “false” the end user MAY edit the feature from the map’s user interface. Default value is “true”.   If an edit takes place, the map SHOULD dispatch a map.feature.plot with the updated feature to ensure other widgets are aware that a change took place.",
+        "description": "Valid values are “true�? or “false�?. If “true�?, then the end user MUST NOT be able to edit the feature from the map’s user interface, if “false�? the end user MAY edit the feature from the map’s user interface. Default value is “true�?.   If an edit takes place, the map SHOULD dispatch a map.feature.plot with the updated feature to ensure other widgets are aware that a change took place.",
         "type": "boolean",
         "default": true
       },
@@ -64,16 +64,16 @@ cmapi.channel["map.feature.plot"] = {
   "notes": [
     'If using the channel shouter to send a feature, embedded quotes in KML MUST be escaped with a backward slash (that is, use \\" instead of ").',
     'If sending GeoJSON follow the guidance in Appendix B for style information.',
-    'When plotting an Area of Interest, the format MUST be “geojson” AND the aoi object defined in Appendix B MUST be included as part of the GeoJSON parameters object.'
+    'When plotting an Area of Interest, the format MUST be “geojson�? AND the aoi object defined in Appendix B MUST be included as part of the GeoJSON parameters object.'
   ],
   "changeLog": [{
     "version": "1.3.0",
-    "change": "Added optional “messageId” parameter to support user manipulation extension"
+    "change": "Added optional “messageId�? parameter to support user manipulation extension"
   }, {
     "version": "1.3.0",
-    "change": "Added optional “properties” object"
+    "change": "Added optional “properties�? object"
   }, {
     "version": "1.3.0",
-    "change": "Added optional “menuId” parameter"
+    "change": "Added optional “menuId�? parameter"
   }]
 };
