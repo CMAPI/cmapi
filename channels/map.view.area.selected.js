@@ -2,7 +2,7 @@ cmapi.channel["map.view.area.selected"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.area.selected",
-    "description": "Send a message indicating the user has drag selected a rectangular area (bbox) on the map.  This can be used to notify widgets that the user is interested in this particular ae of the current view.",
+    "description": "Send a message indicating the user has drag selected a rectangular area (bbox) on the map.  This can be used to notify widgets that the user is interested in this particular area of the current view.",
     "type": "object",
     "properties": {
       "bounds": {
@@ -52,13 +52,13 @@ cmapi.channel["map.view.area.selected"] = {
         "required": ["southWest", "northEast"]
       },
       "button": {
-        "description": "Which mouse button was clicked.  Allowable values are “right,” “left,” and “middle.”  For backwards compatibility, if this attribute is not populated it MUST be treated as a left mouse click the same as if it were populated with “left.”",
+        "description": "Which mouse button was clicked.  Allowable values are right, left, and middle.  For backwards compatibility, if this attribute is not populated it MUST be treated as a left mouse click the same as if it were populated with left.",
         "type": ["string", "enum"],
         "enum": ["left", "middle", "right"],
         "default": "left"
       },
       "keys": {
-        "description": "An array of keys pressed during the click event.  Allowable values are “alt,” “ctrl,” “shift,” and “none.” For backwards compatibility, if this attribute is not populated it MUST be assumed that no additional keys were pressed and behave the same way as if it were populated with “none.”",
+        "description": "An array of keys pressed during the click event.  Allowable values are alt, ctrl, shift, and none. For backwards compatibility, if this attribute is not populated it MUST be assumed that no additional keys were pressed and behave the same way as if it were populated with none.",
         "type": ["array", "enum"],
         "uniqueItems": true,
         "default": ["none"],
