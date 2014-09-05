@@ -30,32 +30,6 @@ cmapi.channel["map.status.about"] = {
           "default": "N/A",
           "description": "The universal name of the map widget set in the widget registration.  This is not available in all versions of OWF."
         },
-        "formats":{
-            "type":"array",
-            "items":{
-                "type":"object",
-                "properties":{
-                    "format":{
-                        "type": "string",
-                        "description": "This contans the format supported."
-                    },
-                    "supportedOperations":{
-                        "type": "array",
-                        "items":{
-                            "properties":{
-                                "enum": ["plot", "draw", "edit"],
-                                "description": "<ol><li>plot - The map engine supports ploting an object of this format.</li><li>draw - The map engine supports drawing an obect of this format.</li><li>edit - The map engine supports editing objects of theis format.</li></ol>"
-                            }
-                        },
-                        "uniqueItems": true,
-                        "minItems": 1,
-                        "maxItems": 3
-                    }
-                }
-            },
-            "minItems": 1,
-            "description": "An array of formats supported by the current map engine implementation."
-        },
         "extensions": {
           "description": "An array of optional extensions that the widget supports.  Allowable values are intents, clustering, and userManipulation.  If no extensions are supported, then an empty array SHALL be sent.",
           "type": ["array", "enum"],
