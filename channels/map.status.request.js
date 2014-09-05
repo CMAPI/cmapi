@@ -11,7 +11,13 @@ cmapi.channel["map.status.request"] = {
         "default": "N/A",
         "uniqueItems": true,
         "anyOf": ["view", "about", "format", "selected", "initialization"]
-      }
+      },
+      "messageId": {
+        "description": "A globally unique ID that identifies a particular message.  This ID SHALL be used for the lifetime of the message and is used to identify the response of the request. The map SHALL not issue a map.message.complete messages.",
+        "type": "string",
+        "status": "new",
+        "extension": "User Manipulation - Message Complete"
+      },
     },
     "required": []
   },
