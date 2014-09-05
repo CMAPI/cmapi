@@ -38,6 +38,12 @@ cmapi.channel["map.status.about"] = {
           "items": {
             "anyOf": ["intents", "clustering", "userManipulation", "selected", null]
           }
+        },
+        "messageId": {
+          "description": "This ID that should match the ID provided in the map.status.request message.",
+          "type": "string",
+          "status": "new",
+          "extension": "User Manipulation - Message Complete"
         }
     },
     "required": ["version", "type", "widgetName", "extensions"]
