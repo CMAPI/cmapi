@@ -8,7 +8,7 @@ cmapi.channel["map.view.center.bounds"] = {
       "bounds": {
         "description": "Bounding box of area to be centered in map.",
         "type": "object",
-		"default": " ",
+        "default": " ",
         "properties": {
           "southWest": {
             "description": "Bottom right of the bounds",
@@ -46,15 +46,15 @@ cmapi.channel["map.view.center.bounds"] = {
                 "maximum": "180"
               }
             },
-			"required": ["lat", "lon"]
+            "required": ["lat", "lon"]
           }
         },
-		"required": ["southWest", "northEast"]
+        "required": ["southWest", "northEast"]
       },
       "zoom": {
-        "description": "Attribute that defines the zoom behaviour of the map. If “auto,” map will adjust to zoom as close as possible to the given location in the user's viewable area. If a number, map will zoom to specified range in meters. If no zoom attribute is included, no zoom is performed.",
+        "description": "Attribute that defines the zoom behaviour of the map. If auto, map will adjust to zoom as close as possible to the given location in the user's viewable area. If a number, map will zoom to specified range in meters. If no zoom attribute is included, no zoom is performed.",
         "type": ["string", "number"],
-		"default": " "
+        "default": " "
       }
     },
     "required": ["bounds"]
