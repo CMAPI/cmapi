@@ -55,6 +55,12 @@ cmapi.channel["map.view.center.bounds"] = {
         "description": "Attribute that defines the zoom behaviour of the map. If auto, map will adjust to zoom as close as possible to the given location in the user's viewable area. If a number, map will zoom to specified range in meters. If no zoom attribute is included, no zoom is performed.",
         "type": ["string", "number"],
         "default": " "
+      },
+      "messageId": {
+        "description": "A globally unique ID that identifies a particular message.  This ID SHALL be used for the lifetime of the message and is used to identify map.message.progress and map.message.complete messages that correlate to the original message with the same ID.  When sending a messageId a map that supports the user manipulation extension SHALL send map.message.progress and map.message.complete messages where appropriate.  See the map.message channels under the User Manipulation extension for more information.",
+        "type": "string",
+        "status": "new",
+        "extension": "User Manipulation - Message Complete"
       }
     },
     "required": ["bounds"]
