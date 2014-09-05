@@ -42,8 +42,7 @@ cmapi.channel["map.status.about"] = {
         "messageId": {
           "description": "This ID that should match the ID provided in the map.status.request message.",
           "type": "string",
-          "status": "new",
-          "extension": "User Manipulation - Message Complete"
+          "status": "new"
         }
     },
     "required": ["version", "type", "widgetName", "extensions"]
