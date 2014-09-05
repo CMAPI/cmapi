@@ -6,6 +6,7 @@ cmapi.channel["map.status.selected"] = {
     "type": "object",
     "properties":{
         "selected":{
+            "description": "An array of the selected object structure.",
             "type": "array",
             "items":{
                 "type": "object",
