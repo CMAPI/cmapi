@@ -31,6 +31,7 @@ cmapi.channel["map.feature.plot"] = {
           "object",
           "string"
         ],
+        "additionalProperties": true,
         "default": "N/A"
       },
       "zoom": {
@@ -44,6 +45,7 @@ cmapi.channel["map.feature.plot"] = {
         "default": true
       },
       "properties": {
+        "additionalProperties": true,
         "description": "A free form object that can contain any additional properties the widget wants sent with this item.  Any unsupported properties on this channel should be stored in the properties object to avoid polluting the root payload of the message.  A set of optional standardized values within the properties object MAY be added in future versions.",
         "type": "object",
         "status": "new"
