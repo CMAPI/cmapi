@@ -20,8 +20,7 @@ cmapi.channel["map.status.view"].examples = [{
     },
     "range": 137500
   }
-},
-{
+}, {
   "title": "Send view status with no requestor",
   "description": "Valid with no requestor",
   "valid": true,
@@ -42,21 +41,18 @@ cmapi.channel["map.status.view"].examples = [{
     },
     "range": 137500
   }
-},
-{
+}, {
   "title": "Send view status with no bounds",
   "description": "",
   "valid": false,
   "payload": {
-    "requester": "217c086f-719f-928f-5e75-972530cf0db6",
     "center": {
       "lat": 40.2205,
       "lon": -74.3579
     },
     "range": 137500
   }
-},
-{
+}, {
   "title": "Send view status with no center",
   "description": "invalid with no center",
   "valid": false,
@@ -73,8 +69,7 @@ cmapi.channel["map.status.view"].examples = [{
     },
     "range": 137500
   }
-},
-{
+}, {
   "title": "Send view status with no range",
   "description": "invalid with no nage",
   "valid": false,
