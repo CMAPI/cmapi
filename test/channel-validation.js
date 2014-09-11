@@ -13,26 +13,42 @@ cmapi.channelList = [
   "map.overlay.cluster.remove",
   "map.overlay.cluster.set",
   "map.feature.plot",
+  "map.feature.plot.batch",
   "map.feature.plot.url",
   "map.feature.unplot",
+  "map.feature.unplot.batch",
   "map.feature.hide",
   "map.feature.show",
   "map.feature.update",
   "map.feature.selected",
+  "map.feature.selected.batch",
   "map.feature.deselected",
+  "map.feature.deselected.batch",
+  "map.feature.draw",
+  "map.feature.edit",
+  "map.feature.clicked",
   "map.view.zoom",
   "map.view.center.overlay",
   "map.view.center.feature",
   "map.view.center.location",
   "map.view.center.bounds",
   "map.view.clicked",
+  "map.view.area.selected",
   "map.status.request",
   "map.status.selected",
   "map.status.view",
   "map.status.format",
   "map.status.about",
   "map.status.selected",
-  "map.error"
+  "map.status.initialization",
+  "map.error",
+  "map.message.complete",
+  "map.message.progress",
+  "map.message.cancel",
+  "map.menu.create",
+  "map.menu.clicked",
+  "map.menu.remove",
+  "map.get"
 ];
 
 cmapi.channelValidation = (function () {
@@ -97,7 +113,8 @@ cmapi.channelValidation = (function () {
         output,
         failure,
         id,
-        additionalProperties = parseInt($("#allow-additional-select").val(),10);
+        additionalProperties = parseInt($("#allow-additional-select").val(), 10),
+        banUnknown = false;
 
       msgTotal++;
 
@@ -105,17 +122,15 @@ cmapi.channelValidation = (function () {
         msg = JSON.parse(msg);
       }
       schema = cmapi.channel[channel].schema;
-      if(additionalProperties === 1){
-        schema.additionalProperties = false;
-      } else {
-        schema.additionalProperties = true;
+      if (additionalProperties === 1) {
+        banUnknown = true;
       }
       if (!$.isArray(msg)) {
         msg = [msg];
       }
       len = msg.length;
       for (i = 0; i < len; i++) {
-        valid = tv4.validateMultiple(msg[i], schema);
+        valid = tv4.validateMultiple(msg[i], schema, true, banUnknown);
 
         if (!valid.valid) {
           errorTotal++;
