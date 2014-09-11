@@ -37,53 +37,56 @@
         "title": "Plot Feature Batch - <span class='newContent'>NEW</span>"
       }, {
         "key": "map.feature.plot.url",
-        "title": "Plot URL"
+        "title": "Plot URL <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.feature.unplot",
-        "title": "Unplot Feature"
+        "title": "Unplot Feature - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.feature.unplot.batch",
         "title": "Unplot Feature Batch - <span class='newContent'>NEW</span>"
       }, {
         "key": "map.feature.hide",
-        "title": "Hide Feature"
+        "title": "Hide Feature - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.feature.show",
-        "title": "Show Feature"
+        "title": "Show Feature - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.feature.selected",
-        "title": "Feature Selected"
+        "title": "Feature Selected - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.feature.selected.batch",
         "title": "Feature Selected Batch - <span class='newContent'>NEW</span>"
       }, {
         "key": "map.feature.deselected",
-        "title": "Feature De-Selected"
+        "title": "Feature De-Selected - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.feature.deselected.batch",
         "title": "Feature DeSelected Batch - <span class='newContent'>NEW</span>"
       }, {
         "key": "map.feature.update",
         "title": "Update Feature Data - <span class='updatedContent'>UPDATED</span>"
+      }, {
+        "key": "map.feature.clicked",
+        "title": "Feature Clicked Event - <span class='newContent'>NEW</span>"
       }]
     }, {
       "key": "",
-      "title": "Map View Channels",
+      "title": "Map View Channels - <span class='updatedContent'>UPDATED</span>",
       "children": [{
         "key": "map.view.zoom",
-        "title": "Zoom"
+        "title": "Zoom - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.view.center.overlay",
-        "title": "Center on Overlay"
+        "title": "Center on Overlay - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.view.center.feature",
-        "title": "Center on Feature"
+        "title": "Center on Feature - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.view.center.location",
-        "title": "Center on Location"
+        "title": "Center on Location - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.view.center.bounds",
-        "title": "Center on Bounds"
+        "title": "Center on Bounds - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.view.clicked",
         "title": "Map View Clicked"
@@ -96,16 +99,16 @@
         "title": "Request Map Status - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.status.view",
-        "title": "Map View Status"
+        "title": "Map View Status - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.status.format",
-        "title": "Map Format Status"
+        "title": "Map Format Status  - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.status.about",
-        "title": "Map About Status"
+        "title": "Map About Status  - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.status.selected",
-        "title": "Map Selected Status"
+        "title": "Map Selected Status  - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.status.initialization",
         "title": "Map Initialization Status - <span class='newContent'>NEW</span>"
@@ -181,11 +184,7 @@
       "title": "User Manipulation - <span class='newContent'>NEW</span>",
 
       "children": [{
-        "key": "userManipulationCore.overview",
-        "type": "overview",
-        "title": "Background",
-        "status": "new"
-      }, {
+        "key": "",
         "title": "Message Progress, Complete, and Cancel - <span class='newContent'>NEW</span>",
         "children": [{
           "key": "map.message.complete",
@@ -201,29 +200,31 @@
         }]
       }, {
         "title": "Feature Drawing and Editing - <span class='newContent'>NEW</span>",
-
+        "key": "",
         "children": [{
           "key": "map.feature.edit",
           "title": "Edit Feature Data - <span class='newContent'>NEW</span>",
           "children": [{
             "key": "map.feature.edit.progress",
-            "title": "Message Progress - details object - <span class='newContent'>NEW</span>"
+            "title": "Edit Message Progress - details object - <span class='newContent'>NEW</span>"
           }, {
             "key": "map.feature.edit.complete",
-            "title": "Message Complete - details object - <span class='newContent'>NEW</span>"
+            "title": "Edit Message Complete - details object - <span class='newContent'>NEW</span>"
           }]
         }, {
           "key": "map.feature.draw",
           "title": "Draw Feature Data - <span class='newContent'>NEW</span>",
+          "key": "map.feature.draw",
           "children": [{
             "key": "map.feature.draw.progress",
-            "title": "Message Progress - details object - <span class='newContent'>NEW</span>"
+            "title": "Draw Message Progress - details object - <span class='newContent'>NEW</span>"
           }, {
             "key": "map.feature.draw.complete",
-            "title": "Message Complete - details object - <span class='newContent'>NEW</span>"
+            "title": "Draw Message Complete - details object - <span class='newContent'>NEW</span>"
           }]
         }]
       }, {
+        "key": "",
         "title": "Context Menus - <span class='newContent'>NEW</span>",
         "children": [{
           "key": "map.menu.create",
@@ -237,9 +238,12 @@
         }]
       }, {
         "key": "map.get",
-        "title": "Query for Overlay / Feature data - <span class='newContent'>NEW</span>"
-      },
-      {
+        "title": "Query for Overlay / Feature data - <span class='newContent'>NEW</span>",
+        "children": [{
+          "key": "map.get.complete",
+          "title": "Query Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
+      }, {
         "key": "map.view.area.selected",
         "title": "Dispatch an Area Selection - <span class='newContent'>NEW</span>"
       }]
@@ -259,6 +263,10 @@
     }, {
       "key": "cmapi.appendix.c",
       "title": "C. Area of Interest Support"
+    }, {
+      "key": "cmapi.appendix.d",
+      "type": "overview",
+      "title": "D. Unique Identifiers - <span class='newContent'>NEW</span>"
     }]
   }, {
     "key": "cmapi.acronyms",
