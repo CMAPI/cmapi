@@ -1,5 +1,5 @@
 cmapi.channel["map.status.initialization"] = {
-  schema: {
+  "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.status.initialization",
     "description": "To receive notification of map events including the readiness, initialization and teardown of the map.",
@@ -22,5 +22,8 @@ cmapi.channel["map.status.initialization"] = {
     "Widgets should not send messages after receiving a 'teardown' message until it receives another 'ready' message on the map.status.initialization channel.",
     "A widget at any point in time may request a initialization status by sending the map a map.status.initialization"
   ],
-  "changeLog": [{"version": "1.3.0", "change" : "This channel is new"}]
+  "changeLog": [{
+    "version": "1.3.0",
+    "change": "This channel is new"
+  }]
 };
