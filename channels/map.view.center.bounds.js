@@ -1,5 +1,5 @@
 cmapi.channel["map.view.center.bounds"] = {
-  schema: {
+  "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.center.bounds",
     "description": "Center the map on a particular bounding box. The map may also be zoomed to show the entire bounds (if possible) or to show a given range.",
@@ -65,5 +65,9 @@ cmapi.channel["map.view.center.bounds"] = {
     },
     "required": ["bounds"]
   },
-  "notes": []
+  "notes": [],
+  "changeLog": [{
+    "version": "1.3.0",
+    "change": "Added optional messageId parameter to support user manipulation extension"
+  }]
 };

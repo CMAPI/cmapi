@@ -1,5 +1,5 @@
 cmapi.channel["map.view.center.location"] = {
-  schema: {
+  "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.center.location",
     "description": "Center the map on a particular location. The map may also be zoomed as close as possible to the location or to a given range",
@@ -39,5 +39,9 @@ cmapi.channel["map.view.center.location"] = {
     },
     "required": ["location"]
   },
-  "notes": []
+  "notes": [],
+  "changeLog": [{
+    "version": "1.3.0",
+    "change": "Added optional messageId parameter to support user manipulation extension"
+  }]
 };
