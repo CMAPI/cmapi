@@ -133,12 +133,17 @@ cmapi.channel.renderer = (function () {
     return objChars.join("");
   }
 
-  function validate(payload, schema) {
+  function validate(payload, schema, banUnknownProps) {
     var response = {
         valid: true,
         message: cmapi.lang.MESSAGE_VALIDATION_SUCCESS
       },
-      valid = tv4.validateMultiple(payload, schema);
+      valid;
+    if (banUnknownProps === false) {
+      valid = tv4.validateMultiple(payload, schema, true);
+    } else {
+      valid = tv4.validateMultiple(payload, schema, true, true);
+    }
 
     if (!valid.valid) {
       response.message = getValidationErrorString(valid);
@@ -386,9 +391,9 @@ cmapi.channel.renderer = (function () {
           output.push('<p><a href="' + exampleLink + '" target="_blank">' + exampleLink + '</a></p>');
           for (i = 0; i < exampleLen; i++) {
             if (examples[i].valid === true) {
-              validationIntent = "Pass Validation";
+              validationIntent = "This Should Pass Validation";
             } else {
-              validationIntent = "Fail Validation";
+              validationIntent = "This Should Fail Validation";
             }
 
             output.push('<h4 id="toc_4">' + examples[i].title + ' - ' + validationIntent + '</h4>');
@@ -414,18 +419,19 @@ cmapi.channel.renderer = (function () {
       output.push('<textarea id="userPayloadInput" rows="10" style="width: 100%" placeholder="Enter your own ' + currentChannel + ' message payload to validate here..." ></textarea>');
       output.push('<button style="border: 1px solid grey; padding: 5px; margin-top: 5px; margin-right: 5px" onclick="cmapi.channel.renderer.validateInput()">Validate</button>');
       output.push('<button style="border: 1px solid grey; padding: 5px; margin-top: 5px;" onclick="cmapi.channel.renderer.clearInput()">Clear</button>');
+      output.push('<form action=""><input type="checkbox" name="banUnknownProps" id="banUnknownCB" value="false">Ban Unknown Properties<br></form>');
     } catch (err) {
       output = ["An error occured while parsing the example: " + err.message];
     }
     return output.join("");
   }
 
-  function validateUserPayload() {
+  function validateUserPayload(banUnknown) {
     var exampleValidation,
       message = "";
     try {
       var target = $("#userPayloadValid");
-      exampleValidation = validate(JSON.parse($("#userPayloadInput").val()), currentSchema);
+      exampleValidation = validate(JSON.parse($("#userPayloadInput").val()), currentSchema, banUnknown);
       message = exampleValidation.message;
       if (exampleValidation.valid === true) {
         target.css("color", "green");
@@ -523,7 +529,11 @@ cmapi.channel.renderer = (function () {
       }
     },
     validateInput: function () {
-      validateUserPayload();
+      var banUnknown = false;
+      if ($("#banUnknownCB").value() === true) {
+        banUnknown = true;
+      }
+      validateUserPayload(banUnknown);
     },
     clearInput: function () {
       $("#userPayloadInput").val("");
