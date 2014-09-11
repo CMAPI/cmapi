@@ -1,12 +1,12 @@
 cmapi.channel["map.feature.unplot.batch"] = {
-  schema: {
+  "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.unplot.batch",
     "description": "Remove collection of features from the map.",
     "type": "object",
     "properties": {
       "payloads": {
-        "description" : "An array of map.feature.unplot payloads minus the messageId.  See map.feature.unplot for the object format and schema",
+        "description": "An array of map.feature.unplot payloads minus the messageId.  See map.feature.unplot for the object format and schema",
         "type": "Array"
       },
       "overlayId": {
@@ -21,6 +21,9 @@ cmapi.channel["map.feature.unplot.batch"] = {
     },
     "required": ["payloads"]
   },
-  notes: [
-    ]
+  "notes": [],
+  "changeLog": [{
+    "version": "1.3.0",
+    "change": "This channel is new"
+  }]
 };
