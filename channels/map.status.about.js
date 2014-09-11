@@ -1,5 +1,5 @@
 cmapi.channel["map.status.about"] = {
-  schema: {
+  "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.status.about",
     "description": "Send out static information about the map implementation",
@@ -47,5 +47,9 @@ cmapi.channel["map.status.about"] = {
     },
     "required": ["version", "type", "widgetName", "extensions"]
   },
-  "notes": []
+  "notes": [],
+  "changeLog": [{
+    "version": "1.3.0",
+    "change": "Added optional messageId parameter to support user manipulation extension"
+  }]
 };
