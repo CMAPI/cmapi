@@ -419,7 +419,7 @@ cmapi.channel.renderer = (function () {
       output.push('<textarea id="userPayloadInput" rows="10" style="width: 100%" placeholder="Enter your own ' + currentChannel + ' message payload to validate here..." ></textarea>');
       output.push('<button style="border: 1px solid grey; padding: 5px; margin-top: 5px; margin-right: 5px" onclick="cmapi.channel.renderer.validateInput()">Validate</button>');
       output.push('<button style="border: 1px solid grey; padding: 5px; margin-top: 5px;" onclick="cmapi.channel.renderer.clearInput()">Clear</button>');
-      output.push('<form action=""><input type="checkbox" name="banUnknownProps" id="banUnknownCB" value="false">Ban Unknown Properties<br></form>');
+      output.push('<form action=""><input type="checkbox" name="banUnknownCB" id="banUnknownCB" value="false">Ban Unknown Properties<br></form>');
     } catch (err) {
       output = ["An error occured while parsing the example: " + err.message];
     }
@@ -530,7 +530,7 @@ cmapi.channel.renderer = (function () {
     },
     validateInput: function () {
       var banUnknown = false;
-      if ($("#banUnknownCB").value() === true) {
+      if ($("#banUnknownCB").is(':checked') === true) {
         banUnknown = true;
       }
       validateUserPayload(banUnknown);
