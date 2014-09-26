@@ -73,7 +73,7 @@ cmapi.channel["map.view.area.selected"] = {
     "Map emits a map.view.area.selected message",
     "It is up to a map implemetation to define the user interface controls / workflow to allow the user to perform the rectangular area drag select",
     "The user SHOULD see a temporary rectangle displayed on the map while dragging",
-    "The temporary rectangle SHALL dissapear once the user releases the mouse button and the mousse up occurs"
+    "If the map displays a temporary rectangle, the rectangle SHALL dissapear once the user releases the mouse button and the mouse up occurs"
   ],
   "changeLog": [{
     "version": "1.3.0",
