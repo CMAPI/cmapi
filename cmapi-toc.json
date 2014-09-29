@@ -116,9 +116,6 @@
     }, {
       "key": "map.error",
       "title": "Map Errors"
-    }, {
-      "key": "map.drag-drop",
-      "title": "Drag and Drop"
     }]
   },
 
@@ -127,7 +124,13 @@
     "title": "API Extensions",
     "folder": true,
     "expanded": true,
-    "children": [{
+    "children": [
+	
+	{
+	  "key": "",
+      "title": "OWF-Specific",
+      "type": "overview",
+      "children": [{
 
       "key": "",
       "title": "Widget Intents",
@@ -148,8 +151,14 @@
         "key": "cmapi.widget-intents.plot.overview",
         "title": "Plotting Data ",
         "type": "overview"
-      }]
-    }, {
+      }]},
+	  {
+      "key": "map.drag-drop",
+      "title": "Drag and Drop"
+	  }]
+    }, 
+	
+	{
       "key": "",
       "type": "overview",
       "title": "Clustering",
