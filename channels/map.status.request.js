@@ -12,11 +12,6 @@ cmapi.channel["map.status.request"] = {
           "enum": ["view", "format", "selected", "about", "initialization"]
         }
 
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies a particular message.  This ID SHALL be used for the lifetime of the message and is used to identify the response of the request. The map SHALL not issue a map.message.complete messages.",
-        "type": "string",
-        "status": "new"
       }
     },
     "required": []
@@ -25,8 +20,5 @@ cmapi.channel["map.status.request"] = {
   "changeLog": [{
     "version": "1.3.0",
     "change": "Added initialization as a request option"
-  }, {
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
   }]
 };
