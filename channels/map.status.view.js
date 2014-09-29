@@ -79,21 +79,12 @@ cmapi.channel["map.status.view"] = {
         "description": "ID of client that requested this status message be sent (if any).  If no requester, message is being sent due to a map view change",
         "type": "string",
         "status": "updated"
-      },
-      "messageId": {
-        "description": "This ID that SHALL match the ID provided in the map.status.request message.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Context Menus"
       }
     },
     "required": ["bounds", "center", "range"]
   },
   "notes": [],
   "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }, {
     "version": "1.3.0",
     "change": "Added the requester property to schema which was accidently ommitted from the 1.2.0 schema"
   }]
