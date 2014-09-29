@@ -44,11 +44,6 @@ cmapi.channel["map.status.selected"] = {
                     }
                 }
             }
-        },
-        "messageId": {
-          "description": "This ID that should match the ID provided in the map.status.request message.",
-          "type": "string",
-          "status": "new"
         }
     },
     "required": ["overlayId", "selectedFeatures"]
