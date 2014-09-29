@@ -13,19 +13,10 @@ cmapi.channel["map.status.format"] = {
         "items": {
           "anyOf": ["kml", "geojson", "wms"]
         }
-      },
-      "messageId": {
-        "description": "This ID that SHALL match the ID provided in the map.status.request message.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Context Menus"
       }
     },
     "required": ["formats"]
   },
   "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }]
+  "changeLog": []
 };
