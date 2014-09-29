@@ -102,13 +102,13 @@
         "title": "Map View Status - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.status.format",
-        "title": "Map Format Status  - <span class='updatedContent'>UPDATED</span>"
+        "title": "Map Format Status"
       }, {
         "key": "map.status.about",
-        "title": "Map About Status  - <span class='updatedContent'>UPDATED</span>"
+        "title": "Map About Status"
       }, {
         "key": "map.status.selected",
-        "title": "Map Selected Status  - <span class='updatedContent'>UPDATED</span>"
+        "title": "Map Selected Status"
       }, {
         "key": "map.status.initialization",
         "title": "Map Initialization Status - <span class='newContent'>NEW</span>"
