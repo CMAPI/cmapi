@@ -61,13 +61,10 @@
         "title": "Feature De-Selected - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.feature.deselected.batch",
-        "title": "Feature DeSelected Batch - <span class='newContent'>NEW</span>"
+        "title": "Feature De-Selected Batch - <span class='newContent'>NEW</span>"
       }, {
         "key": "map.feature.update",
         "title": "Update Feature Data - <span class='updatedContent'>UPDATED</span>"
-      }, {
-        "key": "map.feature.clicked",
-        "title": "Feature Clicked Event - <span class='newContent'>NEW</span>"
       }]
     }, {
       "key": "",
@@ -102,13 +99,13 @@
         "title": "Map View Status - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.status.format",
-        "title": "Map Format Status"
+        "title": "Map Format Status  - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.status.about",
-        "title": "Map About Status"
+        "title": "Map About Status  - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.status.selected",
-        "title": "Map Selected Status"
+        "title": "Map Selected Status  - <span class='updatedContent'>UPDATED</span>"
       }, {
         "key": "map.status.initialization",
         "title": "Map Initialization Status - <span class='newContent'>NEW</span>"
@@ -124,41 +121,37 @@
     "title": "API Extensions",
     "folder": true,
     "expanded": true,
-    "children": [
-	
-	{
-	  "key": "",
-      "title": "OWF-Specific",
+    "children": [{
+      "key": "",
+      "title": "Ozone Widget Framework (OWF)",
       "type": "overview",
       "children": [{
 
-      "key": "",
-      "title": "Widget Intents",
-      "type": "overview",
-      "children": [{
-        "key": "cmapi.widget-intents.overview",
+        "key": "",
+        "title": "Widget Intents",
         "type": "overview",
-        "title": "Background"
+        "children": [{
+          "key": "cmapi.widget-intents.overview",
+          "type": "overview",
+          "title": "Background"
+        }, {
+          "key": "cmapi.widget-intents.pick.overview",
+          "title": "Picking a Common Map Widget",
+          "type": "overview"
+        }, {
+          "key": "cmapi.widget-intents.view.overview",
+          "title": "Viewing Data ",
+          "type": "overview"
+        }, {
+          "key": "cmapi.widget-intents.plot.overview",
+          "title": "Plotting Data ",
+          "type": "overview"
+        }]
       }, {
-        "key": "cmapi.widget-intents.pick.overview",
-        "title": "Picking a Common Map Widget",
-        "type": "overview"
-      }, {
-        "key": "cmapi.widget-intents.view.overview",
-        "title": "Viewing Data ",
-        "type": "overview"
-      }, {
-        "key": "cmapi.widget-intents.plot.overview",
-        "title": "Plotting Data ",
-        "type": "overview"
-      }]},
-	  {
-      "key": "map.drag-drop",
-      "title": "Drag and Drop"
-	  }]
-    }, 
-	
-	{
+        "key": "map.drag-drop",
+        "title": "Drag and Drop"
+      }]
+    }, {
       "key": "",
       "type": "overview",
       "title": "Clustering",
@@ -223,7 +216,6 @@
         }, {
           "key": "map.feature.draw",
           "title": "Draw Feature Data - <span class='newContent'>NEW</span>",
-          "key": "map.feature.draw",
           "children": [{
             "key": "map.feature.draw.progress",
             "title": "Draw Message Progress - details object - <span class='newContent'>NEW</span>"
@@ -231,6 +223,28 @@
             "key": "map.feature.draw.complete",
             "title": "Draw Message Complete - details object - <span class='newContent'>NEW</span>"
           }]
+        }]
+      }, {
+        "title": "Mouse Events - <span class='newContent'>NEW</span>",
+        "key": "",
+        "children": [{
+          "key": "map.feature.clicked",
+          "title": "Feature Clicked - <span class='newContent'>NEW</span>"
+        }, {
+          "key": "map.feature.mousedown",
+          "title": "Feature Mouse Down - <span class='newContent'>NEW</span>"
+        }, {
+          "key": "map.feature.mouseup",
+          "title": "Feature Mouse Up - <span class='newContent'>NEW</span>"
+        }, {
+          "key": "map.view.mousedown",
+          "title": "Map View Mouse Down - <span class='newContent'>NEW</span>"
+        }, {
+          "key": "map.view.mouseup",
+          "title": "Map View Mouse Up - <span class='newContent'>NEW</span>"
+        }, {
+          "key": "map.view.area.selected",
+          "title": "Map View Area Selected - <span class='newContent'>NEW</span>"
         }]
       }, {
         "key": "",
@@ -252,9 +266,6 @@
           "key": "map.get.complete",
           "title": "Query Message Complete - details object - <span class='newContent'>NEW</span>"
         }]
-      }, {
-        "key": "map.view.area.selected",
-        "title": "Dispatch an Area Selection - <span class='newContent'>NEW</span>"
       }]
     }]
   }, {

@@ -1,7 +1,7 @@
 cmapi.channel["map.feature.clicked"] = {
   "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "map.view.clicked",
+    "title": "map.feature.clicked",
     "description": "'Click', or report that map was clicked",
     "type": "object",
     "properties": {
