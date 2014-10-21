@@ -122,36 +122,9 @@
     "folder": true,
     "expanded": true,
     "children": [{
-      "key": "",
-      "title": "Ozone Widget Framework (OWF)",
-      "type": "overview",
-      "children": [{
-
-        "key": "",
-        "title": "Widget Intents",
-        "type": "overview",
-        "children": [{
-          "key": "cmapi.widget-intents.overview",
-          "type": "overview",
-          "title": "Background"
-        }, {
-          "key": "cmapi.widget-intents.pick.overview",
-          "title": "Picking a Common Map Widget",
-          "type": "overview"
-        }, {
-          "key": "cmapi.widget-intents.view.overview",
-          "title": "Viewing Data ",
-          "type": "overview"
-        }, {
-          "key": "cmapi.widget-intents.plot.overview",
-          "title": "Plotting Data ",
-          "type": "overview"
-        }]
-      }, {
         "key": "map.drag-drop",
-        "title": "Drag and Drop"
-      }]
-    }, {
+        "title": "Drag and Drop - <span class='updatedContent'>UPDATED</span>"
+      }, {
       "key": "",
       "type": "overview",
       "title": "Clustering",
@@ -181,11 +154,6 @@
         "title": "Clustering: Replaceable Parameters"
       }]
     }, {
-      "key": "",
-      "type": "overview",
-      "title": "User Manipulation - <span class='newContent'>NEW</span>",
-
-      "children": [{
         "key": "",
         "title": "Message Progress, Complete, and Cancel - <span class='newContent'>NEW</span>",
         "children": [{
@@ -201,6 +169,11 @@
           "title": "Report Message Cancellation - <span class='newContent'>NEW</span>"
         }]
       }, {
+      "key": "",
+      "type": "overview",
+      "title": "User Manipulation - <span class='newContent'>NEW</span>",
+
+      "children": [{
         "title": "Feature Drawing and Editing - <span class='newContent'>NEW</span>",
         "key": "",
         "children": [{
@@ -265,6 +238,33 @@
         "children": [{
           "key": "map.get.complete",
           "title": "Query Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
+      }]
+    }, {
+      "key": "",
+      "title": "Ozone Widget Framework (OWF)",
+      "type": "overview",
+      "children": [{
+
+        "key": "",
+        "title": "Widget Intents",
+        "type": "overview",
+        "children": [{
+          "key": "cmapi.widget-intents.overview",
+          "type": "overview",
+          "title": "Background"
+        }, {
+          "key": "cmapi.widget-intents.pick.overview",
+          "title": "Picking a Common Map Widget",
+          "type": "overview"
+        }, {
+          "key": "cmapi.widget-intents.view.overview",
+          "title": "Viewing Data ",
+          "type": "overview"
+        }, {
+          "key": "cmapi.widget-intents.plot.overview",
+          "title": "Plotting Data ",
+          "type": "overview"
         }]
       }]
     }]
