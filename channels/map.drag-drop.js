@@ -1,8 +1,8 @@
 cmapi.channel["map.drag-drop"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "OWF Drag and Drop",
-    "description": "Drop an item on the map. See OWF drag and drop API for details.",
+    "title": "Framework dependent",
+    "description": "Drop an item on the map.  Note that the particular framework used to implement drag and drop (e.g., OWF drag and drop API, or go-lab/iwc at https://github.com/go-lab/iwc) will define how to use drag and drop generically.  This specification defines the details of the data object that is to be transferred via the drag and drop implementation",
     "type": "object",
     "properties": {
       "dragDropData": {
