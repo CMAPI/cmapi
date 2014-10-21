@@ -4,12 +4,7 @@ cmapi.channel["map.status.selected"] = {
     "title": "map.status.selected",
     "description": "Send out the list of currently selected features.",
     "type": "object",
-    "properties":{
-        "selected":{
-            "description": "An array of the selected object structure.",
-            "type": "array",
-            "items":{
-                "type": "object",
+   
                 "properties": {
                     "overlayId": {
                       "type": "string",
@@ -42,9 +37,6 @@ cmapi.channel["map.status.selected"] = {
                             }
                         }
                     }
-                }
-            }
-        }
     },
     "required": ["overlayId", "selectedFeatures"]
   },
