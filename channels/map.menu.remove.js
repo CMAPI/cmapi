@@ -2,14 +2,14 @@ cmapi.channel["map.menu.remove"] = {
   "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.menu.remove",
-    "description": "Removes a context menu and the child items.  ",
+    "description": "Removes a context menu and any child menus associated with this context menu.  ",
     "properties": {
       "menuId": {
-        "description": "The unique ID of the menu.  This ID can be used to associate a menu with a feature in a map.feature.plot message.",
+        "description": "The unique ID of the menu that the user selected.  MUST be the menuId that was assigned when the menu was registered.",
         "type": "string"
       },
       "messageId": {
-        "description": "A globally unique ID that identifies a particular message.  This ID SHALL be used for the lifetime of the message and is used to identify map.message.progress and map.message.complete messages that correlate to the original message with the same ID.  When sending a messageId a map that supports the user manipulation extension SHALL send map.message.progress and map.message.complete messages where appropriate.  See the map.message channels under the User Manipulation extension for more information.",
+        "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
         "type": "string"
       }
     },
