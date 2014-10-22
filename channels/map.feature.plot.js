@@ -78,6 +78,6 @@ cmapi.channel["map.feature.plot"] = {
     "change": "Added optional properties object as part of the API core"
   }, {
     "version": "1.3.0",
-    "change": "Added optional menuId parameter support user manipulation extension"
+    "change": "Added optional menuId parameter to support user manipulation extension"
   }]
 };
