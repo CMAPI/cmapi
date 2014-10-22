@@ -1,7 +1,7 @@
 cmapi.channel["map.feature.edit.progress"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "map.feature.edit.progress",
+    "title": "Schema for map.message.complete Details object",
     "description": "Schema for the details object for a map.message.progress message during a map.feature.edit.",
     "type": "object",
     "properties": {
