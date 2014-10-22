@@ -2,19 +2,19 @@ cmapi.channel["map.menu.create"] = {
   "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.menu.create",
-    "description": "Creates a context menu and registers it with the map.  When the user right clicks on the map, the menu items will appear.  This allows for multiple widgets to register similarly named contextMenu items, but listed in the context of the widget(s) that will handle the action of the menu item click.  If mapMenu is false, the menu is a feature menu, and will appear only when it has been registered during a feature.plot call.",
+    "description": "Creates a context menu and registers it with the map so that when the user right clicks on the map (or feature or overlay) the registered menu items will appear.  This allows for multiple widgets to register contextMenu items.  The menuId is used to establish what widget(s) will handle the action of a given menu item click.",
     "properties": {
       "name": {
-        "description": "The name of the overlay. If not included, the ID is used as the name. Note that overlay names do not have to be unique and are intended for display purposes only.",
+        "description": "The name of the menu. If not included, the menuId is used as the name. Note that menu names do not have to be unique and are intended for display purposes only.",
         "type": "string",
-        "default": "N/A"
+        "default": "value passed in menuId param"
       },
       "menuId": {
-        "description": "The unique ID of the menu.  This ID can be used to associate a menu with a feature in a map.feature.plot message.",
+        "description": "A globally unique ID that is used both to identify the menu, and as a handle for the widget which originally registered the menu so it can identify which map.menu.clicked events it should respond to.",
         "type": "string"
       },
       "menuType": {
-        "description": "A value indicating the type of the menu.  The options are:<ol><li>mapglobal -  Menu with items applicable to the map.  These items will show in a cumulative list of all map menus / menuItems when the map is right-clicked</li><li>overlayglobal - Menu with items applicable to all overlays</li><li>featureglobal - Menu with items applicable to all features</li><li>submenu - Menu that is used as a sub menu to another menu.</li></ol>",
+        "description": "A value indicating the scope of the menu being registered.  The options are:<ol><li>mapglobal -  Menu is applicable to the entire map.  The menu items will show in a aggregate list of all mapglogal menus when the map is right-clicked</li><li>overlayglobal - Menu will appear when any overlay is right-clicked</li><li>featureglobal - Menu will appear when any features is right-clicked</li><li>objectinstance - Menu will only appear when a particular overlay or feature is right-clicked, and requires an additional registration step for the menu to be 'activated' (e.g., map.feature.update or map.overlay.update)</li><li>submenu - Menu is to be used as a sub menu to another menu.</li></ol>",
         "enum": ['mapglobal',
           'overlayglobal',
           'featureglobal',
@@ -23,42 +23,37 @@ cmapi.channel["map.menu.create"] = {
         ]
       },
       "menuItems": {
-        "description": "This is an array of menu items.",
+        "description": "An array of menu items.  These items will become the elements of the menu (i.e., will show up in an ordered list when the appropriate map element is right clicked)",
         "type": "array",
-        "items":{
-            "type":"object",
             "properties": {
                 "menuItemId": {
                   "type": "string",
-                  "description": "Unique ID used to correlate a map.menu.clicked message with this particluar menu item.  This ID MUST only be unique within this menu"
+                  "description": "Unique ID used to correlate a map.menu.clicked message with this particular menu item.  This ID must only be unique within this menu"
                 },
                 "label": {
                   "type": "string",
-                  "description": "The visible label assigned to an item in the context menu"
+                  "description": "The visible label assigned to this item in the context menu"
                 },
                 "iconUrl": {
                   "type": "string",
                   "description": "A URL to a specific icon that MAY be displayed next to the item in the context menu"
-                }
+                },
             },
-            "additionalItems": true
-        },
         "required": ["menuItemId", "label"]
       },
       "messageId": {
-        "description": "A globally unique ID that identifies a particular message.  This ID SHALL be used for the lifetime of the message and is used to identify map.message.progress and map.message.complete messages that correlate to the original message with the same ID.  When sending a messageId a map that supports the user manipulation extension SHALL send map.message.progress and map.message.complete messages where appropriate.  See the map.message channels under the User Manipulation extension for more information.",
+        "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
         "type": "string"
       },
 
     },
     "required": ["menuId", "menuItems"]
   },
-  "notes": ["Widget developer create a context menu object",
-    "Widget developer registers the context menu with the map defining if it is a map menu or a feature menu",
-    "Developer assigns the id of the created menu to a feature in the map.feature.plot channel",
-    "When the user right clicks on a map feature that has a menu registered with it, or the feature listing in a tree type component, , the registered context menu and with the applicable context items appear.",
-    "When the user right clicks on the map and it has a menu registered with it, the registered context menu and with the applicable context items appear.",
-    "When user selects a menu item, an event is sent back to the widget that created the context menu and can take action on the event"
+  "notes": ["Widget developer creates a context menu object",
+    "Context menus can be created and registered either at run-time via the map.menu.create channel, OR via manual configuration of the map",
+    "If the scope of the menu is 'objectinstance' then the developer SHOULD assign the id of the created menu to specific feature instances via the map.feature.plot, map.feature.plot.url, map.feature.plot.batch or map.feature.update channels and/or to the specific overlay instances via the map.overlay.create or map.overlay.update channels",
+    "When the user right clicks on the map, an overlay or a feature (or the overlay/feature listing in a tree type component), the appropriately registered context menu MUST appear and it's associated menuItems MUST all be selectable by the user.",
+    "When the user selects a menu item, the map MUST send a map.menu.clicked event with the appropriately registered menuId and menuItemId so that the widget that created the context menu can take action on the event"
   ],
   "changeLog": [{
     "version": "1.3.0",
