@@ -1,8 +1,8 @@
 cmapi.channel["map.feature.edit.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "map.feature.edit.complete",
-    "description": "Schema for the details object for a map.message.complete message during a map.feature.edit.",
+    "title": "Schema for map.message.complete Details object",
+    "description": "Schema for the details object for a map.message.complete message after a map.feature.edit.",
     "type": "object",
     "properties": {
       "overlayId": {
