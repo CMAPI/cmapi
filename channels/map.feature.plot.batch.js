@@ -33,6 +33,11 @@ cmapi.channel["map.feature.plot.batch"] = {
         "description": "A globally unique ID that identifies this particular message batch.  If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of the message batch.",
         "type": "string",
         "extension": "User Manipulation - Message Complete"
+      },
+	  "menuId": {
+        "description": "The default format to be applied to all feature objects in the features array that don’t include a menuId value. I.e., similar behaviour to CSS.  See map.feature.plot for definition of menuId property.",
+        "type": "string",
+        "extension": "User Manipulation - Context Menus"
       }
     },
     "required": ["features"]
