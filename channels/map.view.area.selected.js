@@ -6,7 +6,7 @@ cmapi.channel["map.view.area.selected"] = {
     "type": "object",
     "properties": {
       "bounds": {
-        "description": "Bounding box of area selected on map by dragging over a rectangular.",
+        "description": "Bounding box of area selected on map",
         "type": "object",
         "default": " ",
         "properties": {
@@ -52,13 +52,13 @@ cmapi.channel["map.view.area.selected"] = {
         "required": ["southWest", "northEast"]
       },
       "button": {
-        "description": "Which mouse button was clicked.  Allowable values are right, left, and middle.  For backwards compatibility, if this attribute is not populated it MUST be treated as a left mouse click the same as if it were populated with left.",
+        "description": "Which mouse button was clicked.  Allowable values are 'right', 'left', and 'middle'.  Default value is 'left'.",
         "type": ["string", "enum"],
         "enum": ["left", "middle", "right"],
         "default": "left"
       },
       "keys": {
-        "description": "An array of keys pressed during the click event.  Allowable values are alt, ctrl, shift, and none. For backwards compatibility, if this attribute is not populated it MUST be assumed that no additional keys were pressed and behave the same way as if it were populated with none.",
+        "description": "An array of keys pressed during the click event.  Allowable values are 'alt', 'ctrl', 'shift', and 'none'. Default value is 'none'.",
         "type": ["array", "enum"],
         "uniqueItems": true,
         "default": ["none"],
@@ -69,11 +69,8 @@ cmapi.channel["map.view.area.selected"] = {
     },
     "required": ["bounds", "keys", "button"]
   },
-  "notes": ["User presses mouse down, and drags a rectangular area on the map.",
-    "Map emits a map.view.area.selected message",
-    "It is up to a map implemetation to define the user interface controls / workflow to allow the user to perform the rectangular area drag select",
-    "The user SHOULD see a temporary rectangle displayed on the map while dragging",
-    "If the map displays a temporary rectangle, the rectangle SHALL dissapear once the user releases the mouse button and the mouse up occurs"
+  "notes": ["For example: the user presses mouse down, drags a rectangular area on the map, and then releases the mouse button - the map then emits a map.view.area.selected message",
+    "It is up to the map implementation to define the user interface controls and workflow to allow the user to identify the area to select",
   ],
   "changeLog": [{
     "version": "1.3.0",
