@@ -5,7 +5,7 @@ cmapi.channel["map.get"] = {
     "description": "Request information about what overlay and feature data is on the map",
     "properties": {
       "recursive": {
-        "description": "Determines whether the response will contain children or just one level.  If not included, it will treat this parameters as false.",
+        "description": "Determines whether the response will contain children or just one level.  If not included, it will treat this parameter as false.",
         "type": "boolean",
         "default" : false
       },
@@ -15,24 +15,21 @@ cmapi.channel["map.get"] = {
       },
       "filter" : {
         "type" : "array",
-        "items": {
-            "type": "object",
             "properties":{
                 "property":{
                     "type": "string",
-                    "description": "This field must contain the name of the property field which value must match the value inthe term property."
+                    "description": "This field must contain the name of the property field which value must match the value in the term property."
                 },
                 "term":{
                     "type": ["string", "number", "boolean"],
                     "description": "This field must contain the value to match. Type checking is performed. ('10' !== 10)"
                 }
-            }
-        },
+            },
         "additionalItems": true,
         "description" : "An array of terms to search for on the overlays and features."
       },
       "messageId": {
-        "description": "A globally unique ID that identifies a particular message.  This ID SHALL be used for the lifetime of the message and is used to identify map.message.progress and map.message.complete messages that correlate to the original message with the same ID.  When sending a messageId a map that supports the user manipulation extension SHALL send map.message.progress and map.message.complete messages where appropriate.  See the map.message channels under the User Manipulation extension for more information.",
+        "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
         "type": "string"
       }
     },
