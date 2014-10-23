@@ -2,7 +2,7 @@ cmapi.channel["map.feature.clicked"] = {
   "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.feature.clicked",
-    "description": "'Click', or report that map was clicked",
+    "description": "'Click', or report that a particular feature was clicked",
     "type": "object",
     "properties": {
       "overlayId": {
@@ -28,20 +28,20 @@ cmapi.channel["map.feature.clicked"] = {
         "maximum": "180"
       },
       "button": {
-        "description": "Which mouse button was clicked.  Allowable values are right, left, and middle.  For backwards compatibility, if this attribute is not populated it MUST be treated as a left mouse click the same as if it were populated with left.",
+        "description": "Which mouse button was clicked.  Allowable values are 'right', 'left', and 'middle'.  Default value is 'left'.",
         "type": ["string", "enum"],
         "enum": ["left", "middle", "right"],
         "default": "left"
       },
       "type": {
-        "description": "The type of click event. Allowable values are single and double.  For backwards compatibility, if this attribute is not populated it MUST be assumed to be a single mouse click and treated the same as if it were populated with single.",
+        "description": "The type of click event. Allowable values are 'single' and 'double'.  Default value is 'single'.",
         "type": ["string", "enum"],
         "enum": ["single", "double"],
         "default": "single"
       },
       "keys": {
-        "description": "An array of keys pressed during the click event.  Allowable values are alt, ctrl, shift, and none. For backwards compatibility, if this attribute is not populated it MUST be assumed that no additional keys were pressed and behave the same way as if it were populated with none.",
-        "type": "array",
+        "description": "An array of keys pressed during the click event.  Allowable values are 'alt', 'ctrl', 'shift', and 'none'.  Default value is 'none'.",
+        "type": ["sring", "enum"],
         "uniqueItems": true,
         "default": ["none"],
         "items": {
