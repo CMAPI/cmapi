@@ -49,11 +49,15 @@ cmapi.channel["map.feature.clicked"] = {
         }
       }
     },
-    "required": ["lat", "lon", "button", "keys", "type"]
+    "required": ["lat", "lon", "button", "keys", "type", "featureId", "overlayId"]
   },
   "notes": [],
   "changeLog": [{
     "version": "1.3.0",
     "change": "This channel is new"
+  },
+  {
+    "version": "1.3.0 RC3",
+    "change": "Added featureId and overlayId as required"
   }]
 };
