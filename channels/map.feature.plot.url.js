@@ -52,12 +52,6 @@ cmapi.channel["map.feature.plot.url"] = {
         "type": "string",
         "status": "new",
         "extension": "User Manipulation - Message Complete"
-      },
-	  "menuId": {
-        "description": "The id of a context menu. If populated, the context menu MUST have already been pre-registered via the map.menu.create channel. If populated, the context menu associated with this id will appear when the feature is 'right-clicked', allowing the user to invoke actions on the feature which will be handled by the widget which originally registered the context menu. If no menuId is assigned, the feature will not have a context menu associated when right-clicked.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Context Menus"
       }
     },
     "required": ["featureId", "url"]
@@ -68,8 +62,5 @@ cmapi.channel["map.feature.plot.url"] = {
   "changeLog": [{
     "version": "1.3.0",
     "change": "Added optional messageId parameter to support user manipulation extension"
-  }, {
-    "version": "1.3.0",
-    "change": "Added optional menuId parameter to support user manipulation extension"
   }] 
 };
