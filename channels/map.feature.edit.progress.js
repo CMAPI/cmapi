@@ -1,7 +1,7 @@
 cmapi.channel["map.feature.edit.progress"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Schema for map.message.complete Details object",
+    "title": "Schema for map.message.progress Details object",
     "description": "Schema for the details object for a map.message.progress message during a map.feature.edit.",
     "type": "object",
     "properties": {
@@ -25,7 +25,11 @@ cmapi.channel["map.feature.edit.progress"] = {
         "type": "string",
         "description": "Type of feature data based on the map.feature.plot type"
       },
-        "updates": {
+      "status": {
+        "description": "A pre-defined string indicating the type of progress. <ul><li>start - indicates that the map has placed the feature into edit mode.</li><li>update - indicates that the map has modified the feature.</li></ul>",
+        "enum": ["start", "update"]
+      },
+      "updates": {
             "type": "object",
             "description": "This object contains the details of the changes made during the draw operation.",
             "properties": {

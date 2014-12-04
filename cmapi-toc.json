@@ -287,6 +287,9 @@
       "key": "cmapi.appendix.d",
       "type": "overview",
       "title": "D. Unique Identifiers - <span class='newContent'>NEW</span>"
+    }, {
+      "key": "cmapi.appendix.e",
+      "title": "E. MilStd 2525 Symbology - <span class='newContent'>NEW</span>"
     }]
   }, {
     "key": "cmapi.acronyms",

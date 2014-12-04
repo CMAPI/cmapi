@@ -13,6 +13,10 @@ cmapi.channel["map.feature.draw.complete"] = {
         "description": "The unique identifier for the feature to be edited. ",
         "type": "string"
       },
+      "name": {
+        "description": "Name for the given feature data. Note that feature names do not have to be unique and are intended for display purposes only.",
+        "type": "string"
+      },
       "type": {
         "description": "Type of feature to be drawn.  Options are line, polygon, point or symbol.  This field may be overloaded to handle future draw types such as bufferedline, circle, aoi, etc.",
         "type": "string"
