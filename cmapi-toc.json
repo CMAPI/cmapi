@@ -12,64 +12,136 @@
       "title": "Overlay Channels - <span class='updatedContent'>UPDATED</span>",
       "children": [{
         "key": "map.overlay.create",
-        "title": "Create Overlay - <span class='updatedContent'>UPDATED</span>"
+        "title": "Create Overlay - <span class='updatedContent'>UPDATED</span>",
+        "children": [{
+          "key": "map.overlay.create.complete",
+          "title": "Overlay Create Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
       }, {
         "key": "map.overlay.remove",
-        "title": "Remove Overlay - <span class='updatedContent'>UPDATED</span>"
+        "title": "Remove Overlay - <span class='updatedContent'>UPDATED</span>",
+        "children": [{
+          "key": "map.overlay.remove.complete",
+          "title": "Overlay Remove Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
       }, {
         "key": "map.overlay.hide",
-        "title": "Hide Overlay - <span class='updatedContent'>UPDATED</span>"
+        "title": "Hide Overlay - <span class='updatedContent'>UPDATED</span>",
+        "children": [{
+          "key": "map.overlay.hide.complete",
+          "title": "Overlay Hide Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
       }, {
         "key": "map.overlay.show",
-        "title": "Show Overlay - <span class='updatedContent'>UPDATED</span>"
+        "title": "Show Overlay - <span class='updatedContent'>UPDATED</span>",
+        "children": [{
+          "key": "map.overlay.show.complete",
+          "title": "Overlay Show Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
       }, {
         "key": "map.overlay.update",
-        "title": "Update Overlay - <span class='updatedContent'>UPDATED</span>"
+        "title": "Update Overlay - <span class='updatedContent'>UPDATED</span>",
+        "children": [{
+          "key": "map.overlay.update.complete",
+          "title": "Overlay Update Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
       }]
     }, {
       "key": "",
       "title": "Feature Channels - <span class='updatedContent'>UPDATED</span>",
       "children": [{
         "key": "map.feature.plot",
-        "title": "Plot Feature - <span class='updatedContent'>UPDATED</span>"
+        "title": "Plot Feature - <span class='updatedContent'>UPDATED</span>",
+        "children": [{
+          "key": "map.feature.plot.complete",
+          "title": "Feature Plot Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
       }, {
         "key": "map.feature.plot.batch",
-        "title": "Plot Feature Batch - <span class='newContent'>NEW</span>"
+        "title": "Plot Feature Batch - <span class='newContent'>NEW</span>",
+        "children": [{
+          "key": "map.feature.plot.batch.complete",
+          "title": "Feature Plot Batch Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
       }, {
         "key": "map.feature.plot.url",
-        "title": "Plot URL <span class='updatedContent'>UPDATED</span>"
+        "title": "Plot URL <span class='updatedContent'>UPDATED</span>",
+        "children": [{
+          "key": "map.feature.plot.url.complete",
+          "title": "Feature Plot URL Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
       }, {
         "key": "map.feature.unplot",
-        "title": "Unplot Feature - <span class='updatedContent'>UPDATED</span>"
+        "title": "Unplot Feature - <span class='updatedContent'>UPDATED</span>",
+        "children": [{
+          "key": "map.feature.unplot.complete",
+          "title": "Feature Unplot Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
       }, {
         "key": "map.feature.unplot.batch",
-        "title": "Unplot Feature Batch - <span class='newContent'>NEW</span>"
+        "title": "Unplot Feature Batch - <span class='newContent'>NEW</span>",
+        "children": [{
+          "key": "map.feature.unplot.batch.complete",
+          "title": "Feature Unplot Batch Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
       }, {
         "key": "map.feature.hide",
-        "title": "Hide Feature - <span class='updatedContent'>UPDATED</span>"
+        "title": "Hide Feature - <span class='updatedContent'>UPDATED</span>",
+        "children": [{
+          "key": "map.feature.hide.complete",
+          "title": "Feature Hide Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
       }, {
         "key": "map.feature.show",
-        "title": "Show Feature - <span class='updatedContent'>UPDATED</span>"
+        "title": "Show Feature - <span class='updatedContent'>UPDATED</span>",
+        "children": [{
+          "key": "map.feature.show.complete",
+          "title": "Feature Show Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
       }, {
         "key": "map.feature.selected",
-        "title": "Feature Selected - <span class='updatedContent'>UPDATED</span>"
+        "title": "Feature Selected - <span class='updatedContent'>UPDATED</span>",
+        "children": [{
+          "key": "map.feature.selected.complete",
+          "title": "Feature Selected Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
       }, {
         "key": "map.feature.selected.batch",
-        "title": "Feature Selected Batch - <span class='newContent'>NEW</span>"
+        "title": "Feature Selected Batch - <span class='newContent'>NEW</span>",
+        "children": [{
+          "key": "map.feature.selected.batch.complete",
+          "title": "Feature Selected Batch Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
       }, {
         "key": "map.feature.deselected",
-        "title": "Feature De-Selected - <span class='updatedContent'>UPDATED</span>"
+        "title": "Feature De-Selected - <span class='updatedContent'>UPDATED</span>",
+        "children": [{
+          "key": "map.feature.deselected.complete",
+          "title": "Feature De-Selected Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
       }, {
         "key": "map.feature.deselected.batch",
-        "title": "Feature De-Selected Batch - <span class='newContent'>NEW</span>"
+        "title": "Feature De-Selected Batch - <span class='newContent'>NEW</span>",
+        "children": [{
+          "key": "map.feature.deselected.batch.complete",
+          "title": "Feature De-Selected Batch Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
       }, {
         "key": "map.feature.update",
-        "title": "Update Feature Data - <span class='updatedContent'>UPDATED</span>"
+        "title": "Update Feature Data - <span class='updatedContent'>UPDATED</span>",
+        "children": [{
+          "key": "map.feature.update.complete",
+          "title": "Feature Update Message Complete - details object - <span class='newContent'>NEW</span>"
+        }]
       }]
     }, {
       "key": "",
       "title": "Map View Channels - <span class='updatedContent'>UPDATED</span>",
-      "children": [{
+      "children": [
+      {
+        "key": "map.view.complete",
+        "title": " Message Complete detail object for Zoom, All Center on messages - <span class='updatedContent'>NEW</span>"
+      }, {
         "key": "map.view.zoom",
         "title": "Zoom - <span class='updatedContent'>UPDATED</span>"
       }, {
