@@ -33,7 +33,7 @@ cmapi.channel["map.feature.edit.complete"] = {
     "required": ["featureId", "overlayId"]
   },
   "notes": [
-    "This is the format of the dtails object to be used in a map.message.progress event for feature editing."
+    "This is the format of the dtails object to be used in a map.message.complete message for feature editing."
   ],
   "changeLog": [{
     "version": "1.3.0",

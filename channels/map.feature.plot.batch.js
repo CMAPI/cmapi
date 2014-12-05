@@ -34,8 +34,8 @@ cmapi.channel["map.feature.plot.batch"] = {
         "type": "string",
         "extension": "User Manipulation - Message Complete"
       },
-	  "menuId": {
-        "description": "The default format to be applied to all feature objects in the features array that don’t include a menuId value. I.e., similar behaviour to CSS.  See map.feature.plot for definition of menuId property.",
+      "menuId": {
+        "description": "The ID of the default menu to be applied to all feature objects in the features array that don't include a menuId value. I.e., similar behaviour to CSS.  See map.feature.plot for definition of menuId property.",
         "type": "string",
         "extension": "User Manipulation - Context Menus"
       }
