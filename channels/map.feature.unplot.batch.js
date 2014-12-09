@@ -5,7 +5,7 @@ cmapi.channel["map.feature.unplot.batch"] = {
     "description": "Remove collection of features from the map.",
     "type": "object",
     "properties": {
-      "payloads": {
+      "features": {
         "description": "An array of map.feature.unplot payloads minus the messageId.  See map.feature.unplot for the object format and schema",
         "type": "Array"
       },
@@ -20,7 +20,7 @@ cmapi.channel["map.feature.unplot.batch"] = {
 		"extension": "User Manipulation - Message Complete"
       }
     },
-    "required": ["payloads"]
+    "required": ["features"]
   },
   "notes": [],
   "changeLog": [{
