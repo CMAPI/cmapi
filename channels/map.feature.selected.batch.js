@@ -5,7 +5,7 @@ cmapi.channel["map.feature.selected.batch"] = {
     "description": "Select, or report that a collection of feature objects were selected.",
     "type": "object",
     "properties": {
-      "payloads": {
+      "features": {
         "description": "An array of map.feature.selected payload objects.  See map.feature.selected for the object format and schema",
         "type": "Array"
       },
@@ -20,7 +20,7 @@ cmapi.channel["map.feature.selected.batch"] = {
         "extension": "User Manipulation - Message Complete"
       }
     },
-    "required": ["payloads"]
+    "required": ["features"]
   },
   "notes": [],
   "changeLog": [{
