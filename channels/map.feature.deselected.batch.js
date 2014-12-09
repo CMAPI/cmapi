@@ -5,7 +5,7 @@ cmapi.channel["map.feature.deselected.batch"] = {
     "description": "De-Select, or report that a collection of feature objects were de-selected.",
     "type": "object",
     "properties": {
-      "payloads": {
+      "features": {
         "description": "An array of map.feature.deSelected payload objects.  See map.feature.deSelected for the object format and schema",
         "type": "Array"
       },
@@ -20,7 +20,7 @@ cmapi.channel["map.feature.deselected.batch"] = {
 		"extension": "User Manipulation - Message Complete"
       }
     },
-    "required": ["payloads"]
+    "required": ["features"]
   },
   "notes": [],
   "changeLog": [{
