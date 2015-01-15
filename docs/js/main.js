@@ -6,7 +6,7 @@ $(function () {
   $("#tree")
     .fancytree({
       source: {
-        url: "cmapi-toc2.json"
+        url: "cmapi-toc.json"
       },
       checkbox: false,
       selectMode: 1,

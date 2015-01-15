@@ -9,27 +9,6 @@ cmapi.channel.renderer = (function () {
     currentChannel,
     currentOverview;
 
-  function loadScript(args) {
-    var script = document.createElement("script");
-
-    script.type = "text/javascript";
-
-    if (script.readyState) { //IE
-      script.onreadystatechange = function () {
-        if (script.readyState === "loaded" || script.readyState === "complete") {
-          script.onreadystatechange = null;
-          args.callback(args);
-        }
-      };
-    } else { //Others
-      script.onload = function () {
-        args.callback(args);
-      };
-    }
-
-    script.src = args.url;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  }
 
   function checkRequired(prop, schema) {
     var i,
@@ -361,8 +340,6 @@ cmapi.channel.renderer = (function () {
       }
       output.push('<a target="_blank" href="https://github.com/CMAPI/cmapi/commits/v1.3.0/channels/' + schema.title + '.js">View version history for this file</a>');
 
-      // https://github.com/CMAPI/cmapi/commits/master/channels/cmapi.appendix.b.js
-
       output.push('<h3 id="toc_4">Schema</h3>');
       output.push('<h4 id="toc_4">Link</h4>');
       output.push('<p><a href="' + link + '" target="_blank">' + link + '</a></p>');
@@ -481,12 +458,10 @@ cmapi.channel.renderer = (function () {
     currentSchema = channelDef.schema;
     $('#main').html(render(args.url, cmapi.channel[args.channel]));
     var url = baseUrl + args.channel + ".examples.js";
-    loadScript({
+    exampleLoaded({
       url: url,
       channel: args.channel,
-      callback: exampleLoaded
     });
-
   }
 
   function overviewLoaded() {
@@ -496,21 +471,15 @@ cmapi.channel.renderer = (function () {
 
   function loadChannelDef(channel) {
     var url = baseUrl + channel + ".js";
-    loadScript({
+    channelLoaded({
       url: url,
-      channel: channel,
-      callback: channelLoaded
+      channel: channel
     });
   }
 
   function loadOverview(target) {
-    var url = "channels/" + target + ".js";
     currentOverview = target;
-    loadScript({
-      url: url,
-      channel: "",
-      callback: overviewLoaded
-    });
+    overviewLoaded();
   }
 
   publicInterface = {
