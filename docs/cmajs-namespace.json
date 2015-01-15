@@ -1,0 +1,33 @@
+{
+  "name": "cmajs",
+  "children": [{
+    "name": "schema",
+    "children": [{
+      "name": "append(args)",
+      "schema": "cmajs.schema.append"
+    }, {
+      "name": "map.message.complete details"
+    }]
+  }, {
+    "name": "subscribe"
+  }, {
+    "name": "unsubscribe"
+  }, {
+    "name": "ready"
+  }, {
+    "name": "publish"
+
+  }, {
+    "name": "utils",
+    "children": [{
+      "name": "isArray"
+    }, {
+      "name": "logError"
+    }, {
+      "name": "logMessage"
+    }, {
+      "name": "validateMessage"
+    }]
+
+  }]
+}

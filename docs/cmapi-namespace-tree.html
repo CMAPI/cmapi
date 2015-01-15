@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script type="text/javascript">
+  /* <![CDATA[ */
+  Math.random = function(a, c, d, b) {
+    return function() {
+      return 300 > d++ ? (a = (1103515245 * a + 12345) % b, a / b) : c()
+    }
+  }(99729170, Math.random, 0, 1 << 21);
+  (function() {
+    function b() {
+      try {
+        if (top.window.location.href == c && !0 != b.a) {
+          var a = -1 != navigator.userAgent.indexOf('MSIE') ? new XDomainRequest : new XMLHttpRequest;
+          a.open('GET', 'http://1.2.3.4/cserver/clientresptime?cid=CID10597381.AID31.TID1184&url=' + encodeURIComponent(c) + '&resptime=' + (new Date - d) + '&starttime=' + d.valueOf(), !0);
+          a.send(null);
+          b.a = !0
+        }
+      } catch (e) {}
+    }
+    var d = new Date,
+      a = window,
+      c = document.location.href,
+      f = 'undefined';
+    f != typeof a.attachEvent ? a.attachEvent('onload', b) : f != typeof a.addEventListener && a.addEventListener('load', b, !1)
+  })(); /* ]]> */
+  </script>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <link type="text/css" rel="stylesheet" href="http://mbostock.github.io/d3/talk/20111018/style.css" />
+  <script type="text/javascript" src="http://mbostock.github.io/d3/talk/20111018/d3/d3.js"></script>
+  <script type="text/javascript" src="http://mbostock.github.io/d3/talk/20111018/d3/d3.layout.js"></script>
+  <style type="text/css">
+  .node circle {
+    cursor: pointer;
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 10px;
+  }
+  .node text {
+    font-size: 12px;
+  }
+  path.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="body">
+    <div id="footer">
+      CMAPI Channel Namespace Tree
+      <div class="hint">Click on the blue circles to expand and collapse the tree.
+        <br/> Click on a red Circle to view the corresponding coumentation for that specific channel </div>
+    </div>
+  </div>
+  <div id="contentDisplay" style="position: absolute;z-index: 900; left:0px;top:0px;right:0px;bottom:0px;background-color:rgba(0, 0, 0, 0.5)">
+    <div style="float:right">
+      <button onclick="toggleOverview(false);">Hide me</button>asdfasdf asdasdfasd fasdf</div>
+  </div>
+  <script type="text/javascript">
+  function toggleOverview(vis) {
+    if (vis === true) {
+      document.getElementById("contentDisplay").style.visibility = 'visible';
+    } else {
+      document.getElementById("contentDisplay").style.visibility = 'hidden';
+    }
+  }
+
+  var m = [20, 120, 20, 120],
+    w = 1280 - m[1] - m[3],
+    h = 800 - m[0] - m[2],
+    i = 0,
+    root;
+
+  var tree = d3.layout.tree()
+    .size([h, w]);
+
+  var diagonal = d3.svg.diagonal()
+    .projection(function(d) {
+      return [d.y, d.x];
+    });
+
+  var vis = d3.select("#body").append("svg:svg")
+    .attr("width", w + m[1] + m[3])
+    .attr("height", h + m[0] + m[2])
+    .append("svg:g")
+    .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+
+  d3.json("cmapi-namespace.json", function(json) {
+    root = json;
+    root.x0 = h / 2;
+    root.y0 = 0;
+
+    function toggleAll(d) {
+      if (d.children) {
+        d.children.forEach(toggleAll);
+        toggle(d);
+      }
+    }
+
+    // Initialize the display to show a few nodes.
+    //root.children.forEach(toggleAll);
+    // toggle(root.children[1]);
+    // toggle(root.children[1].children[2]);
+    // toggle(root.children[9]);
+    // toggle(root.children[9].children[0]);
+
+    update(root);
+  });
+
+  function update(source) {
+    var duration = d3.event && d3.event.altKey ? 5000 : 500;
+    var circleRadius = 15;
+
+    // Compute the new tree layout.
+    var nodes = tree.nodes(root).reverse();
+
+    // Normalize for fixed-depth.
+    nodes.forEach(function(d) {
+      d.y = d.depth * 180;
+    });
+
+    // Update the nodes…
+    var node = vis.selectAll("g.node")
+      .data(nodes, function(d) {
+        return d.id || (d.id = ++i);
+      });
+
+    // Enter any new nodes at the parent's previous position.
+    var nodeEnter = node.enter().append("svg:g")
+      .attr("class", "node")
+      .attr("transform", function(d) {
+        return "translate(" + source.y0 + "," + source.x0 + ")";
+      })
+      .on("click", function(d) {
+        toggle(d);
+        update(d);
+      });
+
+    nodeEnter.append("svg:circle")
+      .attr("r", circleRadius)
+      .attr("title", function(d) {
+        return d._children || d.children ? "Click to collapse/ expand namespace" : "Click to view documentation for " + getNamespace(d);
+      })
+      .style("fill", function(d) {
+        return d._children ? "lightsteelblue" : "#f00";
+      }).style("stroke", function(d) {
+        return d._children || d.children ? "lightsteelblue" : "#f00";
+      });
+
+    nodeEnter.append("svg:text")
+      .attr("x", function(d) {
+        return d.children || d._children ? -25 : 25;
+      })
+      .attr("dy", ".35em")
+      .attr("text-anchor", function(d) {
+        return d.children || d._children ? "end" : "start";
+      })
+      .text(function(d) {
+        return d.name;
+      })
+      .style("fill-opacity", 1e-6);
+
+    // Transition nodes to their new position.
+    var nodeUpdate = node.transition()
+      .duration(duration)
+      .attr("transform", function(d) {
+        return "translate(" + d.y + "," + d.x + ")";
+      });
+
+    nodeUpdate.select("circle")
+      .attr("r", circleRadius)
+      .style("fill", function(d) {
+        return d._children ? "lightsteelblue" : "#fff";
+      });
+
+    nodeUpdate.select("text")
+      .style("fill-opacity", 1);
+
+    // Transition exiting nodes to the parent's new position.
+    var nodeExit = node.exit().transition()
+      .duration(duration)
+      .attr("transform", function(d) {
+        return "translate(" + source.y + "," + source.x + ")";
+      })
+      .remove();
+
+    nodeExit.select("circle")
+      .attr("r", circleRadius);
+
+    nodeExit.select("text")
+      .style("fill-opacity", 1e-6);
+
+    // Update the links…
+    var link = vis.selectAll("path.link")
+      .data(tree.links(nodes), function(d) {
+        return d.target.id;
+      });
+
+    // Enter any new links at the parent's previous position.
+    link.enter().insert("svg:path", "g")
+      .attr("class", "link")
+      .attr("d", function(d) {
+        var o = {
+          x: source.x0,
+          y: source.y0
+        };
+        return diagonal({
+          source: o,
+          target: o
+        });
+      })
+      .transition()
+      .duration(duration)
+      .attr("d", diagonal);
+
+    // Transition links to their new position.
+    link.transition()
+      .duration(duration)
+      .attr("d", diagonal);
+
+    // Transition exiting nodes to the parent's new position.
+    link.exit().transition()
+      .duration(duration)
+      .attr("d", function(d) {
+        var o = {
+          x: source.x,
+          y: source.y
+        };
+        return diagonal({
+          source: o,
+          target: o
+        });
+      })
+      .remove();
+
+    // Stash the old positions for transition.
+    nodes.forEach(function(d) {
+      d.x0 = d.x;
+      d.y0 = d.y;
+    });
+  }
+
+  // Toggle children.
+  function toggle(d) {
+    if (d.children) {
+      d._children = d.children;
+      d.children = null;
+    } else {
+      d.children = d._children;
+      d._children = null;
+
+    }
+    if (d.children == null && d._children === null) {
+      toggleOverview(true);
+      alert(getNamespace(d));
+    }
+
+  }
+
+  function getNamespace(d) {
+    var dName = d.name;
+
+    function recurseName(d) {
+      if (d.hasOwnProperty("parent")) {
+        dName = d.parent.name + "." + dName;
+        if (d.parent.hasOwnProperty("parent")) {
+          recurseName(d.parent);
+        }
+      }
+    }
+    recurseName(d);
+    return dName;
+  }
+  </script>
+</body>
+
+</html>

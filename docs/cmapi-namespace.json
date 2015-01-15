@@ -1,0 +1,30 @@
+{
+  "name": "map",
+  "children": [{
+    "name": "overlay",
+    "children": [{
+      "name": "create",
+      "children": [{"name": "map.overlay.create payload"},{"name": "map.message.complete details"}]
+    }, {
+      "name": "remove"
+    }, {
+      "name": "show"
+    }, {
+      "name": "hide"
+    }, {
+      "name": "update"
+    }]
+  }, {
+    "name": "feature",
+    "children": [{
+      "name": "plot"
+    }, {
+      "name": "ploturl"
+    }, {
+      "name": "show"
+    }, {
+      "name": "hide"
+    }]
+
+  }]
+}

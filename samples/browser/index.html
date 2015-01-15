@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Your page title here :)</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <div class="row" style="margin-top: 5%">
+
+      <div class="one-third column" style="">
+        <h4>Client</h4>
+        <p>Publish a message from client to map</p>
+        <form>
+  <div class="row">
+
+    <div class="u-full-width">
+      <label for="exampleRecipientInput">Channel</label>
+      <select class="u-full-width" id="exampleRecipientInput">
+        <option value="Option 1">map.overlay.create</option>
+        <option value="Option 2">map.feature.plot</option>
+        <option value="Option 3">map.feature.plot.url</option>
+      </select>
+    </div>
+  </div>
+  <label for="exampleMessage">Payload</label>
+  <textarea class="u-full-width" placeholder="Input CMAPI JSON payload here ..." id="exampleMessage"></textarea>
+
+  <input class="button-primary" value="Reset" type="submit">
+  <input class="button-primary" value="Submit" type="submit">
+</form>
+      </div>
+
+      <div class="one-third column" style="">
+        <h4>Pub / Sub</h4>
+        <div>
+          <label for="exampleMessage">From Client</label>
+  <textarea class="u-full-width" placeholder="Input CMAPI JSON payload here ..." id="clientMessage"></textarea>
+        </div>
+        <div>
+          <h5>From Map:</h5>
+          <label for="exampleMessage">To Client</label>
+  <textarea class="u-full-width" placeholder="Input CMAPI JSON payload here ..." id="mapMessage"></textarea>
+        </div>
+      </div>
+    
+      <div class="one-third column" style="">
+        <h4>Map</h4>
+        
+      </div>
+
+    </div>
+  </div>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

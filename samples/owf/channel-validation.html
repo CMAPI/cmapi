@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CMAPI Channel Validation</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type='text/javascript' src='/owf/js-min/owf-widget-min.js'></script>
+        <script src="../js/libs/jquery-1.11.1.min.js" type="text/javascript"></script>
+        <script src="../js/libs/tv4.js" type="text/javascript"></script>
+        <script type='text/javascript' src='channel-validation.js'></script>
+        <script type='text/javascript' src='../channels/cmapi.js'></script>
+        <script type='text/javascript' src='../channels/map.error.js'></script>
+        <script type='text/javascript' src='../channels/map.feature.deselected.js'></script>
+        <script type='text/javascript' src='../channels/map.feature.hide.js'></script>
+        <script type='text/javascript' src='../channels/map.feature.plot.js'></script>
+        <script type='text/javascript' src='../channels/map.feature.plot.batch.js'></script>
+        <script type='text/javascript' src='../channels/map.feature.plot.url.js'></script>
+        <script type='text/javascript' src='../channels/map.feature.selected.js'></script>
+        <script type='text/javascript' src='../channels/map.feature.selected.batch.js'></script>
+        <script type='text/javascript' src='../channels/map.feature.show.js'></script>
+        <script type='text/javascript' src='../channels/map.feature.unplot.js'></script>
+        <script type='text/javascript' src='../channels/map.feature.update.js'></script>
+        <script type='text/javascript' src='../channels/map.feature.edit.js'></script>
+        <script type='text/javascript' src='../channels/map.feature.draw.js'></script>
+        <script type='text/javascript' src='../channels/map.message.complete.js'></script>
+        <script type='text/javascript' src='../channels/map.message.progress.js'></script>
+        <script type='text/javascript' src='../channels/map.message.cancel.js'></script>
+        <script type='text/javascript' src='../channels/map.overlay.cluster.activate.js'></script>
+        <script type='text/javascript' src='../channels/map.overlay.cluster.deactivate.js'></script>
+        <script type='text/javascript' src='../channels/map.overlay.cluster.remove.js'></script>
+        <script type='text/javascript' src='../channels/map.overlay.cluster.set.js'></script>
+        <script type='text/javascript' src='../channels/map.overlay.create.js'></script>
+        <script type='text/javascript' src='../channels/map.overlay.hide.js'></script>
+        <script type='text/javascript' src='../channels/map.overlay.remove.js'></script>
+        <script type='text/javascript' src='../channels/map.overlay.show.js'></script>
+        <script type='text/javascript' src='../channels/map.overlay.update.js'></script>
+        <script type='text/javascript' src='../channels/map.status.about.js'></script>
+        <script type='text/javascript' src='../channels/map.status.format.js'></script>
+        <script type='text/javascript' src='../channels/map.status.request.js'></script>
+        <script type='text/javascript' src='../channels/map.status.selected.js'></script>
+        <script type='text/javascript' src='../channels/map.status.view.js'></script>
+        <script type='text/javascript' src='../channels/map.view.center.bounds.js'></script>
+        <script type='text/javascript' src='../channels/map.view.center.feature.js'></script>
+        <script type='text/javascript' src='../channels/map.view.center.location.js'></script>
+        <script type='text/javascript' src='../channels/map.view.center.overlay.js'></script>
+        <script type='text/javascript' src='../channels/map.view.center.bounds.js'></script>
+        <script type='text/javascript' src='../channels/map.view.clicked.js'></script>
+        <script type='text/javascript' src='../channels/map.view.zoom.js'></script>
+        <style>
+            table,th,td {
+                border: 1px solid grey;
+            }
+        </style>
+    </head>
+    <body>
+        CMAPI allows extended properties on all payloads.  If you want to validate using only properties defined in the schema, set to "Restrict"
+        <select id="allow-additional-select">
+            <option value="0">Allow</option>
+            <option value="1">Restrict</option>
+        </select>
+        <hr/>
+        <span id="totalsSpan"></span>
+        <button onclick="cmapi.channelValidation.clear();" style="float: right" >Clear Errors</button>
+        <br/>
+        <br/>
+        <div id="outputDiv">
+            <table id="errorTable" style="width: 100%">
+                <tr>
+                    <th>Date</th>
+                    <th>Channel</th>
+                    <th>Error</th>
+                    <th>View</th>
+                </tr>
+            </table>
+        </div>
+        
+    </body>
+</html>
