@@ -133,10 +133,10 @@ var cmapi_channel_renderer = (function () {
         message: cmapi.lang.MESSAGE_VALIDATION_SUCCESS
       },
       valid;
-    if (banUnknownProps === false) {
-      valid = tv4.validateMultiple(payload, schema, true);
-    } else {
+    if (banUnknownProps === true) {
       valid = tv4.validateMultiple(payload, schema, true, true);
+    } else {
+      valid = tv4.validateMultiple(payload, schema, true);
     }
 
     if (!valid.valid) {
