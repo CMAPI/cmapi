@@ -1,13 +1,28 @@
 /*global window, cmapi, tv4, alert */
-var cmapi = cmapi || {};
-cmapi.channel = cmapi.channel || {};
 
-cmapi.channel.renderer = (function () {
+
+
+var queryStringUtil = (function () {
+  var publicInterface = {
+    // Searches the URL query string for a key defned by 'name' and returns the string value
+    getParameterByName: function (name) {
+      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(window.location.search);
+      return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+  };
+
+  return publicInterface;
+}());
+
+var cmapi_channel_renderer = (function () {
   var publicInterface,
-    baseUrl = "channels/",
+    baseUrl = "../src/schemas/",
     currentSchema,
     currentChannel,
-    currentOverview;
+    currentOverview,
+    spellCheck = "";
 
 
   function checkRequired(prop, schema) {
@@ -162,56 +177,25 @@ cmapi.channel.renderer = (function () {
       options,
       opLen,
       opt,
-      enums,
-      extension = "";
+      enums;
 
     output.push('<table><thead><tr>');
     output.push('<th>' + cmapi.lang.TABLE_HEADER_PROPERTY + '</th>');
     output.push('<th>' + cmapi.lang.TABLE_HEADER_REQUIRED + '</th>');
-    output.push('<th>' + cmapi.lang.TABLE_HEADER_EXTENSION + '</th>');
     output.push('<th>' + cmapi.lang.TABLE_HEADER_TYPE + '</th>');
-    output.push('<th>' + cmapi.lang.TABLE_HEADER_DEFAULT + '</th>');
     output.push('<th>' + cmapi.lang.TABLE_HEADER_DESCRIPTION + '</th>');
     output.push('</tr></thead><tbody>');
     // DO NOT wrap in if hasOwnProperty as JSLint may suggest or no properties will get enumerated
     for (prop in obj) {
       propVal = obj[prop];
-      extension = "N/A";
-      if (propVal.hasOwnProperty("extension")) {
-        extension = propVal.extension;
-      }
+
       optional = checkRequired(prop, parent);
-      defaultVal = "";
-      if (propVal.hasOwnProperty("default")) {
-        defaultVal = propVal["default"];
-      }
+
       if (propVal.hasOwnProperty("type")) {
         type = propVal.type;
         if ($.isArray(type)) {
-          type = "Array";
-        }
-        if ($.isArray(type) && typeof type[0] === "object") {
-          output.push(checkStatus(propVal));
-          output.push('<td>' + prop + '</td>');
-          output.push('<td>' + optional + '</td>');
-          output.push('<td>' + extension + '</td>');
-          output.push('<td>' + type + '</td>');
-          output.push('<td>' + defaultVal + '</td>');
-          output.push('<td>' + propVal.description + '</td>');
-          output.push('</tr>');
-          output.push('<tr>');
-          output.push('<td colSpan="6">');
-          len = propVal.type.length;
-          for (i = 0; i < len; i++) {
-            output.push('<tr>');
-            output.push('<td colSpan="6">');
-            output.push(getObjectTable(propVal.type[i].properties, output, obj));
-            output.push('</td>');
-            output.push('</tr>');
-          }
-          output.push('</td>');
-          output.push('</tr>');
-          continue;
+          //type = "Array";
+          type = propVal.type.join(", ");
         }
       } else if (propVal.hasOwnProperty("enum")) {
         enums = JSON.stringify(propVal.enum).split(",").join(", ");
@@ -220,11 +204,11 @@ cmapi.channel.renderer = (function () {
 
       if ($.isArray(propVal)) {
         output.push('<tr>');
-        output.push('<td colSpan="6">' + prop + '</td>');
+        output.push('<td colSpan="4">' + prop + '</td>');
         len = propVal.length;
         for (i = 0; i < len; i++) {
           output.push('<tr>');
-          output.push('<td colSpan="6">');
+          output.push('<td colSpan="4">');
           output.push(getObjectTable(propVal[i], output, obj));
           output.push('</td>');
           output.push('</tr>');
@@ -234,17 +218,20 @@ cmapi.channel.renderer = (function () {
       } else {
         output.push(checkStatus(propVal));
         output.push('<td>' + prop + '</td>');
-        output.push('<td>' + optional + '</td>');
-        output.push('<td >' + extension + '</td>');
+        if (optional === "required") {
+          output.push('<td style="font-weight:600">' + optional + '</td>');
+        } else {
+          output.push('<td>' + optional + '</td>');
+        }
+        //output.push('<td >' + extension + '</td>');
         output.push('<td>' + type + '</td>');
-        output.push('<td>' + defaultVal + '</td>');
-        output.push('<td>' + propVal.description + '</td>');
+        output.push('<td' + spellCheck + '>' + propVal.description + '</td>');
         output.push('</tr>');
         if (propVal.hasOwnProperty("properties")) {
           subProp = propVal.properties;
 
           output.push('<tr>');
-          output.push('<td colSpan="6">');
+          output.push('<td colSpan="4">');
           output.push(getObjectTable(subProp, output, propVal));
           output.push('</td>');
           output.push('</tr>');
@@ -253,7 +240,7 @@ cmapi.channel.renderer = (function () {
           options = propVal.oneOf;
           opLen = options.length;
           output.push('<tr>');
-          output.push('<td colSpan="6">');
+          output.push('<td colSpan="4">');
           output.push('One Of: <br/>');
           for (j = 0; j < opLen; j++) {
             opt = options[j].properties;
@@ -271,51 +258,107 @@ cmapi.channel.renderer = (function () {
     output.push('</tbody></table>');
   }
 
+  // Creates an HTML table for the schema with embedded tables via recursion for properties with sub-properties
+  function getObjectPayload(obj, output, parent, indent) {
+    var prop,
+      propVal,
+      optional,
+      type,
+      i,
+      indentStr = "  ",
+      isArr = false;
+
+    if (isNaN(indent)) {
+      indent = 0;
+    }
+
+    for (i = 0; i < indent; i++) {
+      indentStr += "  ";
+    }
+    i = 0;
+
+
+    output.push('{');
+    // DO NOT wrap in if hasOwnProperty as JSLint may suggest or no properties will get enumerated
+    for (prop in obj) {
+      propVal = obj[prop];
+      if (i > 0) {
+        output.push(", ");
+      }
+      output.push('<br/>');
+      optional = checkRequired(prop, parent);
+      output.push(indentStr + prop + ": ");
+      if (propVal.hasOwnProperty("type")) {
+        type = propVal.type;
+        if ($.isArray(type)) {
+          //type = "Array";
+          type = propVal.type.join(" | ");
+        } else if (type === "array") {
+          isArr = true;
+        }
+      }
+      output.push(type);
+      if (optional === "optional") {
+        output.push(" (" + optional + ")");
+      } else {
+
+        output.push(' (<span style="font-weight:600;">' + optional + '</span>)');
+      }
+      if (propVal.hasOwnProperty("properties")) {
+        if (isArr === true) {
+          output.push('[');
+        }
+        getObjectPayload(propVal.properties, output, propVal, indent + 1);
+        if (isArr === true) {
+          output.push(']');
+          isArr = false;
+        }
+      } else {
+        isArr = false;
+      }
+      i++;
+    }
+    indentStr = "  ";
+    for (i = 0; i < indent - 1; i++) {
+      indentStr += "  ";
+    }
+    i = 0;
+
+    output.push('<br/>');
+    if (indent > 0) {
+      output.push(indentStr);
+    }
+    output.push('}');
+  }
+
+
   //Creates the overall HTML template to render to page
-  function render(link, channelDef) {
+  function render(channelDef) {
 
     var output = [],
       i = 0,
-      prop,
-      optional,
       schema = channelDef.schema,
-      noteLen = channelDef.notes.length,
-      changeLen = 0;
+      noteLen = 0;
 
-    if (channelDef.hasOwnProperty("changeLog")) {
-      changeLen = channelDef.changeLog.length;
+    if (channelDef.hasOwnProperty("notes")) {
+      noteLen = channelDef.notes.length;
     }
 
     try {
-      output.push('<h2 id="toc_0">' + schema.title + '</h2>');
+      output.push('<h2 id="toc_0"' + spellCheck + '>' + schema.title + '</h2>');
 
-      output.push('<h3 id="toc_1">Purpose:</h3>');
-
-      output.push('<p>' + schema.description + '</p>');
-
-      output.push('<h3 id="toc_2">Channel:</h3>');
-
-      output.push('<p>' + schema.title + '</p>');
+      output.push('<p' + spellCheck + '>' + schema.description + '</p>');
 
       output.push('<h3 id="toc_3">Payload:</h3>');
 
       output.push('<pre><code class="javascript">');
-      output.push('{');
-      // DO NOT wrap in if hasOwnProperty as JSLint may suggest or no properties will get enumerated
-      for (prop in schema.properties) {
-        if (i > 0) {
-          output.push(", ");
-        }
-        output.push('<br/>');
-        optional = checkRequired(prop, schema);
-        output.push(prop + ": " + schema.properties[prop].type + " (" + optional + ")");
-        i++;
-      }
-      i = 0;
-      output.push('<br/>}');
 
+      getObjectPayload(schema.properties, output, schema, 0);
       output.push('</code></pre>');
-      output.push('<h3 id="toc_3">Properties:</h3>');
+
+      output.push('<a href="../src/schemas/' + schema.title + '.schema.js" target="_blank">View JSON Schema for ' + schema.title + '</a>');
+
+      output.push('<h3 id="toc_3">Payload Property Descriptions:</h3>');
       output.push('<p >Changes from previous version are highlighted in <span class="updatedContent">yellow</span> and additions are highlighted in <span class="newContent">green</span>.  If the channel is new for this version the properties WILL NOT be highlighted.</p>');
       getObjectTable(schema.properties, output, schema);
 
@@ -323,37 +366,24 @@ cmapi.channel.renderer = (function () {
       if (noteLen > 0) {
         for (i = 0; i < noteLen; i++) {
 
-          output.push('<p>' + (i + 1) + ':  <em>' + channelDef.notes[i] + '</em></p>');
+          output.push('<p' + spellCheck + '>' + (i + 1) + ':  <em>' + channelDef.notes[i] + '</em></p>');
         }
       } else {
         output.push('<p>There are no notes for this channel</p>');
       }
 
-      output.push('<h3 id="toc_3">Change Log</h3>');
-      if (changeLen > 0) {
-        for (i = 0; i < changeLen; i++) {
 
-          output.push('<p>' + channelDef.changeLog[i].version + ' - ' + channelDef.changeLog[i].change + '</p>');
-        }
-      } else {
-        output.push('<p>There are no changes noted for this channel</p>');
-      }
-      output.push('<a target="_blank" href="https://github.com/CMAPI/cmapi/commits/v1.3.0/channels/' + schema.title + '.js">View version history for this file</a>');
-
-      output.push('<h3 id="toc_4">Schema</h3>');
-      output.push('<h4 id="toc_4">Link</h4>');
-      output.push('<p><a href="' + link + '" target="_blank">' + link + '</a></p>');
       // output.push('<p>' + JSON.stringify(channelDef.schema) + '</p>');
-      output.push('<pre><code class="javascript">');
-      output.push(getObjectString(channelDef.schema));
-      output.push('</code></pre>');
+      //output.push('<pre><code class="javascript">');
+      //output.push(getObjectString(channelDef.schema));
+      //output.push('</code></pre>');
     } catch (err) {
       output = ["An error occured when parsing the schema: " + err.message];
     }
     return output.join("");
   }
 
-  function appendExamples(exampleLink, examples, channelDef) {
+  function appendExamples(examples, channelDef) {
     var output = [],
       exampleLen,
       exampleValidation,
@@ -364,8 +394,7 @@ cmapi.channel.renderer = (function () {
         exampleLen = examples.length;
         if (exampleLen > 0) {
           output.push('<h3 id="toc_3">Examples</h3>');
-          output.push('<h4 id="toc_4">Link</h4>');
-          output.push('<p><a href="' + exampleLink + '" target="_blank">' + exampleLink + '</a></p>');
+
           for (i = 0; i < exampleLen; i++) {
             if (examples[i].valid === true) {
               validationIntent = "This Should Pass Validation";
@@ -373,7 +402,7 @@ cmapi.channel.renderer = (function () {
               validationIntent = "This Should Fail Validation";
             }
 
-            output.push('<h4 id="toc_4">' + examples[i].title + ' - ' + validationIntent + '</h4>');
+            output.push('<p>' + examples[i].title + ' - ' + validationIntent + '</p>');
 
             exampleValidation = validate(examples[i].payload, channelDef.schema);
             if (exampleValidation.valid === true) {
@@ -394,8 +423,8 @@ cmapi.channel.renderer = (function () {
       }
       output.push('<p id="#userPayloadValid" >Try it yourself...</p>');
       output.push('<textarea id="userPayloadInput" rows="10" style="width: 100%" placeholder="Enter your own ' + currentChannel + ' message payload to validate here..." ></textarea>');
-      output.push('<button style="border: 1px solid grey; padding: 5px; margin-top: 5px; margin-right: 5px" onclick="cmapi.channel.renderer.validateInput()">Validate</button>');
-      output.push('<button style="border: 1px solid grey; padding: 5px; margin-top: 5px;" onclick="cmapi.channel.renderer.clearInput()">Clear</button>');
+      output.push('<button style="border: 1px solid grey; padding: 5px; margin-top: 5px; margin-right: 5px" onclick="cmapi_channel_renderer.validateInput()">Validate</button>');
+      output.push('<button style="border: 1px solid grey; padding: 5px; margin-top: 5px;" onclick="cmapi_channel_renderer.clearInput()">Clear</button>');
       output.push('<form action=""><input type="checkbox" name="banUnknownCB" id="banUnknownCB" value="false">Ban Unknown Properties<br></form>');
     } catch (err) {
       output = ["An error occured while parsing the example: " + err.message];
@@ -417,7 +446,7 @@ cmapi.channel.renderer = (function () {
       }
 
     } catch (err) {
-      message = "An error occured while attempting to validate your payload: " + err.message;
+      message = "Please enter a valid JSON object: " + err.message;
     }
     alert(message);
   }
@@ -438,25 +467,25 @@ cmapi.channel.renderer = (function () {
     len = sections.length;
     for (i = 0; i < len; i++) {
       section = sections[i];
-      output.push('<h3>' + section.title + '</h3>');
+      output.push('<h3 >' + section.title + '</h2>');
       paragraphs = section.paragraphs;
       sLen = paragraphs.length;
       for (k = 0; k < sLen; k++) {
-        output.push('<p >' + paragraphs[k] + '</p>');
+        output.push('<p' + spellCheck + '>' + paragraphs[k] + '</p>');
       }
     }
     return output.join("");
   }
 
   function exampleLoaded(args) {
-    $('#main').html($('#main').html() + appendExamples(args.url, cmapi.channel[args.channel].examples, cmapi.channel[args.channel]));
+    $('#main').html($('#main').html() + appendExamples(cmapi.channel[args.channel].examples, cmapi.channel[args.channel]));
   }
 
   function channelLoaded(args) {
     var channelDef = cmapi.channel[args.channel];
     currentChannel = args.channel;
     currentSchema = channelDef.schema;
-    $('#main').html(render(args.url, cmapi.channel[args.channel]));
+    $('#main').html(render(cmapi.channel[args.channel]));
     var url = baseUrl + args.channel + ".examples.js";
     exampleLoaded({
       url: url,
@@ -508,5 +537,11 @@ cmapi.channel.renderer = (function () {
       $("#userPayloadInput").val("");
     }
   };
+
+  var doSpellCheck = queryStringUtil.getParameterByName("spellcheck");
+  if (doSpellCheck === "true") {
+    spellCheck = ' contenteditable="true" spellcheck="true" ';
+  }
+
   return publicInterface;
 }());

@@ -1,0 +1,4 @@
+cmapi.channel["map.drag-drop"].notes = [
+    "Although both deSelectedId and deSelectedName are optional, one MUST be passed in if a sub-feature is to be identified. Generally, deSelectedId is preferred and deSelectedName is used when no deSelectedId is available.",
+    "The expected behavior resulting from this message is that this feature will be removed from the list of currently selected features (see map.status.selected below).  If the identified feature is not currently selected when the message is received, then the map widget SHOULD ignore this message (i.e., this message is idempotent)."
+  ];

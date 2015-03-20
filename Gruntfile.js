@@ -7,16 +7,20 @@ module.exports = function(grunt) {
         separator: ';'
       },
       schema: {
-        src: ['src/schema/cmapi.js','src/schema/*.schema.js'],
+        src: ['src/cmapi.namespace.js','src/schemas/*.schema.js'],
         dest: 'dist/cmapi.schema.js'
       },
       examples: {
-        src: ['src/schema/*.examples.js'],
+        src: ['src/cmapi.namespace.js','src/examples/*.examples.js'],
         dest: 'dist/cmapi.examples.js'
       },
       overview: {
-        src: ['src/schema/*.overview.js'],
+        src: ['src/cmapi.namespace.js','src/overviews/*.overview.js'],
         dest: 'dist/cmapi.overview.js'
+      },
+      notes: {
+        src: ['src/cmapi.namespace.js','src/notes/*.notes.js'],
+        dest: 'dist/cmapi.notes.js'
       },
       api: {
         src: ['src/api/cmajs.namespace.js','src/api/utils/*.js','src/api/runtime/*.js','src/api/init.js'],
@@ -45,6 +49,11 @@ module.exports = function(grunt) {
       overview: {
         files: {
           'dist/cmapi.overview.min.js': ['<%= concat.overview.dest %>']
+        }
+      },
+      notes: {
+        files: {
+          'dist/cmapi.notes.min.js': ['<%= concat.notes.dest %>']
         }
       }
     },
