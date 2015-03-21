@@ -12,7 +12,6 @@ cmapi.channel["map.status.selected"] = {
       "selectedFeatures": {
         "description": "An array of features from the identified overlay that are currently selected.",
         "type": "array",
-        "default": " ",
         "items": {
           "description": "Individual selected feature object",
           "type": "object",
