@@ -24,25 +24,9 @@ cmapi.channel["map.feature.update"] = {
         "description": "This represents the ID of an overlay to move the feature to.  If this attribute is provided, the feature MUST be removed from its current overlay and added to the overlay with this ID.  If an overlay with an ID of newOverlayId does not exist, a new overlay will be created with an ID of newOverlayId, and the feature to be updated will be moved to the overlay identified by newOverlayId.",
         "type": "string",
         "default": "N/A"
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Message Complete"
       }
     },
     "required": ["featureId"]
   },
-  "notes": ["For updates to a feature's geometry or other properties no covered in the update channel, a map.feature.plot with the same overlayId and feature Id should be used to replace an existing feature."],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }, {
-    "version": "1.3.0",
-    "change": "Added optional properties object"
-  }, {
-    "version": "1.3.0",
-    "change": "Added optional menuId parameter"
-  }]
+  "notes": ["For updates to a feature's geometry or other properties no covered in the update channel, a map.feature.plot with the same overlayId and feature Id should be used to replace an existing feature."]
 };

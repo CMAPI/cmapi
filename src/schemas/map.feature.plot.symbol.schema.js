@@ -1,11 +1,11 @@
-cmapi.channel["cmapi.dataformat.symbol"] = {
+cmapi.channel["map.feature.plot.symbol"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "http://json-schema.org/geojson/geojson.json#",
-    "title": "map.feature.plot - Symbology",
+    "title": "map.feature.plot.symbol",
     "description": "This optional extension defines the format of the map.feature.plot channel payload for symbols. The feature attibute below defines the format and content of the features attibute of the map.feature.plot. The properties.modifiers attribute defines the modifiers that the map implementation shall apply to the feature. This schema provides a general framework for different symbology standards such as MIL-STD-2525 and NATO APP-6",
     "type": "object",
-    "required": ["aoi"],
+    "required": ["feature"],
     "properties": {
       "feature": {
         "$schema": "http://json-schema.org/draft-04/schema#",
@@ -23,7 +23,7 @@ cmapi.channel["cmapi.dataformat.symbol"] = {
             "description": "Defines the geojson format of the coordinates in the coordinate attribute."
           },
           "coordinates": {
-              "type": "object, array",
+              "type": "array",
               "description": "This attribute MUST contain a valid geojson coordinate structure for the type indicated in the type attribute. See http://geojson.org/geojson-spec.html for the valid format."
           }
 
@@ -36,15 +36,9 @@ cmapi.channel["cmapi.dataformat.symbol"] = {
         "description": "The properties attribute of the map.feature.plot payload. Which in addition to other attributes that may be present, it must contain the following attribute.",
         "type": "object",
         "properties": {
-          "modifiers": {
-            "type": "object",
-            "description": "The symbol modifiers required for the specific symbology set.  This will defined in the symbology specific sub-appendice.",
-            
-          }
-        },
-        "required": ["modifiers"]
+          
+        }
       }
     }
-  },
-  notes: []
+  }
 };

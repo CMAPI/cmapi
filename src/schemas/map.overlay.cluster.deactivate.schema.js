@@ -11,6 +11,5 @@ cmapi.channel["map.overlay.cluster.deactivate"] = {
       }
     },
     "required": []
-  },
-  notes: []
+  }
 };

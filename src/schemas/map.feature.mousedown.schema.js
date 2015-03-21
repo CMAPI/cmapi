@@ -16,44 +16,35 @@ cmapi.channel["map.feature.mousedown"] = {
       "lat": {
         "type": "number",
         "description": "The latitude of the location that was clicked",
-        "default": "N/A",
         "minimum": "-90",
         "maximum": "90"
       },
       "lon": {
         "type": "number",
         "description": "The longitude of the location that was clicked",
-        "default": "N/A",
         "minimum": "-180",
         "maximum": "180"
       },
       "button": {
-        "description": "Which mouse button was clicked.  Allowable values are 'right', 'left', and 'middle'.  Default value is 'left'.",
-        "type": ["string", "enum"],
+        "description": "Which mouse button was clicked.",
+        "type" : "string",
         "enum": ["left", "middle", "right"],
         "default": "left"
       },
       "type": {
-        "description": "The type of click event. Allowable values are 'single' and 'double'.  Default value is 'single'.",
-        "type": ["string", "enum"],
+        "description": "The type of click event.",
+        "type" : "string",
         "enum": ["single", "double"],
         "default": "single"
       },
       "keys": {
-        "description": "An array of keys pressed during the click event.  Allowable values are 'alt', 'ctrl', 'shift', and 'none'.  Default value is 'none'.",
-        "type": ["sring", "enum"],
+        "description": "An array of keys pressed during the click event. ",
         "uniqueItems": true,
-        "default": ["none"],
-        "items": {
-          "enum": ["shift", "alt", "ctrl", "none"]
-        }
+        "type" : "string",
+        "default": "none",
+        "enum": ["shift", "alt", "ctrl", "none"]
       }
     },
     "required": ["lat", "lon", "button", "keys", "type", "featureId", "overlayId"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  }
 };

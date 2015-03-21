@@ -16,7 +16,5 @@ cmapi.channel["map.status.format"] = {
       }
     },
     "required": ["formats"]
-  },
-  "notes": [],
-  "changeLog": []
+  }
 };

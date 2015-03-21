@@ -197,9 +197,16 @@ var cmapi_channel_renderer = (function () {
           //type = "Array";
           type = propVal.type.join(", ");
         }
-      } else if (propVal.hasOwnProperty("enum")) {
+      } 
+      if (propVal.hasOwnProperty("enum")) {
         enums = JSON.stringify(propVal.enum).split(",").join(", ");
-        type = "enumeration <br/>" + enums;
+        type += "<br/>" + enums;
+      }
+      if (propVal.hasOwnProperty("default")) {
+
+
+        type += ' <br/>default= ' + (typeof propVal["default"] === "string" ? '"' : "") + propVal["default"] + (typeof propVal["default"] === "string" ? '"' : "");
+
       }
 
       if ($.isArray(propVal)) {
@@ -281,6 +288,7 @@ var cmapi_channel_renderer = (function () {
     output.push('{');
     // DO NOT wrap in if hasOwnProperty as JSLint may suggest or no properties will get enumerated
     for (prop in obj) {
+      type = '';
       propVal = obj[prop];
       if (i > 0) {
         output.push(", ");
@@ -293,10 +301,20 @@ var cmapi_channel_renderer = (function () {
         if ($.isArray(type)) {
           //type = "Array";
           type = propVal.type.join(" | ");
+
         } else if (type === "array") {
           isArr = true;
         }
       }
+
+      if (propVal.hasOwnProperty("enum")) {
+        var enumner = propVal.enum.join('", "');
+        type = type.replace("| enum", "");
+        
+        type += ' ["' + enumner + '"]';
+
+      }
+
       output.push(type);
       if (optional === "optional") {
         output.push(" (" + optional + ")");
@@ -362,14 +380,15 @@ var cmapi_channel_renderer = (function () {
       output.push('<p >Changes from previous version are highlighted in <span class="updatedContent">yellow</span> and additions are highlighted in <span class="newContent">green</span>.  If the channel is new for this version the properties WILL NOT be highlighted.</p>');
       getObjectTable(schema.properties, output, schema);
 
-      output.push('<h3 id="toc_3">Notes</h3>');
+      
       if (noteLen > 0) {
+        output.push('<h3 id="toc_3">Notes</h3>');
         for (i = 0; i < noteLen; i++) {
 
           output.push('<p' + spellCheck + '>' + (i + 1) + ':  <em>' + channelDef.notes[i] + '</em></p>');
         }
       } else {
-        output.push('<p>There are no notes for this channel</p>');
+        output.push('<br/><br/>');
       }
 
 

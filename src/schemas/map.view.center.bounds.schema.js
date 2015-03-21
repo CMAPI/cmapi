@@ -17,14 +17,14 @@ cmapi.channel["map.view.center.bounds"] = {
               "lat": {
                 "type": "number",
                 "description": "The latitude value of the point",
-                "minimum": "-90",
-                "maximum": "90"
+                "minimum": -90,
+                "maximum": 90
               },
               "lon": {
                 "type": "number",
                 "description": "The longitude value of the point",
-                "minimum": "-180",
-                "maximum": "180"
+                "minimum": -180,
+                "maximum": 180
               }
             },
             "required": ["lat", "lon"]
@@ -36,14 +36,14 @@ cmapi.channel["map.view.center.bounds"] = {
               "lat": {
                 "type": "number",
                 "description": "The latitude value of the point",
-                "minimum": "-90",
-                "maximum": "90"
+                "minimum": -90,
+                "maximum": 90
               },
               "lon": {
                 "type": "number",
                 "description": "The longitude value of the point",
-                "minimum": "-180",
-                "maximum": "180"
+                "minimum": -180,
+                "maximum": 180
               }
             },
             "required": ["lat", "lon"]
@@ -55,19 +55,8 @@ cmapi.channel["map.view.center.bounds"] = {
         "description": "Attribute that defines the zoom behaviour of the map. If auto, map will adjust to zoom as close as possible to the given location in the user's viewable area. If a number, map will zoom to specified range in meters. If no zoom attribute is included, no zoom is performed.",
         "type": ["string", "number"],
         "default": " "
-      },
-      "messageId": {
-        "description": "A globally unique ID that identifies this particular message. If the messageId property is populated, maps that support the user manipulation extension MUST use this messageId in the map.message.complete, map.message.progress, and map.message.cancel messages as defined in the User Manipulation extension to indicate progress and either completion or cancellation (as appropriate) of this message request.",
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Message Complete"
       }
     },
     "required": ["bounds"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }]
+  }
 };

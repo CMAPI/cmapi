@@ -11,10 +11,5 @@ cmapi.channel["map.overlay.remove"] = {
       }
     },
     "required": []
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }]
+  }
 };

@@ -22,11 +22,5 @@ cmapi.channel["map.overlay.get"] = {
       }
     },
     "required": ["features, messagId"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
-
+  }
 };

@@ -57,21 +57,11 @@ cmapi.channel["map.feature.update.complete"] = {
                   "description": "The parameters passed in the original message.",
                   "type": "boolean",
                   "default": true
-                },
-                "menuId": {
-                  "description": "The id of a context menu.",
-                  "type": "string",
-                  "extension": "User Manipulation - Context Menus"
                 }
             },
             "required": ["featureId", "overlayId"]
         }
     },
     "required": ["features"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };

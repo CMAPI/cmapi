@@ -34,11 +34,5 @@ cmapi.channel["map.get"] = {
       }
     },
     "required": ["menuId"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
-
+  }
 };

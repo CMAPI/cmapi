@@ -24,10 +24,5 @@ cmapi.channel["map.feature.show.complete"] = {
         }
     },
     "required": ["features"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };

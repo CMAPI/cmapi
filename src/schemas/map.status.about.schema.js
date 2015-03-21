@@ -41,7 +41,5 @@ cmapi.channel["map.status.about"] = {
         }
     },
     "required": ["version", "type", "widgetName", "extensions"]
-  },
-  "notes": [],
-  "changeLog": []
+  }
 };

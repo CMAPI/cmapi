@@ -11,12 +11,5 @@ cmapi.channel["map.overlay.show.complete"] = {
       }
     },
     "required": ["overlayId"]
-  },
-  "notes": [
-    "This is the format of the dtails object to be used in a map.message.complete message for overlay shown."
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };

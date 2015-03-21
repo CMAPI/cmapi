@@ -17,10 +17,5 @@ cmapi.channel["map.overlay.show"] = {
       },
     },
     "required": []
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added optional messageId parameter to support user manipulation extension"
-  }]
+  }
 };

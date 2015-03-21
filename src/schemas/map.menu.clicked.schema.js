@@ -52,10 +52,6 @@ cmapi.channel["map.menu.clicked"] = {
     "required": ["menuId", "menuItemId"]
   },
   "notes": ["When the user selects a context menu item, the map MUST send a map.menu.clicked event with the appropriately registered menuId and menuItemId so that the widget that created the context menu can take action on the event"
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  ]
 
 };

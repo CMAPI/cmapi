@@ -1,16 +1,16 @@
-cmapi.channel["cmapi.dataformat.symbol.2525c"] = {
+cmapi.channel["map.feature.plot.2525c"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "http://json-schema.org/geojson/geojson.json#",
-    "title": "map.feature.plot - MIL-STD-2525 Revision C",
+    "title": "map.feature.plot.2525c",
     "description": "This optional extension defines the format of the map.feature.plot channel payload for MIL-STD-2525 Revision C features. The feature attibute below defines the format and content of the features attibute of the map.feature.plot. The properties.modifiers attribute defines the MIL-STD-2525 Revision C modifiers that the map implementation shall apply to the feature.",
     "type": "object",
+    "required": ["format", "feature"],
     "properties": {
       "format": {
-        "type": {
+        "type" : "string",
           "enum": ["2525c"],
           "description": "Defines the feature format as a CMAPI Symbol with the specific type of MIL-STD-2525 Revision B Change II."
-        }
       },
       "feature": {
         "$schema": "http://json-schema.org/draft-04/schema#",
@@ -20,15 +20,15 @@ cmapi.channel["cmapi.dataformat.symbol.2525c"] = {
         "properties": {
           "symbolCode": {
             "type": "string",
-            "description": "The 15 character MIL-STD-2525 Revision C symbol code.",
-            "minimum": 1
+            "description": "The 15 character MIL-STD-2525 Revision C symbol code."
           },
           "type": {
+            "type" : "string",
             "enum": ["point", "lineString"],
             "description": "Defines the geojson format of the coordinates in the coordinate attribute.  Polygons are not allowed for this symbol type"
           },
           "coordinates": {
-            "type": "object, array",
+            "type": "array",
             "description": "This attribute MUST contain a valid geojson coordinate structure for the type indicated in the type attribute. See http://geojson.org/geojson-spec.html for the valid format."
           }
 
@@ -224,6 +224,5 @@ cmapi.channel["cmapi.dataformat.symbol.2525c"] = {
         }
       }
     }
-  },
-  notes: []
+  }
 };

@@ -11,14 +11,8 @@ cmapi.channel["map.status.request"] = {
         "items": {
           "enum": ["view", "format", "selected", "about", "initialization"]
         }
-
       }
     },
     "required": []
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added initialization as a request option"
-  }]
+  }
 };

@@ -54,10 +54,6 @@ cmapi.channel["map.menu.create"] = {
     "If the scope of the menu is 'objectinstance' then the developer SHOULD assign the id of the created menu to specific feature instances via the map.feature.plot, map.feature.plot.url, map.feature.plot.batch or map.feature.update channels and/or to the specific overlay instances via the map.overlay.create or map.overlay.update channels",
     "When the user right clicks on the map, an overlay or a feature (or the overlay/feature listing in a tree type component), the appropriately registered context menu MUST appear and it's associated menuItems MUST all be selectable by the user.",
     "When the user selects a menu item, the map MUST send a map.menu.clicked event with the appropriately registered menuId and menuItemId so that the widget that created the context menu can take action on the event"
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  ]
 
 };

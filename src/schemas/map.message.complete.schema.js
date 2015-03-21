@@ -44,10 +44,5 @@ cmapi.channel["map.message.complete"] = {
       }
     },
     "required": ["failures", "messageId", "status"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  }
 };

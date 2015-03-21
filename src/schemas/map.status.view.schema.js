@@ -17,14 +17,14 @@ cmapi.channel["map.status.view"] = {
               "lat": {
                 "type": "number",
                 "description": "The latitude value of the point",
-                "minimum": "-90",
-                "maximum": "90"
+                "minimum": -90,
+                "maximum": 90
               },
               "lon": {
                 "type": "number",
                 "description": "The longitude value of the point",
-                "minimum": "-180",
-                "maximum": "180"
+                "minimum": -180,
+                "maximum": 180
               }
             },
             "required": ["lat", "lon"]
@@ -36,14 +36,14 @@ cmapi.channel["map.status.view"] = {
               "lat": {
                 "type": "number",
                 "description": "The latitude value of the point",
-                "minimum": "-90",
-                "maximum": "90"
+                "minimum": -90,
+                "maximum": 90
               },
               "lon": {
                 "type": "number",
                 "description": "The longitude value of the point",
-                "minimum": "-180",
-                "maximum": "180"
+                "minimum": -180,
+                "maximum": 180
               }
             },
             "required": ["lat", "lon"]
@@ -59,14 +59,14 @@ cmapi.channel["map.status.view"] = {
           "lat": {
             "type": "number",
             "description": "The latitude of the location that was clicked",
-            "minimum": "-90",
-            "maximum": "90"
+            "minimum": -90,
+            "maximum": 90
           },
           "lon": {
             "type": "number",
             "description": "The longitude of the location that was clicked",
-            "minimum": "-180",
-            "maximum": "180"
+            "minimum": -180,
+            "maximum": 180
           }
         },
         "required": ["lat", "lon"]
@@ -82,10 +82,5 @@ cmapi.channel["map.status.view"] = {
       }
     },
     "required": ["bounds", "center", "range"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added the requester property to schema which was accidently ommitted from the 1.2.0 schema"
-  }]
+  }
 };

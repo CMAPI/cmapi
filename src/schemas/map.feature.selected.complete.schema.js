@@ -11,23 +11,16 @@ cmapi.channel["map.feature.selected.complete"] = {
             "properties":{
                 "overlayId": {
                   "description": "The ID of the overlay this feature was loaded into.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "featureId": {
                   "description": "Unique identifier for the given feature.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 }
             },
             "required": ["featureId", "overlayId"]
         }
     },
     "required": ["features"]
-  },
-  "notes": [],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };

@@ -1,4 +1,4 @@
-cmapi.overview["cmapi.dataformat.kml"] = {
+cmapi.overview["map.feature.plot.kml"] = {
   "title" : "map.feature.plot - KML",
 	"sections": [{
 		"title": "map.feature.plot - KML",

@@ -20,9 +20,5 @@ cmapi.channel["map.message.progress"] = {
     },
     "required": ["messageId", "details"]
   },
-  "notes": ["The messageId's match in the below examples.  This allows the widget receiving the map.message.progress message to identify the original request message the progress applies to."],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  "notes": ["The messageId's match in the below examples.  This allows the widget receiving the map.message.progress message to identify the original request message the progress applies to."]
 };

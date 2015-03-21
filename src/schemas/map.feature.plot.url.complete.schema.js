@@ -11,18 +11,15 @@ cmapi.channel["map.feature.plot.url.complete"] = {
             "properties":{
                 "overlayId": {
                   "description": "The ID of the overlay this feature was loaded into.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "featureId": {
                   "description": "Unique identifier for the given feature data.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "name": {
                   "description": "Name for the given feature data.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "format": {
                   "description": "Data format of the given feature.",
@@ -31,8 +28,7 @@ cmapi.channel["map.feature.plot.url.complete"] = {
                 },
                 "url": {
                   "description": "The url provided in the original message.",
-                  "type": "string",
-                  "default": "N/A"
+                  "type": "string"
                 },
                 "params": {
                   "description": "The parameters passed in the original message.",
@@ -44,11 +40,5 @@ cmapi.channel["map.feature.plot.url.complete"] = {
         }
     },
     "required": ["features"]
-  },
-  "notes": [
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This details object is new"
-  }]
+  }
 };

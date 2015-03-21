@@ -355,24 +355,24 @@
     "expanded": true,
     "folder": true,
     "children": [{
-      "key": "cmapi.dataformat.kml",
+      "key": "map.feature.plot.kml",
       "type": "overview",
       "title": "A. KML Support"
     }, {
-      "key": "cmapi.dataformat.geojson",
+      "key": "map.feature.plot.geojson",
       "title": "B. GeoJSON Support"
     }, {
-      "key": "cmapi.dataformat.aoi",
+      "key": "map.feature.plot.aoi",
       "title": "C. Area of Interest Support"
     }, {
       "expanded": true,
-      "key": "cmapi.dataformat.symbol",
+      "key": "map.feature.plot.symbol",
       "title": "D. Symbology",
       "children": [{
-        "key": "cmapi.dataformat.symbol.2525b",
+        "key": "map.feature.plot.2525b",
         "title": "1. MIL-STD-2525 B"
       }, {
-        "key": "cmapi.dataformat.symbol.2525c",
+        "key": "map.feature.plot.2525c",
         "title": "2. MIL-STD-2525 C"
       }]
     }]

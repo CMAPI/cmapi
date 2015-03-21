@@ -1,8 +1,8 @@
-cmapi.channel["cmapi.dataformat.geojson"] = {
+cmapi.channel["map.feature.plot.geojson"] = {
   "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "http://json-schema.org/geojson/geojson.json#",
-    "title": "map.feature.plot - GeoJSON",
+    "title": "map.feature.plot.geojson",
     "description": "The GeoJSON specification can be found at <a href=\"http://geojson.org/geojson-spec.html\" >http://geojson.org/geojson-spec.html</a>.  The Common Map Widget API specification extends the GeoJSON specification by adding the “style”, “name”, “id”, “description“, and “timePrimitive“ objects to the “Properties” object of the GeoJSON specification.  These extended objects ONLY apply to the GeoJSON Feature object.",
     "type": "object",
     "properties": {
@@ -157,12 +157,5 @@ cmapi.channel["cmapi.dataformat.geojson"] = {
         }
       }
     }
-  },
-  "notes": [
-    'See <a href=\"http://www.w3.org/wiki/CSS3/Color/RGBA" >http://www.w3.org/wiki/CSS3/Color/RGBA</a> for more info on RGBA.'
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "Added icon size property to iconStyle"
-  }]
+  }
 };

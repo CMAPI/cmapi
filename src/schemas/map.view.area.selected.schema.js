@@ -17,14 +17,14 @@ cmapi.channel["map.view.area.selected"] = {
               "lat": {
                 "type": "number",
                 "description": "The latitude value of the point",
-                "minimum": "-90",
-                "maximum": "90"
+                "minimum": -90,
+                "maximum": 90
               },
               "lon": {
                 "type": "number",
                 "description": "The longitude value of the point",
-                "minimum": "-180",
-                "maximum": "180"
+                "minimum": -180,
+                "maximum": 180
               }
             },
             "required": ["lat", "lon"]
@@ -36,14 +36,14 @@ cmapi.channel["map.view.area.selected"] = {
               "lat": {
                 "type": "number",
                 "description": "The latitude value of the point",
-                "minimum": "-90",
-                "maximum": "90"
+                "minimum": -90,
+                "maximum": 90
               },
               "lon": {
                 "type": "number",
                 "description": "The longitude value of the point",
-                "minimum": "-180",
-                "maximum": "180"
+                "minimum": -180,
+                "maximum": 180
               }
             },
             "required": ["lat", "lon"]
@@ -71,9 +71,5 @@ cmapi.channel["map.view.area.selected"] = {
   },
   "notes": ["For example: the user presses mouse down, drags a rectangular area on the map, and then releases the mouse button - the map then emits a map.view.area.selected message",
     "It is up to the map implementation to define the user interface controls and workflow to allow the user to identify the area to select",
-  ],
-  "changeLog": [{
-    "version": "1.3.0",
-    "change": "This channel is new"
-  }]
+  ]
 };
