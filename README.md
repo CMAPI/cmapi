@@ -6,6 +6,7 @@ This project is built using NodeJS.  If you do not have NodeJS on your system, p
 
 Once Node.js is installed navigate to the root of the CMAPI project, open a command prompt and type:
 ```bash
+npm install -g grunt-cli
 npm install
 ```
 
