@@ -369,29 +369,30 @@ $(function () {
           "children": [{
             "key": "map.feature.plot.kml",
             "type": "overview",
-            "title": "A. KML Support"
+            "title": "A. KML Support (Required)"
           }, {
             "key": "map.feature.plot.geojson",
-            "title": "B. GeoJSON Support"
+            "title": "B. GeoJSON Support (Required)"
           }, {
-            "key": "map.feature.plot.aoi",
-            "title": "C. Area of Interest Support"
+            "key": "map.feature.plot.aoi ",
+            "title": "C. Area of Interest Support (Optional)"
           }, {
             "expanded": true,
             "key": "map.feature.plot.symbol",
-            "title": "D. Symbology",
+            "title": "D. Symbology (Optional)",
             "children": [{
               "key": "map.feature.plot.2525b",
-              "title": "1. MIL-STD-2525 B"
+              "title": "1. MIL-STD-2525 B (Optional)"
             }, {
               "key": "map.feature.plot.2525c",
-              "title": "2. MIL-STD-2525 C"
+              "title": "2. MIL-STD-2525 C (Optional)" 
             }]
           }]
 
         }, {
-          "key": "",
+          "key": "cmapi.runtimes.overview",
           "title": "Runtime Extensions (Optional)",
+          "type": "overview",
           "folder": true,
           "expanded": true,
           "children": [{
@@ -422,7 +423,7 @@ $(function () {
             }]
           }]
         }, {
-          "key": "cmapi.appendecies.overview.",
+          "key": "cmapi.appendecies.overview",
           "type": "overview",
           "title": "Appendices",
           "expanded": true,
