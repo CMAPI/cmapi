@@ -2,7 +2,7 @@ cmapi.channel["map.view.clicked"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.clicked",
-    "description": "'Click', or report that map was clicked",
+    "description": "'Click', or report that map was clicked.  Maps MUST send this message when a user clicks the maps viewport.  It is optional for the map implementor if they will subscribe to this channel and perform any actions when receiving this message.",
     "type": "object",
     "properties": {
       "lat": {

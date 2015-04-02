@@ -54,7 +54,6 @@ cmapi.channel["map.view.center.bounds"] = {
       "zoom": {
         "description": "Attribute that defines the zoom behaviour of the map. If auto, map will adjust to zoom as close as possible to the given location in the user's viewable area. If a number, map will zoom to specified range in meters. If no zoom attribute is included, no zoom is performed.",
         "type": ["string", "number"],
-        "default": " "
       }
     },
     "required": ["bounds"]
