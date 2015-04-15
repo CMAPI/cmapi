@@ -25,6 +25,10 @@ module.exports = function(grunt) {
       api: {
         src: ['src/api/cmajs.namespace.js','src/api/utils/*.js','src/api/runtime/*.js','src/api/init.js'],
         dest: 'dist/cmajs.js'
+      },
+      descriptions: {
+        src: ['src/cmapi.namespace.js','src/descriptions/*.description.js'],
+        dest: 'dist/cmapi.descriptions.js'
       }
     },
     uglify: {
@@ -54,6 +58,11 @@ module.exports = function(grunt) {
       notes: {
         files: {
           'dist/cmapi.notes.min.js': ['<%= concat.notes.dest %>']
+        }
+      },
+      descriptions: {
+        files: {
+          'dist/cmapi.descriptions.min.js': ['<%= concat.descriptions.dest %>']
         }
       }
     },

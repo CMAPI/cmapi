@@ -2,15 +2,12 @@ cmapi.channel["map.status.selected"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.status.selected",
-    "description": "Send out the list of currently selected features.",
     "type": "object",
     "properties": {
       "overlayId": {
-        "type": "string",
-        "description": "The ID of the overlay which contains the selected objects."
+        "type": "string"
       },
       "selectedFeatures": {
-        "description": "An array of features from the identified overlay that are currently selected.",
         "type": "array",
         "items": {
           "description": "Individual selected feature object",

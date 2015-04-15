@@ -2,24 +2,19 @@ cmapi.channel["map.error"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.error",
-    "description": "Map Widget reports errors occurred when attempting to process any message.",
     "type": "object",
     "properties": {
       "sender": {
-        "type": "string",
-        "description": "Sender ID of message that caused error."
+        "type": "string"
       },
       "type": {
-        "type": "string",
-        "description": "Type of message that caused error."
+        "type": "string"
       },
       "msg": {
-        "type": "object",
-        "description": "The message that caused error."
+        "type": "object"
       },
       "error": {
-        "type": "string",
-        "description": "A description of the error."
+        "type": "string"
       }
     },
     "required": ["sender", "type", "msg", "error"]

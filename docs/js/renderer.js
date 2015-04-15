@@ -164,7 +164,7 @@ var cmapi_channel_renderer = (function () {
   }
 
   // Creates an HTML table for the schema with embedded tables via recursion for properties with sub-properties
-  function getObjectTable(obj, output, parent) {
+  function getObjectTable(obj, output, parent, descriptions) {
     var prop,
       propVal,
       optional,
@@ -177,46 +177,32 @@ var cmapi_channel_renderer = (function () {
       options,
       opLen,
       opt,
-      enums;
+      enums,
+      description;;
 
     output.push('<table><thead><tr>');
     output.push('<th>' + cmapi.lang.TABLE_HEADER_PROPERTY + '</th>');
-    output.push('<th>' + cmapi.lang.TABLE_HEADER_REQUIRED + '</th>');
-    output.push('<th>' + cmapi.lang.TABLE_HEADER_TYPE + '</th>');
+    // output.push('<th>Default</th>');
     output.push('<th>' + cmapi.lang.TABLE_HEADER_DESCRIPTION + '</th>');
     output.push('</tr></thead><tbody>');
     // DO NOT wrap in if hasOwnProperty as JSLint may suggest or no properties will get enumerated
     for (prop in obj) {
+      defaultVal = "";
       propVal = obj[prop];
-
-      optional = checkRequired(prop, parent);
-
-      if (propVal.hasOwnProperty("type")) {
-        type = propVal.type;
-        if ($.isArray(type)) {
-          //type = "Array";
-          type = propVal.type.join(", ");
-        }
-      } 
-      if (propVal.hasOwnProperty("enum")) {
-        enums = JSON.stringify(propVal.enum).split(",").join(", ");
-        type += "<br/>" + enums;
+      if (descriptions.hasOwnProperty('properties')) {
+        description = descriptions.properties[prop];
       }
-      if (propVal.hasOwnProperty("default")) {
-
-
-        type += ' <br/>default= ' + (typeof propVal["default"] === "string" ? '"' : "") + propVal["default"] + (typeof propVal["default"] === "string" ? '"' : "");
-
+      if (descriptions.hasOwnProperty('default')) {
+        defaultVal = descriptions.default;
       }
-
       if ($.isArray(propVal)) {
         output.push('<tr>');
         output.push('<td colSpan="4">' + prop + '</td>');
         len = propVal.length;
         for (i = 0; i < len; i++) {
           output.push('<tr>');
-          output.push('<td colSpan="4">');
-          output.push(getObjectTable(propVal[i], output, obj));
+          output.push('<td colSpan="2">');
+          output.push(getObjectTable(propVal[i], output, obj, description));
           output.push('</td>');
           output.push('</tr>');
         }
@@ -225,21 +211,15 @@ var cmapi_channel_renderer = (function () {
       } else {
         output.push(checkStatus(propVal));
         output.push('<td>' + prop + '</td>');
-        if (optional === "required") {
-          output.push('<td style="font-weight:600">' + optional + '</td>');
-        } else {
-          output.push('<td>' + optional + '</td>');
-        }
-        //output.push('<td >' + extension + '</td>');
-        output.push('<td>' + type + '</td>');
-        output.push('<td' + spellCheck + '>' + propVal.description + '</td>');
+        //output.push('<td>' + defaultVal + '</td>');
+        output.push('<td' + spellCheck + '>' + description.description + '</td>');
         output.push('</tr>');
         if (propVal.hasOwnProperty("properties")) {
           subProp = propVal.properties;
 
           output.push('<tr>');
-          output.push('<td colSpan="4">');
-          output.push(getObjectTable(subProp, output, propVal));
+          output.push('<td colSpan="2">');
+          output.push(getObjectTable(subProp, output, propVal, description));
           output.push('</td>');
           output.push('</tr>');
 
@@ -247,12 +227,12 @@ var cmapi_channel_renderer = (function () {
           options = propVal.oneOf;
           opLen = options.length;
           output.push('<tr>');
-          output.push('<td colSpan="4">');
+          output.push('<td colSpan="2">');
           output.push('One Of: <br/>');
           for (j = 0; j < opLen; j++) {
             opt = options[j].properties;
             output.push(options[j].title + ' <br/>');
-            output.push(getObjectTable(opt, output, options[j]));
+            output.push(getObjectTable(opt, output, options[j], description));
 
           }
           output.push('</td>');
@@ -273,7 +253,8 @@ var cmapi_channel_renderer = (function () {
       type,
       i,
       indentStr = "  ",
-      isArr = false;
+      isArr = false,
+      enumner;
 
     if (isNaN(indent)) {
       indent = 0;
@@ -308,14 +289,32 @@ var cmapi_channel_renderer = (function () {
       }
 
       if (propVal.hasOwnProperty("enum")) {
-        var enumner = propVal.enum.join('", "');
+        enumner = propVal.enum.join('", "');
         type = type.replace("| enum", "");
-        
+
         type += ' ["' + enumner + '"]';
 
+      } else if (isArr &&
+        propVal.hasOwnProperty("items") &&
+        propVal.items.hasOwnProperty("enum")) {
+        enumner = propVal.items.enum.join('", "');
+        //type = type.replace("| enum", "");
+
+        type += ' ["' + enumner + '"]';
       }
 
       output.push(type);
+
+      if (propVal.hasOwnProperty("default")) {
+        if (typeof propVal.default === "string" && propVal.default.length > 0) {
+          output.push(" default=\"" + propVal.default+"\"");
+        } else if ($.isArray(propVal.default)) {
+          output.push(" default=[\"" + propVal.default+"\"]");
+        } else {
+          output.push(" default=" + propVal.default);
+        }
+      }
+
       if (optional === "optional") {
         output.push(" (" + optional + ")");
       } else {
@@ -365,7 +364,7 @@ var cmapi_channel_renderer = (function () {
     try {
       output.push('<h2 id="toc_0"' + spellCheck + '>' + schema.title + '</h2>');
 
-      output.push('<p' + spellCheck + '>' + schema.description + '</p>');
+      output.push('<p' + spellCheck + '>' + channelDef.description.description + '</p>');
 
       output.push('<h3 id="toc_3">Payload:</h3>');
 
@@ -378,9 +377,10 @@ var cmapi_channel_renderer = (function () {
 
       output.push('<h3 id="toc_3">Payload Property Descriptions:</h3>');
       output.push('<p >Changes from previous version are highlighted in <span class="updatedContent">yellow</span> and additions are highlighted in <span class="newContent">green</span>.  If the channel is new for this version the properties WILL NOT be highlighted.</p>');
-      getObjectTable(schema.properties, output, schema);
+      var description = channelDef.description;
+      getObjectTable(schema.properties, output, schema, description);
 
-      
+
       if (noteLen > 0) {
         output.push('<h3 id="toc_3">Notes</h3>');
         for (i = 0; i < noteLen; i++) {

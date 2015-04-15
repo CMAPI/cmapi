@@ -374,7 +374,7 @@ $(function () {
             "key": "map.feature.plot.geojson",
             "title": "B. GeoJSON Support (Required)"
           }, {
-            "key": "map.feature.plot.aoi ",
+            "key": "map.feature.plot.aoi",
             "title": "C. Area of Interest Support (Optional)"
           }, {
             "expanded": true,
