@@ -2,7 +2,7 @@ cmapi.channel["map.feature.plot.aoi"].description = {
   "description": "The Common Map Widget API supports Areas of Interest (AOIs) by extending the GeoJSON specification by adding the “aoi” object to the “Properties” object of the GeoJSON specification.  This extended object ONLY applies to the GeoJSON Feature object.  Note that when passing AOIs, the base GeoJSON object MUST be a single feature object, and MUST NOT be a Feature Collection object.",
   "properties": {
     "aoi": {
-      "description": "If included in a GeoJSON feature, signifies the feature is an Area of Interest and is to be treated accordingly.  Note that only GeoJSON features can be used to convey Areas of Interest.",
+      "description": "object to be included 'inside' a GeoJSON feature to signify that the feature is an Area of Interest and is to be treated accordingly.  Note that the aoi object can only be used inside of a GeoJSON feature object to convey an Area of Interest (i.e., the aoi object will not work with KML or WMS formatted feature objects).",
       "default": "",
       "properties": {
         "buffer": {
