@@ -1,10 +1,6 @@
 cmapi.channel["map.feature.unplot.complete"].description = {
   "description": "Schema for the details object for a map.message.complete message after a map.feature.unplot.",
-  "properties": {
-    "features": {
-      "description": "An array of feature identifier objects.",
-      "default": "",
-      "properties": {
+  "properties": {	  
         "overlayId": {
           "description": "The ID of the overlay this feature was loaded into.",
           "default": ""
@@ -12,8 +8,6 @@ cmapi.channel["map.feature.unplot.complete"].description = {
         "featureId": {
           "description": "Unique identifier for the given feature.",
           "default": ""
-        }
-      }
-    }
+        }	
   }
 };

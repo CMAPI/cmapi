@@ -1,10 +1,6 @@
 cmapi.channel["map.feature.plot.url.complete"].description = {
   "description": "Schema for the details object for a map.message.complete message after a map.feature.plot.url.",
-  "properties": {
-    "features": {
-      "description": "An array of feature objects.",
-      "default": "",
-      "properties": {
+  "properties": {	  
         "overlayId": {
           "description": "The ID of the overlay this feature was loaded into.",
           "default": ""
@@ -27,9 +23,11 @@ cmapi.channel["map.feature.plot.url.complete"].description = {
         },
         "params": {
           "description": "The parameters passed in the original message.",
+          "default": ""
+        },
+		"zoom": {
+          "description": "The zoom parameter value passed in the original message.",
           "default": true
         }
-      }
-    }
   }
 };

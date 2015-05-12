@@ -1,10 +1,6 @@
 cmapi.channel["map.feature.plot.complete"].description = {
   "description": "Schema for the details object for a map.message.complete message after a map.feature.plot.",
-  "properties": {
-    "features": {
-      "description": "An array of feature objects.",
-      "default": "",
-      "properties": {
+  "properties": {  
         "overlayId": {
           "description": "The ID of the overlay this feature was loaded into.",
           "default": ""
@@ -33,7 +29,5 @@ cmapi.channel["map.feature.plot.complete"].description = {
           "description": "A free form object that can contain any additional JSON objects or elements to send with this message. This allows for extending this channel's message without inadvertently corrupting the CMAPI specified payload of the message.",
           "default": ""
         }
-      }
-    }
   }
 };

@@ -3,10 +3,7 @@ cmapi.channel["map.feature.plot.complete"] = {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
     "type": "object",
-    "properties": {
-      "features": {
-        "type": "array",
-        "properties": {
+    "properties": {		
           "overlayId": {
             "type": "string"
           },
@@ -32,10 +29,7 @@ cmapi.channel["map.feature.plot.complete"] = {
             "additionalProperties": true,
             "type": "object"
           }
-        },
-        "required": ["featureId", "overlayId"]
-      }
     },
-    "required": ["features"]
+     "required": ["featureId", "overlayId"]
   }
 };

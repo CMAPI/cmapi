@@ -3,10 +3,7 @@ cmapi.channel["map.feature.update.complete"] = {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Schema for map.message.complete Details object",
     "type": "object",
-    "properties": {
-      "features": {
-        "type": "array",
-        "properties": {
+    "properties": {		
           "overlayId": {
             "type": "string"
           },
@@ -38,11 +35,8 @@ cmapi.channel["map.feature.update.complete"] = {
           "params": {
             "type": "boolean",
             "default": true
-          }
-        },
-        "required": ["featureId", "overlayId"]
-      }
+          } 
     },
-    "required": ["features"]
+    "required": ["featureId", "overlayId"]	
   }
 };

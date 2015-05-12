@@ -4,9 +4,6 @@ cmapi.channel["map.feature.plot.url.complete"] = {
     "title": "Schema for map.message.complete Details object",
     "type": "object",
     "properties": {
-      "features": {
-        "type": "array",
-        "properties": {
           "overlayId": {
             "type": "string"
           },
@@ -23,14 +20,15 @@ cmapi.channel["map.feature.plot.url.complete"] = {
           "url": {
             "type": "string"
           },
-          "params": {
+		  "params": {
+			"type": "object"
+		  },
+          "zoom": {
             "type": "boolean",
             "default": true
-          }
-        },
-        "required": ["featureId", "overlayId"]
-      }
+          } 
     },
-    "required": ["features"]
+    "required": ["featureId", "overlayId"]
   }
 };
+
