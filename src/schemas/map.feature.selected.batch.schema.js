@@ -5,7 +5,7 @@ cmapi.channel["map.feature.selected.batch"] = {
     "type": "object",
     "properties": {
       "features": {
-        "type": "Array"
+        "type": "array"
       },
       "overlayId": {
         "type": "string"
