@@ -13,30 +13,10 @@ cmapi.channel["map.feature.update.complete"] = {
           "name": {
             "type": "string"
           },
-          "format": {
+          "newOverlayId": {
             "type": "string",
-            "default": "kml"
-          },
-          "feature": {
-            "type": ["object", "string"],
-            "additionalProperties": true
-          },
-          "readOnly": {
-            "type": "boolean",
-            "default": true
-          },
-          "properties": {
-            "additionalProperties": true,
-            "type": "object"
-          },
-          "url": {
-            "type": "string"
-          },
-          "params": {
-            "type": "boolean",
-            "default": true
-          } 
+          }
     },
-    "required": ["featureId", "overlayId"]	
+    "required": ["overlayId", "featureId", "name", "newOverlayId"]	
   }
 };

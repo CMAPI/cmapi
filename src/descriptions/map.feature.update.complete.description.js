@@ -2,40 +2,16 @@ cmapi.channel["map.feature.update.complete"].description = {
   "description": "Schema for the details object for a map.message.complete message after a map.feature.update.",
   "properties": {
         "overlayId": {
-          "description": "The ID of the overlay this feature was loaded into.",
-          "default": "N/A"
+          "description": "The ID of the overlay this feature was in when the map.feature.update message was originally sent"
         },
         "featureId": {
-          "description": "Unique identifier for the given feature data.",
-          "default": "N/A"
+          "description": "Unique identifier for the feature that was updated."
         },
         "name": {
-          "description": "Name for the given feature data.",
-          "default": "N/A"
+          "description": "Name of the feature that was updated.  If the map.feature.update message updated the feature name, then this element MUST be populated with the updated name.  If the feature does not have a name, then this field will be populated with an empty string"
         },
-        "format": {
-          "description": "Data format of the given feature.",
-          "default": "kml"
-        },
-        "feature": {
-          "description": "Feature data loaded into the map.   See Appendix A for additional information on required KML support, Appendix B for information on required GeoJSON, and Appendix C for information on Area of Interest (AOI) support.",
-          "default": "N/A"
-        },
-        "readOnly": {
-          "description": "Valid values are true or false. If true, then the end user MUST NOT be able to edit the feature from the map's user interface, if false the end user MAY edit the feature from the map’s user interface. Default value is true.   If an edit takes place, the map SHOULD dispatch a map.feature.plot with the updated feature to ensure other widgets are aware that a change took place.",
-          "default": true
-        },
-        "properties": {
-          "description": "A free form object that can contain any additional JSON objects or elements to send with this message. This allows for extending this channel's message without inadvertently corrupting the CMAPI specified payload of the message.",
-          "default": ""
-        },
-        "url": {
-          "description": "The url provided in the original message.",
-          "default": "N/A"
-        },
-        "params": {
-          "description": "The parameters passed in the original message.",
-          "default": true
+        "newOverlayId": {
+          "description": "The ID of the overlay this feature was in when the map.feature.update message was executed. If the feature was re-named and not moved,  then this MUST be the same value as the 'overlayId' above"
         }
   }
 };
