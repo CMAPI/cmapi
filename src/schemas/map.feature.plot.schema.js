@@ -15,6 +15,7 @@ cmapi.channel["map.feature.plot"] = {
       },
       "format": {
         "type": "string",
+        "enum": ["kml","geojson"],
         "default": "kml"
       },
       "feature": {

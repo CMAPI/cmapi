@@ -6,7 +6,6 @@ cmapi.channel["map.status.view"] = {
     "properties": {
       "bounds": {
         "type": "object",
-        "default": " ",
         "properties": {
           "southWest": {
             "type": "object",
@@ -45,7 +44,6 @@ cmapi.channel["map.status.view"] = {
       },
       "center": {
         "type": "object",
-        "default": " ",
         "properties": {
           "lat": {
             "type": "number",

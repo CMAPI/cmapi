@@ -15,6 +15,16 @@ $(function () {
           "type": "overview",
           "title": "Overview",
           "expanded": true
+        },{
+          "key": "cmapi.changelog",
+          "type": "overview",
+          "title": "Changes in v1.3.0",
+          "expanded": true
+        },{
+          "key": "cmapi.validation.overview",
+          "type": "overview",
+          "title": "Validating CMAPI messages",
+          "expanded": true
         }, {
           "key": "cmapi.core.overview",
           "type": "overview",
@@ -279,13 +289,13 @@ $(function () {
                     "title": "map.view.center.bounds"
                   }, {
                     "key": "map.feature.edit.complete",
-                    "title": "map.message.complete"
+                    "title": "map.feature.edit.complete"
                   }, {
                     "key": "map.feature.draw.complete",
-                    "title": "map.message.complete"
+                    "title": "map.feature.draw.complete"
                   }, {
                     "key": "map.get.complete",
-                    "title": "map.get"
+                    "title": "map.get.complete"
                   }]
                 }, {
                   "key": "map.message.progress",

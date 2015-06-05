@@ -212,7 +212,16 @@ var cmapi_channel_renderer = (function () {
         output.push(checkStatus(propVal));
         output.push('<td>' + prop + '</td>');
         //output.push('<td>' + defaultVal + '</td>');
-        output.push('<td' + spellCheck + '>' + description.description + '</td>');
+        output.push('<td' + spellCheck + '><p>' + description.description+'</p>');
+        /*
+        if(description.hasOwnProperty("allowableValues") && description.allowableValues !== ""){
+          output.push('<p><strong>Allowable Values: </strong>'+description.allowableValues + '</p>');
+        }
+        if(description.hasOwnProperty("default") && description.default !== ""){
+          output.push('<p><strong>Default Value: </strong>'+description.default + '</p>');
+        }
+        */
+        output.push('</td>');
         output.push('</tr>');
         if (propVal.hasOwnProperty("properties")) {
           subProp = propVal.properties;

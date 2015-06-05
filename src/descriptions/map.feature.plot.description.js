@@ -15,7 +15,8 @@ cmapi.channel["map.feature.plot"].description = {
     },
     "format": {
       "description": "Data format of the given feature. All map implementations MUST support kml and geojson.  If no format is specified, the format defaults to kml. A list of formats supported by a particular map implementation may be obtained by querying the map using the map.status channel (see map.status).",
-      "default": "kml"
+      "default": "kml",
+      "allowableValues" : "A single string value of “kml” or “geojson”"
     },
     "feature": {
       "description": "Feature data to be loaded into the map.   See Appendix A for additional information on required KML support, Appendix B for information on required GeoJSON, and Appendix C for information on Area of Interest (AOI) support.",

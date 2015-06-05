@@ -8,7 +8,8 @@ cmapi.channel["map.get"] = {
         "default": false
       },
       "types": {
-        "type": ["array", "string"]
+        "type": ["array", "string"],
+        "enum": ["overlay", "feature"]
       },
       "filter": {
         "type": "array",
@@ -26,6 +27,6 @@ cmapi.channel["map.get"] = {
         "type": "string"
       }
     },
-    "required": ["menuId"]
+    "required": ["types", "messageId"]
   }
 };
