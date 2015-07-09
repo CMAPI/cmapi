@@ -3,11 +3,15 @@ cmapi.channel["map.feature.show.complete"].description = {
   "properties": {	  
         "overlayId": {
           "description": "The ID of the overlay this feature was loaded into.",
-          "default": "N/A"
+          "default": ""
         },
         "featureId": {
           "description": "Unique identifier for the given feature.",
-          "default": "N/A"
+          "default": ""
+        },
+		"zoom": {
+          "description": "zoom value passed in original message.  If no value passed in original message, this MUST be set to the default value of the original message",
+          "default": ""
         }
   }
 };

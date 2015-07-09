@@ -17,23 +17,24 @@ cmapi.channel["map.feature.plot.batch.complete"] = {
             "type": "string"
           },
           "format": {
-            "type": "string",
-            "default": "kml"
+            "type": "string"
           },
           "feature": {
             "type": ["object", "string"],
             "additionalProperties": true
           },
+		  "zoom": {
+			"type": "boolean"
+		  },
           "readOnly": {
-            "type": "boolean",
-            "default": true
+            "type": "boolean"
           },
           "properties": {
             "additionalProperties": true,
             "type": "object"
           }
         },
-        "required": ["featureId", "overlayId"]
+        "required": ["featureId", "overlayId","name","format","feature","zoom","readOnly","properties"]
       }
     },
     "required": ["features"]

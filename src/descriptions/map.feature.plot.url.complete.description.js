@@ -10,24 +10,24 @@ cmapi.channel["map.feature.plot.url.complete"].description = {
           "default": ""
         },
         "name": {
-          "description": "Name for the given feature data.",
+          "description": "Name for the given feature data.  MUST be empty string if original message did not contain a name value",
           "default": ""
         },
         "format": {
           "description": "Data format of the given feature.",
-          "default": "kml"
+          "default": ""
         },
         "url": {
           "description": "The url provided in the original message.",
           "default": ""
         },
         "params": {
-          "description": "The parameters passed in the original message.",
+          "description": "The parameters passed in the original message.  If original message did not contain a params object, then this value MUST be an empty object or string",
           "default": ""
         },
 		"zoom": {
-          "description": "The zoom parameter value passed in the original message.",
-          "default": true
+          "description": "The zoom parameter value passed in the original message - will be set to default input value if original message does not contain an actual value",
+          "default": ""
         }
   }
 };

@@ -28,7 +28,7 @@ cmapi.channel["map.feature.plot.url.complete"] = {
             "default": true
           } 
     },
-    "required": ["featureId", "overlayId"]
+    "required": ["featureId", "overlayId","name","format","url","params","zoom"]
   }
 };
 

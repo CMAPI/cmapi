@@ -10,23 +10,27 @@ cmapi.channel["map.feature.plot.complete"].description = {
           "default": ""
         },
         "name": {
-          "description": "Name for the given feature data.",
+          "description": "Name for the given feature data.  If no name was passed in the original message, this MUST contain the name that was actually assigned to the feature.  If no name was assigned to the feature, then this MUST return an empty string",
           "default": ""
         },
         "format": {
           "description": "Data format of the given feature.",
-          "default": "kml"
-        },
-        "feature": {
-          "description": "Feature data loaded into the map.   See Appendix A for additional information on required KML support, Appendix B for information on required GeoJSON, and Appendix C for information on Area of Interest (AOI) support.",
           "default": ""
         },
+        "feature": {
+          "description": "Feature data loaded into the map.  If the actual feature data that was loaded onto the map differs from what was originally sent, this message MUST contain the actual feature data loaded",
+          "default": ""
+        },
+		"zoom": {
+          "description": "Zoom value passed in original message - or default if no value was passed in",
+          "default":""
+        },
         "readOnly": {
-          "description": "Valid values are true or false. If true, then the end user MUST NOT be able to edit the feature from the map's user interface, if false the end user MAY edit the feature from the map’s user interface. Default value is true.   If an edit takes place, the map SHOULD dispatch a map.feature.plot with the updated feature to ensure other widgets are aware that a change took place.",
-          "default": true
+          "description": "readOnly value passed in the original message, or default if no value was passed in original message",
+          "default":""
         },
         "properties": {
-          "description": "A free form object that can contain any additional JSON objects or elements to send with this message. This allows for extending this channel's message without inadvertently corrupting the CMAPI specified payload of the message.",
+          "description": "Properties object passed in original message.  If no properties value was passed in original message, this value MUST be an empty object",
           "default": ""
         }
   }

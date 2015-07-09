@@ -9,8 +9,11 @@ cmapi.channel["map.feature.show.complete"] = {
           },
           "featureId": {
             "type": "string"
-          }	
+          }	,
+		  "zoom": {
+			  "type":"boolean"
+		  }
     },
-    "required": ["featureId", "overlayId"]
+    "required": ["featureId", "overlayId","zoom"]
   }
 };

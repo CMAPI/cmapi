@@ -30,6 +30,6 @@ cmapi.channel["map.feature.plot.complete"] = {
             "type": "object"
           }
     },
-     "required": ["featureId", "overlayId"]
+     "required": ["featureId", "overlayId", "name","format","feature","readOnly","properties"]
   }
 };
