@@ -10,7 +10,7 @@ cmapi.channel["map.feature.plot.url.complete"].description = {
           "default": ""
         },
         "name": {
-          "description": "Name for the given feature data.  MUST be empty string if original message did not contain a name value",
+          "description": "Name for the given feature data.  If no name was passed in the original message, this MUST contain the name that was actually assigned to the feature.  If no name was assigned to the feature, then this MUST return an empty string",
           "default": ""
         },
         "format": {

@@ -252,7 +252,7 @@ $(function () {
                     "title": "map.feature.selected"
                   }, {
                     "key": "map.feature.selected.batch.complete",
-                    "title": "map.feature.selected.batc"
+                    "title": "map.feature.selected.batch"
                   }, {
                     "key": "map.feature.update.complete",
                     "title": "map.feature.update"
@@ -263,26 +263,26 @@ $(function () {
                     "key": "map.feature.deselected.batch.complete",
                     "title": "map.feature.deselected.batch"
                   }, {
-                    "key": "map.view.complete",
+                    "key": "map.view.zoom.complete",
                     "title": "map.view.zoom"
                   }, {
-                    "key": "map.view.complete",
+                    "key": "map.view.center.overlay.complete",
                     "title": "map.view.center.overlay"
                   }, {
-                    "key": "map.view.complete",
+                    "key": "map.view.center.feature.complete",
                     "title": "map.view.center.feature"
                   }, {
-                    "key": "map.view.complete",
+                    "key": "map.view.center.location.complete",
                     "title": "map.view.center.location"
                   }, {
-                    "key": "map.view.complete",
+                    "key": "map.view.center.bounds.complete",
                     "title": "map.view.center.bounds"
                   }, {
                     "key": "map.feature.edit.complete",
-                    "title": "map.message.complete"
+                    "title": "map.feature.edit"
                   }, {
                     "key": "map.feature.draw.complete",
-                    "title": "map.message.complete"
+                    "title": "map.feature.draw"
                   }, {
                     "key": "map.get.complete",
                     "title": "map.get"

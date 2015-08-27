@@ -10,7 +10,7 @@ cmapi.channel["map.feature.selected.complete"].description = {
           "default": ""
         },
         "overlayId": {
-          "description": "The ID of the overlay the selected feature is loaded into.",
+          "description": "The ID of the overlay containing the selected feature.",
           "default": ""
         },
         "featureId": {

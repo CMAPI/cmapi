@@ -4,12 +4,16 @@ cmapi.channel["map.feature.deselected.batch"] = {
     "title": "map.feature.deselected.batch",
     "type": "object",
     "properties": {
-      "features": {
+       "features": {
         "type": "array"
       },
       "overlayId": {
         "type": "string"
-      }
+      },
+      "messageId": {
+        "type": "string",
+        "extension": "User Manipulation - Message Complete"
+      } 
     },
     "required": ["features"]
   }

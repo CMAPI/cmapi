@@ -22,7 +22,7 @@ cmapi.channel["map.feature.plot.batch.complete"].description = {
           "default": ""
         },
         "feature": {
-          "description": "Feature data loaded into the map.   See Appendix A for additional information on required KML support, Appendix B for information on required GeoJSON, and Appendix C for information on Area of Interest (AOI) support.",
+          "description": "Feature data loaded into the map.   If the actual feature data that was loaded onto the map differs from what was originally sent, this message MUST contain the actual feature data loaded",
           "default": ""
         },
 		"zoom": {

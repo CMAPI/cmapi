@@ -14,8 +14,7 @@ cmapi.channel["map.feature.plot.url.complete"] = {
             "type": "string"
           },
           "format": {
-            "type": "string",
-            "default": "kml"
+            "type": "string"
           },
           "url": {
             "type": "string"
@@ -24,8 +23,7 @@ cmapi.channel["map.feature.plot.url.complete"] = {
 			"type": "object"
 		  },
           "zoom": {
-            "type": "boolean",
-            "default": true
+            "type": "boolean"
           } 
     },
     "required": ["featureId", "overlayId","name","format","url","params","zoom"]
