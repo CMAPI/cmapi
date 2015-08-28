@@ -13,10 +13,10 @@ cmapi.channel["map.feature.plot.batch"].description = {
       "description": "The default format to be applied to all feature objects in the features array that don’t include a format value. I.e., similar behavior to CSS.  See map.feature.plot for definition of format property.",
       "default": ""
     },
-    "zoom": {
-      "description": "Whether the map should zoom to the newly loaded feature data.  See map.feature.plot for definition of format property.",
-      "default": ""
-    },
+	"zoom": {
+		"description": "True if map should zoom so that the extents of the map should be set to display all of the newly loaded feature data, false if not. Default is false.",
+		"default": ""
+	},
     "readOnly": {
       "description": "The default value for readOnly to be applied to all feature objects in the features array that don’t include a readOnly value. I.e., similar behavior to CSS.  See map.feature.plot for definition of readOnly property.",
       "default": ""

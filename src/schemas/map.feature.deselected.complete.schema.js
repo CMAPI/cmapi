@@ -4,13 +4,19 @@ cmapi.channel["map.feature.deselected.complete"] = {
     "title": "Schema for map.message.complete Details object",
     "type": "object",
     "properties": {	
+          "deSelectedId": {
+		    "type": "string"
+          },
+          "deSelectedName": {
+            "type": "string"
+          },
           "overlayId": {
             "type": "string"
           },
           "featureId": {
             "type": "string"
-          } 
+          }		 
     },
-    "required": ["featureId", "overlayId"]
+    "required": ["deSelectedId", "deSelectedName", "featureId", "overlayId"]
   }
 };

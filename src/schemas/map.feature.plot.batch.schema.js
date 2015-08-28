@@ -20,6 +20,6 @@ cmapi.channel["map.feature.plot.batch"] = {
         "type": "boolean"
       }
     },
-    "required": ["features"]
+    "required": ["features","overlayId","format","zoom","readOnly"]
   }
 };

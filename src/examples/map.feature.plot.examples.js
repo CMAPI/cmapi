@@ -166,9 +166,9 @@ cmapi.channel["map.feature.plot"].examples = [{
         },
         "id": "0x75023443",
         "description": "ThisisimportanttextfortheAOIpopup"
-      },
-      "zoom": true,
-      "readOnly": "false"
-    }
+      }
+    },
+    "zoom": true,
+    "readOnly": false
   }
 }];

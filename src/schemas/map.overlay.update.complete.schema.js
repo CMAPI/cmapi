@@ -12,15 +12,8 @@ cmapi.channel["map.overlay.update.complete"] = {
       },
       "parentId": {
         "type": "string"
-      },
-      "properties": {
-        "type": "object"
-      },
-      "menuId": {
-        "type": "string",
-        "extension": "User Manipulation - Context Menus"
       }
     },
-    "required": ["overlayId"]
+    "required": ["name", "overlayId", "parentId"]
   }
 };

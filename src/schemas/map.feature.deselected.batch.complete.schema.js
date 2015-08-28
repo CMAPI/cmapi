@@ -7,14 +7,20 @@ cmapi.channel["map.feature.deselected.batch.complete"] = {
       "features": {
         "type": "array",
         "properties": {
+          "deSelectedId": {
+		    "type": "string"
+          },
+          "deSelectedName": {
+            "type": "string"
+          },
           "overlayId": {
             "type": "string"
           },
           "featureId": {
             "type": "string"
-          }
+          }		 
         },
-        "required": ["featureId", "overlayId"]
+        "required": ["deSelectedId", "deSelectedName", "featureId", "overlayId"]
       }
     },
     "required": ["features"]

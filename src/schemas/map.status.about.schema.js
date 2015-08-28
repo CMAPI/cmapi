@@ -8,8 +8,8 @@ cmapi.channel["map.status.about"] = {
         "type": "string"
       },
       "type": {
-        "enum": ["2-D", "3-D", "other"],
-        "default": " "
+		"type":"string",
+        "enum": ["2-D", "3-D", "other"]
       },
       "widgetName": {
         "type": "string"

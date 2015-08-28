@@ -11,7 +11,7 @@ cmapi.channel["map.message.complete"] = {
         "type": "string"
       },
       "status": {
-        "type": "enum",
+		"type":"string",
         "enum": ["success", "failure", "mixed", "cancelled"]
       },
       "details": {

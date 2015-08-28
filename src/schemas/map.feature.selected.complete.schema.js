@@ -4,6 +4,12 @@ cmapi.channel["map.feature.selected.complete"] = {
     "title": "Schema for map.message.complete Details object",
     "type": "object",
     "properties": {
+		  "selectedId": {
+		    "type": "string"
+          },
+          "selectedName": {
+            "type": "string"
+          },
           "overlayId": {
             "type": "string"
           },
@@ -11,6 +17,6 @@ cmapi.channel["map.feature.selected.complete"] = {
             "type": "string"
           }		  
     },
-    "required": ["featureId", "overlayId"]
+    "required": ["selectedId","selectedName","featureId", "overlayId"]
   }
 };
