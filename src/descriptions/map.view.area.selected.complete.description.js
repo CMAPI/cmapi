@@ -1,3 +1,4 @@
+cmapi.channel["map.view.area.selected.complete"] = cmapi.channel["map.view.area.selected.complete"] || {};
 cmapi.channel["map.view.area.selected.complete"].description = {
   "description": "Message indicating the map.view.area.selected message has completed",
   "properties": {

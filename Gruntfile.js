@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     concat: {
       options: {
-        separator: ';'
+        separator: ''
       },
       schema: {
         src: ['src/cmapi.namespace.js','src/schemas/*.schema.js'],

@@ -1,3 +1,4 @@
+cmapi.channel["map.view.center.bounds.complete"] = cmapi.channel["map.view.center.bounds.complete"] || {};
 cmapi.channel["map.view.center.bounds.complete"].description = {
   "description": "map.complete.details object for the map.view.center.bounds.complete message",
   "properties": {

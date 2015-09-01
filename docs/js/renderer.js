@@ -2,10 +2,10 @@
 
 
 
-var queryStringUtil = (function () {
+var queryStringUtil = (function() {
   var publicInterface = {
     // Searches the URL query string for a key defned by 'name' and returns the string value
-    getParameterByName: function (name) {
+    getParameterByName: function(name) {
       name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
       var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
         results = regex.exec(window.location.search);
@@ -16,7 +16,7 @@ var queryStringUtil = (function () {
   return publicInterface;
 }());
 
-var cmapi_channel_renderer = (function () {
+var cmapi_channel_renderer = (function() {
   var publicInterface,
     baseUrl = "../src/schemas/",
     currentSchema,
@@ -67,56 +67,56 @@ var cmapi_channel_renderer = (function () {
       txt = objChars[i];
       if (bypass === false) {
         switch (txt) {
-        case '"':
-          bypass = true;
-          break;
-        case "{":
-          indent++;
-          indentation = "";
-          for (k = 0; k < indent; k++) {
-            indentation += tab;
-          }
-          objChars[i] = "{\n" + indentation;
+          case '"':
+            bypass = true;
+            break;
+          case "{":
+            indent++;
+            indentation = "";
+            for (k = 0; k < indent; k++) {
+              indentation += tab;
+            }
+            objChars[i] = "{\n" + indentation;
 
-          break;
-        case "[":
-          indent++;
-          indentation = "";
-          for (k = 0; k < indent; k++) {
-            indentation += tab;
-          }
-          objChars[i] = "[\n" + indentation;
+            break;
+          case "[":
+            indent++;
+            indentation = "";
+            for (k = 0; k < indent; k++) {
+              indentation += tab;
+            }
+            objChars[i] = "[\n" + indentation;
 
-          break;
-        case ",":
-          objChars[i] = ",\n" + indentation;
-          break;
-        case "}":
-          indent--;
-          indentation = "";
-          for (k = 0; k < indent; k++) {
-            indentation += tab;
-          }
-          if (objChars[i + 1] === ",") {
-            objChars[i] = "\n" + indentation + "}";
-            objChars[i + 1] = ",\n" + indentation;
-          } else {
-            objChars[i] = "\n" + indentation + "}" + indentation;
-          }
-          break;
-        case "]":
-          indent--;
-          indentation = "";
-          for (k = 0; k < indent; k++) {
-            indentation += tab;
-          }
-          if (objChars[i + 1] === ",") {
-            objChars[i] = "\n" + indentation + "]";
-            objChars[i + 1] = ",\n" + indentation;
-          } else {
-            objChars[i] = "\n" + indentation + "]" + indentation;
-          }
-          break;
+            break;
+          case ",":
+            objChars[i] = ",\n" + indentation;
+            break;
+          case "}":
+            indent--;
+            indentation = "";
+            for (k = 0; k < indent; k++) {
+              indentation += tab;
+            }
+            if (objChars[i + 1] === ",") {
+              objChars[i] = "\n" + indentation + "}";
+              objChars[i + 1] = ",\n" + indentation;
+            } else {
+              objChars[i] = "\n" + indentation + "}" + indentation;
+            }
+            break;
+          case "]":
+            indent--;
+            indentation = "";
+            for (k = 0; k < indent; k++) {
+              indentation += tab;
+            }
+            if (objChars[i + 1] === ",") {
+              objChars[i] = "\n" + indentation + "]";
+              objChars[i + 1] = ",\n" + indentation;
+            } else {
+              objChars[i] = "\n" + indentation + "]" + indentation;
+            }
+            break;
         }
       } else {
         if (txt === '"') {
@@ -151,12 +151,12 @@ var cmapi_channel_renderer = (function () {
     var trValue = "<tr>";
     if (property !== undefined && property !== null && property.hasOwnProperty("status")) {
       switch (property.status.toLowerCase()) {
-      case "new":
-        trValue = '<tr class="newContent">';
-        break;
-      case "updated":
-        trValue = '<tr class="updatedContent">';
-        break;
+        case "new":
+          trValue = '<tr class="newContent">';
+          break;
+        case "updated":
+          trValue = '<tr class="updatedContent">';
+          break;
       }
     }
     return trValue;
@@ -177,8 +177,7 @@ var cmapi_channel_renderer = (function () {
       options,
       opLen,
       opt,
-      enums,
-      description;;
+      description;
 
     output.push('<table><thead><tr>');
     output.push('<th>' + cmapi.lang.TABLE_HEADER_PROPERTY + '</th>');
@@ -212,7 +211,7 @@ var cmapi_channel_renderer = (function () {
         output.push(checkStatus(propVal));
         output.push('<td>' + prop + '</td>');
         //output.push('<td>' + defaultVal + '</td>');
-        output.push('<td' + spellCheck + '><p>' + description.description+'</p>');
+        output.push('<td' + spellCheck + '><p>' + description.description + '</p>');
         /*
         if(description.hasOwnProperty("allowableValues") && description.allowableValues !== ""){
           output.push('<p><strong>Allowable Values: </strong>'+description.allowableValues + '</p>');
@@ -372,9 +371,9 @@ var cmapi_channel_renderer = (function () {
 
     try {
       output.push('<h2 id="toc_0"' + spellCheck + '>' + schema.title + '</h2>');
-
-      output.push('<p' + spellCheck + '>' + channelDef.description.description + '</p>');
-
+      if (channelDef.hasOwnProperty("description") && channelDef.description.hasOwnProperty("description")) {
+        output.push('<p' + spellCheck + '>' + channelDef.description.description + '</p>');
+      }
       output.push('<h3 id="toc_3">Payload:</h3>');
 
       output.push('<pre><code class="javascript">');
@@ -540,28 +539,28 @@ var cmapi_channel_renderer = (function () {
   }
 
   publicInterface = {
-    loadContent: function (target) {
+    loadContent: function(target) {
       $('#main').html('<img src="img/loading.gif" />');
       if (!target.data.hasOwnProperty("type")) {
         target.data.type = "";
       }
       switch (target.data.type) {
-      case "overview":
-        loadOverview(target.key);
-        break;
-      default:
-        loadChannelDef(target.key);
-        break;
+        case "overview":
+          loadOverview(target.key);
+          break;
+        default:
+          loadChannelDef(target.key);
+          break;
       }
     },
-    validateInput: function () {
+    validateInput: function() {
       var banUnknown = false;
       if ($("#banUnknownCB").is(':checked') === true) {
         banUnknown = true;
       }
       validateUserPayload(banUnknown);
     },
-    clearInput: function () {
+    clearInput: function() {
       $("#userPayloadInput").val("");
     }
   };
