@@ -23,9 +23,6 @@ cmapi.channel["map.feature.plot.batch.complete"] = {
             "type": ["object", "string"],
             "additionalProperties": true
           },
-		  "zoom": {
-			"type": "boolean"
-		  },
           "readOnly": {
             "type": "boolean"
           },
@@ -34,7 +31,7 @@ cmapi.channel["map.feature.plot.batch.complete"] = {
             "type": "object"
           }
         },
-        "required": ["featureId", "overlayId","name","format","feature","zoom","readOnly","properties"]
+        "required": ["featureId", "overlayId","name","format","feature","readOnly","properties"]
       }
     },
     "required": ["features"]

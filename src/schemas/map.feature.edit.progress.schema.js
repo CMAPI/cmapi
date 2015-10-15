@@ -56,13 +56,15 @@ cmapi.channel["map.feature.edit.progress"] = {
                   "type": "number",
                   "description": "The optional altitude component of the coordinate."
                 }
-              }
+              },
+              "required": ["lat", "lon"]
             },
             "additionalItems": true
           }
-        }
+        },
+        "required": ["type", "indices", "coordinates"]
       }
     },
-    "required": ["featureId", "overlayId"]
+    "required": ["featureId", "overlayId", "feature", "format", "status", "updates"]
   }
 };

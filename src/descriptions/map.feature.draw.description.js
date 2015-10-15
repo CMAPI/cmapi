@@ -22,7 +22,7 @@ cmapi.channel["map.feature.draw"].description = {
       "default": ""
     },
     "properties": {
-      "description": "A properties object defining the appearance of the graphic being drawn",
+      "description": "A free form object that can contain any additional JSON objects or elements to send with this message. This allows for extending this channel's message without polluting or conflicting with the CMAPI specified payload of the message.",
       "default": ""
     },
     "menuId": {

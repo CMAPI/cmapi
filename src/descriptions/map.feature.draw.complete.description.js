@@ -14,11 +14,11 @@ cmapi.channel["map.feature.draw.complete"].description = {
       "default": ""
     },
     "type": {
-      "description": "Type of feature to be drawn.  Options are line, polygon, point or symbol.  This field may be overloaded to handle future draw types such as bufferedline, circle, aoi, etc.",
+      "description": "Type of feature to be drawn.  Supported types include 'line', 'polygon', 'point' or 'symbol'.  Optional types include 'bufferedline', 'circle', 'aoi', and 'airspace'.  Additional types may be added in the future.",
       "default": ""
     },
     "properties": {
-      "description": "A properties object defining the appearance of the graphic being drawn",
+      "description": "A free form object that can contain any additional JSON objects or elements to send with this message. This allows for extending this channel's message without polluting or conflicting with the CMAPI specified payload of the message.",
       "default": ""
     },
     "feature": {
@@ -26,7 +26,7 @@ cmapi.channel["map.feature.draw.complete"].description = {
       "default": ""
     },
     "format": {
-      "description": "Type of feature data based on the map.feature.plot type",
+      "description": "Data format of the given feature. See map.feature.plot for more details",
       "default": ""
     },
     "coordinates": {

@@ -29,6 +29,6 @@ cmapi.channel["map.feature.draw"] = {
         "extension": "User Manipulation - Context Menus"
       }
     },
-    "required": ["featureId", "messageId"]
+    "required": ["featureId", "messageId", "type"]
   }
 };

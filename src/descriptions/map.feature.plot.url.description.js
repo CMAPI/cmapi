@@ -18,7 +18,7 @@ cmapi.channel["map.feature.plot.url"].description = {
       "default": ""
     },
     "format": {
-      "description": "Data format of the given feature. If no format is specified, the format defaults to kml. A list of formats supported by a particular map implementation can be obtained by querying the map using the map.status channel (see map.status). Note that for this version of the Common Map Widget API, all map implementations MUST support KML, GeoJSON, and WMS (GetMap only).",
+      "description": "Data format of the given feature. If no format is specified, the format defaults to 'kml'. A list of formats supported by a particular map implementation can be obtained by querying the map using the map.status channel (see map.status). Note that for this version of the Common Map Widget API, all map implementations MUST support 'kml', 'geojson', and 'wms' (GetMap only).   More details about feature formats can be found in the map.feature Data Formats section of the documentation.",
       "default": "kml"
     },
     "params": {

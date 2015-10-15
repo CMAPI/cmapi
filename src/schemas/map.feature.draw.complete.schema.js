@@ -29,6 +29,6 @@ cmapi.channel["map.feature.draw.complete"] = {
         "type": "array"
       }
     },
-    "required": ["featureId", "overlayId"]
+    "required": ["featureId", "overlayId", "type", "feature", "format", "coordinates"]
   }
 };

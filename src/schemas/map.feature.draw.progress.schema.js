@@ -63,6 +63,6 @@ cmapi.channel["map.feature.draw.progress"] = {
         }
       }
     },
-    "required": ["featureId", "overlayId"]
+    "required": ["featureId", "overlayId", "type", "feature", "format", "updates"]
   }
 };

@@ -23,6 +23,6 @@ cmapi.channel["map.feature.edit.complete"] = {
         "type": "array"
       }
     },
-    "required": ["featureId", "overlayId"]
+    "required": ["featureId", "overlayId", "feature", "format", "coordinates"]
   }
 };

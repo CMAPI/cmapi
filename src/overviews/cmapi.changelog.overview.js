@@ -21,7 +21,7 @@ cmapi.overview["cmapi.changelog"] = {
   }, {
     "title": "Deprecation",
     "paragraphs": [
-      "Sending arrays of payloads is no longer recomended and the batch channels should be used instead.  Please see the overview page Payloads section for more details",
+      "Sending arrays of payloads is no longer recomended and the batch channels should be used instead.  Please see <a href='index.html#cmapi.core.general.requirements.overview'>CMAPI Core General Requirements</a> for more details",
       "Using a widgets sender.id as a default for an overlayId is now deprecated in all cases.  It is recomended that a value always be sent for the overlayId property on any channel.  In future versions overlayId will likely become a required property."
     ]
   }]
