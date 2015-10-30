@@ -3,15 +3,15 @@ cmapi.channel["map.message.progress"].description = {
   "properties": {
     "messageId": {
       "description": "A globally unique ID that identifies the particular message or message batch that progress is being reported on.",
-      "default": ""
+      "defaultValue": ""
     },
     "originatingChannel": {
       "description": "This property SHALL contain the channel name of the original request. It is intended to provide guidance as to the content of the details property.",
-      "default": ""
+      "defaultValue": ""
     },
     "details": {
       "description": "An object whose details are specific to the original requesting channel/message.  Go to the specific channel definition for details of what this object should look like",
-      "default": ""
+      "defaultValue": ""
     }
   }
 };

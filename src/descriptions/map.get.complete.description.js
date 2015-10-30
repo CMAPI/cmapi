@@ -3,11 +3,11 @@ cmapi.channel["map.get.complete"].description = {
   "properties": {
     "messageId": {
       "description": "A globally unique ID that identifies the particular message or message batch that progress is being reported on.",
-      "default": ""
+      "defaultValue": ""
     },
     "details": {
       "description": "An object whose details are specific to the original requesting channel/message.  Go to the specific channel definition for details of what this object should look like",
-      "default": ""
+      "defaultValue": ""
     }
   }
 };

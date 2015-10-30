@@ -3,7 +3,7 @@ cmapi.channel["map.overlay.show.complete"].description = {
   "properties": {
     "overlayId": {
       "description": "The unique ID of the shown overlay.",
-      "default": ""
+      "defaultValue": ""
     }
   }
 };

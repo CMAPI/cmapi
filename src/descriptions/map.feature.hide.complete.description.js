@@ -3,11 +3,11 @@ cmapi.channel["map.feature.hide.complete"].description = {
   "properties": {	  
         "overlayId": {
           "description": "The ID of the overlay currently containing the feature being hidden.",
-          "default": ""
+          "defaultValue": ""
         },
         "featureId": {
           "description": "Unique identifier for the given feature.",
-          "default": ""
+          "defaultValue": ""
         }	
   }
 };

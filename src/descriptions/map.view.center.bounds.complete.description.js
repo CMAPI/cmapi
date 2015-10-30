@@ -4,33 +4,33 @@ cmapi.channel["map.view.center.bounds.complete"].description = {
   "properties": {
     "bounds": {
       "description": "Bounding box of area the map is centered at.",
-      "default": " ",
+      "defaultValue": " ",
       "properties": {
         "southWest": {
           "description": "Bottom right of the bounds",
-          "default": "",
+          "defaultValue": "",
           "properties": {
             "lat": {
               "description": "The latitude value of the point",
-              "default": ""
+              "defaultValue": ""
             },
             "lon": {
               "description": "The longitude value of the point",
-              "default": ""
+              "defaultValue": ""
             }
           }
         },
         "northEast": {
           "description": "Top left of the bounds",
-          "default": "",
+          "defaultValue": "",
           "properties": {
             "lat": {
               "description": "The latitude value of the point",
-              "default": ""
+              "defaultValue": ""
             },
             "lon": {
               "description": "The longitude value of the point",
-              "default": ""
+              "defaultValue": ""
             }
           }
         }
@@ -38,7 +38,7 @@ cmapi.channel["map.view.center.bounds.complete"].description = {
     },
     "zoom": {
       "description": "what level the map is zoomed to",
-      "default": ""
+      "defaultValue": ""
     }
   }
 };

@@ -3,35 +3,35 @@ cmapi.channel["map.message.complete"].description = {
   "properties": {
     "messageId": {
       "description": "A globally unique ID that identifies the particular message or message batch that was completed.",
-      "default": ""
+      "defaultValue": ""
     },
     "originatingChannel": {
       "description": "This property SHALL contain the channel name of the request being completed. It is intended to provide guidance as to the content of the details property.",
-      "default": ""
+      "defaultValue": ""
     },
     "status": {
       "description": "A pre-defined string indicating whether the original batch request succeeded, failed, was a mix of successes and failures, or was cancelled.  Allowable values are:<ul><li>failure - Failure means the whole batch failed.</li><li>mixed - Mixed means that it is a mixture of successes and failures.</li><li>success - Success means that the whole batch request was successful.</li><li>cancelled = Cancelled means the map abandoned processing of the message and remains unchanged.</li></ul>",
-      "default": ""
+      "defaultValue": ""
     },
     "details": {
       "description": "An object whose details are specific to the original requesting channel/message.  Go to the specific channel definition for details of what this object should look like.  In the case that no details object is specified, the details object should be populated as an empty object for consistency.",
-      "default": ""
+      "defaultValue": ""
     },
     "failures": {
       "description": "An array of objects that define what, if any, original request message payloads have failed to be executed.  If all message payloads associated with the identified transaction were executed successfully, this MUST return an empty array",
-      "default": "",
+      "defaultValue": "",
       "properties": {
         "failureObject": {
           "description": "An object that defines a specific failure",
-          "default": "",
+          "defaultValue": "",
           "properties": {
             "payload": {
               "description": "The payload from the original request message that failed to properly execute.",
-              "default": ""
+              "defaultValue": ""
             },
             "message": {
               "description": "A message indicating why the requested transaction failed or partially failed.",
-              "default": ""
+              "defaultValue": ""
             }
           }
         }

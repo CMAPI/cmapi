@@ -169,7 +169,7 @@ var cmapi_channel_renderer = (function() {
       propVal,
       optional,
       type,
-      defaultVal,
+      defaultVal = "",
       len,
       i,
       subProp,
@@ -191,8 +191,8 @@ var cmapi_channel_renderer = (function() {
       if (descriptions.hasOwnProperty('properties')) {
         description = descriptions.properties[prop];
       }
-      if (descriptions.hasOwnProperty('default')) {
-        defaultVal = descriptions.default;
+      if (description.hasOwnProperty('defaultValue')) {
+        defaultVal = description.defaultValue;
       }
       if ($.isArray(propVal)) {
         output.push('<tr>');
@@ -212,14 +212,14 @@ var cmapi_channel_renderer = (function() {
         output.push('<td>' + prop + '</td>');
         //output.push('<td>' + defaultVal + '</td>');
         output.push('<td' + spellCheck + '><p>' + description.description + '</p>');
-        /*
+        
         if(description.hasOwnProperty("allowableValues") && description.allowableValues !== ""){
           output.push('<p><strong>Allowable Values: </strong>'+description.allowableValues + '</p>');
         }
-        if(description.hasOwnProperty("default") && description.default !== ""){
-          output.push('<p><strong>Default Value: </strong>'+description.default + '</p>');
+        if(defaultVal !== ""){
+          output.push('<p><strong>Default Value: </strong>'+defaultVal + '</p>');
         }
-        */
+        
         output.push('</td>');
         output.push('</tr>');
         if (propVal.hasOwnProperty("properties")) {

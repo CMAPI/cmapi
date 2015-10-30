@@ -3,33 +3,33 @@ cmapi.channel["map.status.view"].description = {
   "properties": {
     "bounds": {
       "description": "Bounding box of area visible on map.",
-      "default": " ",
+      "defaultValue": " ",
       "properties": {
         "southWest": {
           "description": "Bottom right of the bounds",
-          "default": "",
+          "defaultValue": "",
           "properties": {
             "lat": {
               "description": "The latitude value of the point",
-              "default": ""
+              "defaultValue": ""
             },
             "lon": {
               "description": "The longitude value of the point",
-              "default": ""
+              "defaultValue": ""
             }
           }
         },
         "northEast": {
           "description": "Top left of the bounds",
-          "default": "",
+          "defaultValue": "",
           "properties": {
             "lat": {
               "description": "The latitude value of the point",
-              "default": ""
+              "defaultValue": ""
             },
             "lon": {
               "description": "The longitude value of the point",
-              "default": ""
+              "defaultValue": ""
             }
           }
         }
@@ -37,25 +37,25 @@ cmapi.channel["map.status.view"].description = {
     },
     "center": {
       "description": "The current center of the map",
-      "default": " ",
+      "defaultValue": " ",
       "properties": {
         "lat": {
           "description": "The latitude of the location that was clicked",
-          "default": ""
+          "defaultValue": ""
         },
         "lon": {
           "description": "The longitude of the location that was clicked",
-          "default": ""
+          "defaultValue": ""
         }
       }
     },
     "range": {
       "description": "The current distance, in meters, map is zoomed out",
-      "default": ""
+      "defaultValue": ""
     },
     "requester": {
       "description": "ID of client that requested this status message be sent (if any).  If no requester, message is being sent due to a map view change",
-      "default": ""
+      "defaultValue": ""
     }
   }
 };

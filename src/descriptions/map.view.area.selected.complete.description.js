@@ -4,33 +4,33 @@ cmapi.channel["map.view.area.selected.complete"].description = {
   "properties": {
     "bounds": {
       "description": "Bounding box of area selected on map",
-      "default": " ",
+      "defaultValue": " ",
       "properties": {
         "southWest": {
           "description": "Bottom right of the bounds",
-          "default": "",
+          "defaultValue": "",
           "properties": {
             "lat": {
               "description": "The latitude value of the point",
-              "default": ""
+              "defaultValue": ""
             },
             "lon": {
               "description": "The longitude value of the point",
-              "default": ""
+              "defaultValue": ""
             }
           }
         },
         "northEast": {
           "description": "Top left of the bounds",
-          "default": "",
+          "defaultValue": "",
           "properties": {
             "lat": {
               "description": "The latitude value of the point",
-              "default": ""
+              "defaultValue": ""
             },
             "lon": {
               "description": "The longitude value of the point",
-              "default": ""
+              "defaultValue": ""
             }
           }
         }
@@ -38,11 +38,11 @@ cmapi.channel["map.view.area.selected.complete"].description = {
     },
     "button": {
       "description": "Which mouse button was clicked.  Allowable values are 'right', 'left', and 'middle'.  Default value is 'left'.",
-      "default": ""
+      "defaultValue": ""
     },
     "keys": {
       "description": "An array of keys pressed during the click event.  Allowable values are 'alt', 'ctrl', 'shift', and 'none'. Default value is 'none'.",
-      "default": ["none"]
+      "defaultValue": ["none"]
     }
   }
 };

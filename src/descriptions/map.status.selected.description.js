@@ -3,11 +3,11 @@ cmapi.channel["map.status.selected"].description = {
   "properties": {
     "overlayId": {
       "description": "The ID of the overlay which contains the selected objects.",
-      "default": ""
+      "defaultValue": ""
     },
     "selectedFeatures": {
       "description": "An array of features from the identified overlay that are currently selected.",
-      "default": ""
+      "defaultValue": ""
     }
   }
 };

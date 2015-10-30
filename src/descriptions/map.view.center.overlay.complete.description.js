@@ -3,11 +3,11 @@ cmapi.channel["map.view.center.overlay.complete"].description = {
   "properties": {
     "overlayId": {
       "description": "The ID of the overlay centered on.",
-      "default": ""
+      "defaultValue": ""
     },
     "zoom": {
       "description": "Zoom level of the map",
-      "default": ""
+      "defaultValue": ""
     }
   }
 };

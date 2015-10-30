@@ -3,7 +3,7 @@ cmapi.channel["map.overlay.cluster.deactivate"].description = {
   "properties": {
     "overlayId": {
       "description": "The ID of the overlay where the clustering rule is to be deactivated. If no overlayId is included, default overlay with ID equal to sending widget’s ID is assumed.",
-      "default": "sending widget's ID"
+      "defaultValue": "sending widget's ID"
     }
   }
 };

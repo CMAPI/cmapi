@@ -3,15 +3,15 @@ cmapi.channel["map.feature.unplot.batch.complete"].description = {
   "properties": {
     "features": {
       "description": "An array of feature identifier objects",
-      "default": "",
+      "defaultValue": "",
       "properties": {
         "overlayId": {
           "description": "The ID of the overlay this feature was removed from.",
-          "default": ""
+          "defaultValue": ""
         },
         "featureId": {
           "description": "Unique identifier for the given feature.",
-          "default": ""
+          "defaultValue": ""
         }
       }
     }

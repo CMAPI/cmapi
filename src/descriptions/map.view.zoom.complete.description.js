@@ -3,7 +3,7 @@ cmapi.channel["map.view.zoom.complete"].description = {
   "properties": {
     "range": {
       "description": "The distance in meters from the map that the zoom was set to",
-      "default": ""
+      "defaultValue": ""
     }
   }
 };

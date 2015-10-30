@@ -3,11 +3,11 @@ cmapi.channel["map.feature.unplot.complete"].description = {
   "properties": {	  
         "overlayId": {
           "description": "The ID of the overlay this feature was removed from.",
-          "default": ""
+          "defaultValue": ""
         },
         "featureId": {
           "description": "Unique identifier for the given feature.",
-          "default": ""
+          "defaultValue": ""
         }	
   }
 };

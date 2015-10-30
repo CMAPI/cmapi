@@ -3,33 +3,33 @@ cmapi.channel["map.view.center.bounds"].description = {
   "properties": {
     "bounds": {
       "description": "Bounding box of area to be centered in map.",
-      "default": " ",
+      "defaultValue": " ",
       "properties": {
         "southWest": {
           "description": "Bottom right of the bounds",
-          "default": "",
+          "defaultValue": "",
           "properties": {
             "lat": {
               "description": "The latitude value of the point",
-              "default": ""
+              "defaultValue": ""
             },
             "lon": {
               "description": "The longitude value of the point",
-              "default": ""
+              "defaultValue": ""
             }
           }
         },
         "northEast": {
           "description": "Top left of the bounds",
-          "default": "",
+          "defaultValue": "",
           "properties": {
             "lat": {
               "description": "The latitude value of the point",
-              "default": ""
+              "defaultValue": ""
             },
             "lon": {
               "description": "The longitude value of the point",
-              "default": ""
+              "defaultValue": ""
             }
           }
         }
@@ -37,7 +37,7 @@ cmapi.channel["map.view.center.bounds"].description = {
     },
     "zoom": {
       "description": "Attribute that defines the zoom behaviour of the map. If auto, map will adjust to zoom as close as possible to the given location in the user's viewable area. If a number, map will zoom to specified range in meters. If no zoom attribute is included, no zoom is performed.",
-      "default": ""
+      "defaultValue": ""
     }
   }
 };

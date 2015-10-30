@@ -3,7 +3,7 @@ cmapi.channel["map.overlay.remove.complete"].description = {
   "properties": {
     "overlayId": {
       "description": "The unique ID of the overlay removed.",
-      "default": ""
+      "defaultValue": ""
     }
   }
 };

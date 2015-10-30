@@ -3,23 +3,23 @@ cmapi.channel["map.feature.deselected.batch.complete"].description = {
   "properties": {
     "features": {
       "description": "An array of feature identifier objects.",
-      "default": "",
+      "defaultValue": "",
       "properties": {
        "deSelectedId": {
           "description": "The deSelectedId passed in the original message.  If no deSelectedId was passed in the original message, then this value MUST be an empty string",
-          "default": ""
+          "defaultValue": ""
         },
         "deSelectedName": {
           "description": "The name passed in the original message.  If no name passed in original message, then this value MUST be an empty string",
-          "default": ""
+          "defaultValue": ""
         },
         "overlayId": {
           "description": "The ID of the overlay containing the deselected feature.",
-          "default": ""
+          "defaultValue": ""
         },
         "featureId": {
           "description": "Unique identifier for the deselected feature.",
-          "default": ""
+          "defaultValue": ""
         }	
       }
     }

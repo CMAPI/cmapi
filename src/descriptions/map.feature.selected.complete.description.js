@@ -3,19 +3,19 @@ cmapi.channel["map.feature.selected.complete"].description = {
   "properties": {
 		"selectedId": {
           "description": "The selectedId passed in the original message.  If no selectedId was passed in the original message, then this value MUST be an empty string",
-          "default": ""
+          "defaultValue": ""
         },
         "selectedName": {
           "description": "The name passed in the original message.  If no name passed in original message, then this value MUST be an empty string",
-          "default": ""
+          "defaultValue": ""
         },
         "overlayId": {
           "description": "The ID of the overlay containing the selected feature.",
-          "default": ""
+          "defaultValue": ""
         },
         "featureId": {
           "description": "Unique identifier for the selected feature.",
-          "default": ""
+          "defaultValue": ""
         }
   }
 };

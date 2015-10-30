@@ -3,25 +3,25 @@ cmapi.channel["map.feature.plot.symbol"].description = {
   "properties": {
     "feature": {
       "description": "The feature attribute of the map.feature.plot payload.",
-      "default": "",
+      "defaultValue": "",
       "properties": {
         "symbolCode": {
           "description": "The symbol code for the symbol.",
-          "default": ""
+          "defaultValue": ""
         },
         "type": {
           "description": "Defines the geojson format of the coordinates in the coordinate attribute.",
-          "default": ""
+          "defaultValue": ""
         },
         "coordinates": {
           "description": "This attribute MUST contain a valid geojson coordinate structure for the type indicated in the type attribute. See http://geojson.org/geojson-spec.html for the valid format.",
-          "default": ""
+          "defaultValue": ""
         }
       }
     },
     "properties": {
       "description": "The properties attribute of the map.feature.plot payload. Which in addition to other attributes that may be present, it must contain the following attribute.",
-      "default": "",
+      "defaultValue": "",
       "properties": {}
     }
   }

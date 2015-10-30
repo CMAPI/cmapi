@@ -3,7 +3,7 @@ cmapi.channel["map.status.format"].description = {
   "properties": {
     "formats": {
       "description": "An array of the formats that this map supports. Note that for this version of the Common Map Widget API, all map implementations MUST support 'kml', 'geojson' and 'wms'.  Additional map formats MAY be supported.",
-      "default": ["kml"]
+      "defaultValue": ["kml"]
     }
   }
 };

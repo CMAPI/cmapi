@@ -3,7 +3,7 @@ cmapi.channel["map.overlay.hide.complete"].description = {
   "properties": {
     "overlayId": {
       "description": "The unique ID of the hidden overlay.",
-      "default": ""
+      "defaultValue": ""
     }
   }
 };

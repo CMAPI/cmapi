@@ -3,19 +3,19 @@ cmapi.channel["map.error"].description = {
   "properties": {
     "sender": {
       "description": "Sender ID of message that caused error.",
-      "default": ""
+      "defaultValue": ""
     },
     "type": {
       "description": "Type of message that caused error.",
-      "default": ""
+      "defaultValue": ""
     },
     "msg": {
       "description": "The message that caused error.",
-      "default": ""
+      "defaultValue": ""
     },
     "error": {
       "description": "A description of the error.",
-      "default": ""
+      "defaultValue": ""
     }
   }
 };
