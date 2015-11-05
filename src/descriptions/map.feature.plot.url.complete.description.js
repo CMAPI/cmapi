@@ -26,7 +26,7 @@ cmapi.channel["map.feature.plot.url.complete"].description = {
           "defaultValue": ""
         },
 		"zoom": {
-          "description": "The zoom parameter value passed in the original message - will be set to default input value if original message does not contain an actual value",
+          "description": "The zoom parameter value passed in the original message. If no value passed in original message, this MUST be set to the default value of the original message",
           "defaultValue": ""
         }
   }

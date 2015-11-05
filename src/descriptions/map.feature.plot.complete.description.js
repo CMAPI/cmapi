@@ -22,11 +22,11 @@ cmapi.channel["map.feature.plot.complete"].description = {
           "defaultValue": ""
         },
 		"zoom": {
-          "description": "Zoom value passed in original message - or default if no value was passed in",
+          "description": "Zoom value passed in original message. If no value passed in original message, this MUST be set to the default value of the original message",
           "defaultValue":""
         },
         "readOnly": {
-          "description": "readOnly value passed in the original message, or default if no value was passed in original message",
+          "description": "readOnly value passed in the original message. If no value passed in original message, this MUST be set to the default value of the original message",
           "defaultValue":""
         },
         "properties": {

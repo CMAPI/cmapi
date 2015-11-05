@@ -3,7 +3,8 @@ cmapi.channel["map.feature.plot.2525b"].description = {
   "properties": {
     "format": {
       "description": "Defines the feature format as a CMAPI Symbol with the specific type of MIL-STD-2525 Revision B Change II.",
-      "defaultValue": ""
+      "defaultValue": "",
+	  "allowableValues" : "2525b"
     },
     "feature": {
       "description": "The feature attribute of the map.feature.plot payload in GeoJSON format.",
@@ -15,7 +16,8 @@ cmapi.channel["map.feature.plot.2525b"].description = {
         },
         "type": {
           "description": "Defines the geojson format of the coordinates in the coordinate attribute.  Polygons are not allowed for this symbol type",
-          "defaultValue": ""
+          "defaultValue": "",
+		  "allowableValues" : "point, lineString"
         },
         "coordinates": {
           "description": "This attribute MUST contain a valid geojson coordinate structure for the type indicated in the type attribute. See http://geojson.org/geojson-spec.html for the valid format.",

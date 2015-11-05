@@ -7,7 +7,7 @@ cmapi.channel["map.feature.unplot"].description = {
     },
     "featureId": {
       "description": "The ID of the feature to be removed.",
-      "defaultValue": "N/A"
+      "defaultValue": ""
     }
   }
 };

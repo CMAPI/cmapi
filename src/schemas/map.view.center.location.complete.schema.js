@@ -1,7 +1,7 @@
 cmapi.channel["map.view.center.location.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "map.view.center.location.complete",
+    "title": "Schema for map.message.complete Details object",
     "type": "object",
     "properties": {
       "location": {

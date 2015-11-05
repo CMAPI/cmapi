@@ -11,7 +11,8 @@ cmapi.channel["map.message.complete"].description = {
     },
     "status": {
       "description": "A pre-defined string indicating whether the original batch request succeeded, failed, was a mix of successes and failures, or was cancelled.  Allowable values are:<ul><li>failure - Failure means the whole batch failed.</li><li>mixed - Mixed means that it is a mixture of successes and failures.</li><li>success - Success means that the whole batch request was successful.</li><li>cancelled = Cancelled means the map abandoned processing of the message and remains unchanged.</li></ul>",
-      "defaultValue": ""
+      "defaultValue": "",
+	  "allowableValues" : "failure, mixed, success, cancelled"
     },
     "details": {
       "description": "An object whose details are specific to the original requesting channel/message.  Go to the specific channel definition for details of what this object should look like.  In the case that no details object is specified, the details object should be populated as an empty object for consistency.",

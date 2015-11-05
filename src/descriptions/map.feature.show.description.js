@@ -11,7 +11,8 @@ cmapi.channel["map.feature.show"].description = {
     },
     "zoom": {
       "description": "true if map should zoom to the shown feature, false if not. Default is false.",
-      "defaultValue": false
+      "defaultValue": false,
+	  "allowableValues" : "true, false"
     }
   }
 };

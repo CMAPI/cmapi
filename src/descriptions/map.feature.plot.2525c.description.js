@@ -2,8 +2,8 @@ cmapi.channel["map.feature.plot.2525c"].description = {
   "description": "This optional extension defines the format of the map.feature.plot channel payload for MIL-STD-2525 Revision C features. The feature attibute below defines the format and content of the features attibute of the map.feature.plot. The properties.modifiers attribute defines the MIL-STD-2525 Revision C modifiers that the map implementation shall apply to the feature.",
   "properties": {
     "format": {
-      "description": "Defines the feature format as a CMAPI Symbol with the specific type of MIL-STD-2525 Revision B Change II.",
-      "defaultValue": ""
+      "description": "Defines the feature format as a CMAPI Symbol with the specific type of MIL-STD-2525 Revision C.",
+      "defaultValue": "2525c"
     },
     "feature": {
       "description": "The feature attribute of the map.feature.plot payload in GeoJSON format.",
@@ -15,7 +15,8 @@ cmapi.channel["map.feature.plot.2525c"].description = {
         },
         "type": {
           "description": "Defines the geojson format of the coordinates in the coordinate attribute.  Polygons are not allowed for this symbol type",
-          "defaultValue": ""
+          "defaultValue": "",
+		  "allowableValues" : "point, lineString"
         },
         "coordinates": {
           "description": "This attribute MUST contain a valid geojson coordinate structure for the type indicated in the type attribute. See http://geojson.org/geojson-spec.html for the valid format.",

@@ -23,17 +23,20 @@ cmapi.channel["map.feature.plot.geojson"].description = {
           "properties": {
             "begin": {
               "description": "time stamp identifying the beginning of the time span (see timeStamp definition for format info). ",
-              "defaultValue": ""
+              "defaultValue": "",
+			  "allowableValues" : "valid time in format of yyyy-mm-ddThh:mm:ss.ssszzzzzz, yyyy-mm-ddThh:mm:ss.sssZ, yyyy-mm-dd"
             },
             "end": {
               "description": "time stamp identifying the end of the time span (see timeStamp definition for format info).",
-              "defaultValue": ""
+              "defaultValue": "",
+			   "allowableValues" : "valid time in format of yyyy-mm-ddThh:mm:ss.ssszzzzzz, yyyy-mm-ddThh:mm:ss.sssZ, yyyy-mm-dd"
             }
           }
         },
         "timeStamp": {
           "description": "time stamp value expressed as yyyy-mm-ddThh:mm:ss.ssszzzzzz, where T is the separator between the date and the time, and the time zone is either Z (for UTC) or zzzzzz, which represents ±hh:mm in relation to UTC. Additionally, the value can be expressed as a date only.",
-          "defaultValue": ""
+          "defaultValue": "",
+		  "allowableValues" : "valid time in format of yyyy-mm-ddThh:mm:ss.ssszzzzzz, yyyy-mm-ddThh:mm:ss.sssZ, yyyy-mm-dd"
         }
       }
     },

@@ -7,15 +7,15 @@ cmapi.channel["map.feature.update"].description = {
     },
     "featureId": {
       "description": "The ID of the feature to be updated",
-      "defaultValue": "N/A"
+      "defaultValue": ""
     },
     "name": {
       "description": "If the name provided differs from the feature's current name, the display value will be changed to show the new value.  If no value is provided, the feature name will remain unchanged.",
-      "defaultValue": "N/A"
+      "defaultValue": ""
     },
     "newOverlayId": {
       "description": "This represents the ID of an overlay to move the feature to.  If this attribute is provided, the feature MUST be removed from its current overlay and added to the overlay with this ID.  If an overlay with an ID of newOverlayId does not exist, a new overlay will be created with an ID of newOverlayId, and the feature to be updated will be moved to the overlay identified by newOverlayId.",
-      "defaultValue": "N/A"
+      "defaultValue": ""
     }
   }
 };

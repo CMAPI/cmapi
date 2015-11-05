@@ -15,7 +15,7 @@ cmapi.channel["map.feature.selected"].description = {
     },
     "overlayId": {
       "description": "The ID of the overlay which contains the selected object. If no overlayId is included, default overlay with ID equal to sending widget’s ID is assumed.",
-      "defaultValue": ""
+      "defaultValue": "sending widget's ID"
     }
   }
 };

@@ -3,7 +3,7 @@ cmapi.channel["map.view.center.feature"].description = {
   "properties": {
     "overlayId": {
       "description": "The ID of the overlay overlay where the feature to be centered on is found. If no overlayId is included, default overlay with ID equal to sending widget ID is assumed.",
-      "defaultValue": ""
+      "defaultValue": "sending widget's ID"
     },
     "featureId": {
       "description": "The ID of the feature to center on",

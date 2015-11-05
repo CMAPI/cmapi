@@ -26,15 +26,15 @@ cmapi.channel["map.feature.plot.batch.complete"].description = {
           "defaultValue": ""
         },
 		"zoom": {
-			"description": "Zoom value set in original message - or default input value if no value was originally sent",
+			"description": "Zoom value set in original message. If no value passed in original message, this MUST be set to the default value of the original message",
 			"defaultValue":""
 		},
         "readOnly": {
-          "description": "Valid values are true or false. If true, then the end user MUST NOT be able to edit the feature from the map's user interface, if false the end user MAY edit the feature from the map’s user interface. Default value is true.   If an edit takes place, the map SHOULD dispatch a map.feature.plot with the updated feature to ensure other widgets are aware that a change took place.",
+          "description": "Value identifying whether the feature is editable from the map's user interface or not. Valid values are true or false. Value MUST match the actual state of the feature - whether that state matches the passed in value or not.  Value MUST be 'true' if the end user IS NOT able to edit the feature from the map's user interface, or MUST be 'false' if the end user MAY edit the feature from the map’s user interface.",
           "defaultValue": ""
         },
         "properties": {
-          "description": "A free form object that can contain any additional JSON objects or elements to send with this message. This allows for extending this channel's message without inadvertently corrupting the CMAPI specified payload of the message.",
+          "description": "Properties passed in the original message.  If no properties value was passed in original message, this value MUST be an empty object",
           "defaultValue": ""
         }
       }

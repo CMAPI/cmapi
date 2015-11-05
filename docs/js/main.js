@@ -109,20 +109,21 @@ $(function() {
             }, {
               "key": "map.view.center.overview",
               "type": "overview",
-              "title": "map.view.center"
-            }, {
-              "key": "map.view.center.overlay",
-              "title": "map.view.overlay"
-            }, {
-              "key": "map.view.center.feature",
-              "title": "map.view.feature"
-            }, {
-              "key": "map.view.center.location",
-              "title": "map.view.location"
-            }, {
-              "key": "map.view.center.bounds",
-              "title": "map.view.bounds"
-            }, {
+              "title": "map.view.center",
+			  "children": [{
+					  "key": "map.view.center.overlay",
+					  "title": "map.view.center.overlay"
+					}, {
+					  "key": "map.view.center.feature",
+					  "title": "map.view.center.feature"
+					}, {
+					  "key": "map.view.center.location",
+					  "title": "map.view.center.location"
+					}, {
+					  "key": "map.view.center.bounds",
+					  "title": "map.view.center.bounds"
+					}]
+		  }, {
               "key": "map.view.clicked",
               "title": "map.view.clicked"
             }]

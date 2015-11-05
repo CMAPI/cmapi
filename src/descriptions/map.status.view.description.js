@@ -3,7 +3,7 @@ cmapi.channel["map.status.view"].description = {
   "properties": {
     "bounds": {
       "description": "Bounding box of area visible on map.",
-      "defaultValue": " ",
+      "defaultValue": "",
       "properties": {
         "southWest": {
           "description": "Bottom right of the bounds",
@@ -37,7 +37,7 @@ cmapi.channel["map.status.view"].description = {
     },
     "center": {
       "description": "The current center of the map",
-      "defaultValue": " ",
+      "defaultValue": "",
       "properties": {
         "lat": {
           "description": "The latitude of the location that was clicked",
