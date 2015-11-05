@@ -4,7 +4,7 @@ cmapi.channel["map.view.center.bounds.complete"].description = {
   "properties": {
     "bounds": {
       "description": "Bounding box of area the map is centered at.",
-      "defaultValue": " ",
+      "defaultValue": "",
       "properties": {
         "southWest": {
           "description": "Bottom right of the bounds",

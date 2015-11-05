@@ -1,4 +1,4 @@
-cmapi.channel["map.view.center.bounds"] = {
+cmapi.channel["map.view.center.bounds.complete"] = {
   schema: {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.center.bounds.complete",
