@@ -31,6 +31,23 @@ cmapi.channel["map.feature.plot.geojson"] = {
             },
             "required": ["begin", "end"]
           },
+          "timeSpans": {
+            "type": "Array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "begin": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "end": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "required": ["begin", "end"]
+            }
+          },
           "timeStamp": {
             "type": "string",
             "format": "date-time"

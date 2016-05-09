@@ -19,7 +19,7 @@ cmapi.overview["cmapi.overview"] = {
 		"title": "How to use the channels and messages",
 		"paragraphs": [
 			"There are two ways that the map can be manipulated. The first is by other applications via the Common Map API. The second is by a user directly manipulating the map via the map Graphical User Interface (GUI) (for example, using a drawing tool on the map).",
-			"To manipulate the map, applications send messages in the map channels, and the map application responds by modifying its current state. The current map state can be modified by a data source application requesting that a Keyhole Markup Language (KML) or GeoJSON file be loaded or that the view change to some other location. The map and any listening applications react to these change requests and modify their state accordingly.",
+			"To manipulate the map, applications send messages in the map channels, and the map application responds by modifying its current state. The current map state can be modified by a data source application requesting that an <a href='http://www.opengeospatial.org/standards/kml/' target='_blank'>OGC KML</a> or <a href='http://geojson.org/' target='_blank'>GeoJSON</a> file be loaded or that the view change to some other location. The map and any listening applications react to these change requests and modify their state accordingly.",
 			"When the user manipulates the map, the map will post messages to the map channels, and any application listening to the map channels can respond the changes.",
 			"In other words, if a feature is selected by an application request or by a user, a map.feature.selected message is sent out to any application configured to receive the message. "
 		]

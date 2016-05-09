@@ -33,6 +33,10 @@ cmapi.channel["map.feature.plot.geojson"].description = {
             }
           }
         },
+        "timeSpans": {
+          "description": "An array of timespan objects with a begin dateTime and end dateTime property representing the spans of time the map visualization is filtering",
+          "defaultValue": ""
+        },
         "timeStamp": {
           "description": "time stamp value expressed as yyyy-mm-ddThh:mm:ss.ssszzzzzz, where T is the separator between the date and the time, and the time zone is either Z (for UTC) or zzzzzz, which represents ±hh:mm in relation to UTC. Additionally, the value can be expressed as a date only.",
           "defaultValue": "",

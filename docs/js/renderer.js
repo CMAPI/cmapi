@@ -179,8 +179,8 @@ var cmapi_channel_renderer = (function() {
       opt,
       description;
 
-    output.push('<table><thead><tr>');
-    output.push('<th>' + cmapi.lang.TABLE_HEADER_PROPERTY + '</th>');
+    output.push('<table class="mdl-data-table  mdl-js-data-table" style="white-space: normal;"><thead><tr>');
+    output.push('<th class="mdl-data-table__cell--non-numeric">' + cmapi.lang.TABLE_HEADER_PROPERTY + '</th>');
     // output.push('<th>Default</th>');
     output.push('<th>' + cmapi.lang.TABLE_HEADER_DESCRIPTION + '</th>');
     output.push('</tr></thead><tbody>');
@@ -191,61 +191,63 @@ var cmapi_channel_renderer = (function() {
       if (descriptions.hasOwnProperty('properties')) {
         description = descriptions.properties[prop];
       }
-      if (description.hasOwnProperty('defaultValue')) {
-        defaultVal = description.defaultValue;
-      }
-      if ($.isArray(propVal)) {
-        output.push('<tr>');
-        output.push('<td colSpan="4">' + prop + '</td>');
-        len = propVal.length;
-        for (i = 0; i < len; i++) {
-          output.push('<tr>');
-          output.push('<td colSpan="2">');
-          output.push(getObjectTable(propVal[i], output, obj, description));
-          output.push('</td>');
-          output.push('</tr>');
+      if (description) {
+        if (description.hasOwnProperty('defaultValue')) {
+          defaultVal = description.defaultValue;
         }
-        output.push('</td>');
-        output.push('</tr>');
-      } else {
-        output.push(checkStatus(propVal));
-        output.push('<td>' + prop + '</td>');
-        //output.push('<td>' + defaultVal + '</td>');
-        output.push('<td' + spellCheck + '><p>' + description.description + '</p>');
-        
-        if(description.hasOwnProperty("allowableValues") && description.allowableValues !== ""){
-          output.push('<p><strong>Allowable Values: </strong>'+description.allowableValues + '</p>');
-        }
-        if(defaultVal !== ""){
-          output.push('<p><strong>Default Value: </strong>'+defaultVal + '</p>');
-        }
-        
-        output.push('</td>');
-        output.push('</tr>');
-        if (propVal.hasOwnProperty("properties")) {
-          subProp = propVal.properties;
-
+        if ($.isArray(propVal)) {
           output.push('<tr>');
-          output.push('<td colSpan="2">');
-          output.push(getObjectTable(subProp, output, propVal, description));
-          output.push('</td>');
-          output.push('</tr>');
-
-        } else if (propVal.hasOwnProperty("oneOf")) {
-          options = propVal.oneOf;
-          opLen = options.length;
-          output.push('<tr>');
-          output.push('<td colSpan="2">');
-          output.push('One Of: <br/>');
-          for (j = 0; j < opLen; j++) {
-            opt = options[j].properties;
-            output.push(options[j].title + ' <br/>');
-            output.push(getObjectTable(opt, output, options[j], description));
-
+          output.push('<td colSpan="4" class="mdl-data-table__cell--non-numeric">' + prop + '</td>');
+          len = propVal.length;
+          for (i = 0; i < len; i++) {
+            output.push('<tr>');
+            output.push('<td colSpan="2" class="mdl-data-table__cell--non-numeric">');
+            output.push(getObjectTable(propVal[i], output, obj, description));
+            output.push('</td>');
+            output.push('</tr>');
           }
           output.push('</td>');
           output.push('</tr>');
+        } else {
+          output.push(checkStatus(propVal));
+          output.push('<td class="mdl-data-table__cell--non-numeric">' + prop + '</td>');
+          //output.push('<td>' + defaultVal + '</td>');
+          output.push('<td' + spellCheck + ' class="mdl-data-table__cell--non-numeric"><p>' + description.description + '</p>');
 
+          if (description.hasOwnProperty("allowableValues") && description.allowableValues !== "") {
+            output.push('<p><strong>Allowable Values: </strong>' + description.allowableValues + '</p>');
+          }
+          if (defaultVal !== "") {
+            output.push('<p><strong>Default Value: </strong>' + defaultVal + '</p>');
+          }
+
+          output.push('</td>');
+          output.push('</tr>');
+          if (propVal.hasOwnProperty("properties")) {
+            subProp = propVal.properties;
+
+            output.push('<tr>');
+            output.push('<td colSpan="2" class="mdl-data-table__cell--non-numeric">');
+            output.push(getObjectTable(subProp, output, propVal, description));
+            output.push('</td>');
+            output.push('</tr>');
+
+          } else if (propVal.hasOwnProperty("oneOf")) {
+            options = propVal.oneOf;
+            opLen = options.length;
+            output.push('<tr>');
+            output.push('<td colSpan="2" class="mdl-data-table__cell--non-numeric">');
+            output.push('One Of: <br/>');
+            for (j = 0; j < opLen; j++) {
+              opt = options[j].properties;
+              output.push(options[j].title + ' <br/>');
+              output.push(getObjectTable(opt, output, options[j], description));
+
+            }
+            output.push('</td>');
+            output.push('</tr>');
+
+          }
         }
       }
 
@@ -406,6 +408,7 @@ var cmapi_channel_renderer = (function() {
       //output.push('</code></pre>');
     } catch (err) {
       output = ["An error occured when parsing the schema: " + err.message];
+      console.log(err);
     }
     return output.join("");
   }
@@ -450,8 +453,9 @@ var cmapi_channel_renderer = (function() {
       }
       output.push('<p id="#userPayloadValid" >Try it yourself...</p>');
       output.push('<textarea id="userPayloadInput" rows="10" style="width: 100%" placeholder="Enter your own ' + currentChannel + ' message payload to validate here..." ></textarea>');
-      output.push('<button style="border: 1px solid grey; padding: 5px; margin-top: 5px; margin-right: 5px" onclick="cmapi_channel_renderer.validateInput()">Validate</button>');
-      output.push('<button style="border: 1px solid grey; padding: 5px; margin-top: 5px;" onclick="cmapi_channel_renderer.clearInput()">Clear</button>');
+      
+      output.push('<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="cmapi_channel_renderer.validateInput()">Validate</button>');
+      output.push('<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="cmapi_channel_renderer.clearInput()">Clear</button>');
       output.push('<form action=""><input type="checkbox" name="banUnknownCB" id="banUnknownCB" value="false">Ban Unknown Properties<br></form>');
     } catch (err) {
       output = ["An error occured while parsing the example: " + err.message];

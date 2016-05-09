@@ -29,6 +29,19 @@ cmapi.channel["map.feature.plot"].examples = [{
       "type": "FeatureCollection",
       "features": [{
         "type": "Feature",
+        "timePrimitive": {
+          "timeSpan": {
+            "begin": "1937-01-01T12:00:27.87+00:20",
+            "end": "1976-01-01T12:00:27.87+00:20"
+          },
+          "timeSpans": [{
+            "begin": "1937-01-01T12:00:27.87+00:20",
+            "end": "1976-01-01T12:00:27.87+00:20"
+          }, {
+            "begin": "1976-01-01T12:00:27.87+00:20",
+            "end": "1988-01-01T12:00:27.87+00:20"
+          }]
+        },
         "geometry": {
           "type": "Polygon",
           "coordinates": [

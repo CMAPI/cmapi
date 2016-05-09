@@ -1,30 +1,63 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <title>Common Map API v1.3.0 - Release Candidate 6</title>
-    <link href="css/first.css" rel="stylesheet" type="text/css" />
-    <link href="css/second.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Common Map API (CMAPI)">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Common Map API (CMAPI)</title>
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Common Map API (CMAPI)">
+    <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <!--link href="css/first.css" rel="stylesheet" type="text/css" />
+    <link href="css/second.css" rel="stylesheet" type="text/css" /-->
     <link href="css/layout.css" rel="stylesheet" type="text/css" />
     <link href="css/ui.fancytree.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="vendor/cmapi.min.css">
+
+<script defer src="vendor/material.min.js"></script>
 </head>
 
 <body>
-    <div id="sidebar">
-        <h2><a href="http://cmapi.org">CMAPI</a> v1.3.0</h2> Release Candidate 6
+    <!-- The drawer is always open in large screens. The header is always shown,
+  even in small screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--fixed-header" style="overflow: hidden">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title" id="topTitle"><a class="mdl-color-text--white" href="http://cmapi.org">CMAPI</a></span>
+                <div class="mdl-layout-spacer"></div>
+                1.3.0 RC7
+            </div>
+        </header>
+        <div class="mdl-layout__drawer" style="overflow: hidden">
+            <nav class="mdl-navigation" style="padding-top: 0px;overflow: hidden">
+                <span class="mdl-layout-title mdl-color--accent mdl-color-text--grey-900" style="height: 64px; line-height: 64px; padding-left: 16px;">Contents</span>
+                
         <div id="tree" data-source="ajax" class="sampletree">
         </div>
-        <br/>
-        <br/>
-    </div>
-    <div id="main">
+
+            </nav>
+        </div>
+        <main class="mdl-layout__content" style="position: relative" style="padding-right: 24px; overflow: hidden;">
+<div id="main">
         <img src="img/loading.gif" />
     </div>
-    <a href="https://github.com/CMAPI/cmapi/tree/v1.3.0">
-        <img style="position: absolute; width 100px; height: 100px; top: 0; right: 0; border: 0;" src="img/github-ribbon.png" alt="Fork me on GitHub" data-canonical-src="img/github-ribbon.png">
-    </a>
+            </div>
+        </main>
+    </div>
+</body>
     <script src="js/libs/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="js/libs/tv4.js" type="text/javascript"></script>
     <script src="js/libs/jquery-ui.custom.js"></script>
@@ -36,7 +69,5 @@
     <script src="../dist/cmapi.notes.js" type="text/javascript"></script>
     <script src="../dist/cmapi.examples.js" type="text/javascript"></script>
     <script src="js/renderer.js" type="text/javascript"></script>
-    <script src="js/main.js" type="text/javascript"></script>
-</body>
-
+    <script src="js/main.js" type="text/javascript"></script>h
 </html>

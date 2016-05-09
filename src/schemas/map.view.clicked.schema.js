@@ -3,6 +3,22 @@ cmapi.channel["map.view.clicked"] = {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "map.view.clicked",
     "type": "object",
+    "definitions": {
+      "timeSpan": {
+        "type": "object",
+        "properties": {
+          "begin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": ["begin", "end"]
+      }
+    },
     "properties": {
       "lat": {
         "type": "number",
@@ -30,6 +46,24 @@ cmapi.channel["map.view.clicked"] = {
         "default": ["none"],
         "items": {
           "enum": ["shift", "alt", "ctrl", "none"]
+        }
+      },
+      "time": {
+        "type": "object",
+        "properties": {
+          "timeSpan": {
+            "$ref": "#/definitions/timeSpan"
+          },
+          "timeSpans": {
+            "type": "Array",
+            "items": {
+              "$ref": "#/definitions/timeSpan"
+            }
+          },
+          "timeStamp": {
+            "type": "string",
+            "format": "date-time"
+          }
         }
       }
     },

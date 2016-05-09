@@ -1,63 +1,72 @@
 	body,
 	html {
-		margin:0;
-		padding:0;
-
+	    margin: 0;
+	    padding: 0;
 	}
-	#wrap {
-		max-width:1200px;
-		margin:0 auto;
-		position: inline;
-	}
-	#header {
-    	padding:5px 10px;
-
-	}
-	h1 {
-	    margin:0;
-    }
-	#nav {
-		padding:5px 10px;
-
-	}
-	#nav ul {
-		margin:0;
-		padding:0;
-		list-style:none;
-	}
-	#nav li {
-		display:inline;
-		margin:0;
-		padding:0;
-	}
-	#main {
-		/*float:right;*/
-		position: absolute;
-		
-		left: 30%;
-		top: 0px;
-		right: 0px;
-		bottom:0px;
-		overflow: auto;
-
-		padding:10px;
-		margin-left:20px;
 	
+	#wrap {
+	    max-width: 1200px;
+	    margin: 0 auto;
+	    position: inline;
 	}
+	
+	#header {
+	    padding: 5px 10px;
+	}
+	
+	h1 {
+	    margin: 0;
+	}
+	
+	#nav {
+	    padding: 5px 10px;
+	}
+	
+	#nav ul {
+	    margin: 0;
+	    padding: 0;
+	    list-style: none;
+	}
+	
+	#nav li {
+	    display: inline;
+	    margin: 0;
+	    padding: 0;
+	}
+	
+	#tree {
+	    padding: 16px;
+	    padding-top: 24px;
+	    position: absolute;
+	    top: 65px;
+	    left: 0px;
+	    right: 0px;
+	    bottom: 0px;
+	    overflow: auto;
+	}
+	
+	#main {
+	    overflow: auto;
+	    padding: 10px;
+	    margin-left: 20px;
+	    max-width:1024px;
+	}
+	
 	h2 {
-		margin:0 0;
+	    margin: 0 0;
 	}
+	
 	h3 {
-		margin:0 0;
+	    margin: 0 0;
 	}
+	
 	#sidebar {
-		/*float:left;*/
-		position: absolute;
-		width:30%;
-		left: 0px;
-		top: 0px;
-		bottom:0px;
-		overflow: auto;
-		padding:10px;
-
+	    /*float:left;*/
+	    position: absolute;
+	    width: 30%;
+	    left: 0px;
+	    top: 0px;
+	    bottom: 0px;
+	    overflow: auto;
+	    padding: 10px;
 	}

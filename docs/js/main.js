@@ -34,10 +34,57 @@ $(function() {
           "children": [{
             "key": "cmapi.core.general.requirements.overview",
             "type": "overview",
-            "title": "General Requirements"
+            "folder": true,
+            "title": "General Requirements",
+            "children": [{
+              "key": "cmapi.core.general.requirements.notation.overview",
+              "type": "overview",
+              "title": "Notation"
+            }, {
+              "key": "cmapi.core.general.requirements.overlays.overview",
+              "type": "overview",
+              "title": "Overlays"
+            }, {
+              "key": "cmapi.core.general.requirements.featureids.overview",
+              "type": "overview",
+              "title": "Features and Feature IDs"
+            }, {
+              "key": "cmapi.core.general.requirements.channelnaming.overview",
+              "type": "overview",
+              "title": "Channel Naming Convention"
+            }, {
+              "key": "cmapi.core.general.requirements.whentosend.overview",
+              "type": "overview",
+              "title": "When to Send Messages"
             },{
+              "key": "cmapi.core.general.requirements.payloads.overview",
+              "type": "overview",
+              "title": "Message Payloads"
+            },{
+              "key": "cmapi.core.general.requirements.batch.overview",
+              "type": "overview",
+              "title": "Batch Behavior"
+            },{
+              "key": "cmapi.core.general.requirements.latlon.overview",
+              "type": "overview",
+              "title": "Latitude and Longitude"
+            },{
+              "key": "cmapi.core.general.requirements.errors.overview",
+              "type": "overview",
+              "title": "Errors"
+            },{
+              "key": "cmapi.core.general.requirements.case.overview",
+              "type": "overview",
+              "title": "Case Sensitivity"
+            },{
+              "key": "cmapi.core.general.requirements.coordref.overview",
+              "type": "overview",
+              "title": "Coordinate Reference System"
+            }]
+          }, {
             "key": "map.overlay.overview",
             "type": "overview",
+            "folder": true,
             "title": "map.overlay Channels",
             "children": [{
               "key": "map.overlay.create",
@@ -58,6 +105,7 @@ $(function() {
           }, {
             "key": "map.feature.overview",
             "type": "overview",
+            "folder": true,
             "title": "map.feature Channels",
             "children": [{
               "key": "map.feature.plot",
@@ -102,6 +150,7 @@ $(function() {
           }, {
             "key": "map.view.overview",
             "type": "overview",
+            "folder": true,
             "title": "map.view Channels",
             "children": [{
               "key": "map.view.zoom",
@@ -110,26 +159,27 @@ $(function() {
               "key": "map.view.center.overview",
               "type": "overview",
               "title": "map.view.center",
-			  "children": [{
-					  "key": "map.view.center.overlay",
-					  "title": "map.view.center.overlay"
-					}, {
-					  "key": "map.view.center.feature",
-					  "title": "map.view.center.feature"
-					}, {
-					  "key": "map.view.center.location",
-					  "title": "map.view.center.location"
-					}, {
-					  "key": "map.view.center.bounds",
-					  "title": "map.view.center.bounds"
-					}]
-		  }, {
+              "children": [{
+                "key": "map.view.center.overlay",
+                "title": "map.view.center.overlay"
+              }, {
+                "key": "map.view.center.feature",
+                "title": "map.view.center.feature"
+              }, {
+                "key": "map.view.center.location",
+                "title": "map.view.center.location"
+              }, {
+                "key": "map.view.center.bounds",
+                "title": "map.view.center.bounds"
+              }]
+            }, {
               "key": "map.view.clicked",
               "title": "map.view.clicked"
             }]
           }, {
             "key": "map.status.overview",
             "type": "overview",
+            "folder": true,
             "title": "map.status Channels",
             "children": [{
               "key": "map.status.request",

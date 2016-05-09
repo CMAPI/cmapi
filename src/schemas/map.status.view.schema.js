@@ -64,6 +64,46 @@ cmapi.channel["map.status.view"] = {
       "requester": {
         "type": "string",
         "status": "updated"
+      },
+      "time": {
+        "type": "object",
+        "properties": {
+          "timeSpan": {
+            "type": "object",
+            "properties": {
+              "begin": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "end": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": ["begin", "end"]
+          },
+          "timeSpans": {
+            "type": "Array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "begin": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "end": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "required": ["begin", "end"]
+            }
+          },
+          "timeStamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
       }
     },
     "required": ["bounds", "center", "range"]
