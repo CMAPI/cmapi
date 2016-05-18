@@ -3,576 +3,626 @@
 
 
 var queryStringUtil = (function() {
-  var publicInterface = {
-    // Searches the URL query string for a key defned by 'name' and returns the string value
-    getParameterByName: function(name) {
-      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(window.location.search);
-      return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-    }
-  };
+    var publicInterface = {
+        // Searches the URL query string for a key defned by 'name' and returns the string value
+        getParameterByName: function(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(window.location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+    };
 
-  return publicInterface;
+    return publicInterface;
 }());
 
 var cmapi_channel_renderer = (function() {
-  var publicInterface,
-    baseUrl = "../src/schemas/",
-    currentSchema,
-    currentChannel,
-    currentOverview,
-    spellCheck = "";
+    var publicInterface,
+        baseUrl = "../src/schemas/",
+        currentSchema,
+        currentChannel,
+        currentOverview,
+        spellCheck = "";
 
 
-  function checkRequired(prop, schema) {
-    var i,
-      len,
-      returnValue = cmapi.lang.OPTIONAL;
-    if (schema.required) {
-      len = schema.required.length;
-      for (i = 0; i < len; i++) {
-        if (prop === schema.required[i]) {
-          returnValue = cmapi.lang.REQUIRED;
-          break;
+    function checkRequired(prop, schema) {
+        var i,
+            len,
+            returnValue = cmapi.lang.OPTIONAL;
+        if (schema.required) {
+            len = schema.required.length;
+            for (i = 0; i < len; i += 1) {
+                if (prop === schema.required[i]) {
+                    returnValue = cmapi.lang.REQUIRED;
+                    break;
+                }
+            }
         }
-      }
-    }
-    return returnValue;
-  }
-
-  function getValidationErrorString(valError) {
-    var message = cmapi.lang.MESSAGE_VALIDATION_FAILURE,
-      i;
-    for (i = 0; i < valError.errors.length; i = 1 + i) {
-      message += "\n " + valError.errors[i].message + " " + valError.errors[i].dataPath;
+        return returnValue;
     }
 
-    return message;
-  }
+    function getValidationErrorString(valError) {
+        var message = cmapi.lang.MESSAGE_VALIDATION_FAILURE,
+            i;
+        for (i = 0; i < valError.errors.length; i = 1 + i) {
+            message += "\n " + valError.errors[i].message + " " + valError.errors[i].dataPath;
+        }
 
-  function getObjectString(obj) {
-    var raw = JSON.stringify(obj),
-      objChars = raw.split(""),
-      tab = "&nbsp;&nbsp;",
-      indentation = "",
-      indent = 0,
-      len = objChars.length,
-      i,
-      txt,
-      k,
-      bypass = false;
+        return message;
+    }
 
-    for (i = 0; i < len; i++) {
-      txt = objChars[i];
-      if (bypass === false) {
-        switch (txt) {
-          case '"':
-            bypass = true;
-            break;
-          case "{":
-            indent++;
-            indentation = "";
-            for (k = 0; k < indent; k++) {
-              indentation += tab;
-            }
-            objChars[i] = "{\n" + indentation;
+    function getObjectString(obj) {
+        var raw = JSON.stringify(obj),
+            objChars = raw.split(""),
+            tab = "&nbsp;&nbsp;",
+            indentation = "",
+            indent = 0,
+            len = objChars.length,
+            i,
+            txt,
+            k,
+            bypass = false;
 
-            break;
-          case "[":
-            indent++;
-            indentation = "";
-            for (k = 0; k < indent; k++) {
-              indentation += tab;
-            }
-            objChars[i] = "[\n" + indentation;
+        for (i = 0; i < len; i += 1) {
+            txt = objChars[i];
+            if (bypass === false) {
+                switch (txt) {
+                    case '"':
+                        bypass = true;
+                        break;
+                    case "{":
+                        indent += 1;
+                        indentation = "";
+                        for (k = 0; k < indent; k += 1) {
+                            indentation += tab;
+                        }
+                        objChars[i] = "{\n" + indentation;
 
-            break;
-          case ",":
-            objChars[i] = ",\n" + indentation;
-            break;
-          case "}":
-            indent--;
-            indentation = "";
-            for (k = 0; k < indent; k++) {
-              indentation += tab;
-            }
-            if (objChars[i + 1] === ",") {
-              objChars[i] = "\n" + indentation + "}";
-              objChars[i + 1] = ",\n" + indentation;
+                        break;
+                    case "[":
+                        indent += 1;
+                        indentation = "";
+                        for (k = 0; k < indent; k += 1) {
+                            indentation += tab;
+                        }
+                        objChars[i] = "[\n" + indentation;
+
+                        break;
+                    case ",":
+                        objChars[i] = ",\n" + indentation;
+                        break;
+                    case "}":
+                        indent--;
+                        indentation = "";
+                        for (k = 0; k < indent; k += 1) {
+                            indentation += tab;
+                        }
+                        if (objChars[i + 1] === ",") {
+                            objChars[i] = "\n" + indentation + "}";
+                            objChars[i + 1] = ",\n" + indentation;
+                        } else {
+                            objChars[i] = "\n" + indentation + "}" + indentation;
+                        }
+                        break;
+                    case "]":
+                        indent--;
+                        indentation = "";
+                        for (k = 0; k < indent; k += 1) {
+                            indentation += tab;
+                        }
+                        if (objChars[i + 1] === ",") {
+                            objChars[i] = "\n" + indentation + "]";
+                            objChars[i + 1] = ",\n" + indentation;
+                        } else {
+                            objChars[i] = "\n" + indentation + "]" + indentation;
+                        }
+                        break;
+                }
             } else {
-              objChars[i] = "\n" + indentation + "}" + indentation;
+                if (txt === '"') {
+                    bypass = false;
+                }
             }
-            break;
-          case "]":
-            indent--;
-            indentation = "";
-            for (k = 0; k < indent; k++) {
-              indentation += tab;
-            }
-            if (objChars[i + 1] === ",") {
-              objChars[i] = "\n" + indentation + "]";
-              objChars[i + 1] = ",\n" + indentation;
-            } else {
-              objChars[i] = "\n" + indentation + "]" + indentation;
-            }
-            break;
         }
-      } else {
-        if (txt === '"') {
-          bypass = false;
-        }
-      }
-    }
-    return objChars.join("");
-  }
-
-  function validate(payload, schema, banUnknownProps) {
-    var response = {
-        valid: true,
-        message: cmapi.lang.MESSAGE_VALIDATION_SUCCESS
-      },
-      valid;
-    if (banUnknownProps === true) {
-      valid = tv4.validateMultiple(payload, schema, true, true);
-    } else {
-      valid = tv4.validateMultiple(payload, schema, true);
+        return objChars.join("");
     }
 
-    if (!valid.valid) {
-      response.message = getValidationErrorString(valid);
-      response.valid = false;
-    }
-    return response;
-  }
-
-  // checks if channel is updated or new, returns tr with propper css class to highlight the row
-  function checkStatus(property) {
-    var trValue = "<tr>";
-    if (property !== undefined && property !== null && property.hasOwnProperty("status")) {
-      switch (property.status.toLowerCase()) {
-        case "new":
-          trValue = '<tr class="newContent">';
-          break;
-        case "updated":
-          trValue = '<tr class="updatedContent">';
-          break;
-      }
-    }
-    return trValue;
-
-  }
-
-  // Creates an HTML table for the schema with embedded tables via recursion for properties with sub-properties
-  function getObjectTable(obj, output, parent, descriptions) {
-    var prop,
-      propVal,
-      optional,
-      type,
-      defaultVal = "",
-      len,
-      i,
-      subProp,
-      j,
-      options,
-      opLen,
-      opt,
-      description;
-
-    output.push('<table class="mdl-data-table  mdl-js-data-table" style="white-space: normal;"><thead><tr>');
-    output.push('<th class="mdl-data-table__cell--non-numeric">' + cmapi.lang.TABLE_HEADER_PROPERTY + '</th>');
-    // output.push('<th>Default</th>');
-    output.push('<th>' + cmapi.lang.TABLE_HEADER_DESCRIPTION + '</th>');
-    output.push('</tr></thead><tbody>');
-    // DO NOT wrap in if hasOwnProperty as JSLint may suggest or no properties will get enumerated
-    for (prop in obj) {
-      defaultVal = "";
-      propVal = obj[prop];
-      if (descriptions.hasOwnProperty('properties')) {
-        description = descriptions.properties[prop];
-      }
-      if (description) {
-        if (description.hasOwnProperty('defaultValue')) {
-          defaultVal = description.defaultValue;
-        }
-        if ($.isArray(propVal)) {
-          output.push('<tr>');
-          output.push('<td colSpan="4" class="mdl-data-table__cell--non-numeric">' + prop + '</td>');
-          len = propVal.length;
-          for (i = 0; i < len; i++) {
-            output.push('<tr>');
-            output.push('<td colSpan="2" class="mdl-data-table__cell--non-numeric">');
-            output.push(getObjectTable(propVal[i], output, obj, description));
-            output.push('</td>');
-            output.push('</tr>');
-          }
-          output.push('</td>');
-          output.push('</tr>');
+    function validate(payload, schema, banUnknownProps) {
+        var response = {
+                valid: true,
+                message: cmapi.lang.MESSAGE_VALIDATION_SUCCESS
+            },
+            valid;
+        if (banUnknownProps === true) {
+            valid = tv4.validateMultiple(payload, schema, true, true);
         } else {
-          output.push(checkStatus(propVal));
-          output.push('<td class="mdl-data-table__cell--non-numeric">' + prop + '</td>');
-          //output.push('<td>' + defaultVal + '</td>');
-          output.push('<td' + spellCheck + ' class="mdl-data-table__cell--non-numeric"><p>' + description.description + '</p>');
+            valid = tv4.validateMultiple(payload, schema, true);
+        }
 
-          if (description.hasOwnProperty("allowableValues") && description.allowableValues !== "") {
-            output.push('<p><strong>Allowable Values: </strong>' + description.allowableValues + '</p>');
-          }
-          if (defaultVal !== "") {
-            output.push('<p><strong>Default Value: </strong>' + defaultVal + '</p>');
-          }
+        if (!valid.valid) {
+            response.message = getValidationErrorString(valid);
+            response.valid = false;
+        }
+        return response;
+    }
 
-          output.push('</td>');
-          output.push('</tr>');
-          if (propVal.hasOwnProperty("properties")) {
-            subProp = propVal.properties;
-
-            output.push('<tr>');
-            output.push('<td colSpan="2" class="mdl-data-table__cell--non-numeric">');
-            output.push(getObjectTable(subProp, output, propVal, description));
-            output.push('</td>');
-            output.push('</tr>');
-
-          } else if (propVal.hasOwnProperty("oneOf")) {
-            options = propVal.oneOf;
-            opLen = options.length;
-            output.push('<tr>');
-            output.push('<td colSpan="2" class="mdl-data-table__cell--non-numeric">');
-            output.push('One Of: <br/>');
-            for (j = 0; j < opLen; j++) {
-              opt = options[j].properties;
-              output.push(options[j].title + ' <br/>');
-              output.push(getObjectTable(opt, output, options[j], description));
-
+    // checks if channel is updated or new, returns tr with propper css class to highlight the row
+    function checkStatus(property) {
+        var trValue = "<tr>";
+        if (property !== undefined && property !== null && property.hasOwnProperty("status")) {
+            switch (property.status.toLowerCase()) {
+                case "new":
+                    trValue = '<tr class="newContent">';
+                    break;
+                case "updated":
+                    trValue = '<tr class="updatedContent">';
+                    break;
             }
-            output.push('</td>');
-            output.push('</tr>');
-
-          }
         }
-      }
+        return trValue;
 
     }
-    output.push('</tbody></table>');
-  }
 
-  // Creates an HTML table for the schema with embedded tables via recursion for properties with sub-properties
-  function getObjectPayload(obj, output, parent, indent) {
-    var prop,
-      propVal,
-      optional,
-      type,
-      i,
-      indentStr = "  ",
-      isArr = false,
-      enumner;
+    // Creates an HTML table for the schema with embedded tables via recursion for properties with sub-properties
+    function getObjectTable(obj, output, parent, descriptions) {
+        var prop,
+            propVal,
+            optional,
+            type,
+            defaultVal = "",
+            len,
+            i,
+            subProp,
+            j,
+            options,
+            opLen,
+            opt,
+            description;
 
-    if (isNaN(indent)) {
-      indent = 0;
-    }
+        output.push('<table class="mdl-data-table  mdl-js-data-table" style="white-space: normal;"><thead><tr>');
+        output.push('<th class="mdl-data-table__cell--non-numeric">' + cmapi.lang.TABLE_HEADER_PROPERTY + '</th>');
+        // output.push('<th>Default</th>');
+        output.push('<th>' + cmapi.lang.TABLE_HEADER_DESCRIPTION + '</th>');
+        output.push('</tr></thead><tbody>');
+        // DO NOT wrap in if hasOwnProperty as JSLint may suggest or no properties will get enumerated
+        for (prop in obj) {
+            defaultVal = "";
+            propVal = obj[prop];
+            if (descriptions.hasOwnProperty('properties')) {
+                description = descriptions.properties[prop];
+            }
+            if (description) {
+                if (description.hasOwnProperty('defaultValue')) {
+                    defaultVal = description.defaultValue;
+                }
+                if ($.isArray(propVal)) {
+                    output.push('<tr>');
+                    output.push('<td colSpan="4" class="mdl-data-table__cell--non-numeric">' + prop + '</td>');
+                    len = propVal.length;
+                    for (i = 0; i < len; i += 1) {
+                        output.push('<tr>');
+                        output.push('<td colSpan="2" class="mdl-data-table__cell--non-numeric">');
+                        output.push(getObjectTable(propVal[i], output, obj, description));
+                        output.push('</td>');
+                        output.push('</tr>');
+                    }
+                    output.push('</td>');
+                    output.push('</tr>');
+                } else {
+                    output.push(checkStatus(propVal));
+                    output.push('<td class="mdl-data-table__cell--non-numeric">' + prop + '</td>');
+                    //output.push('<td>' + defaultVal + '</td>');
+                    output.push('<td' + spellCheck + ' class="mdl-data-table__cell--non-numeric"><p>' + description.description + '</p>');
 
-    for (i = 0; i < indent; i++) {
-      indentStr += "  ";
-    }
-    i = 0;
+                    if (description.hasOwnProperty("allowableValues") && description.allowableValues !== "") {
+                        output.push('<p><strong>Allowable Values: </strong>' + description.allowableValues + '</p>');
+                    }
+                    if (defaultVal !== "") {
+                        output.push('<p><strong>Default Value: </strong>' + defaultVal + '</p>');
+                    }
 
+                    output.push('</td>');
+                    output.push('</tr>');
+                    if (propVal.hasOwnProperty("properties")) {
+                        subProp = propVal.properties;
 
-    output.push('{');
-    // DO NOT wrap in if hasOwnProperty as JSLint may suggest or no properties will get enumerated
-    for (prop in obj) {
-      type = '';
-      propVal = obj[prop];
-      if (i > 0) {
-        output.push(", ");
-      }
-      output.push('<br/>');
-      optional = checkRequired(prop, parent);
-      output.push(indentStr + prop + ": ");
-      if (propVal.hasOwnProperty("type")) {
-        type = propVal.type;
-        if ($.isArray(type)) {
-          //type = "Array";
-          type = propVal.type.join(" | ");
+                        output.push('<tr>');
+                        output.push('<td colSpan="2" class="mdl-data-table__cell--non-numeric">');
+                        output.push(getObjectTable(subProp, output, propVal, description));
+                        output.push('</td>');
+                        output.push('</tr>');
 
-        } else if (type === "array") {
-          isArr = true;
+                    } else if (propVal.hasOwnProperty("oneOf")) {
+                        options = propVal.oneOf;
+                        opLen = options.length;
+                        output.push('<tr>');
+                        output.push('<td colSpan="2" class="mdl-data-table__cell--non-numeric">');
+                        output.push('One Of: <br/>');
+                        for (j = 0; j < opLen; j += 1) {
+                            opt = options[j].properties;
+                            output.push(options[j].title + ' <br/>');
+                            output.push(getObjectTable(opt, output, options[j], description));
+
+                        }
+                        output.push('</td>');
+                        output.push('</tr>');
+
+                    }
+                }
+            }
+
         }
-      }
+        output.push('</tbody></table>');
+    }
 
-      if (propVal.hasOwnProperty("enum")) {
-        enumner = propVal.enum.join('", "');
-        type = type.replace("| enum", "");
+    // Creates an HTML table for the schema with embedded tables via recursion for properties with sub-properties
+    function getObjectPayload(obj, output, parent, indent) {
+        var prop,
+            propVal,
+            optional,
+            type,
+            i,
+            indentStr = "  ",
+            isArr = false,
+            enumner;
 
-        type += ' ["' + enumner + '"]';
-
-      } else if (isArr &&
-        propVal.hasOwnProperty("items") &&
-        propVal.items.hasOwnProperty("enum")) {
-        enumner = propVal.items.enum.join('", "');
-        //type = type.replace("| enum", "");
-
-        type += ' ["' + enumner + '"]';
-      }
-
-      output.push(type);
-
-      if (propVal.hasOwnProperty("default")) {
-        if (typeof propVal.default === "string" && propVal.default.length > 0) {
-          output.push(" default=\"" + propVal.default+"\"");
-        } else if ($.isArray(propVal.default)) {
-          output.push(" default=[\"" + propVal.default+"\"]");
-        } else {
-          output.push(" default=" + propVal.default);
+        if (isNaN(indent)) {
+            indent = 0;
         }
-      }
 
-      if (optional === "optional") {
-        output.push(" (" + optional + ")");
-      } else {
-
-        output.push(' (<span style="font-weight:600;">' + optional + '</span>)');
-      }
-      if (propVal.hasOwnProperty("properties")) {
-        if (isArr === true) {
-          output.push('[');
+        for (i = 0; i < indent; i += 1) {
+            indentStr += "  ";
         }
-        getObjectPayload(propVal.properties, output, propVal, indent + 1);
-        if (isArr === true) {
-          output.push(']');
-          isArr = false;
-        }
-      } else {
-        isArr = false;
-      }
-      i++;
-    }
-    indentStr = "  ";
-    for (i = 0; i < indent - 1; i++) {
-      indentStr += "  ";
-    }
-    i = 0;
-
-    output.push('<br/>');
-    if (indent > 0) {
-      output.push(indentStr);
-    }
-    output.push('}');
-  }
+        i = 0;
 
 
-  //Creates the overall HTML template to render to page
-  function render(channelDef) {
+        output.push('{');
+        // DO NOT wrap in if hasOwnProperty as JSLint may suggest or no properties will get enumerated
+        for (prop in obj) {
+            type = '';
+            propVal = obj[prop];
+            if (i > 0) {
+                output.push(", ");
+            }
+            output.push('<br/>');
+            optional = checkRequired(prop, parent);
+            output.push(indentStr + prop + ": ");
+            if (propVal.hasOwnProperty("type")) {
+                type = propVal.type;
+                if ($.isArray(type)) {
+                    //type = "Array";
+                    type = propVal.type.join(" | ");
 
-    var output = [],
-      i = 0,
-      schema = channelDef.schema,
-      noteLen = 0;
+                } else if (type === "array") {
+                    isArr = true;
+                }
+            }
 
-    if (channelDef.hasOwnProperty("notes")) {
-      noteLen = channelDef.notes.length;
-    }
+            if (propVal.hasOwnProperty("enum")) {
+                enumner = propVal.enum.join('", "');
+                type = type.replace("| enum", "");
 
-    try {
-      output.push('<h2 id="toc_0"' + spellCheck + '>' + schema.title + '</h2>');
-      if (channelDef.hasOwnProperty("description") && channelDef.description.hasOwnProperty("description")) {
-        output.push('<p' + spellCheck + '>' + channelDef.description.description + '</p>');
-      }
-      output.push('<h3 id="toc_3">Payload:</h3>');
+                type += ' ["' + enumner + '"]';
 
-      output.push('<pre><code class="javascript">');
+            } else if (isArr &&
+                propVal.hasOwnProperty("items") &&
+                propVal.items.hasOwnProperty("enum")) {
+                enumner = propVal.items.enum.join('", "');
+                //type = type.replace("| enum", "");
 
-      getObjectPayload(schema.properties, output, schema, 0);
-      output.push('</code></pre>');
+                type += ' ["' + enumner + '"]';
+            }
 
-      output.push('<a href="../src/schemas/' + schema.title + '.schema.js" target="_blank">View JSON Schema for ' + schema.title + '</a>');
+            output.push(type);
 
-      output.push('<h3 id="toc_3">Payload Property Descriptions:</h3>');
-      output.push('<p >Changes from previous version are highlighted in <span class="updatedContent">yellow</span> and additions are highlighted in <span class="newContent">green</span>.  If the channel is new for this version the properties WILL NOT be highlighted.</p>');
-      var description = channelDef.description;
-      getObjectTable(schema.properties, output, schema, description);
+            if (propVal.hasOwnProperty("default")) {
+                if (typeof propVal.default === "string" && propVal.default.length > 0) {
+                    output.push(" default=\"" + propVal.default+"\"");
+                } else if ($.isArray(propVal.default)) {
+                    output.push(" default=[\"" + propVal.default+"\"]");
+                } else {
+                    output.push(" default=" + propVal.default);
+                }
+            }
 
-
-      if (noteLen > 0) {
-        output.push('<h3 id="toc_3">Notes</h3>');
-        for (i = 0; i < noteLen; i++) {
-
-          output.push('<p' + spellCheck + '>' + (i + 1) + ':  <em>' + channelDef.notes[i] + '</em></p>');
-        }
-      } else {
-        output.push('<br/><br/>');
-      }
-
-
-      // output.push('<p>' + JSON.stringify(channelDef.schema) + '</p>');
-      //output.push('<pre><code class="javascript">');
-      //output.push(getObjectString(channelDef.schema));
-      //output.push('</code></pre>');
-    } catch (err) {
-      output = ["An error occured when parsing the schema: " + err.message];
-      console.log(err);
-    }
-    return output.join("");
-  }
-
-  function appendExamples(examples, channelDef) {
-    var output = [],
-      exampleLen,
-      exampleValidation,
-      validationIntent,
-      i;
-    try {
-      if (examples !== undefined && examples !== null) {
-        exampleLen = examples.length;
-        if (exampleLen > 0) {
-          output.push('<h3 id="toc_3">Examples</h3>');
-
-          for (i = 0; i < exampleLen; i++) {
-            if (examples[i].valid === true) {
-              validationIntent = "This Should Pass Validation";
+            if (optional === "optional") {
+                output.push(" (" + optional + ")");
             } else {
-              validationIntent = "This Should Fail Validation";
+
+                output.push(' (<span style="font-weight:600;">' + optional + '</span>)');
+            }
+            if (propVal.hasOwnProperty("properties")) {
+                if (isArr === true) {
+                    output.push('[');
+                }
+                getObjectPayload(propVal.properties, output, propVal, indent + 1);
+                if (isArr === true) {
+                    output.push(']');
+                    isArr = false;
+                }
+            } else {
+                isArr = false;
+            }
+            i += 1;
+        }
+        indentStr = "  ";
+        for (i = 0; i < indent - 1; i += 1) {
+            indentStr += "  ";
+        }
+        i = 0;
+
+        output.push('<br/>');
+        if (indent > 0) {
+            output.push(indentStr);
+        }
+        output.push('}');
+    }
+
+
+    //Creates the overall HTML template to render to page
+    function render(channelDef) {
+
+        var output = [],
+            i = 0,
+            schema = channelDef.schema,
+            noteLen = 0;
+
+        if (channelDef.hasOwnProperty("notes")) {
+            noteLen = channelDef.notes.length;
+        }
+
+        try {
+   output.push('<h3 id="toc_3">' + schema.title + '</h3>');
+            output.push('<div class="mdl-card mdl-shadow--2dp" style="width:100%; margin-top: 24px; margin-bottom: 48px">');
+
+            output.push(' <div class="mdl-card__supporting-text" style="width: 100%; box-sizing: border-box; margin-right:5px;">');
+
+            if (channelDef.hasOwnProperty("description") && channelDef.description.hasOwnProperty("description")) {
+                output.push('<p' + spellCheck + '>' + channelDef.description.description + '</p>');
             }
 
-            output.push('<p>' + examples[i].title + ' - ' + validationIntent + '</p>');
+            output.push('<pre><code class="javascript">');
 
-            exampleValidation = validate(examples[i].payload, channelDef.schema);
+            getObjectPayload(schema.properties, output, schema, 0);
+            output.push('</code></pre>');
+
+            output.push('<a href="../src/schemas/' + schema.title + '.schema.js" target="_blank">View JSON Schema for ' + schema.title + '</a>');
+            output.push('</div>');
+            output.push('</div>');
+
+            output.push('<h3 id="toc_3">Payload Properties</h3>');
+
+            output.push('<div class="mdl-card mdl-shadow--2dp" style="width:100%; margin-top: 24px; margin-bottom: 48px">');
+
+            output.push(' <div class="mdl-card__supporting-text" style="width: 100%; box-sizing: border-box; margin-right:5px;">');
+            // output.push('<p >Changes from previous version are highlighted in <span class="updatedContent">yellow</span> and additions are highlighted in <span class="newContent">green</span>.  If the channel is new for this version the properties WILL NOT be highlighted.</p>');
+            var description = channelDef.description;
+            getObjectTable(schema.properties, output, schema, description);
+
+
+            if (noteLen > 0) {
+                output.push('<h3 id="toc_3">Notes</h3>');
+                for (i = 0; i < noteLen; i += 1) {
+
+                    output.push('<p' + spellCheck + '>' + (i + 1) + ':  <em>' + channelDef.notes[i] + '</em></p>');
+                }
+            } else {
+                output.push('<br/><br/>');
+            }
+            output.push('</div>');
+            output.push('</div>');
+
+            // output.push('<p>' + JSON.stringify(channelDef.schema) + '</p>');
+            //output.push('<pre><code class="javascript">');
+            //output.push(getObjectString(channelDef.schema));
+            //output.push('</code></pre>');
+        } catch (err) {
+            output = ["An error occured when parsing the schema: " + err.message];
+            console.log(err);
+        }
+        return output.join("");
+    }
+
+    function appendExamples(examples, channelDef) {
+        var output = [],
+            exampleLen,
+            exampleValidation,
+            validationIntent,
+            i;
+        try {
+            if (examples !== undefined && examples !== null) {
+                exampleLen = examples.length;
+                if (exampleLen > 0) {
+                    output.push('<h3 id="toc_3">Examples</h3>');
+
+                    for (i = 0; i < exampleLen; i += 1) {
+                        if (examples[i].valid === true) {
+                            validationIntent = "This Should Pass Validation";
+                        } else {
+                            validationIntent = "This Should Fail Validation";
+                        }
+                        output.push('<div class="mdl-card mdl-shadow--2dp" style="width:100%;margin-top: 48px">');
+                        output.push('<div class="mdl-card__title">');
+                        output.push('<h2 class="mdl-card__title-text">' + examples[i].title + ' - ' + validationIntent + '</h2>');
+                        output.push('</div>');
+                        output.push(' <div class="mdl-card__supporting-text" style="width: 100%; box-sizing: border-box; margin-right:15px;">');
+
+
+
+
+                        exampleValidation = validate(examples[i].payload, channelDef.schema);
+                        if (exampleValidation.valid === true) {
+                            output.push('<p style="color: green">' + exampleValidation.message + '</p>');
+                        } else {
+                            output.push('<p style="color: red">' + exampleValidation.message + '</p>');
+                        }
+                        if (exampleValidation.valid === examples[i].valid) {
+                            output.push('<p style="color: green">This message validated as expected</p>');
+                        } else {
+                            output.push('<p style="color: red">This example DID NOT validate as expected.  This example was expected to validate as ' + examples[i].valid.toString() + '</p>');
+                        }
+
+                        output.push('</p><textarea rows="10" style="width: 100%" readonly >' + getObjectString(examples[i].payload) + '</textarea>');
+                        if (examples[i].hasOwnProperty("messageComplete")) {
+                            output.push('</p>map.message.complete for the above example:</p>');
+
+
+
+                            output.push('</p><textarea rows="10" style="width: 100%" readonly >' + getObjectString(examples[i].messageComplete) + '</textarea>');
+                        }
+                        output.push('</div>');
+                        output.push('</div>');
+                    }
+                }
+            }
+
+            output.push('<div class="mdl-card mdl-shadow--2dp" style="width:100%; margin-top: 24px; margin-bottom: 48px">');
+            output.push('<div class="mdl-card__title">');
+            output.push('<h2 class="mdl-card__title-text">Try it yourself...</h2>');
+            output.push('</div>');
+            output.push(' <div class="mdl-card__supporting-text" style="width: 100%; box-sizing: border-box; margin-right:5px;">');
+
+            output.push('<textarea id="userPayloadInput" rows="10" style="width: 100%" placeholder="Enter your own ' + currentChannel + ' message payload to validate here..." ></textarea>');
+
+            output.push('<label  class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="banUnknownCB">');
+            output.push('<input  title="Fail validation for unknown properties"  type="checkbox" id="banUnknownCB" class="mdl-switch__input">');
+            output.push('<span class="mdl-switch__label">Ban unknown properties</span>');
+            output.push('</label>');
+            output.push('</div>');
+
+            output.push('<div class="mdl-card__actions mdl-card--border">');
+            // output.push('<input type="checkbox" title="Fail validation for unknown properties" name="banUnknownCB" id="banUnknownCB" value="false">Strict');
+
+
+
+            output.push('<a style="float:right" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="cmapi_channel_renderer.validateInput()">');
+            output.push('Validate');
+            output.push('</a>');
+            output.push('<a style="float:right"  class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" onclick="cmapi_channel_renderer.clearInput()">');
+            output.push('Clear');
+            output.push('</a>');
+            output.push('</div>');
+            //output.push('<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="cmapi_channel_renderer.validateInput()">Validate</button>');
+            // output.push('<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="cmapi_channel_renderer.clearInput()">Clear</button>');
+
+            output.push('</div>');
+
+        } catch (err) {
+            output = ["An error occured while parsing the example: " + err.message];
+        }
+        return output.join("");
+    }
+
+    function validateUserPayload(banUnknown) {
+        var exampleValidation,
+            message = "";
+        try {
+            var target = $("#userPayloadValid");
+            exampleValidation = validate(JSON.parse($("#userPayloadInput").val()), currentSchema, banUnknown);
+            message = exampleValidation.message;
             if (exampleValidation.valid === true) {
-              output.push('<p style="color: green">' + exampleValidation.message + '</p>');
+                target.css("color", "green");
             } else {
-              output.push('<p style="color: red">' + exampleValidation.message + '</p>');
-            }
-            if (exampleValidation.valid === examples[i].valid) {
-              output.push('<p style="color: green">This message validated as expected</p>');
-            } else {
-              output.push('<p style="color: red">This example DID NOT validate as expected.  This example was expected to validate as ' + examples[i].valid.toString() + '</p>');
+                target.css("color", "red");
             }
 
-            output.push('</p><textarea rows="10" style="width: 100%" readonly >' + getObjectString(examples[i].payload) + '</textarea>');
-
-          }
+        } catch (err) {
+            message = "Please enter a valid JSON object: " + err.message;
         }
-      }
-      output.push('<p id="#userPayloadValid" >Try it yourself...</p>');
-      output.push('<textarea id="userPayloadInput" rows="10" style="width: 100%" placeholder="Enter your own ' + currentChannel + ' message payload to validate here..." ></textarea>');
-      
-      output.push('<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="cmapi_channel_renderer.validateInput()">Validate</button>');
-      output.push('<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="cmapi_channel_renderer.clearInput()">Clear</button>');
-      output.push('<form action=""><input type="checkbox" name="banUnknownCB" id="banUnknownCB" value="false">Ban Unknown Properties<br></form>');
-    } catch (err) {
-      output = ["An error occured while parsing the example: " + err.message];
+        alert(message);
     }
-    return output.join("");
-  }
 
-  function validateUserPayload(banUnknown) {
-    var exampleValidation,
-      message = "";
-    try {
-      var target = $("#userPayloadValid");
-      exampleValidation = validate(JSON.parse($("#userPayloadInput").val()), currentSchema, banUnknown);
-      message = exampleValidation.message;
-      if (exampleValidation.valid === true) {
-        target.css("color", "green");
-      } else {
-        target.css("color", "red");
-      }
-
-    } catch (err) {
-      message = "Please enter a valid JSON object: " + err.message;
+    function renderOverview(overview) {
+        var len,
+            sLen,
+            i,
+            k,
+            section,
+            sections,
+            paragraphs,
+            output = [];
+        if (overview.hasOwnProperty("title")) {
+            output.push('<h2 id="toc_0">' + overview.title + '</h2>');
+        }
+        sections = overview.sections;
+        len = sections.length;
+        for (i = 0; i < len; i += 1) {
+            section = sections[i];
+            output.push('<h3 >' + section.title + '</h2>');
+            paragraphs = section.paragraphs;
+            sLen = paragraphs.length;
+            for (k = 0; k < sLen; k += 1) {
+                output.push('<p' + spellCheck + '>' + paragraphs[k] + '</p>');
+            }
+        }
+        return output.join("");
     }
-    alert(message);
-  }
 
-  function renderOverview(overview) {
-    var len,
-      sLen,
-      i,
-      k,
-      section,
-      sections,
-      paragraphs,
-      output = [];
-    if (overview.hasOwnProperty("title")) {
-      output.push('<h2 id="toc_0">' + overview.title + '</h2>');
+    function exampleLoaded(args) {
+        $('#main').html($('#main').html() + appendExamples(cmapi.channel[args.channel].examples, cmapi.channel[args.channel]));
     }
-    sections = overview.sections;
-    len = sections.length;
-    for (i = 0; i < len; i++) {
-      section = sections[i];
-      output.push('<h3 >' + section.title + '</h2>');
-      paragraphs = section.paragraphs;
-      sLen = paragraphs.length;
-      for (k = 0; k < sLen; k++) {
-        output.push('<p' + spellCheck + '>' + paragraphs[k] + '</p>');
-      }
+
+    function channelLoaded(args) {
+        var channelDef = cmapi.channel[args.channel];
+        currentChannel = args.channel;
+        currentSchema = channelDef.schema;
+        $('#main').html(render(cmapi.channel[args.channel]));
+        var url = baseUrl + args.channel + ".examples.js";
+        exampleLoaded({
+            url: url,
+            channel: args.channel
+        });
     }
-    return output.join("");
-  }
 
-  function exampleLoaded(args) {
-    $('#main').html($('#main').html() + appendExamples(cmapi.channel[args.channel].examples, cmapi.channel[args.channel]));
-  }
-
-  function channelLoaded(args) {
-    var channelDef = cmapi.channel[args.channel];
-    currentChannel = args.channel;
-    currentSchema = channelDef.schema;
-    $('#main').html(render(cmapi.channel[args.channel]));
-    var url = baseUrl + args.channel + ".examples.js";
-    exampleLoaded({
-      url: url,
-      channel: args.channel,
-    });
-  }
-
-  function overviewLoaded() {
-    var overview = cmapi.overview[currentOverview];
-    $('#main').html(renderOverview(overview));
-  }
-
-  function loadChannelDef(channel) {
-    var url = baseUrl + channel + ".js";
-    channelLoaded({
-      url: url,
-      channel: channel
-    });
-  }
-
-  function loadOverview(target) {
-    currentOverview = target;
-    overviewLoaded();
-  }
-
-  publicInterface = {
-    loadContent: function(target) {
-      $('#main').html('<img src="img/loading.gif" />');
-      if (!target.data.hasOwnProperty("type")) {
-        target.data.type = "";
-      }
-      switch (target.data.type) {
-        case "overview":
-          loadOverview(target.key);
-          break;
-        default:
-          loadChannelDef(target.key);
-          break;
-      }
-    },
-    validateInput: function() {
-      var banUnknown = false;
-      if ($("#banUnknownCB").is(':checked') === true) {
-        banUnknown = true;
-      }
-      validateUserPayload(banUnknown);
-    },
-    clearInput: function() {
-      $("#userPayloadInput").val("");
+    function overviewLoaded() {
+        var overview = cmapi.overview[currentOverview];
+        $('#main').html(renderOverview(overview));
     }
-  };
 
-  var doSpellCheck = queryStringUtil.getParameterByName("spellcheck");
-  if (doSpellCheck === "true") {
-    spellCheck = ' contenteditable="true" spellcheck="true" ';
-  }
+    function loadChannelDef(channel) {
+        var url = baseUrl + channel + ".js";
+        channelLoaded({
+            url: url,
+            channel: channel
+        });
+    }
 
-  return publicInterface;
+    function loadOverview(target) {
+        currentOverview = target;
+        overviewLoaded();
+    }
+
+    publicInterface = {
+        loadContent: function(target) {
+            $('#main').html('<img src="img/loading.gif" />');
+            if (!target.data.hasOwnProperty("type")) {
+                target.data.type = "";
+            }
+            switch (target.data.type) {
+                case "overview":
+                    loadOverview(target.key);
+                    break;
+                default:
+                    loadChannelDef(target.key);
+                    break;
+            }
+        },
+        validateInput: function() {
+            var banUnknown = false;
+            if ($("#banUnknownCB").is(':checked') === true) {
+                banUnknown = true;
+            }
+            validateUserPayload(banUnknown);
+        },
+        clearInput: function() {
+            $("#userPayloadInput").val("");
+        }
+    };
+
+    var doSpellCheck = queryStringUtil.getParameterByName("spellcheck");
+    if (doSpellCheck === "true") {
+        spellCheck = ' contenteditable="true" spellcheck="true" ';
+    }
+
+    return publicInterface;
 }());

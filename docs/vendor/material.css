@@ -6417,7 +6417,7 @@ input.mdl-button[type="submit"] {
   -webkit-flex-wrap: nowrap;
       -ms-flex-wrap: nowrap;
           flex-wrap: nowrap;
-  width: 240px;
+  width: 300px;
   height: 100%;
   max-height: 100%;
   position: absolute;
