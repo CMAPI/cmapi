@@ -72,7 +72,7 @@ cmapi.channel["cmapi.appendix.b"] = {
                     "maximum": 255
                   },
                   "b": {
-                    "description": "Integer value between 0 and 255 for green.",
+                    "description": "Integer value between 0 and 255 for blue.",
                     "type": "integer",
                     "minimum": 0,
                     "maximum": 255
