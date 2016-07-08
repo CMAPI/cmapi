@@ -15,7 +15,7 @@ module.exports = function(grunt) {
         dest: 'dist/cmapi.examples.js'
       },
       overview: {
-        src: ['src/cmapi.namespace.js','src/overviews/*.overview.js'],
+        src: ['src/cmapi.namespace.js','src/overviews/*.js'],
         dest: 'dist/cmapi.overview.js'
       },
       notes: {
@@ -70,7 +70,7 @@ module.exports = function(grunt) {
       files: ['test/**/*.html']
     },
     jshint: {
-      files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+      files: ['Gruntfile.js', 'src/**/*.js', 'test/tests.js'],
       options: {
         // options here to override JSHint defaults
         globals: {

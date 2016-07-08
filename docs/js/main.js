@@ -13,7 +13,7 @@ $(function() {
                 source: [{
                     "key": "cmapi.overview",
                     "type": "overview",
-                    "folder" : true,
+                    "folder": true,
                     "title": "Overview",
                     "expanded": true
                 }, {
@@ -234,11 +234,7 @@ $(function() {
                         "children": [{
                             "key": "map.message.complete",
                             "title": "map.message.complete",
-                            "status": "new"
-                        }, {
-                            "key": "map.message.complete.detials.overview",
-                            "title": "map.message.complete Details Objects",
-                            "status": "new",
+
                             "children": [{
                                 "key": "map.feature.update.complete",
                                 "title": "map.feature.update"
@@ -318,11 +314,6 @@ $(function() {
                         }, {
                             "key": "map.message.progress",
                             "title": "map.message.progress",
-                            "status": "new"
-                        }, {
-                            "key": "map.message.progress.deatils.overview",
-                            "title": "map.message.progress Details Objects",
-                            "status": "new",
                             "children": [{
                                 "key": "map.feature.edit.progress",
                                 "title": "map.feature.edit"
@@ -371,26 +362,23 @@ $(function() {
                     }]
 
                 }, {
-                    "key": "cmapi.extensions.overview",
+                    "key": "cmapi.compliance.overview",
                     "type": "overview",
-                    "title": "CMAPI Compliance",
+                    "title": "CMAPI Conformance",
                     "folder": true,
                     "expanded": true,
                     "children": [{
-                        "key": "cmapi.extensions.cluster.overview",
+                        "key": "cmapi.compliance.core",
                         "type": "overview",
-                        "title": "Core",
-                        "children": []
+                        "title": "Core Conformance"
                     }, {
                         "key": "cmapi.extensions.manipulation.overview",
                         "type": "overview",
-                        "title": "User Manipulation",
-
-                        "children": []
+                        "title": "User Manipulation Extension"
                     }, {
                         "key": "cmapi.extensions.cluster.overview",
                         "type": "overview",
-                        "title": "Feature Clustering",
+                        "title": "Feature Clustering Extension",
                         "children": [{
                             "key": "map.overlay.cluster.references",
                             "type": "overview",

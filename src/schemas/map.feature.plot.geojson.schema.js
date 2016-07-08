@@ -127,7 +127,7 @@ cmapi.channel["map.feature.plot.geojson"] = {
             "type": "object",
             "properties": {
               "url": {
-                "type": "uri"
+                "type": "string"
               },
               "size": {
                 "type": "integer",

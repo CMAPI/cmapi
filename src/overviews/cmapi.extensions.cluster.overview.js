@@ -9,5 +9,15 @@ cmapi.overview["cmapi.extensions.cluster.overview"] = {
 			"The CMAPI Technical Committee has decided to support clustering of results onto the map via an optional extension to the core CMAPI specification.  This document defines the optional clustering extension to the CMAPI core specification. Currently, this extension supports clustering multiple features into a single point feature styled using CSS color values or an icon URL. Support for additional clustering features will be added in future versions of the extension to CMAPI.",
 			"Note that clustering rules are applied at the overlay level.  If it is desired to separate items into different clustering rules, then the elements should be separated into different overlays and the appropriate clustering rule set for each specific overlay."
 		]
-	}]
+	},{
+        "title": "Required Channels",
+        "paragraphs": [
+        "<a href='index.html?rf=map.overlay.cluster.set#map.overlay.cluster.set'>map.overlay.cluster.set</a>",
+        "<a href='index.html?rf=map.overlay.cluster.remove#map.overlay.cluster.remove'>map.overlay.cluster.remove</a>",
+        "<a href='index.html?rf=map.overlay.cluster.activate#map.overlay.cluster.activate'>map.overlay.cluster.activate</a>",
+        "<a href='index.html?rf=map.overlay.cluster.deactivate#map.overlay.cluster.deactivate'>map.overlay.cluster.deactivate</a>",
+
+
+        ]
+    }]
 };
