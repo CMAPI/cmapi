@@ -191,7 +191,9 @@ var cmapi_channel_renderer = (function() {
             if (descriptions.hasOwnProperty('properties')) {
                 description = descriptions.properties[prop];
             }
-            if (description) {
+            if (!description) {
+                description = {};
+            }
                 if (description.hasOwnProperty('defaultValue')) {
                     defaultVal = description.defaultValue;
                 }
@@ -249,7 +251,7 @@ var cmapi_channel_renderer = (function() {
 
                     }
                 }
-            }
+            //}
 
         }
         output.push('</tbody></table>');
