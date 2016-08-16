@@ -32,8 +32,7 @@ cmapi.channel["map.feature.plot"] = {
       },
       "properties": {
         "additionalProperties": true,
-        "type": "object",
-        "status": "new"
+        "type": "object"
       }
     },
     "required": ["featureId", "feature"]

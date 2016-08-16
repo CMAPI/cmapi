@@ -15,6 +15,10 @@ cmapi.channel["map.feature.update"] = {
       },
       "newOverlayId": {
         "type": "string",
+      },
+      "properties": {
+        "additionalProperties": true,
+        "type": "object"
       }
     },
     "required": ["featureId"]

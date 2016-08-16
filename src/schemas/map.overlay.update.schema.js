@@ -11,6 +11,10 @@ cmapi.channel["map.overlay.update"] = {
       },
       "parentId": {
         "type": "string"
+      },
+      "properties": {
+        "additionalProperties": true,
+        "type": "object"
       }
     },
     "required": []

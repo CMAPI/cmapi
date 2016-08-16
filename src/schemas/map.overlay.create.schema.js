@@ -13,8 +13,8 @@ cmapi.channel["map.overlay.create"] = {
         "type": "string"
       },
       "properties": {
-        "type": "object",
-        "status": "new"
+        "additionalProperties": true,
+        "type": "object"
       }
     },
     "required": []
