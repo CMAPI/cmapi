@@ -8,7 +8,7 @@ cmapi.channel["map.view.center.overlay"] = {
         "type": "string"
       },
       "zoom": {
-        "type": "string"
+        "type": ["number","string"]
       }
     },
     "required": []
