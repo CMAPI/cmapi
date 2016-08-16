@@ -6,7 +6,7 @@ cmapi.channel["map.status.view"].description = {
       "defaultValue": "",
       "properties": {
         "southWest": {
-          "description": "Bottom right of the bounds",
+          "description": "Southwestern corner of the bounds",
           "defaultValue": "",
           "properties": {
             "lat": {
@@ -20,7 +20,7 @@ cmapi.channel["map.status.view"].description = {
           }
         },
         "northEast": {
-          "description": "Top left of the bounds",
+          "description": "Northeastern corner of the bounds",
           "defaultValue": "",
           "properties": {
             "lat": {
