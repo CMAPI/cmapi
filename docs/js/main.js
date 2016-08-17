@@ -235,10 +235,10 @@ $(function() {
                             "key": "map.message.complete",
                             "title": "map.message.complete",
 
-                            "children": [{
-                                "key": "map.feature.update.complete",
-                                "title": "map.feature.update"
-                            }, {
+                            "children": [ {
+                                "key": "map.overlay.create.complete",
+                                "title": "map.overlay.create"
+                            },{
                                 "key": "map.overlay.remove.complete",
                                 "title": "map.overlay.remove"
                             }, {
@@ -254,6 +254,9 @@ $(function() {
                                 "key": "map.feature.plot.complete",
                                 "title": "map.feature.plot"
                             }, {
+                                "key": "map.feature.update.complete",
+                                "title": "map.feature.update"
+                            },{
                                 "key": "map.feature.plot.batch.complete",
                                 "title": "map.feature.plot.batch"
                             }, {
