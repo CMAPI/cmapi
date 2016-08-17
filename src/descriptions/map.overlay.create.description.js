@@ -9,7 +9,7 @@ cmapi.channel["map.overlay.create"].description = {
 	  "defaultValue": "sending widget's ID"
     },
     "parentId": {
-      "description": "The ID of the parent overlay in which to create this overlay. If an overlay with an ID of parentId does not exist, a new overlay will be created with an ID of parentId, and the parentage of the overlay identified by overlayId will be set to the newly created parent overlay."
+      "description": "The ID of the parent overlay in which to create this overlay. If an overlay with an ID of parentId does not exist, a new overlay will be created with an ID of parentId, and the parentage of the overlay identified by overlayId will be set to the newly created parent overlay. If parentId is not provided or set to an empty string, the overlay SHALL become a top level overlay."
     },
     "properties": {
       "description": "A free form object that can contain any additional JSON objects or elements to send with this message.  This allows for extending this channel's message without inadvertently corrupting the CMAPI specified payload of the message."
