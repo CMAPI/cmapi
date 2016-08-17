@@ -6,11 +6,11 @@ cmapi.channel["map.feature.plot.batch"].description = {
       "defaultValue": ""
     },
     "overlayId": {
-      "description": "The default overlayId to be applied to all feature objects in the features array that don’t include an overlayId. I.e., similar behavior to CSS.  See map.feature.plot for more details",
-      "defaultValue": ""
+      "description": "The default overlayId to be applied to all feature objects in the features array that don’t include an overlayId. If omitted and the feature object also omits this property, the behavior SHALL be as documented in the map.feature.plot overlayId property.  See map.feature.plot for more details.",
+      "defaultValue": "Sending widget's id"
     },
     "format": {
-      "description": "The default format to be applied to all feature objects in the features array that don’t include a format value. I.e., similar behavior to CSS.  See map.feature.plot for definition of format property.   More details about feature formats can be found in the map.feature Data Formats section of the documentation.",
+      "description": "The default format to be applied to all feature objects in the features array that don’t include a format value. See map.feature.plot for definition of format property.   More details about feature formats can be found in the map.feature Data Formats section of the documentation.",
       "defaultValue": ""
     },
 	"zoom": {
@@ -18,7 +18,7 @@ cmapi.channel["map.feature.plot.batch"].description = {
 		"defaultValue": ""
 	},
     "readOnly": {
-      "description": "The default value for readOnly to be applied to all feature objects in the features array that don’t include a readOnly value. I.e., similar behavior to CSS.  See map.feature.plot for definition of readOnly property.",
+      "description": "The default value for readOnly to be applied to all feature objects in the features array that don’t include a readOnly value. See map.feature.plot for definition of readOnly property.",
       "defaultValue": ""
     }
   }

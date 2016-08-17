@@ -8,8 +8,7 @@ cmapi.channel["map.feature.unplot.batch"] = {
         "type": "array"
       },
       "overlayId": {
-        "type": "string",
-        "default": ""
+        "type": "string"
       }
     },
     "required": ["features"]

@@ -6,8 +6,8 @@ cmapi.channel["map.feature.unplot.batch"].description = {
       "defaultValue": ""
     },
     "overlayId": {
-      "description": "when included at the array level, this value will be applied to all map.feature.unplot objects in the features array that don't include an overlayID. I.e., similar behavior to CSS.  See map.feature.unplot for definition of this property",
-      "defaultValue": ""
+      "description": "when included at the array level, this value will be applied to all map.feature.unplot objects in the features array that don't include an overlayID.  See map.feature.unplot for definition of this property",
+      "defaultValue": "Sending widget's id"
     }
   }
 };
