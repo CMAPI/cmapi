@@ -20,16 +20,18 @@ cmapi.channel["map.get"] = {
             },
             "filter": {
                 "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties":{
-                    "property": {
-                        "type": "string"
-                    },
-                    "term": {
-                        "type": ["string", "number", "boolean"]
+                "properties": {
+                    "filterObject": {
+                        "type": "object",
+                        "properties": {
+                            "property": {
+                                "type": "string"
+                            },
+                            "term": {
+                                "type": ["string", "boolean", "number"]
+                            }
+                        }
                     }
-                  }
                 },
                 "additionalItems": true
             },
