@@ -15,9 +15,6 @@ cmapi.channel["map.overlay.create.complete"] = {
       },
       "properties": {
         "type": "object"
-      },
-      "menuId": {
-        "type": "string"
       }
     },
     "required": ["overlayId"]
