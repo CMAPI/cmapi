@@ -392,7 +392,7 @@ var cmapi_channel_renderer = (function() {
             output.push('</div>');
             output.push('</div>');
 
-            output.push('<h3 id="toc_3">Payload Properties</h3>');
+            output.push('<h3 id="toc_3">Property Descriptions</h3>');
 
             output.push('<div class="mdl-card mdl-shadow--2dp" style="width:100%; margin-top: 24px; margin-bottom: 48px">');
 
