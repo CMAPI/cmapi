@@ -1,5 +1,5 @@
 cmapi.overview["map.message.overview"] = {
-  "title": "map.overlay.cluster namespace ",
+  "title": "map.message namespace ",
   "sections": [{
     "title": "Overview",
     "paragraphs": [
