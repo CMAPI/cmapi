@@ -1,12 +1,12 @@
 cmapi.channel["map.feature.plot.geojson"].description = {
-  "description": "The GeoJSON specification can be found at <a href=\"http://geojson.org/geojson-spec.html\" >http://geojson.org/geojson-spec.html</a>.  The Common Map Widget API specification extends the GeoJSON specification by adding the “style”, “name”, “id”, “description“, and “timePrimitive“ objects to the “Properties” object of the GeoJSON specification.  These extended objects ONLY apply to the GeoJSON Feature object.",
+  "description": "The GeoJSON specification can be found at <a target='_blank' href=\"https://tools.ietf.org/html/rfc7946\" >https://tools.ietf.org/html/rfc7946</a>.  The Common Map API specification extends the GeoJSON specification by adding the “style”, “name”, <strong style='color: red;'>“id”*</strong>, “description“, and “timePrimitive“ objects to the “Properties” object of the GeoJSON specification.  These extended objects ONLY apply to the GeoJSON Feature object. <strong style='color: red;'>*NOTE</strong>: “id” has been deprecated, see description for more information.",
   "properties": {
     "name": {
       "description": "name of the specific GeoJSON feature.  Generally used when the GeoJSON parent object is a featureCollection or feature objects.",
       "defaultValue": ""
     },
     "id": {
-      "description": "a unique identifier for the feature object.  Though not required, it is RECOMMENDED. If the id of the GeoJSON Feature.properties.id is omitted, and part of a FeatureCollection, selection may not work for these features as they cannot be uniquely identified. ",
+      "description": "<strong style='color: red;'>*DEPRECATED</strong>: This property SHOULD be located at the root level of the GeoJSON Feature object, not within the properties object according to the RFC 7946 GeoJSON specification. In order to maintain backwards compatibility this property's value should be checked for the id value if an “id” does not exist at the GeoJSON Feature root level.  If populated “id” is a unique identifier for the feature object.",
       "defaultValue": ""
     },
     "description": {
