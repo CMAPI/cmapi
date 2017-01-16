@@ -15,7 +15,7 @@ cmapi.channel["map.message.complete"].description = {
 	  "allowableValues" : "failure, mixed, success, cancelled"
     },
     "details": {
-      "description": "An object whose details are specific to the original requesting channel/message.  Go to the specific channel definition for details of what this object should look like.  In the case that no details object is specified, the details object should be populated as an empty object for consistency.",
+      "description": "Details relevant to the completion of the messages sent over the map.feature.edit, map.feature.draw, and map.get channels. Specific object formats are listed under map.message.complete section.",
       "defaultValue": ""
     },
     "failures": {

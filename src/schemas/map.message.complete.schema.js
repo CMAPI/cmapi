@@ -34,6 +34,6 @@ cmapi.channel["map.message.complete"] = {
         }
       }
     },
-    "required": ["failures", "messageId", "status", "details"]
+    "required": ["failures", "messageId", "status"]
   }
 };

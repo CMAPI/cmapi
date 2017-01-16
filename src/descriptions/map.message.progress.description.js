@@ -10,7 +10,7 @@ cmapi.channel["map.message.progress"].description = {
       "defaultValue": ""
     },
     "details": {
-      "description": "An object whose details are specific to the original requesting channel/message.  Go to the specific channel definition for details of what this object should look like",
+      "description": "Details relevant to the completion of the messages sent over the map.feature.edit, map.feature.draw channels. Specific object formats are listed under map.message.progress section.",
       "defaultValue": ""
     }
   }
