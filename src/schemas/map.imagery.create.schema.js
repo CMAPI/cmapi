@@ -13,7 +13,7 @@ cmapi.channel["map.imagery.create"] = {
             },
             "type": {
                 "type": "string",
-                "enum": ["wms", "wmts", "singleTile", "osm", "arcgis"],
+                "enum": ["wms", "wmts", "osm", "arcgis"],
                 "default": "wms"
             },
             "visible": {
