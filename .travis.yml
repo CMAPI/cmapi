@@ -4,4 +4,7 @@ node_js:
 install:
     - npm install -g grunt-cli
     - npm install
-script: grunt
+script:
+    - node -v
+    - npm -v
+    - grunt
