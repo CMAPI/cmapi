@@ -45,9 +45,6 @@ cmapi.channelList = [
   "map.message.complete",
   "map.message.progress",
   "map.message.cancel",
-  "map.menu.create",
-  "map.menu.clicked",
-  "map.menu.remove",
   "map.get"
 ];
 

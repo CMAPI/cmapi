@@ -22,11 +22,6 @@ cmapi.channel["map.feature.draw"] = {
       },
       "properties": {
         "type": "object"
-      },
-      "menuId": {
-        "type": "string",
-        "status": "new",
-        "extension": "User Manipulation - Context Menus"
       }
     },
     "required": ["featureId", "messageId", "type"]

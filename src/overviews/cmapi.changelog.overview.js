@@ -15,7 +15,7 @@ cmapi.overview["cmapi.changelog"] = {
       "Added the map.status.initialization channel which provides indication when a map is available to receive messages",
       "Added definitions for symbology feature types including MIL-STD-2525B and MIL-STD 2525C",
       "Added recomendation to use UUID's for all ids.  This can be found in the overview page.",
-      "Added User Manipulation Extension which adds capabilities including feature drawing, feature editing, feature click events, context menus, and message complete callbacks",
+      "Added User Manipulation Extension which adds capabilities including feature drawing, feature editing, feature click events, and message complete callbacks",
       "A new properties object was added to many channels as a free form object container for addtional attributes to send with a message payload without polluting the root level of the payload object"
     ]
   }, {
