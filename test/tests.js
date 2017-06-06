@@ -1,18 +1,5 @@
 /*global cmajs, cmapi, QUnit */
 
-QUnit.test("cmajs.utils.isArray", function (assert) {
-  assert.expect(2);
-  var result = cmajs.utils.isArray(["Taco", "burrito"]);
-  assert.ok(result === true, "Passed!");
-  result = cmajs.utils.isArray({
-    frank: "rizzo",
-    length: 2
-  });
-  assert.ok(result === false, "Passed!");
-});
-
-
-
 QUnit.test("cmapi.examples validation against schemas", function (assert) {
   var channel,
     examples,
