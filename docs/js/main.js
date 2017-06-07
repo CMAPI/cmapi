@@ -1,5 +1,5 @@
 /*global cmapi_channel_renderer, cmapi */
-$(function() {
+$(function () {
     //var DT = $.ui.fancytree;
     if (!document.addEventListener) {
         var message = "You are using a browser that does not support modern web capabilities.  Please use a browser such as Firefox, Chrome, Safari, or IE 9(or newer) to view this page.";
@@ -167,6 +167,36 @@ $(function() {
                             "title": "map.feature.mouseup"
                         }]
                     }, {
+                        "key": "map.imagery.overview",
+                        "type": "overview",
+                        "folder": true,
+                        "title": "map.imagery",
+                        "children": [{
+                            "key": "map.imagery.create",
+                            "title": "map.imagery.create"
+                        }, {
+                            "key": "map.imagery.remove",
+                            "title": "map.imagery.remove"
+                        }, {
+                            "key": "map.imagery.update",
+                            "title": "map.imagery.update"
+                        }, {
+                            "key": "map.imagery.show",
+                            "title": "map.imagery.show"
+                        }, {
+                            "key": "map.imagery.hide",
+                            "title": "map.imagery.hide"
+                        }, {
+                            "key": "map.imagery.raise",
+                            "title": "map.imagery.raise"
+                        }, {
+                            "key": "map.imagery.lower",
+                            "title": "map.imagery.lower"
+                        }, {
+                            "key": "map.imagery.get",
+                            "title": "map.imagery.get"
+                        }]
+                    }, {
                         "key": "map.view.overview",
                         "type": "overview",
                         "folder": true,
@@ -235,7 +265,7 @@ $(function() {
                             "key": "map.message.complete",
                             "title": "map.message.complete",
 
-                            "children": [ {
+                            "children": [{
                                 "key": "map.feature.edit.complete",
                                 "title": "map.feature.edit.complete"
                             }, {
@@ -244,6 +274,9 @@ $(function() {
                             }, {
                                 "key": "map.get.complete",
                                 "title": "map.get.complete"
+                            }, {
+                                "key": "map.imagery.get.complete",
+                                "title": "map.imagery.get.complete"
                             }]
                         }, {
                             "key": "map.message.progress",
@@ -374,13 +407,13 @@ $(function() {
                 selectMode: 1,
                 icons: false,
                 minExpandLevel: 1,
-                activate: function(event, data) {
+                activate: function (event, data) {
                     if (data.node.key !== "") {
                         cmapi_channel_renderer.loadContent(data.node);
                         location.hash = data.node.key;
                     }
                 },
-                dblclick: function(event, data) {
+                dblclick: function (event, data) {
                     cmapi_channel_renderer.loadContent(data.node);
                     location.hash = data.node.key;
                 }
